@@ -16,7 +16,7 @@ namespace YADC_MHGen_
         {
             InitializeComponent();
         }
-
+        /**********************************RAW FIELD**********************************/
         private void RawField_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string errorMsg;
@@ -34,6 +34,17 @@ namespace YADC_MHGen_
             ErrorPreventer.SetError(RawField, "");
         }
 
+        private void RawField_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                damageCalc(RawField.Text, MVField.Text); //TO BE MODIFIED
+            }
+        }
+
+        
+
+        /**********************************MV FIELD**********************************/
         private void MotionField_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string errorMsg;
@@ -49,6 +60,23 @@ namespace YADC_MHGen_
         private void MVField_Validated(object sender, System.EventArgs e)
         {
             ErrorPreventer.SetError(MVField, "");
+        }
+
+        private void MVField_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Return)
+            {
+                damageCalc(RawField.Text, MVField.Text); //TO BE MODIFIED
+            }
+        }
+
+
+        /**********************************MISC FUNCTIONS**********************************/
+        private void damageCalc(string RawDamage, string MotionValue) //TO BE MODIFIED
+        {
+            float raw = float.Parse(RawDamage);
+            float MV = float.Parse(MotionValue);
+            OutputField.Text = (raw * MV).ToString();
         }
 
         public bool calcFieldValidation(string input, out string ErrorMessage)
