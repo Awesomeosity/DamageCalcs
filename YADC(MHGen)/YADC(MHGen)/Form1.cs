@@ -62,13 +62,7 @@ namespace YADC_MHGen_
             ErrorPreventer.SetError(MVField, "");
         }
 
-        private void MVField_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Return)
-            {
-                damageCalc(RawField.Text, MVField.Text); //TO BE MODIFIED
-            }
-        }
+        
 
 
         /**********************************MISC FUNCTIONS**********************************/
@@ -76,7 +70,7 @@ namespace YADC_MHGen_
         {
             float raw = float.Parse(RawDamage);
             float MV = float.Parse(MotionValue);
-            OutputField.Text = (raw * MV).ToString();
+            OutLabel.Text = (raw * MV).ToString();
         }
 
         public bool calcFieldValidation(string input, out string ErrorMessage)
