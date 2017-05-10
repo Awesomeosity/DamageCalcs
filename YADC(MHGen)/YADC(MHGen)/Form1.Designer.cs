@@ -1,6 +1,6 @@
 ﻿namespace YADC_MHGen_
 {
-    partial class Form1
+    partial class DmgCalculator
     {
         /// <summary>
         /// Required designer variable.
@@ -79,8 +79,8 @@
             this.RawField.TabIndex = 0;
             this.RawField.Text = "0";
             this.RawField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.RawField.Validating += new System.ComponentModel.CancelEventHandler(this.RawField_Validating);
-            this.RawField.Validated += new System.EventHandler(this.RawField_Validated);
+            this.RawField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.RawField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // ErrorPreventer
             // 
@@ -103,8 +103,8 @@
             this.MVField.TabIndex = 2;
             this.MVField.Text = "0";
             this.MVField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.MVField.Validating += new System.ComponentModel.CancelEventHandler(this.MotionField_Validating);
-            this.MVField.Validated += new System.EventHandler(this.MVField_Validated);
+            this.MVField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.MVField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label1
             // 
@@ -236,6 +236,8 @@
             this.AffinityField.TabIndex = 18;
             this.AffinityField.Text = "0";
             this.AffinityField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AffinityField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.AffinityField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label8
             // 
@@ -264,6 +266,8 @@
             this.SharpField.TabIndex = 21;
             this.SharpField.Text = "1.0";
             this.SharpField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.SharpField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.SharpField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label9
             // 
@@ -282,6 +286,8 @@
             this.EleField.TabIndex = 23;
             this.EleField.Text = "0";
             this.EleField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.EleField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // HiddenField
             // 
@@ -289,8 +295,10 @@
             this.HiddenField.Name = "HiddenField";
             this.HiddenField.Size = new System.Drawing.Size(96, 20);
             this.HiddenField.TabIndex = 24;
-            this.HiddenField.Text = "1";
+            this.HiddenField.Text = "1.0";
             this.HiddenField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HiddenField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.HiddenField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label10
             // 
@@ -317,6 +325,8 @@
             this.HitzoneField.TabIndex = 27;
             this.HitzoneField.Text = "0";
             this.HitzoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HitzoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.HitzoneField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label12
             // 
@@ -335,6 +345,8 @@
             this.EleZoneField.TabIndex = 29;
             this.EleZoneField.Text = "0";
             this.EleZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.EleZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label13
             // 
@@ -364,6 +376,8 @@
             this.QuestField.TabIndex = 32;
             this.QuestField.Text = "0";
             this.QuestField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.QuestField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.QuestField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label14
             // 
@@ -412,7 +426,7 @@
             this.button1.Text = "Calculate All";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // Form1
+            // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -454,7 +468,7 @@
             this.Controls.Add(this.MVField);
             this.Controls.Add(this.RawLabel);
             this.Controls.Add(this.RawField);
-            this.Name = "Form1";
+            this.Name = "DmgCalculator";
             this.Text = "Yet Another MH Damage Calculator (MHGen) (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
             this.ResumeLayout(false);

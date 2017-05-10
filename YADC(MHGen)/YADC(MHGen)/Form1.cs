@@ -10,62 +10,34 @@ using System.Windows.Forms;
 
 namespace YADC_MHGen_
 {
-    public partial class Form1 : Form
+    public partial class DmgCalculator : Form
     {
-        public Form1()
+        public DmgCalculator()
         {
             InitializeComponent();
         }
-        /**********************************RAW FIELD**********************************/
-        private void RawField_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+
+        /*Generic Field Validation*/
+        private void GenericField_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             string errorMsg;
-            if(!calcFieldValidation(RawField.Text, out errorMsg))
+            if(!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
             {
                 e.Cancel = true;
-                RawField.Select(0, RawField.Text.Length);
+                ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
 
-                this.ErrorPreventer.SetError(RawField, errorMsg);
+                this.ErrorPreventer.SetError((TextBox)sender, errorMsg);
             }
         }
 
-        private void RawField_Validated(object sender, System.EventArgs e)
+        private void GenericField_Validated(object sender, System.EventArgs e)
         {
-            ErrorPreventer.SetError(RawField, "");
+            ErrorPreventer.SetError((TextBox)sender, "");
         }
-
-        private void RawField_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Return)
-            {
-                damageCalc(RawField.Text, MVField.Text); //TO BE MODIFIED
-            }
-        }
-
-        
-
-        /**********************************MV FIELD**********************************/
-        private void MotionField_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            string errorMsg;
-            if (!calcFieldValidation(MVField.Text, out errorMsg))
-            {
-                e.Cancel = true;
-                MVField.Select(0, MVField.Text.Length);
-
-                this.ErrorPreventer.SetError(MVField, errorMsg);
-            }
-        }
-
-        private void MVField_Validated(object sender, System.EventArgs e)
-        {
-            ErrorPreventer.SetError(MVField, "");
-        }
-
         
 
 
-        /**********************************MISC FUNCTIONS**********************************/
+        /*Functions*/
         private void damageCalc(string RawDamage, string MotionValue) //TO BE MODIFIED
         {
             float raw = float.Parse(RawDamage);
