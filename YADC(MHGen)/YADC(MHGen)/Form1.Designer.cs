@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
             this.RawField = new System.Windows.Forms.TextBox();
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.RawLabel = new System.Windows.Forms.Label();
@@ -65,19 +66,34 @@
             this.label15 = new System.Windows.Forms.Label();
             this.FinalVal = new System.Windows.Forms.Label();
             this.CalcButt = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CalcAll = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.EleOut = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.AverageSel = new System.Windows.Forms.RadioButton();
+            this.PositiveSel = new System.Windows.Forms.RadioButton();
+            this.NegativeSel = new System.Windows.Forms.RadioButton();
+            this.NeutralSel = new System.Windows.Forms.RadioButton();
             this.sharpnessBox = new System.Windows.Forms.ComboBox();
+            this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label21 = new System.Windows.Forms.Label();
+            this.AltDamageField = new System.Windows.Forms.ComboBox();
+            this.ElementBox = new System.Windows.Forms.PictureBox();
+            this.MotionTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AffinityTip = new System.Windows.Forms.ToolTip(this.components);
+            this.EleTip = new System.Windows.Forms.ToolTip(this.components);
+            this.SharpnessTip = new System.Windows.Forms.ToolTip(this.components);
+            this.HiddenTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AltTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RawField
@@ -89,6 +105,7 @@
             this.RawField.TabIndex = 0;
             this.RawField.Text = "0";
             this.RawField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TotalTip.SetToolTip(this.RawField, resources.GetString("RawField.ToolTip"));
             this.RawField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.RawField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -113,6 +130,8 @@
             this.MVField.TabIndex = 2;
             this.MVField.Text = "0";
             this.MVField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.MotionTip.SetToolTip(this.MVField, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
+        "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
             this.MVField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.MVField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -128,7 +147,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 404);
+            this.label2.Location = new System.Drawing.Point(213, 430);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 5;
@@ -246,6 +265,8 @@
             this.AffinityField.TabIndex = 18;
             this.AffinityField.Text = "0";
             this.AffinityField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AffinityTip.SetToolTip(this.AffinityField, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
+        "more or less damage.");
             this.AffinityField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.AffinityField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -253,7 +274,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(315, 318);
+            this.label8.Location = new System.Drawing.Point(313, 318);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(20, 16);
             this.label8.TabIndex = 19;
@@ -285,6 +306,8 @@
             this.EleField.TabIndex = 23;
             this.EleField.Text = "0";
             this.EleField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.EleField, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             this.EleField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.EleField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -296,6 +319,7 @@
             this.HiddenField.TabIndex = 24;
             this.HiddenField.Text = "1.0";
             this.HiddenField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HiddenTip.SetToolTip(this.HiddenField, resources.GetString("HiddenField.ToolTip"));
             this.HiddenField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.HiddenField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -313,7 +337,7 @@
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label11.Location = new System.Drawing.Point(341, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(2, 484);
+            this.label11.Size = new System.Drawing.Size(2, 495);
             this.label11.TabIndex = 26;
             // 
             // HitzoneField
@@ -360,7 +384,7 @@
             // 
             this.RawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.RawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RawOut.Location = new System.Drawing.Point(216, 417);
+            this.RawOut.Location = new System.Drawing.Point(216, 447);
             this.RawOut.Name = "RawOut";
             this.RawOut.Size = new System.Drawing.Size(96, 20);
             this.RawOut.TabIndex = 31;
@@ -409,7 +433,7 @@
             // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(114, 455);
+            this.CalcButt.Location = new System.Drawing.Point(114, 489);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 36;
@@ -417,14 +441,14 @@
             this.CalcButt.UseVisualStyleBackColor = true;
             this.CalcButt.Click += new System.EventHandler(this.CalcButt_Click);
             // 
-            // button1
+            // CalcAll
             // 
-            this.button1.Location = new System.Drawing.Point(572, 314);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 23);
-            this.button1.TabIndex = 37;
-            this.button1.Text = "Calculate All";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CalcAll.Location = new System.Drawing.Point(572, 314);
+            this.CalcAll.Name = "CalcAll";
+            this.CalcAll.Size = new System.Drawing.Size(96, 23);
+            this.CalcAll.TabIndex = 37;
+            this.CalcAll.Text = "Calculate All";
+            this.CalcAll.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -437,7 +461,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(12, 276);
+            this.label17.Location = new System.Drawing.Point(9, 272);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(95, 13);
             this.label17.TabIndex = 39;
@@ -455,17 +479,17 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(213, 443);
+            this.label19.Location = new System.Drawing.Point(213, 473);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(99, 13);
+            this.label19.Size = new System.Drawing.Size(126, 13);
             this.label19.TabIndex = 41;
-            this.label19.Text = "Elemental Damage:";
+            this.label19.Text = "Element/Status Damage:";
             // 
             // EleOut
             // 
             this.EleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.EleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EleOut.Location = new System.Drawing.Point(216, 456);
+            this.EleOut.Location = new System.Drawing.Point(216, 490);
             this.EleOut.Name = "EleOut";
             this.EleOut.Size = new System.Drawing.Size(96, 20);
             this.EleOut.TabIndex = 42;
@@ -475,58 +499,59 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(9, 387);
+            this.label20.Location = new System.Drawing.Point(9, 426);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 13);
             this.label20.TabIndex = 43;
             this.label20.Text = "Calculation Type:";
             // 
-            // radioButton1
+            // AverageSel
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(12, 405);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(65, 17);
-            this.radioButton1.TabIndex = 48;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Average";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.AverageSel.AutoSize = true;
+            this.AverageSel.Location = new System.Drawing.Point(12, 444);
+            this.AverageSel.Name = "AverageSel";
+            this.AverageSel.Size = new System.Drawing.Size(65, 17);
+            this.AverageSel.TabIndex = 48;
+            this.AverageSel.TabStop = true;
+            this.AverageSel.Text = "Average";
+            this.AverageSel.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // PositiveSel
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(12, 422);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(96, 17);
-            this.radioButton2.TabIndex = 49;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Positive Affinity";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.PositiveSel.AutoSize = true;
+            this.PositiveSel.Location = new System.Drawing.Point(12, 461);
+            this.PositiveSel.Name = "PositiveSel";
+            this.PositiveSel.Size = new System.Drawing.Size(96, 17);
+            this.PositiveSel.TabIndex = 49;
+            this.PositiveSel.TabStop = true;
+            this.PositiveSel.Text = "Positive Affinity";
+            this.PositiveSel.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // NegativeSel
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 439);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(102, 17);
-            this.radioButton3.TabIndex = 50;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Negative Affinity";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.NegativeSel.AutoSize = true;
+            this.NegativeSel.Location = new System.Drawing.Point(12, 478);
+            this.NegativeSel.Name = "NegativeSel";
+            this.NegativeSel.Size = new System.Drawing.Size(102, 17);
+            this.NegativeSel.TabIndex = 50;
+            this.NegativeSel.TabStop = true;
+            this.NegativeSel.Text = "Negative Affinity";
+            this.NegativeSel.UseVisualStyleBackColor = true;
             // 
-            // radioButton4
+            // NeutralSel
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(12, 456);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(59, 17);
-            this.radioButton4.TabIndex = 51;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Neutral";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.NeutralSel.AutoSize = true;
+            this.NeutralSel.Location = new System.Drawing.Point(12, 495);
+            this.NeutralSel.Name = "NeutralSel";
+            this.NeutralSel.Size = new System.Drawing.Size(59, 17);
+            this.NeutralSel.TabIndex = 51;
+            this.NeutralSel.TabStop = true;
+            this.NeutralSel.Text = "Neutral";
+            this.NeutralSel.UseVisualStyleBackColor = true;
             // 
             // sharpnessBox
             // 
+            this.sharpnessBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.sharpnessBox.FormattingEnabled = true;
             this.sharpnessBox.Items.AddRange(new object[] {
             "(No Sharpness)",
@@ -540,24 +565,110 @@
             this.sharpnessBox.Name = "sharpnessBox";
             this.sharpnessBox.Size = new System.Drawing.Size(96, 21);
             this.sharpnessBox.TabIndex = 52;
+            this.SharpnessTip.SetToolTip(this.sharpnessBox, "Your weapon\'s Sharpness. This only applies to Blademasters.\r\nGunner weapons shoul" +
+        "d use \"(No Sharpness).\"");
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(9, 385);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(95, 13);
+            this.label21.TabIndex = 53;
+            this.label21.Text = "Alt. Damage Type:";
+            // 
+            // AltDamageField
+            // 
+            this.AltDamageField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AltDamageField.FormattingEnabled = true;
+            this.AltDamageField.Items.AddRange(new object[] {
+            "(None)",
+            "Fire",
+            "Water",
+            "Ice",
+            "Thunder",
+            "Dragon",
+            "Poison",
+            "Para",
+            "Sleep",
+            "Blast"});
+            this.AltDamageField.Location = new System.Drawing.Point(12, 401);
+            this.AltDamageField.Name = "AltDamageField";
+            this.AltDamageField.Size = new System.Drawing.Size(96, 21);
+            this.AltDamageField.TabIndex = 54;
+            this.AltTip.SetToolTip(this.AltDamageField, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+        "ludes KO and Exhaust.");
+            this.AltDamageField.SelectedIndexChanged += new System.EventHandler(this.AltDamageField_SelectedIndexChanged);
+            // 
+            // ElementBox
+            // 
+            this.ElementBox.Location = new System.Drawing.Point(314, 490);
+            this.ElementBox.Name = "ElementBox";
+            this.ElementBox.Size = new System.Drawing.Size(21, 21);
+            this.ElementBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ElementBox.TabIndex = 55;
+            this.ElementBox.TabStop = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(572, 384);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(100, 13);
+            this.label22.TabIndex = 56;
+            this.label22.Text = "Final Raw Damage:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(572, 408);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(128, 13);
+            this.label23.TabIndex = 57;
+            this.label23.Text = "Final Ele/Status Damage:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(575, 430);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(68, 13);
+            this.label24.TabIndex = 58;
+            this.label24.Text = "KO Damage:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(575, 453);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(91, 13);
+            this.label25.TabIndex = 59;
+            this.label25.Text = "Exhaust Damage:";
             // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 502);
+            this.ClientSize = new System.Drawing.Size(675, 519);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.ElementBox);
+            this.Controls.Add(this.AltDamageField);
+            this.Controls.Add(this.label21);
             this.Controls.Add(this.sharpnessBox);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
+            this.Controls.Add(this.NeutralSel);
+            this.Controls.Add(this.NegativeSel);
+            this.Controls.Add(this.PositiveSel);
+            this.Controls.Add(this.AverageSel);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.EleOut);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.CalcAll);
             this.Controls.Add(this.CalcButt);
             this.Controls.Add(this.FinalVal);
             this.Controls.Add(this.label15);
@@ -596,6 +707,7 @@
             this.Name = "DmgCalculator";
             this.Text = "Yet Another MH Damage Calculator (MHGen) (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -638,7 +750,7 @@
         private System.Windows.Forms.Label FinalVal;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button CalcAll;
         private System.Windows.Forms.Button CalcButt;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label18;
@@ -646,11 +758,25 @@
         private System.Windows.Forms.Label EleOut;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.RadioButton radioButton4;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton NeutralSel;
+        private System.Windows.Forms.RadioButton NegativeSel;
+        private System.Windows.Forms.RadioButton PositiveSel;
+        private System.Windows.Forms.RadioButton AverageSel;
         private System.Windows.Forms.ComboBox sharpnessBox;
+        private System.Windows.Forms.ToolTip TotalTip;
+        private System.Windows.Forms.ComboBox AltDamageField;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.PictureBox ElementBox;
+        private System.Windows.Forms.ToolTip MotionTip;
+        private System.Windows.Forms.ToolTip AffinityTip;
+        private System.Windows.Forms.ToolTip EleTip;
+        private System.Windows.Forms.ToolTip SharpnessTip;
+        private System.Windows.Forms.ToolTip HiddenTip;
+        private System.Windows.Forms.ToolTip AltTip;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
     }
 }
 
