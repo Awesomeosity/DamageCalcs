@@ -63,8 +63,6 @@
             this.RawOut = new System.Windows.Forms.Label();
             this.QuestField = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.FinalVal = new System.Windows.Forms.Label();
             this.CalcButt = new System.Windows.Forms.Button();
             this.CalcAll = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
@@ -92,13 +90,41 @@
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
+            this.KOBox = new System.Windows.Forms.PictureBox();
+            this.KOOut = new System.Windows.Forms.Label();
+            this.ExhaustBox = new System.Windows.Forms.PictureBox();
+            this.ExhaustOut = new System.Windows.Forms.Label();
+            this.FinalEleBox = new System.Windows.Forms.PictureBox();
+            this.FinalEleField = new System.Windows.Forms.Label();
+            this.FinalRawField = new System.Windows.Forms.Label();
+            this.HitTip = new System.Windows.Forms.ToolTip(this.components);
+            this.EleHitTip = new System.Windows.Forms.ToolTip(this.components);
+            this.QuestTip = new System.Windows.Forms.ToolTip(this.components);
+            this.FinalField = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.KOField = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.ExhaustField = new System.Windows.Forms.TextBox();
+            this.KOTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ExhaustTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label28 = new System.Windows.Forms.Label();
+            this.ExhaustZoneField = new System.Windows.Forms.TextBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
+            this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
+            this.label30 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KOBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RawField
             // 
-            this.RawField.Location = new System.Drawing.Point(12, 314);
+            this.RawField.Location = new System.Drawing.Point(114, 314);
             this.RawField.MaxLength = 3;
             this.RawField.Name = "RawField";
             this.RawField.Size = new System.Drawing.Size(96, 20);
@@ -116,7 +142,7 @@
             // RawLabel
             // 
             this.RawLabel.AutoSize = true;
-            this.RawLabel.Location = new System.Drawing.Point(9, 298);
+            this.RawLabel.Location = new System.Drawing.Point(111, 298);
             this.RawLabel.Name = "RawLabel";
             this.RawLabel.Size = new System.Drawing.Size(101, 13);
             this.RawLabel.TabIndex = 1;
@@ -124,7 +150,7 @@
             // 
             // MVField
             // 
-            this.MVField.Location = new System.Drawing.Point(114, 314);
+            this.MVField.Location = new System.Drawing.Point(216, 315);
             this.MVField.Name = "MVField";
             this.MVField.Size = new System.Drawing.Size(96, 20);
             this.MVField.TabIndex = 2;
@@ -138,7 +164,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(111, 298);
+            this.label1.Location = new System.Drawing.Point(213, 299);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 3;
@@ -147,7 +173,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 430);
+            this.label2.Location = new System.Drawing.Point(213, 436);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 5;
@@ -251,7 +277,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(213, 298);
+            this.label7.Location = new System.Drawing.Point(213, 342);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(41, 13);
             this.label7.TabIndex = 17;
@@ -259,7 +285,7 @@
             // 
             // AffinityField
             // 
-            this.AffinityField.Location = new System.Drawing.Point(216, 314);
+            this.AffinityField.Location = new System.Drawing.Point(216, 358);
             this.AffinityField.Name = "AffinityField";
             this.AffinityField.Size = new System.Drawing.Size(96, 20);
             this.AffinityField.TabIndex = 18;
@@ -272,18 +298,17 @@
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(313, 318);
+            this.label8.Location = new System.Drawing.Point(312, 361);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(20, 16);
+            this.label8.Size = new System.Drawing.Size(15, 15);
             this.label8.TabIndex = 19;
             this.label8.Text = "%";
             // 
             // SharpnessLabel
             // 
             this.SharpnessLabel.AutoSize = true;
-            this.SharpnessLabel.Location = new System.Drawing.Point(111, 342);
+            this.SharpnessLabel.Location = new System.Drawing.Point(9, 299);
             this.SharpnessLabel.Name = "SharpnessLabel";
             this.SharpnessLabel.Size = new System.Drawing.Size(60, 13);
             this.SharpnessLabel.TabIndex = 20;
@@ -292,7 +317,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 342);
+            this.label9.Location = new System.Drawing.Point(111, 342);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 22;
@@ -300,7 +325,7 @@
             // 
             // EleField
             // 
-            this.EleField.Location = new System.Drawing.Point(12, 358);
+            this.EleField.Location = new System.Drawing.Point(114, 358);
             this.EleField.Name = "EleField";
             this.EleField.Size = new System.Drawing.Size(96, 20);
             this.EleField.TabIndex = 23;
@@ -313,7 +338,7 @@
             // 
             // HiddenField
             // 
-            this.HiddenField.Location = new System.Drawing.Point(216, 358);
+            this.HiddenField.Location = new System.Drawing.Point(216, 401);
             this.HiddenField.Name = "HiddenField";
             this.HiddenField.Size = new System.Drawing.Size(96, 20);
             this.HiddenField.TabIndex = 24;
@@ -326,7 +351,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(213, 342);
+            this.label10.Location = new System.Drawing.Point(213, 385);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(106, 13);
             this.label10.TabIndex = 25;
@@ -335,26 +360,27 @@
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(341, 9);
+            this.label11.Location = new System.Drawing.Point(344, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(2, 495);
+            this.label11.Size = new System.Drawing.Size(2, 510);
             this.label11.TabIndex = 26;
             // 
             // HitzoneField
             // 
-            this.HitzoneField.Location = new System.Drawing.Point(352, 314);
+            this.HitzoneField.Location = new System.Drawing.Point(355, 313);
             this.HitzoneField.Name = "HitzoneField";
             this.HitzoneField.Size = new System.Drawing.Size(96, 20);
             this.HitzoneField.TabIndex = 27;
             this.HitzoneField.Text = "0";
             this.HitzoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HitTip.SetToolTip(this.HitzoneField, "The Hitzone Value of a monster\'s body part.\r\nHigher values = higher damage.");
             this.HitzoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.HitzoneField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(349, 298);
+            this.label12.Location = new System.Drawing.Point(352, 297);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 13);
             this.label12.TabIndex = 28;
@@ -362,19 +388,21 @@
             // 
             // EleZoneField
             // 
-            this.EleZoneField.Location = new System.Drawing.Point(352, 354);
+            this.EleZoneField.Location = new System.Drawing.Point(355, 357);
             this.EleZoneField.Name = "EleZoneField";
             this.EleZoneField.Size = new System.Drawing.Size(96, 20);
             this.EleZoneField.TabIndex = 29;
             this.EleZoneField.Text = "0";
             this.EleZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleHitTip.SetToolTip(this.EleZoneField, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
+        "ental Hitzones.");
             this.EleZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.EleZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(349, 338);
+            this.label13.Location = new System.Drawing.Point(352, 341);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 13);
             this.label13.TabIndex = 30;
@@ -384,7 +412,7 @@
             // 
             this.RawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.RawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RawOut.Location = new System.Drawing.Point(216, 447);
+            this.RawOut.Location = new System.Drawing.Point(216, 453);
             this.RawOut.Name = "RawOut";
             this.RawOut.Size = new System.Drawing.Size(96, 20);
             this.RawOut.TabIndex = 31;
@@ -393,47 +421,28 @@
             // 
             // QuestField
             // 
-            this.QuestField.Location = new System.Drawing.Point(454, 354);
+            this.QuestField.Location = new System.Drawing.Point(355, 401);
             this.QuestField.Name = "QuestField";
             this.QuestField.Size = new System.Drawing.Size(96, 20);
             this.QuestField.TabIndex = 32;
-            this.QuestField.Text = "0";
+            this.QuestField.Text = "1.0";
             this.QuestField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.QuestTip.SetToolTip(this.QuestField, "The Quest Modifier for the monster\'s Defense.");
             this.QuestField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.QuestField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(451, 338);
+            this.label14.Location = new System.Drawing.Point(352, 385);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 13);
             this.label14.TabIndex = 33;
             this.label14.Text = "Quest Mod:";
             // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(569, 337);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(75, 13);
-            this.label15.TabIndex = 34;
-            this.label15.Text = "Final Damage:";
-            // 
-            // FinalVal
-            // 
-            this.FinalVal.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FinalVal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalVal.Location = new System.Drawing.Point(572, 353);
-            this.FinalVal.Name = "FinalVal";
-            this.FinalVal.Size = new System.Drawing.Size(96, 20);
-            this.FinalVal.TabIndex = 35;
-            this.FinalVal.Text = "0";
-            this.FinalVal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(114, 489);
+            this.CalcButt.Location = new System.Drawing.Point(114, 494);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 36;
@@ -443,19 +452,20 @@
             // 
             // CalcAll
             // 
-            this.CalcAll.Location = new System.Drawing.Point(572, 314);
+            this.CalcAll.Location = new System.Drawing.Point(355, 452);
             this.CalcAll.Name = "CalcAll";
             this.CalcAll.Size = new System.Drawing.Size(96, 23);
             this.CalcAll.TabIndex = 37;
             this.CalcAll.Text = "Calculate All";
             this.CalcAll.UseVisualStyleBackColor = true;
+            this.CalcAll.Click += new System.EventHandler(this.CalcAll_Click);
             // 
             // label16
             // 
             this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label16.Location = new System.Drawing.Point(12, 292);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(656, 2);
+            this.label16.Size = new System.Drawing.Size(690, 2);
             this.label16.TabIndex = 38;
             // 
             // label17
@@ -470,7 +480,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(349, 272);
+            this.label18.Location = new System.Drawing.Point(352, 272);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(101, 13);
             this.label18.TabIndex = 40;
@@ -479,7 +489,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(213, 473);
+            this.label19.Location = new System.Drawing.Point(213, 479);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(126, 13);
             this.label19.TabIndex = 41;
@@ -489,7 +499,7 @@
             // 
             this.EleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.EleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EleOut.Location = new System.Drawing.Point(216, 490);
+            this.EleOut.Location = new System.Drawing.Point(216, 496);
             this.EleOut.Name = "EleOut";
             this.EleOut.Size = new System.Drawing.Size(96, 20);
             this.EleOut.TabIndex = 42;
@@ -499,7 +509,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(9, 426);
+            this.label20.Location = new System.Drawing.Point(9, 432);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 13);
             this.label20.TabIndex = 43;
@@ -508,7 +518,7 @@
             // AverageSel
             // 
             this.AverageSel.AutoSize = true;
-            this.AverageSel.Location = new System.Drawing.Point(12, 444);
+            this.AverageSel.Location = new System.Drawing.Point(12, 450);
             this.AverageSel.Name = "AverageSel";
             this.AverageSel.Size = new System.Drawing.Size(65, 17);
             this.AverageSel.TabIndex = 48;
@@ -519,7 +529,7 @@
             // PositiveSel
             // 
             this.PositiveSel.AutoSize = true;
-            this.PositiveSel.Location = new System.Drawing.Point(12, 461);
+            this.PositiveSel.Location = new System.Drawing.Point(12, 467);
             this.PositiveSel.Name = "PositiveSel";
             this.PositiveSel.Size = new System.Drawing.Size(96, 17);
             this.PositiveSel.TabIndex = 49;
@@ -530,7 +540,7 @@
             // NegativeSel
             // 
             this.NegativeSel.AutoSize = true;
-            this.NegativeSel.Location = new System.Drawing.Point(12, 478);
+            this.NegativeSel.Location = new System.Drawing.Point(12, 484);
             this.NegativeSel.Name = "NegativeSel";
             this.NegativeSel.Size = new System.Drawing.Size(102, 17);
             this.NegativeSel.TabIndex = 50;
@@ -541,7 +551,7 @@
             // NeutralSel
             // 
             this.NeutralSel.AutoSize = true;
-            this.NeutralSel.Location = new System.Drawing.Point(12, 495);
+            this.NeutralSel.Location = new System.Drawing.Point(12, 501);
             this.NeutralSel.Name = "NeutralSel";
             this.NeutralSel.Size = new System.Drawing.Size(59, 17);
             this.NeutralSel.TabIndex = 51;
@@ -561,7 +571,7 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.sharpnessBox.Location = new System.Drawing.Point(114, 356);
+            this.sharpnessBox.Location = new System.Drawing.Point(12, 313);
             this.sharpnessBox.Name = "sharpnessBox";
             this.sharpnessBox.Size = new System.Drawing.Size(96, 21);
             this.sharpnessBox.TabIndex = 52;
@@ -571,7 +581,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(9, 385);
+            this.label21.Location = new System.Drawing.Point(9, 342);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(95, 13);
             this.label21.TabIndex = 53;
@@ -592,7 +602,7 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.AltDamageField.Location = new System.Drawing.Point(12, 401);
+            this.AltDamageField.Location = new System.Drawing.Point(12, 358);
             this.AltDamageField.Name = "AltDamageField";
             this.AltDamageField.Size = new System.Drawing.Size(96, 21);
             this.AltDamageField.TabIndex = 54;
@@ -602,7 +612,7 @@
             // 
             // ElementBox
             // 
-            this.ElementBox.Location = new System.Drawing.Point(314, 490);
+            this.ElementBox.Location = new System.Drawing.Point(314, 496);
             this.ElementBox.Name = "ElementBox";
             this.ElementBox.Size = new System.Drawing.Size(21, 21);
             this.ElementBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -612,25 +622,25 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(572, 384);
+            this.label22.Location = new System.Drawing.Point(461, 436);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(100, 13);
+            this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 56;
-            this.label22.Text = "Final Raw Damage:";
+            this.label22.Text = "Raw Damage:";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(572, 408);
+            this.label23.Location = new System.Drawing.Point(461, 479);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(128, 13);
+            this.label23.Size = new System.Drawing.Size(103, 13);
             this.label23.TabIndex = 57;
-            this.label23.Text = "Final Ele/Status Damage:";
+            this.label23.Text = "Ele/Status Damage:";
             // 
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(575, 430);
+            this.label24.Location = new System.Drawing.Point(586, 436);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 13);
             this.label24.TabIndex = 58;
@@ -639,17 +649,223 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(575, 453);
+            this.label25.Location = new System.Drawing.Point(586, 479);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 13);
             this.label25.TabIndex = 59;
             this.label25.Text = "Exhaust Damage:";
             // 
+            // KOBox
+            // 
+            this.KOBox.Location = new System.Drawing.Point(687, 453);
+            this.KOBox.Name = "KOBox";
+            this.KOBox.Size = new System.Drawing.Size(21, 21);
+            this.KOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.KOBox.TabIndex = 61;
+            this.KOBox.TabStop = false;
+            // 
+            // KOOut
+            // 
+            this.KOOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.KOOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.KOOut.Location = new System.Drawing.Point(589, 453);
+            this.KOOut.Name = "KOOut";
+            this.KOOut.Size = new System.Drawing.Size(96, 20);
+            this.KOOut.TabIndex = 60;
+            this.KOOut.Text = "0";
+            this.KOOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // ExhaustBox
+            // 
+            this.ExhaustBox.Location = new System.Drawing.Point(687, 496);
+            this.ExhaustBox.Name = "ExhaustBox";
+            this.ExhaustBox.Size = new System.Drawing.Size(21, 21);
+            this.ExhaustBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ExhaustBox.TabIndex = 63;
+            this.ExhaustBox.TabStop = false;
+            // 
+            // ExhaustOut
+            // 
+            this.ExhaustOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ExhaustOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.ExhaustOut.Location = new System.Drawing.Point(589, 496);
+            this.ExhaustOut.Name = "ExhaustOut";
+            this.ExhaustOut.Size = new System.Drawing.Size(96, 20);
+            this.ExhaustOut.TabIndex = 62;
+            this.ExhaustOut.Text = "0";
+            this.ExhaustOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // FinalEleBox
+            // 
+            this.FinalEleBox.Location = new System.Drawing.Point(562, 496);
+            this.FinalEleBox.Name = "FinalEleBox";
+            this.FinalEleBox.Size = new System.Drawing.Size(21, 21);
+            this.FinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.FinalEleBox.TabIndex = 65;
+            this.FinalEleBox.TabStop = false;
+            // 
+            // FinalEleField
+            // 
+            this.FinalEleField.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FinalEleField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.FinalEleField.Location = new System.Drawing.Point(464, 496);
+            this.FinalEleField.Name = "FinalEleField";
+            this.FinalEleField.Size = new System.Drawing.Size(96, 20);
+            this.FinalEleField.TabIndex = 64;
+            this.FinalEleField.Text = "0";
+            this.FinalEleField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // FinalRawField
+            // 
+            this.FinalRawField.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FinalRawField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.FinalRawField.Location = new System.Drawing.Point(464, 453);
+            this.FinalRawField.Name = "FinalRawField";
+            this.FinalRawField.Size = new System.Drawing.Size(96, 20);
+            this.FinalRawField.TabIndex = 66;
+            this.FinalRawField.Text = "0";
+            this.FinalRawField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // FinalField
+            // 
+            this.FinalField.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.FinalField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.FinalField.Location = new System.Drawing.Point(355, 495);
+            this.FinalField.Name = "FinalField";
+            this.FinalField.Size = new System.Drawing.Size(96, 20);
+            this.FinalField.TabIndex = 69;
+            this.FinalField.Text = "0";
+            this.FinalField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(352, 478);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(75, 13);
+            this.label26.TabIndex = 68;
+            this.label26.Text = "Final Damage:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(9, 385);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(58, 13);
+            this.label15.TabIndex = 71;
+            this.label15.Text = "KO Power:";
+            // 
+            // KOField
+            // 
+            this.KOField.Location = new System.Drawing.Point(12, 401);
+            this.KOField.MaxLength = 3;
+            this.KOField.Name = "KOField";
+            this.KOField.Size = new System.Drawing.Size(96, 20);
+            this.KOField.TabIndex = 70;
+            this.KOField.Text = "0";
+            this.KOField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOTip.SetToolTip(this.KOField, "The amount of KO damage you would do with an attack\r\nregardless if you would hit " +
+        "the head or not.");
+            this.KOField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.KOField.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(111, 385);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(81, 13);
+            this.label27.TabIndex = 73;
+            this.label27.Text = "Exhaust Power:";
+            // 
+            // ExhaustField
+            // 
+            this.ExhaustField.Location = new System.Drawing.Point(114, 401);
+            this.ExhaustField.MaxLength = 3;
+            this.ExhaustField.Name = "ExhaustField";
+            this.ExhaustField.Size = new System.Drawing.Size(96, 20);
+            this.ExhaustField.TabIndex = 72;
+            this.ExhaustField.Text = "0";
+            this.ExhaustField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.ExhaustField, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            this.ExhaustField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.ExhaustField.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(461, 341);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(117, 13);
+            this.label28.TabIndex = 77;
+            this.label28.Text = "Exhaust Hitzone Value:";
+            // 
+            // ExhaustZoneField
+            // 
+            this.ExhaustZoneField.Location = new System.Drawing.Point(464, 357);
+            this.ExhaustZoneField.Name = "ExhaustZoneField";
+            this.ExhaustZoneField.Size = new System.Drawing.Size(96, 20);
+            this.ExhaustZoneField.TabIndex = 76;
+            this.ExhaustZoneField.Text = "0";
+            this.ExhaustZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustZoneTip.SetToolTip(this.ExhaustZoneField, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
+        "y few zones are\r\nbelow 100.");
+            this.ExhaustZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.ExhaustZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(461, 297);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(94, 13);
+            this.label29.TabIndex = 75;
+            this.label29.Text = "KO Hitzone Value:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(464, 313);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(96, 20);
+            this.textBox2.TabIndex = 74;
+            this.textBox2.Text = "0";
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOZoneTip.SetToolTip(this.textBox2, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
+        "e head will take KO damage\r\nand very rarely is it not 100.");
+            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.textBox2.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // label30
+            // 
+            this.label30.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label30.Location = new System.Drawing.Point(13, 428);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(690, 2);
+            this.label30.TabIndex = 78;
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(675, 519);
+            this.ClientSize = new System.Drawing.Size(716, 525);
+            this.Controls.Add(this.label30);
+            this.Controls.Add(this.label28);
+            this.Controls.Add(this.ExhaustZoneField);
+            this.Controls.Add(this.label29);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.ExhaustField);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.KOField);
+            this.Controls.Add(this.FinalField);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.FinalRawField);
+            this.Controls.Add(this.FinalEleBox);
+            this.Controls.Add(this.FinalEleField);
+            this.Controls.Add(this.ExhaustBox);
+            this.Controls.Add(this.ExhaustOut);
+            this.Controls.Add(this.KOBox);
+            this.Controls.Add(this.KOOut);
             this.Controls.Add(this.label25);
             this.Controls.Add(this.label24);
             this.Controls.Add(this.label23);
@@ -670,8 +886,6 @@
             this.Controls.Add(this.label16);
             this.Controls.Add(this.CalcAll);
             this.Controls.Add(this.CalcButt);
-            this.Controls.Add(this.FinalVal);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.QuestField);
             this.Controls.Add(this.RawOut);
@@ -708,6 +922,9 @@
             this.Text = "Yet Another MH Damage Calculator (MHGen) (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.KOBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -747,8 +964,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox EleZoneField;
         private System.Windows.Forms.TextBox QuestField;
-        private System.Windows.Forms.Label FinalVal;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Button CalcAll;
         private System.Windows.Forms.Button CalcButt;
@@ -777,6 +992,31 @@
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.PictureBox FinalEleBox;
+        private System.Windows.Forms.Label FinalEleField;
+        private System.Windows.Forms.PictureBox ExhaustBox;
+        private System.Windows.Forms.Label ExhaustOut;
+        private System.Windows.Forms.PictureBox KOBox;
+        private System.Windows.Forms.Label KOOut;
+        private System.Windows.Forms.Label FinalRawField;
+        private System.Windows.Forms.ToolTip QuestTip;
+        private System.Windows.Forms.ToolTip EleHitTip;
+        private System.Windows.Forms.ToolTip HitTip;
+        private System.Windows.Forms.Label FinalField;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox ExhaustField;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox KOField;
+        private System.Windows.Forms.ToolTip ExhaustTip;
+        private System.Windows.Forms.ToolTip KOTip;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox ExhaustZoneField;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ToolTip KOZoneTip;
+        private System.Windows.Forms.ToolTip ExhaustZoneTip;
+        private System.Windows.Forms.Label label30;
     }
 }
 

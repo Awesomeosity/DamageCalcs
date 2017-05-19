@@ -24,12 +24,24 @@ namespace YADC_MHGen_
             this.AltDamageField.SelectedIndex = 0;
             AverageSel.Select();
             ElementBox.Image = null;
-            EleOut.BackColor = System.Drawing.SystemColors.Control;
+            FinalEleBox.Image = null;
+            EleZoneField.ReadOnly = true;
+            EleOut.BackColor = SystemColors.Control;
+            FinalEleField.BackColor = SystemColors.Control;
+            KOBox.Load("./Images/KO.png");
+            ExhaustBox.Load("./Images/Exhaust.png");
             FillOut();
         }
 
-        /*Generic Field Validation*/
-        private void GenericField_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        //EVENT FUNCTIONS
+        /// <summary>
+        /// Checks if whatever's put into the field can be converted into a double.
+        /// If no, then throws an error.
+        /// If yes, then allows the user to continue.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GenericField_Validating(object sender, CancelEventArgs e)
         {
             string errorMsg;
             if(!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
@@ -41,6 +53,11 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Resets the ErrorPreventer if the input is correct.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenericField_Validated(object sender, System.EventArgs e)
         {
             ErrorPreventer.SetError((TextBox)sender, "");
@@ -50,82 +67,72 @@ namespace YADC_MHGen_
         /*CalcButt Functions*/
         private void CalcButt_Click(object sender, System.EventArgs e)
         {
-            double total     = double.Parse(RawField.Text);
-            double motion    = double.Parse(MVField.Text) * 0.01;
-            double affinity  = double.Parse(AffinityField.Text) * 0.01;
-            double element   = double.Parse(EleField.Text);
-            double hidden    = double.Parse(HiddenField.Text);
+            Tuple<double, double> rawEleOut = calculateDamage();
 
-            double rawSharp = sharpnessValues[sharpnessBox.Text].Item1;
-            double eleSharp = sharpnessValues[sharpnessBox.Text].Item2;
-
-            double rawTotal = 0;
-            double eleTotal = 0;
-
-            if(AverageSel.Checked)
-            {
-                rawTotal = total * (1 + affinity * 0.25) * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
-            }
-
-            else if(PositiveSel.Checked)
-            {
-                rawTotal = total * 1.25 * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
-            }
-
-            else if(NegativeSel.Checked)
-            {
-                rawTotal = total * 0.75 * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
-            }
-
-            else if(NeutralSel.Checked)
-            {
-                rawTotal = total * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
-            }
-
-            else
-            {
-                RawOut.Text = "Error"; //Should never, ever get here.
-                EleOut.Text = "Error";
-            }
-
-            RawOut.Text = rawTotal.ToString();
-            EleOut.Text = eleTotal.ToString();
+            RawOut.Text = rawEleOut.Item1.ToString();
+            EleOut.Text = rawEleOut.Item2.ToString();
         }
 
         /*CalcAll Functions*/
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
-            double total    = double.Parse(RawField.Text);
-            double motion   = double.Parse(MVField.Text) * 0.01;
-            double affinity = double.Parse(AffinityField.Text) * 0.01;
-            double element  = double.Parse(EleField.Text);
-            double hidden   = double.Parse(HiddenField.Text);
-            double rawZone  = double.Parse(HitzoneField.Text);
-            double eleZone  = double.Parse(EleZoneField.Text);
-            double questMod = double.Parse(QuestField.Text);
+            Tuple<double, double> rawEleTuple = calculateDamage();
+            Tuple<double, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2);
 
-            double rawSharp = sharpnessValues[sharpnessBox.Text].Item1;
-            double eleSharp = sharpnessValues[sharpnessBox.Text].Item2;
+            RawOut.Text = rawEleTuple.Item1.ToString();
+            EleOut.Text = rawEleTuple.Item2.ToString();
 
-            double rawFinal = 0;
-            double eleFinal = 0;
+            FinalRawField.Text = finalTuple.Item1.ToString();
+            FinalEleField.Text = finalTuple.Item2.ToString();
 
-            //if(AverageSel)
+            FinalField.Text = Math.Floor(finalTuple.Item1 + finalTuple.Item2).ToString();
+
+            
+        }
+
+        private void AltDamageField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string element = (string)((ComboBox)sender).SelectedItem;
+            if (element != "(None)")
+            {
+                string path = str2image[element];
+                ElementBox.Load(path);
+                FinalEleBox.Load(path);
+                EleField.ReadOnly = false;
+                EleOut.BackColor = SystemColors.ControlLightLight;
+                FinalEleField.BackColor = SystemColors.ControlLightLight;
+
+                if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast")
+                {
+                    EleZoneField.ReadOnly = true;
+                }
+                else
+                {
+                    EleZoneField.ReadOnly = false;
+                }
+            }
+
+            else
+            {
+                ElementBox.Image = null;
+                FinalEleBox.Image = null;
+                EleOut.BackColor = System.Drawing.SystemColors.Control;
+                FinalEleField.BackColor = System.Drawing.SystemColors.Control;
+                EleField.ReadOnly = true;
+                EleZoneField.ReadOnly = true;
+                EleField.Text = 0.ToString();
+                EleZoneField.Text = 0.ToString();
+            }
         }
 
 
         /*Functions*/
-        private void damageCalc(string RawDamage, string MotionValue) //TO BE MODIFIED
-        {
-            float raw = float.Parse(RawDamage);
-            float MV = float.Parse(MotionValue);
-            RawOut.Text = (raw * MV).ToString();
-        }
-
+        /// <summary>
+        /// Validates whatever's put into the field to doubles.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="ErrorMessage"></param>
+        /// <returns></returns>
         public bool calcFieldValidation(string input, out string ErrorMessage)
         {
             double result;
@@ -140,6 +147,74 @@ namespace YADC_MHGen_
                 return true;
             }
         }
+        /// <summary>
+        /// This function calculates damage before considering the monster parameters.
+        /// </summary>
+        /// <returns></returns>
+        private Tuple<double, double> calculateDamage()
+        {
+            double total = double.Parse(RawField.Text);
+            double motion = double.Parse(MVField.Text) * 0.01;
+            double affinity = double.Parse(AffinityField.Text) * 0.01;
+            double element = double.Parse(EleField.Text);
+            double hidden = double.Parse(HiddenField.Text);
+
+            double rawSharp = sharpnessValues[sharpnessBox.Text].Item1;
+            double eleSharp = sharpnessValues[sharpnessBox.Text].Item2;
+
+            double rawTotal = 0;
+            double eleTotal = 0;
+
+            if (AverageSel.Checked)
+            {
+                rawTotal = total * (1 + affinity * 0.25) * rawSharp * hidden * motion;
+                eleTotal = element * eleSharp * hidden;
+            }
+
+            else if (PositiveSel.Checked)
+            {
+                rawTotal = total * 1.25 * rawSharp * hidden * motion;
+                eleTotal = element * eleSharp * hidden;
+            }
+
+            else if (NegativeSel.Checked)
+            {
+                rawTotal = total * 0.75 * rawSharp * hidden * motion;
+                eleTotal = element * eleSharp * hidden;
+            }
+
+            else if (NeutralSel.Checked)
+            {
+                rawTotal = total * rawSharp * hidden * motion;
+                eleTotal = element * eleSharp * hidden;
+            }
+
+            return new Tuple<double, double>(rawTotal, eleTotal);
+        }
+
+        /// <summary>
+        /// This function calculates the damage with hitzones.
+        /// </summary>
+        /// <param name="item1"></param>
+        /// <param name="item2"></param>
+        /// <returns></returns>
+        private Tuple<double, double> calculateMoreDamage(double item1, double item2)
+        {
+            double rawZone = double.Parse(HitzoneField.Text) * 0.01;
+            double eleZone = double.Parse(EleZoneField.Text) * 0.01;
+            double questMod = double.Parse(QuestField.Text);
+
+            item1 = item1 * rawZone * questMod;
+
+            string element = (string)AltDamageField.SelectedItem;
+            if (element != "Poison" & element != "Para" & element != "Sleep" & element != "Blast")
+            {
+                item2 = item2 * eleZone * questMod;
+            }
+
+            return new Tuple<double, double>(item1, item2);
+        }
+
 
         private void FillOut() //Fills out the Dictionaries with data.
         {
@@ -161,22 +236,6 @@ namespace YADC_MHGen_
             str2image.Add("Sleep",      "./Images/Sleep.png");
             str2image.Add("Para",       "./Images/Para.png");
             str2image.Add("Blast",      "./Images/Blast.png");
-        }
-
-        private void AltDamageField_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string element = (string)((ComboBox)sender).SelectedItem;
-            if(element != "(None)")
-            {
-                string path = str2image[element];
-                ElementBox.Load(path);
-                EleOut.BackColor = SystemColors.ControlLightLight;
-            }
-            else
-            {
-                ElementBox.Image = null;
-                EleOut.BackColor = System.Drawing.SystemColors.Control;
-            }
         }
     }
 }
