@@ -77,13 +77,16 @@ namespace YADC_MHGen_
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
             Tuple<double, double> rawEleTuple = calculateDamage();
-            Tuple<double, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2);
+            Tuple<double, double, double, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2);
 
             RawOut.Text = rawEleTuple.Item1.ToString();
             EleOut.Text = rawEleTuple.Item2.ToString();
 
             FinalRawField.Text = finalTuple.Item1.ToString();
             FinalEleField.Text = finalTuple.Item2.ToString();
+
+            KOOut.Text = finalTuple.Item3.ToString();
+            ExhaustOut.Text = finalTuple.Item4.ToString();
 
             FinalField.Text = Math.Floor(finalTuple.Item1 + finalTuple.Item2).ToString();
 
@@ -198,13 +201,19 @@ namespace YADC_MHGen_
         /// <param name="item1"></param>
         /// <param name="item2"></param>
         /// <returns></returns>
-        private Tuple<double, double> calculateMoreDamage(double item1, double item2)
+        private Tuple<double, double, double, double> calculateMoreDamage(double item1, double item2)
         {
             double rawZone = double.Parse(HitzoneField.Text) * 0.01;
             double eleZone = double.Parse(EleZoneField.Text) * 0.01;
+            double KODam = double.Parse(KOField.Text);
+            double ExhDam = double.Parse(ExhaustField.Text);
+            double KOZone = double.Parse(KOZoneField.Text) * 0.01;
+            double ExhaustZone = double.Parse(ExhaustZoneField.Text) * 0.01;
             double questMod = double.Parse(QuestField.Text);
 
             item1 = item1 * rawZone * questMod;
+            double item3 = KODam * KOZone;
+            double item4 = ExhDam * ExhaustZone;
 
             string element = (string)AltDamageField.SelectedItem;
             if (element != "Poison" & element != "Para" & element != "Sleep" & element != "Blast")
@@ -212,7 +221,7 @@ namespace YADC_MHGen_
                 item2 = item2 * eleZone * questMod;
             }
 
-            return new Tuple<double, double>(item1, item2);
+            return new Tuple<double, double, double, double>(item1, item2, item3, item4);
         }
 
 

@@ -111,7 +111,7 @@
             this.label28 = new System.Windows.Forms.Label();
             this.ExhaustZoneField = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.KOZoneField = new System.Windows.Forms.TextBox();
             this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.label30 = new System.Windows.Forms.Label();
@@ -442,7 +442,7 @@
             // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(114, 494);
+            this.CalcButt.Location = new System.Drawing.Point(114, 451);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 36;
@@ -822,18 +822,18 @@
             this.label29.TabIndex = 75;
             this.label29.Text = "KO Hitzone Value:";
             // 
-            // textBox2
+            // KOZoneField
             // 
-            this.textBox2.Location = new System.Drawing.Point(464, 313);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(96, 20);
-            this.textBox2.TabIndex = 74;
-            this.textBox2.Text = "0";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOZoneTip.SetToolTip(this.textBox2, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
+            this.KOZoneField.Location = new System.Drawing.Point(464, 313);
+            this.KOZoneField.Name = "KOZoneField";
+            this.KOZoneField.Size = new System.Drawing.Size(96, 20);
+            this.KOZoneField.TabIndex = 74;
+            this.KOZoneField.Text = "0";
+            this.KOZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOZoneTip.SetToolTip(this.KOZoneField, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
         "e head will take KO damage\r\nand very rarely is it not 100.");
-            this.textBox2.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.textBox2.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.KOZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.KOZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label30
             // 
@@ -852,7 +852,7 @@
             this.Controls.Add(this.label28);
             this.Controls.Add(this.ExhaustZoneField);
             this.Controls.Add(this.label29);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.KOZoneField);
             this.Controls.Add(this.label27);
             this.Controls.Add(this.ExhaustField);
             this.Controls.Add(this.label15);
@@ -1013,7 +1013,7 @@
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.TextBox ExhaustZoneField;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox KOZoneField;
         private System.Windows.Forms.ToolTip KOZoneTip;
         private System.Windows.Forms.ToolTip ExhaustZoneTip;
         private System.Windows.Forms.Label label30;
