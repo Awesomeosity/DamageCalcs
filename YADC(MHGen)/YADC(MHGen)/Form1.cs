@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace YADC_MHGen_
 {
@@ -15,7 +16,10 @@ namespace YADC_MHGen_
 
         public Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
         public Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
-
+        Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
+        Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
+        Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
+        Dictionary<string, List<Tuple<int, int, string, int, string, int>>> names2Stats = new Dictionary<string, List<Tuple<int, int, string, int, string, int>>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
 
         public DmgCalculator()
         {
@@ -31,6 +35,7 @@ namespace YADC_MHGen_
             KOBox.Load("./Images/KO.png");
             ExhaustBox.Load("./Images/Exhaust.png");
             FillOut();
+            readFiles();
         }
 
         //EVENT FUNCTIONS
@@ -216,7 +221,7 @@ namespace YADC_MHGen_
             double item4 = ExhDam * ExhaustZone;
 
             string element = (string)AltDamageField.SelectedItem;
-            if (element != "Poison" & element != "Para" & element != "Sleep" & element != "Blast")
+            if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
             {
                 item2 = item2 * eleZone * questMod;
             }
@@ -245,6 +250,129 @@ namespace YADC_MHGen_
             str2image.Add("Sleep",      "./Images/Sleep.png");
             str2image.Add("Para",       "./Images/Para.png");
             str2image.Add("Blast",      "./Images/Blast.png");
+        }
+
+        private void readFiles()
+        {
+            //Read weapon database
+            readWeapons();
+
+            //Read motion value database
+            //readMotion();
+
+            //Read 
+        }
+
+        private void readMotion()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Reads the files included in the Weapons folder and generates weapon type names.
+        /// Additionally, also reads inside the files and creates stats based on the weapons within.
+        /// </summary>
+        private void readWeapons()
+        {
+            string[] files = System.IO.Directory.GetFiles("./Weapons/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
+            foreach (string file in files)
+            {
+                string type = file.Remove(file.Length - 4); //Strip trailing '.xml'
+                type = type.Remove(0, 10); //Strip preceeding './Weapons/'
+                if(type.Contains('_'))
+                {
+                    type.Replace('_', ' ');
+                }
+
+                TypeField.Items.Add(type);
+
+                List<string> weapons = new List<string>();
+                type2Weapons.Add(type, weapons); //Mapping of weapon types to weapons
+
+
+                //Now we read the files
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.IgnoreComments = true;
+                settings.IgnoreWhitespace = true;
+                using (XmlReader reader = XmlReader.Create(file,settings))
+                {
+                    reader.MoveToContent();
+                    while(reader.Read())
+                    {
+                        if(reader.Name == "weapon")
+                        {
+                            reader.Read(); //Name tag
+                            reader.Read(); //Name string
+                            string name = reader.Value;
+                            weapons.Add(name);
+                            List<Tuple<int, int, string, int, string, int>> stats = new List<Tuple<int, int, string, int, string, int>>();
+                            names2Stats.Add(name, stats);
+
+                            reader.Read(); //end Name
+                            reader.Read(); //final name tag
+                            reader.Read(); //final name string
+                            string finalName = reader.Value;
+
+                            names2FinalNames.Add(name, finalName);
+                            finalNames2Names.Add(finalName, name);
+
+                            reader.Read(); //end final name
+                            reader.Read(); //level
+
+                            while(reader.NodeType != XmlNodeType.EndElement && reader.Name != "weapon")
+                            {
+                                int level = int.Parse(reader.GetAttribute("number")); //Get attribute of level number.
+                                reader.Read(); //attack tag
+                                reader.Read(); //attack int
+
+                                int attack = int.Parse(reader.Value);
+                                reader.Read(); //end attack
+                                reader.Read(); //sharpness tag
+                                reader.Read(); //sharpness string
+
+                                string sharpness = reader.Value;
+                                reader.Read(); //end sharpness string
+                                reader.Read(); //affinity tag
+                                reader.Read(); //affinity int
+
+                                string affinity = reader.Value; //Extract affinity
+                                int aff = int.Parse(affinity.Remove(affinity.Length - 1)); //Remove percentage sign
+                                reader.Read(); //end affinity tag
+                                reader.Read(); //eleType tag
+                                reader.Read(); //eleType string
+
+                                string eleType = reader.Value;
+                                reader.Read(); //eleType end
+                                reader.Read(); //eleDamage tag
+                                reader.Read(); //eleDamage int
+
+                                int eleDamage = int.Parse(reader.Value);
+                                stats.Add(new Tuple<int, int, string, int, string, int>(level, attack, sharpness, aff, eleType, eleDamage));
+
+
+                                reader.Read(); //end eleDamage
+                                reader.Read(); //end level
+                                reader.Read(); //new level
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Here, I want to set the weapon field's collection to a specific one, based on what was selected here.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TypeField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WeaponField.Items.Clear();
+            foreach(string weapons in type2Weapons[(string)((ComboBox)sender).SelectedItem])
+            {
+                WeaponField.Items.Add(weapons);
+            }
         }
     }
 }

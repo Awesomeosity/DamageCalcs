@@ -36,17 +36,6 @@
             this.MVField = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TypeLabel = new System.Windows.Forms.Label();
-            this.WeaponLabel = new System.Windows.Forms.Label();
-            this.TypeSelect = new System.Windows.Forms.ComboBox();
-            this.WeaponSelect = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.WeapRawField = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.WeapAffinityField = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.SharpnessField = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.AffinityField = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -115,11 +104,34 @@
             this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.label30 = new System.Windows.Forms.Label();
+            this.TypeField = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.WeaponField = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label43 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KOBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // RawField
@@ -150,7 +162,7 @@
             // 
             // MVField
             // 
-            this.MVField.Location = new System.Drawing.Point(216, 315);
+            this.MVField.Location = new System.Drawing.Point(216, 314);
             this.MVField.Name = "MVField";
             this.MVField.Size = new System.Drawing.Size(96, 20);
             this.MVField.TabIndex = 2;
@@ -164,7 +176,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(213, 299);
+            this.label1.Location = new System.Drawing.Point(213, 298);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 3;
@@ -178,101 +190,6 @@
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Raw Damage:";
-            // 
-            // TypeLabel
-            // 
-            this.TypeLabel.AutoSize = true;
-            this.TypeLabel.Location = new System.Drawing.Point(13, 13);
-            this.TypeLabel.Name = "TypeLabel";
-            this.TypeLabel.Size = new System.Drawing.Size(78, 13);
-            this.TypeLabel.TabIndex = 6;
-            this.TypeLabel.Text = "Weapon Type:";
-            // 
-            // WeaponLabel
-            // 
-            this.WeaponLabel.AutoSize = true;
-            this.WeaponLabel.Location = new System.Drawing.Point(13, 45);
-            this.WeaponLabel.Name = "WeaponLabel";
-            this.WeaponLabel.Size = new System.Drawing.Size(51, 13);
-            this.WeaponLabel.TabIndex = 7;
-            this.WeaponLabel.Text = "Weapon:";
-            // 
-            // TypeSelect
-            // 
-            this.TypeSelect.FormattingEnabled = true;
-            this.TypeSelect.Location = new System.Drawing.Point(111, 11);
-            this.TypeSelect.Name = "TypeSelect";
-            this.TypeSelect.Size = new System.Drawing.Size(121, 21);
-            this.TypeSelect.TabIndex = 8;
-            // 
-            // WeaponSelect
-            // 
-            this.WeaponSelect.FormattingEnabled = true;
-            this.WeaponSelect.Location = new System.Drawing.Point(111, 42);
-            this.WeaponSelect.Name = "WeaponSelect";
-            this.WeaponSelect.Size = new System.Drawing.Size(121, 21);
-            this.WeaponSelect.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Weapon Raw:";
-            // 
-            // WeapRawField
-            // 
-            this.WeapRawField.Location = new System.Drawing.Point(111, 73);
-            this.WeapRawField.Name = "WeapRawField";
-            this.WeapRawField.Size = new System.Drawing.Size(121, 20);
-            this.WeapRawField.TabIndex = 11;
-            this.WeapRawField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Raw Affinity:";
-            // 
-            // WeapAffinityField
-            // 
-            this.WeapAffinityField.Location = new System.Drawing.Point(111, 105);
-            this.WeapAffinityField.Name = "WeapAffinityField";
-            this.WeapAffinityField.Size = new System.Drawing.Size(121, 20);
-            this.WeapAffinityField.TabIndex = 13;
-            this.WeapAffinityField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(13, 142);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(60, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Sharpness:";
-            // 
-            // SharpnessField
-            // 
-            this.SharpnessField.FormattingEnabled = true;
-            this.SharpnessField.Location = new System.Drawing.Point(111, 142);
-            this.SharpnessField.Name = "SharpnessField";
-            this.SharpnessField.Size = new System.Drawing.Size(121, 21);
-            this.SharpnessField.TabIndex = 15;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(238, 108);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(20, 16);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "%";
             // 
             // label7
             // 
@@ -843,11 +760,234 @@
             this.label30.Size = new System.Drawing.Size(690, 2);
             this.label30.TabIndex = 78;
             // 
+            // TypeField
+            // 
+            this.TypeField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.TypeField.FormattingEnabled = true;
+            this.TypeField.Location = new System.Drawing.Point(12, 25);
+            this.TypeField.Name = "TypeField";
+            this.TypeField.Size = new System.Drawing.Size(121, 21);
+            this.TypeField.TabIndex = 79;
+            this.TypeField.SelectedIndexChanged += new System.EventHandler(this.TypeField_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 13);
+            this.label3.TabIndex = 80;
+            this.label3.Text = "Weapon Type:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(9, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(82, 13);
+            this.label4.TabIndex = 81;
+            this.label4.Text = "Weapon Name:";
+            // 
+            // WeaponField
+            // 
+            this.WeaponField.FormattingEnabled = true;
+            this.WeaponField.Location = new System.Drawing.Point(12, 65);
+            this.WeaponField.Name = "WeaponField";
+            this.WeaponField.Size = new System.Drawing.Size(121, 21);
+            this.WeaponField.TabIndex = 82;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(9, 95);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(107, 13);
+            this.label5.TabIndex = 83;
+            this.label5.Text = "Weapon Final Name:";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(9, 135);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 13);
+            this.label6.TabIndex = 85;
+            this.label6.Text = "Weapon Level:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 151);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(42, 21);
+            this.comboBox1.TabIndex = 86;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(12, 111);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 87;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(148, 7);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(105, 13);
+            this.label31.TabIndex = 88;
+            this.label31.Text = "Weapon Base Stats:";
+            // 
+            // label32
+            // 
+            this.label32.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label32.Location = new System.Drawing.Point(141, 23);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(203, 2);
+            this.label32.TabIndex = 89;
+            // 
+            // label33
+            // 
+            this.label33.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label33.Location = new System.Drawing.Point(140, 7);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(2, 170);
+            this.label33.TabIndex = 90;
+            // 
+            // label34
+            // 
+            this.label34.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label34.Location = new System.Drawing.Point(13, 176);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(330, 2);
+            this.label34.TabIndex = 91;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(148, 39);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(74, 13);
+            this.label35.TabIndex = 92;
+            this.label35.Text = "Attack Power:";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(148, 65);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(87, 13);
+            this.label36.TabIndex = 93;
+            this.label36.Text = "Alt. Type/Power:";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(148, 91);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(68, 13);
+            this.label37.TabIndex = 94;
+            this.label37.Text = "Base Affinity:";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(148, 117);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(83, 13);
+            this.label38.TabIndex = 95;
+            this.label38.Text = "Max Sharpness:";
+            // 
+            // label39
+            // 
+            this.label39.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label39.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label39.Location = new System.Drawing.Point(246, 35);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(51, 20);
+            this.label39.TabIndex = 96;
+            this.label39.Text = "0";
+            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label40
+            // 
+            this.label40.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label40.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label40.Location = new System.Drawing.Point(246, 61);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(51, 20);
+            this.label40.TabIndex = 97;
+            this.label40.Text = "0";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label41
+            // 
+            this.label41.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label41.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label41.Location = new System.Drawing.Point(246, 87);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(51, 20);
+            this.label41.TabIndex = 98;
+            this.label41.Text = "0";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label42
+            // 
+            this.label42.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label42.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label42.Location = new System.Drawing.Point(246, 113);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(51, 20);
+            this.label42.TabIndex = 99;
+            this.label42.Text = "(None)";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(306, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 100;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label43
+            // 
+            this.label43.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label43.Location = new System.Drawing.Point(298, 91);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(15, 15);
+            this.label43.TabIndex = 101;
+            this.label43.Text = "%";
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(716, 525);
+            this.Controls.Add(this.label43);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label42);
+            this.Controls.Add(this.label41);
+            this.Controls.Add(this.label40);
+            this.Controls.Add(this.label39);
+            this.Controls.Add(this.label38);
+            this.Controls.Add(this.label37);
+            this.Controls.Add(this.label36);
+            this.Controls.Add(this.label35);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.label32);
+            this.Controls.Add(this.label31);
+            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.WeaponField);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.TypeField);
             this.Controls.Add(this.label30);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.ExhaustZoneField);
@@ -902,17 +1042,6 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.AffinityField);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.SharpnessField);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.WeapAffinityField);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.WeapRawField);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.WeaponSelect);
-            this.Controls.Add(this.TypeSelect);
-            this.Controls.Add(this.WeaponLabel);
-            this.Controls.Add(this.TypeLabel);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MVField);
@@ -925,6 +1054,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KOBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -938,17 +1068,6 @@
         private System.Windows.Forms.TextBox MVField;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox WeapAffinityField;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox WeapRawField;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox WeaponSelect;
-        private System.Windows.Forms.ComboBox TypeSelect;
-        private System.Windows.Forms.Label WeaponLabel;
-        private System.Windows.Forms.Label TypeLabel;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ComboBox SharpnessField;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox AffinityField;
         private System.Windows.Forms.Label label7;
@@ -1017,6 +1136,28 @@
         private System.Windows.Forms.ToolTip KOZoneTip;
         private System.Windows.Forms.ToolTip ExhaustZoneTip;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.ComboBox TypeField;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox WeaponField;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
