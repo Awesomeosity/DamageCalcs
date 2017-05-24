@@ -13,29 +13,57 @@ namespace YADC_MHGen_
 {
     public partial class DmgCalculator : Form
     {
+        /// <summary>
+        /// Stores the stats of a single level of a single weapon.
+        /// </summary>
+        public struct stats
+        {
+            public int level;
+            public int attack;
+            public string sharpness;
+            public int affinity;
+            public string elementalType;
+            public int elementalDamage;
+            public string sharpness1;
+            public string sharpness2;
+
+            public stats(int _level, int _attack, string _sharpness, int _affinity, string _elementalType, int _elementalDamage, string _sharpness1, string _sharpness2)
+            {
+                level = _level;
+                attack = _attack;
+                sharpness = _sharpness;
+                affinity = _affinity;
+                elementalType = _elementalType;
+                elementalDamage = _elementalDamage;
+                sharpness1 = _sharpness1;
+                sharpness2 = _sharpness2;
+            }
+        }
+
 
         public Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
         public Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
         Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
-        Dictionary<string, List<Tuple<int, int, string, int, string, int>>> names2Stats = new Dictionary<string, List<Tuple<int, int, string, int, string, int>>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
+        Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
 
         public DmgCalculator()
         {
             InitializeComponent();
+            FillOut();
+            readFiles();
             this.sharpnessBox.SelectedIndex = 0;
             this.AltDamageField.SelectedIndex = 0;
             AverageSel.Select();
             ElementBox.Image = null;
             FinalEleBox.Image = null;
+            EleLabelBox.Image = null;
             EleZoneField.ReadOnly = true;
             EleOut.BackColor = SystemColors.Control;
             FinalEleField.BackColor = SystemColors.Control;
             KOBox.Load("./Images/KO.png");
             ExhaustBox.Load("./Images/Exhaust.png");
-            FillOut();
-            readFiles();
         }
 
         //EVENT FUNCTIONS
@@ -67,7 +95,6 @@ namespace YADC_MHGen_
         {
             ErrorPreventer.SetError((TextBox)sender, "");
         }
-        
 
         /*CalcButt Functions*/
         private void CalcButt_Click(object sender, System.EventArgs e)
@@ -82,7 +109,7 @@ namespace YADC_MHGen_
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
             Tuple<double, double> rawEleTuple = calculateDamage();
-            Tuple<double, double, double, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2);
+            Tuple<double, double, double, double, string> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2);
 
             RawOut.Text = rawEleTuple.Item1.ToString();
             EleOut.Text = rawEleTuple.Item2.ToString();
@@ -95,7 +122,7 @@ namespace YADC_MHGen_
 
             FinalField.Text = Math.Floor(finalTuple.Item1 + finalTuple.Item2).ToString();
 
-            
+            BounceLabel.Text = finalTuple.Item5;
         }
 
         private void AltDamageField_SelectedIndexChanged(object sender, EventArgs e)
@@ -133,6 +160,83 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Here, I want to set the weapon field's collection to a specific one, based on what was selected here.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TypeField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WeaponField.Items.Clear();
+            foreach (string weapons in type2Weapons[(string)((ComboBox)sender).SelectedItem])
+            {
+                WeaponField.Items.Add(weapons);
+            }
+
+            WeaponFinalField.Items.Clear();
+            foreach (string names in WeaponField.Items)
+            {
+                WeaponFinalField.Items.Add(names2FinalNames[names]);
+            }
+        }
+
+        private void WeaponField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string weaponName = (string)((ComboBox)sender).SelectedItem;
+            if((string)WeaponFinalField.SelectedItem != names2FinalNames[weaponName])
+            {
+                WeaponFinalField.SelectedItem = names2FinalNames[weaponName];
+            }
+
+            LevelField.Items.Clear();
+            foreach (stats levels in names2Stats[weaponName])
+            {
+                LevelField.Items.Add(levels.level);
+            }
+        }
+
+        private void WeaponFinalField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string weaponFinalName = (string)((ComboBox)sender).SelectedItem;
+            if((string)WeaponField.SelectedItem != finalNames2Names[weaponFinalName])
+            {
+                WeaponField.SelectedItem = finalNames2Names[weaponFinalName];
+            }
+        }
+
+        private void sharpnessBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sharpness = (string)((ComboBox)sender).SelectedItem;
+            RawSharpField.Text = sharpnessValues[sharpness].Item1.ToString();
+            EleSharpField.Text = sharpnessValues[sharpness].Item2.ToString();
+        }
+
+        private void LevelField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int weaponLevel = (int)((ComboBox)sender).SelectedItem;
+            foreach(stats statistics in names2Stats[WeaponField.Text])
+            {
+                if(statistics.level == weaponLevel)
+                {
+                    AttackLabel.Text = statistics.attack.ToString();
+                    EleTypeLabel.Text = statistics.elementalDamage.ToString();
+                    AffinityLabel.Text = statistics.affinity.ToString();
+                    SharpnessLabel.Text = statistics.sharpness;
+                    OneLabel.Text = statistics.sharpness1;
+                    TwoLabel.Text = statistics.sharpness2;
+
+                    if (statistics.elementalType != "(None)")
+                    {
+                        string path = str2image[statistics.elementalType];
+                        EleLabelBox.Load(path);
+                    }
+                    else
+                    {
+                        EleLabelBox.Image = null;
+                    }
+                }
+            }
+        }
 
         /*Functions*/
         /// <summary>
@@ -155,6 +259,7 @@ namespace YADC_MHGen_
                 return true;
             }
         }
+
         /// <summary>
         /// This function calculates damage before considering the monster parameters.
         /// </summary>
@@ -167,8 +272,8 @@ namespace YADC_MHGen_
             double element = double.Parse(EleField.Text);
             double hidden = double.Parse(HiddenField.Text);
 
-            double rawSharp = sharpnessValues[sharpnessBox.Text].Item1;
-            double eleSharp = sharpnessValues[sharpnessBox.Text].Item2;
+            double rawSharp = double.Parse(RawSharpField.Text);
+            double eleSharp = double.Parse(EleSharpField.Text);
 
             double rawTotal = 0;
             double eleTotal = 0;
@@ -206,7 +311,7 @@ namespace YADC_MHGen_
         /// <param name="item1"></param>
         /// <param name="item2"></param>
         /// <returns></returns>
-        private Tuple<double, double, double, double> calculateMoreDamage(double item1, double item2)
+        private Tuple<double, double, double, double, string> calculateMoreDamage(double item1, double item2)
         {
             double rawZone = double.Parse(HitzoneField.Text) * 0.01;
             double eleZone = double.Parse(EleZoneField.Text) * 0.01;
@@ -226,9 +331,26 @@ namespace YADC_MHGen_
                 item2 = item2 * eleZone * questMod;
             }
 
-            return new Tuple<double, double, double, double>(item1, item2, item3, item4);
+            string item5 = "No";
+            if((rawZone * double.Parse(RawSharpField.Text)) > 0.25 )
+            {
+                item5 = "No";
+            }
+            else
+            {
+                item5 = "Yes";
+            }
+
+            return new Tuple<double, double, double, double, string>(item1, item2, item3, item4, item5);
         }
 
+        /// <summary>
+        /// Updates the calculation fields. Should be called when a change is made.
+        /// </summary>
+        private void UpdateCalcFields()
+        {
+            throw new NotImplementedException();
+        }
 
         private void FillOut() //Fills out the Dictionaries with data.
         {
@@ -305,8 +427,8 @@ namespace YADC_MHGen_
                             reader.Read(); //Name string
                             string name = reader.Value;
                             weapons.Add(name);
-                            List<Tuple<int, int, string, int, string, int>> stats = new List<Tuple<int, int, string, int, string, int>>();
-                            names2Stats.Add(name, stats);
+                            List<stats> statistics = new List<stats>();
+                            names2Stats.Add(name, statistics);
 
                             reader.Read(); //end Name
                             reader.Read(); //final name tag
@@ -347,13 +469,22 @@ namespace YADC_MHGen_
                                 reader.Read(); //eleDamage int
 
                                 int eleDamage = int.Parse(reader.Value);
-                                stats.Add(new Tuple<int, int, string, int, string, int>(level, attack, sharpness, aff, eleType, eleDamage));
-
 
                                 reader.Read(); //end eleDamage
+                                reader.Read(); //sharpness1 tag
+                                reader.Read(); //sharpness1 string
+
+                                string sharpness1 = reader.Value;
+                                reader.Read(); //end sharpness1
+                                reader.Read(); //sharpness2 tag
+                                reader.Read(); //sharpness2 string
+
+                                string sharpness2 = reader.Value;
+                                reader.Read(); //end sharpness2
                                 reader.Read(); //end level
                                 reader.Read(); //new level
 
+                                statistics.Add(new stats(level, attack, sharpness, aff, eleType, eleDamage, sharpness1, sharpness2));
                             }
                         }
                     }
@@ -361,18 +492,6 @@ namespace YADC_MHGen_
             }
         }
 
-        /// <summary>
-        /// Here, I want to set the weapon field's collection to a specific one, based on what was selected here.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TypeField_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            WeaponField.Items.Clear();
-            foreach(string weapons in type2Weapons[(string)((ComboBox)sender).SelectedItem])
-            {
-                WeaponField.Items.Add(weapons);
-            }
-        }
+        
     }
 }

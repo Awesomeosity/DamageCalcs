@@ -38,8 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.AffinityField = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.SharpnessLabel = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.EleField = new System.Windows.Forms.TextBox();
             this.HiddenField = new System.Windows.Forms.TextBox();
@@ -64,7 +62,6 @@
             this.PositiveSel = new System.Windows.Forms.RadioButton();
             this.NegativeSel = new System.Windows.Forms.RadioButton();
             this.NeutralSel = new System.Windows.Forms.RadioButton();
-            this.sharpnessBox = new System.Windows.Forms.ComboBox();
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.AltDamageField = new System.Windows.Forms.ComboBox();
@@ -110,8 +107,8 @@
             this.WeaponField = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.LevelField = new System.Windows.Forms.ComboBox();
+            this.WeaponFinalField = new System.Windows.Forms.ComboBox();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label33 = new System.Windows.Forms.Label();
@@ -120,18 +117,31 @@
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AttackLabel = new System.Windows.Forms.Label();
+            this.EleTypeLabel = new System.Windows.Forms.Label();
+            this.AffinityLabel = new System.Windows.Forms.Label();
+            this.SharpnessLabel = new System.Windows.Forms.Label();
+            this.EleLabelBox = new System.Windows.Forms.PictureBox();
             this.label43 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.sharpnessBox = new System.Windows.Forms.ComboBox();
+            this.label44 = new System.Windows.Forms.Label();
+            this.RawSharpField = new System.Windows.Forms.TextBox();
+            this.EleSharpField = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.BounceLabel = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label46 = new System.Windows.Forms.Label();
+            this.OneLabel = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.TwoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KOBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
             this.SuspendLayout();
             // 
             // RawField
@@ -162,7 +172,7 @@
             // 
             // MVField
             // 
-            this.MVField.Location = new System.Drawing.Point(216, 314);
+            this.MVField.Location = new System.Drawing.Point(216, 401);
             this.MVField.Name = "MVField";
             this.MVField.Size = new System.Drawing.Size(96, 20);
             this.MVField.TabIndex = 2;
@@ -176,7 +186,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(213, 298);
+            this.label1.Location = new System.Drawing.Point(213, 385);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 3;
@@ -185,7 +195,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(213, 436);
+            this.label2.Location = new System.Drawing.Point(111, 462);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 5;
@@ -194,15 +204,15 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(213, 342);
+            this.label7.Location = new System.Drawing.Point(111, 385);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 13);
+            this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 17;
-            this.label7.Text = "Affinity:";
+            this.label7.Text = "Affinity (%):";
             // 
             // AffinityField
             // 
-            this.AffinityField.Location = new System.Drawing.Point(216, 358);
+            this.AffinityField.Location = new System.Drawing.Point(114, 401);
             this.AffinityField.Name = "AffinityField";
             this.AffinityField.Size = new System.Drawing.Size(96, 20);
             this.AffinityField.TabIndex = 18;
@@ -212,24 +222,6 @@
         "more or less damage.");
             this.AffinityField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.AffinityField.Validated += new System.EventHandler(this.GenericField_Validated);
-            // 
-            // label8
-            // 
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(312, 361);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(15, 15);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "%";
-            // 
-            // SharpnessLabel
-            // 
-            this.SharpnessLabel.AutoSize = true;
-            this.SharpnessLabel.Location = new System.Drawing.Point(9, 299);
-            this.SharpnessLabel.Name = "SharpnessLabel";
-            this.SharpnessLabel.Size = new System.Drawing.Size(60, 13);
-            this.SharpnessLabel.TabIndex = 20;
-            this.SharpnessLabel.Text = "Sharpness:";
             // 
             // label9
             // 
@@ -255,7 +247,7 @@
             // 
             // HiddenField
             // 
-            this.HiddenField.Location = new System.Drawing.Point(216, 401);
+            this.HiddenField.Location = new System.Drawing.Point(318, 401);
             this.HiddenField.Name = "HiddenField";
             this.HiddenField.Size = new System.Drawing.Size(96, 20);
             this.HiddenField.TabIndex = 24;
@@ -268,7 +260,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(213, 385);
+            this.label10.Location = new System.Drawing.Point(315, 385);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(106, 13);
             this.label10.TabIndex = 25;
@@ -277,14 +269,14 @@
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Location = new System.Drawing.Point(344, 9);
+            this.label11.Location = new System.Drawing.Point(424, 9);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(2, 510);
+            this.label11.Size = new System.Drawing.Size(2, 420);
             this.label11.TabIndex = 26;
             // 
             // HitzoneField
             // 
-            this.HitzoneField.Location = new System.Drawing.Point(355, 313);
+            this.HitzoneField.Location = new System.Drawing.Point(435, 314);
             this.HitzoneField.Name = "HitzoneField";
             this.HitzoneField.Size = new System.Drawing.Size(96, 20);
             this.HitzoneField.TabIndex = 27;
@@ -297,7 +289,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(352, 297);
+            this.label12.Location = new System.Drawing.Point(432, 298);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(76, 13);
             this.label12.TabIndex = 28;
@@ -305,7 +297,7 @@
             // 
             // EleZoneField
             // 
-            this.EleZoneField.Location = new System.Drawing.Point(355, 357);
+            this.EleZoneField.Location = new System.Drawing.Point(435, 358);
             this.EleZoneField.Name = "EleZoneField";
             this.EleZoneField.Size = new System.Drawing.Size(96, 20);
             this.EleZoneField.TabIndex = 29;
@@ -319,7 +311,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(352, 341);
+            this.label13.Location = new System.Drawing.Point(432, 342);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 13);
             this.label13.TabIndex = 30;
@@ -329,7 +321,7 @@
             // 
             this.RawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.RawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RawOut.Location = new System.Drawing.Point(216, 453);
+            this.RawOut.Location = new System.Drawing.Point(114, 479);
             this.RawOut.Name = "RawOut";
             this.RawOut.Size = new System.Drawing.Size(96, 20);
             this.RawOut.TabIndex = 31;
@@ -338,7 +330,7 @@
             // 
             // QuestField
             // 
-            this.QuestField.Location = new System.Drawing.Point(355, 401);
+            this.QuestField.Location = new System.Drawing.Point(435, 401);
             this.QuestField.Name = "QuestField";
             this.QuestField.Size = new System.Drawing.Size(96, 20);
             this.QuestField.TabIndex = 32;
@@ -351,7 +343,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(352, 385);
+            this.label14.Location = new System.Drawing.Point(432, 385);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 13);
             this.label14.TabIndex = 33;
@@ -359,7 +351,7 @@
             // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(114, 451);
+            this.CalcButt.Location = new System.Drawing.Point(114, 436);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 36;
@@ -369,7 +361,7 @@
             // 
             // CalcAll
             // 
-            this.CalcAll.Location = new System.Drawing.Point(355, 452);
+            this.CalcAll.Location = new System.Drawing.Point(256, 436);
             this.CalcAll.Name = "CalcAll";
             this.CalcAll.Size = new System.Drawing.Size(96, 23);
             this.CalcAll.TabIndex = 37;
@@ -382,7 +374,7 @@
             this.label16.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label16.Location = new System.Drawing.Point(12, 292);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(690, 2);
+            this.label16.Size = new System.Drawing.Size(650, 2);
             this.label16.TabIndex = 38;
             // 
             // label17
@@ -397,7 +389,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(352, 272);
+            this.label18.Location = new System.Drawing.Point(432, 272);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(101, 13);
             this.label18.TabIndex = 40;
@@ -406,7 +398,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(213, 479);
+            this.label19.Location = new System.Drawing.Point(111, 505);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(126, 13);
             this.label19.TabIndex = 41;
@@ -416,7 +408,7 @@
             // 
             this.EleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.EleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EleOut.Location = new System.Drawing.Point(216, 496);
+            this.EleOut.Location = new System.Drawing.Point(114, 522);
             this.EleOut.Name = "EleOut";
             this.EleOut.Size = new System.Drawing.Size(96, 20);
             this.EleOut.TabIndex = 42;
@@ -426,7 +418,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(9, 432);
+            this.label20.Location = new System.Drawing.Point(8, 441);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(89, 13);
             this.label20.TabIndex = 43;
@@ -435,7 +427,7 @@
             // AverageSel
             // 
             this.AverageSel.AutoSize = true;
-            this.AverageSel.Location = new System.Drawing.Point(12, 450);
+            this.AverageSel.Location = new System.Drawing.Point(11, 459);
             this.AverageSel.Name = "AverageSel";
             this.AverageSel.Size = new System.Drawing.Size(65, 17);
             this.AverageSel.TabIndex = 48;
@@ -446,7 +438,7 @@
             // PositiveSel
             // 
             this.PositiveSel.AutoSize = true;
-            this.PositiveSel.Location = new System.Drawing.Point(12, 467);
+            this.PositiveSel.Location = new System.Drawing.Point(11, 476);
             this.PositiveSel.Name = "PositiveSel";
             this.PositiveSel.Size = new System.Drawing.Size(96, 17);
             this.PositiveSel.TabIndex = 49;
@@ -457,7 +449,7 @@
             // NegativeSel
             // 
             this.NegativeSel.AutoSize = true;
-            this.NegativeSel.Location = new System.Drawing.Point(12, 484);
+            this.NegativeSel.Location = new System.Drawing.Point(11, 493);
             this.NegativeSel.Name = "NegativeSel";
             this.NegativeSel.Size = new System.Drawing.Size(102, 17);
             this.NegativeSel.TabIndex = 50;
@@ -468,32 +460,13 @@
             // NeutralSel
             // 
             this.NeutralSel.AutoSize = true;
-            this.NeutralSel.Location = new System.Drawing.Point(12, 501);
+            this.NeutralSel.Location = new System.Drawing.Point(11, 510);
             this.NeutralSel.Name = "NeutralSel";
             this.NeutralSel.Size = new System.Drawing.Size(59, 17);
             this.NeutralSel.TabIndex = 51;
             this.NeutralSel.TabStop = true;
             this.NeutralSel.Text = "Neutral";
             this.NeutralSel.UseVisualStyleBackColor = true;
-            // 
-            // sharpnessBox
-            // 
-            this.sharpnessBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sharpnessBox.FormattingEnabled = true;
-            this.sharpnessBox.Items.AddRange(new object[] {
-            "(No Sharpness)",
-            "White",
-            "Blue",
-            "Green",
-            "Yellow",
-            "Orange",
-            "Red"});
-            this.sharpnessBox.Location = new System.Drawing.Point(12, 313);
-            this.sharpnessBox.Name = "sharpnessBox";
-            this.sharpnessBox.Size = new System.Drawing.Size(96, 21);
-            this.sharpnessBox.TabIndex = 52;
-            this.SharpnessTip.SetToolTip(this.sharpnessBox, "Your weapon\'s Sharpness. This only applies to Blademasters.\r\nGunner weapons shoul" +
-        "d use \"(No Sharpness).\"");
             // 
             // label21
             // 
@@ -529,7 +502,7 @@
             // 
             // ElementBox
             // 
-            this.ElementBox.Location = new System.Drawing.Point(314, 496);
+            this.ElementBox.Location = new System.Drawing.Point(212, 522);
             this.ElementBox.Name = "ElementBox";
             this.ElementBox.Size = new System.Drawing.Size(21, 21);
             this.ElementBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -539,7 +512,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(461, 436);
+            this.label22.Location = new System.Drawing.Point(359, 463);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 56;
@@ -548,7 +521,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(461, 479);
+            this.label23.Location = new System.Drawing.Point(359, 506);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(103, 13);
             this.label23.TabIndex = 57;
@@ -557,7 +530,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(586, 436);
+            this.label24.Location = new System.Drawing.Point(487, 463);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 13);
             this.label24.TabIndex = 58;
@@ -566,7 +539,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(586, 479);
+            this.label25.Location = new System.Drawing.Point(487, 506);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 13);
             this.label25.TabIndex = 59;
@@ -574,7 +547,7 @@
             // 
             // KOBox
             // 
-            this.KOBox.Location = new System.Drawing.Point(687, 453);
+            this.KOBox.Location = new System.Drawing.Point(588, 480);
             this.KOBox.Name = "KOBox";
             this.KOBox.Size = new System.Drawing.Size(21, 21);
             this.KOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -585,7 +558,7 @@
             // 
             this.KOOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.KOOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.KOOut.Location = new System.Drawing.Point(589, 453);
+            this.KOOut.Location = new System.Drawing.Point(490, 480);
             this.KOOut.Name = "KOOut";
             this.KOOut.Size = new System.Drawing.Size(96, 20);
             this.KOOut.TabIndex = 60;
@@ -594,7 +567,7 @@
             // 
             // ExhaustBox
             // 
-            this.ExhaustBox.Location = new System.Drawing.Point(687, 496);
+            this.ExhaustBox.Location = new System.Drawing.Point(588, 523);
             this.ExhaustBox.Name = "ExhaustBox";
             this.ExhaustBox.Size = new System.Drawing.Size(21, 21);
             this.ExhaustBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -605,7 +578,7 @@
             // 
             this.ExhaustOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ExhaustOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ExhaustOut.Location = new System.Drawing.Point(589, 496);
+            this.ExhaustOut.Location = new System.Drawing.Point(490, 523);
             this.ExhaustOut.Name = "ExhaustOut";
             this.ExhaustOut.Size = new System.Drawing.Size(96, 20);
             this.ExhaustOut.TabIndex = 62;
@@ -614,7 +587,7 @@
             // 
             // FinalEleBox
             // 
-            this.FinalEleBox.Location = new System.Drawing.Point(562, 496);
+            this.FinalEleBox.Location = new System.Drawing.Point(460, 523);
             this.FinalEleBox.Name = "FinalEleBox";
             this.FinalEleBox.Size = new System.Drawing.Size(21, 21);
             this.FinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -625,7 +598,7 @@
             // 
             this.FinalEleField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FinalEleField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalEleField.Location = new System.Drawing.Point(464, 496);
+            this.FinalEleField.Location = new System.Drawing.Point(362, 523);
             this.FinalEleField.Name = "FinalEleField";
             this.FinalEleField.Size = new System.Drawing.Size(96, 20);
             this.FinalEleField.TabIndex = 64;
@@ -636,7 +609,7 @@
             // 
             this.FinalRawField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FinalRawField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalRawField.Location = new System.Drawing.Point(464, 453);
+            this.FinalRawField.Location = new System.Drawing.Point(362, 480);
             this.FinalRawField.Name = "FinalRawField";
             this.FinalRawField.Size = new System.Drawing.Size(96, 20);
             this.FinalRawField.TabIndex = 66;
@@ -647,7 +620,7 @@
             // 
             this.FinalField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FinalField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalField.Location = new System.Drawing.Point(355, 495);
+            this.FinalField.Location = new System.Drawing.Point(256, 480);
             this.FinalField.Name = "FinalField";
             this.FinalField.Size = new System.Drawing.Size(96, 20);
             this.FinalField.TabIndex = 69;
@@ -657,7 +630,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(352, 478);
+            this.label26.Location = new System.Drawing.Point(253, 463);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(75, 13);
             this.label26.TabIndex = 68;
@@ -666,7 +639,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 385);
+            this.label15.Location = new System.Drawing.Point(315, 298);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 13);
             this.label15.TabIndex = 71;
@@ -674,7 +647,7 @@
             // 
             // KOField
             // 
-            this.KOField.Location = new System.Drawing.Point(12, 401);
+            this.KOField.Location = new System.Drawing.Point(318, 314);
             this.KOField.MaxLength = 3;
             this.KOField.Name = "KOField";
             this.KOField.Size = new System.Drawing.Size(96, 20);
@@ -689,7 +662,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(111, 385);
+            this.label27.Location = new System.Drawing.Point(315, 342);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(81, 13);
             this.label27.TabIndex = 73;
@@ -697,7 +670,7 @@
             // 
             // ExhaustField
             // 
-            this.ExhaustField.Location = new System.Drawing.Point(114, 401);
+            this.ExhaustField.Location = new System.Drawing.Point(318, 358);
             this.ExhaustField.MaxLength = 3;
             this.ExhaustField.Name = "ExhaustField";
             this.ExhaustField.Size = new System.Drawing.Size(96, 20);
@@ -711,7 +684,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(461, 341);
+            this.label28.Location = new System.Drawing.Point(541, 342);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(117, 13);
             this.label28.TabIndex = 77;
@@ -719,7 +692,7 @@
             // 
             // ExhaustZoneField
             // 
-            this.ExhaustZoneField.Location = new System.Drawing.Point(464, 357);
+            this.ExhaustZoneField.Location = new System.Drawing.Point(544, 358);
             this.ExhaustZoneField.Name = "ExhaustZoneField";
             this.ExhaustZoneField.Size = new System.Drawing.Size(96, 20);
             this.ExhaustZoneField.TabIndex = 76;
@@ -733,7 +706,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(461, 297);
+            this.label29.Location = new System.Drawing.Point(541, 298);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(94, 13);
             this.label29.TabIndex = 75;
@@ -741,7 +714,7 @@
             // 
             // KOZoneField
             // 
-            this.KOZoneField.Location = new System.Drawing.Point(464, 313);
+            this.KOZoneField.Location = new System.Drawing.Point(544, 314);
             this.KOZoneField.Name = "KOZoneField";
             this.KOZoneField.Size = new System.Drawing.Size(96, 20);
             this.KOZoneField.TabIndex = 74;
@@ -757,7 +730,7 @@
             this.label30.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label30.Location = new System.Drawing.Point(13, 428);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(690, 2);
+            this.label30.Size = new System.Drawing.Size(650, 2);
             this.label30.TabIndex = 78;
             // 
             // TypeField
@@ -790,11 +763,13 @@
             // 
             // WeaponField
             // 
+            this.WeaponField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WeaponField.FormattingEnabled = true;
             this.WeaponField.Location = new System.Drawing.Point(12, 65);
             this.WeaponField.Name = "WeaponField";
             this.WeaponField.Size = new System.Drawing.Size(121, 21);
             this.WeaponField.TabIndex = 82;
+            this.WeaponField.SelectedIndexChanged += new System.EventHandler(this.WeaponField_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -814,21 +789,25 @@
             this.label6.TabIndex = 85;
             this.label6.Text = "Weapon Level:";
             // 
-            // comboBox1
+            // LevelField
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 151);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(42, 21);
-            this.comboBox1.TabIndex = 86;
+            this.LevelField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.LevelField.FormattingEnabled = true;
+            this.LevelField.Location = new System.Drawing.Point(12, 151);
+            this.LevelField.Name = "LevelField";
+            this.LevelField.Size = new System.Drawing.Size(42, 21);
+            this.LevelField.TabIndex = 86;
+            this.LevelField.SelectedIndexChanged += new System.EventHandler(this.LevelField_SelectedIndexChanged);
             // 
-            // comboBox2
+            // WeaponFinalField
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(12, 111);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 87;
+            this.WeaponFinalField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WeaponFinalField.FormattingEnabled = true;
+            this.WeaponFinalField.Location = new System.Drawing.Point(12, 111);
+            this.WeaponFinalField.Name = "WeaponFinalField";
+            this.WeaponFinalField.Size = new System.Drawing.Size(121, 21);
+            this.WeaponFinalField.TabIndex = 87;
+            this.WeaponFinalField.SelectedIndexChanged += new System.EventHandler(this.WeaponFinalField_SelectedIndexChanged);
             // 
             // label31
             // 
@@ -842,9 +821,9 @@
             // label32
             // 
             this.label32.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label32.Location = new System.Drawing.Point(141, 23);
+            this.label32.Location = new System.Drawing.Point(140, 23);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(203, 2);
+            this.label32.Size = new System.Drawing.Size(285, 2);
             this.label32.TabIndex = 89;
             // 
             // label33
@@ -852,15 +831,15 @@
             this.label33.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label33.Location = new System.Drawing.Point(140, 7);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(2, 170);
+            this.label33.Size = new System.Drawing.Size(2, 190);
             this.label33.TabIndex = 90;
             // 
             // label34
             // 
             this.label34.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label34.Location = new System.Drawing.Point(13, 176);
+            this.label34.Location = new System.Drawing.Point(13, 194);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(330, 2);
+            this.label34.Size = new System.Drawing.Size(412, 2);
             this.label34.TabIndex = 91;
             // 
             // label35
@@ -899,58 +878,58 @@
             this.label38.TabIndex = 95;
             this.label38.Text = "Max Sharpness:";
             // 
-            // label39
+            // AttackLabel
             // 
-            this.label39.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label39.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label39.Location = new System.Drawing.Point(246, 35);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(51, 20);
-            this.label39.TabIndex = 96;
-            this.label39.Text = "0";
-            this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AttackLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AttackLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AttackLabel.Location = new System.Drawing.Point(246, 35);
+            this.AttackLabel.Name = "AttackLabel";
+            this.AttackLabel.Size = new System.Drawing.Size(51, 20);
+            this.AttackLabel.TabIndex = 96;
+            this.AttackLabel.Text = "0";
+            this.AttackLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label40
+            // EleTypeLabel
             // 
-            this.label40.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label40.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label40.Location = new System.Drawing.Point(246, 61);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(51, 20);
-            this.label40.TabIndex = 97;
-            this.label40.Text = "0";
-            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.EleTypeLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.EleTypeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.EleTypeLabel.Location = new System.Drawing.Point(246, 61);
+            this.EleTypeLabel.Name = "EleTypeLabel";
+            this.EleTypeLabel.Size = new System.Drawing.Size(51, 20);
+            this.EleTypeLabel.TabIndex = 97;
+            this.EleTypeLabel.Text = "0";
+            this.EleTypeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label41
+            // AffinityLabel
             // 
-            this.label41.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label41.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label41.Location = new System.Drawing.Point(246, 87);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(51, 20);
-            this.label41.TabIndex = 98;
-            this.label41.Text = "0";
-            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.AffinityLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AffinityLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.AffinityLabel.Location = new System.Drawing.Point(246, 87);
+            this.AffinityLabel.Name = "AffinityLabel";
+            this.AffinityLabel.Size = new System.Drawing.Size(51, 20);
+            this.AffinityLabel.TabIndex = 98;
+            this.AffinityLabel.Text = "0";
+            this.AffinityLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label42
+            // SharpnessLabel
             // 
-            this.label42.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label42.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label42.Location = new System.Drawing.Point(246, 113);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(51, 20);
-            this.label42.TabIndex = 99;
-            this.label42.Text = "(None)";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.SharpnessLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SharpnessLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SharpnessLabel.Location = new System.Drawing.Point(246, 113);
+            this.SharpnessLabel.Name = "SharpnessLabel";
+            this.SharpnessLabel.Size = new System.Drawing.Size(51, 20);
+            this.SharpnessLabel.TabIndex = 99;
+            this.SharpnessLabel.Text = "(None)";
+            this.SharpnessLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // pictureBox1
+            // EleLabelBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(306, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 100;
-            this.pictureBox1.TabStop = false;
+            this.EleLabelBox.Location = new System.Drawing.Point(299, 61);
+            this.EleLabelBox.Name = "EleLabelBox";
+            this.EleLabelBox.Size = new System.Drawing.Size(21, 21);
+            this.EleLabelBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.EleLabelBox.TabIndex = 100;
+            this.EleLabelBox.TabStop = false;
             // 
             // label43
             // 
@@ -961,17 +940,162 @@
             this.label43.TabIndex = 101;
             this.label43.Text = "%";
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(8, 298);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(60, 13);
+            this.label8.TabIndex = 102;
+            this.label8.Text = "Sharpness:";
+            // 
+            // sharpnessBox
+            // 
+            this.sharpnessBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sharpnessBox.FormattingEnabled = true;
+            this.sharpnessBox.Items.AddRange(new object[] {
+            "(No Sharpness)",
+            "White",
+            "Blue",
+            "Green",
+            "Yellow",
+            "Orange",
+            "Red"});
+            this.sharpnessBox.Location = new System.Drawing.Point(11, 314);
+            this.sharpnessBox.Name = "sharpnessBox";
+            this.sharpnessBox.Size = new System.Drawing.Size(97, 21);
+            this.sharpnessBox.TabIndex = 103;
+            this.sharpnessBox.SelectedIndexChanged += new System.EventHandler(this.sharpnessBox_SelectedIndexChanged);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(213, 298);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(90, 13);
+            this.label44.TabIndex = 104;
+            this.label44.Text = "Raw Sharp. Mod:";
+            // 
+            // RawSharpField
+            // 
+            this.RawSharpField.Location = new System.Drawing.Point(216, 315);
+            this.RawSharpField.Name = "RawSharpField";
+            this.RawSharpField.Size = new System.Drawing.Size(96, 20);
+            this.RawSharpField.TabIndex = 105;
+            this.RawSharpField.Text = "1.0";
+            this.RawSharpField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // EleSharpField
+            // 
+            this.EleSharpField.Location = new System.Drawing.Point(216, 357);
+            this.EleSharpField.Name = "EleSharpField";
+            this.EleSharpField.Size = new System.Drawing.Size(96, 20);
+            this.EleSharpField.TabIndex = 107;
+            this.EleSharpField.Text = "1.0";
+            this.EleSharpField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(213, 341);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(86, 13);
+            this.label45.TabIndex = 106;
+            this.label45.Text = "Ele. Sharp. Mod:";
+            // 
+            // BounceLabel
+            // 
+            this.BounceLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.BounceLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BounceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BounceLabel.Location = new System.Drawing.Point(256, 522);
+            this.BounceLabel.Name = "BounceLabel";
+            this.BounceLabel.Size = new System.Drawing.Size(96, 20);
+            this.BounceLabel.TabIndex = 109;
+            this.BounceLabel.Text = "No";
+            this.BounceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(253, 505);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(50, 13);
+            this.label47.TabIndex = 108;
+            this.label47.Text = "Bounce?";
+            // 
+            // label48
+            // 
+            this.label48.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label48.Location = new System.Drawing.Point(243, 429);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(2, 120);
+            this.label48.TabIndex = 110;
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(148, 144);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(88, 13);
+            this.label46.TabIndex = 111;
+            this.label46.Text = "W/Sharpness+1:";
+            // 
+            // OneLabel
+            // 
+            this.OneLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.OneLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.OneLabel.Location = new System.Drawing.Point(246, 140);
+            this.OneLabel.Name = "OneLabel";
+            this.OneLabel.Size = new System.Drawing.Size(51, 20);
+            this.OneLabel.TabIndex = 112;
+            this.OneLabel.Text = "(None)";
+            this.OneLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(148, 173);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(88, 13);
+            this.label50.TabIndex = 113;
+            this.label50.Text = "W/Sharpness+2:";
+            // 
+            // TwoLabel
+            // 
+            this.TwoLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.TwoLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.TwoLabel.Location = new System.Drawing.Point(246, 169);
+            this.TwoLabel.Name = "TwoLabel";
+            this.TwoLabel.Size = new System.Drawing.Size(51, 20);
+            this.TwoLabel.TabIndex = 114;
+            this.TwoLabel.Text = "(None)";
+            this.TwoLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 525);
+            this.ClientSize = new System.Drawing.Size(668, 556);
+            this.Controls.Add(this.TwoLabel);
+            this.Controls.Add(this.label50);
+            this.Controls.Add(this.OneLabel);
+            this.Controls.Add(this.label46);
+            this.Controls.Add(this.label48);
+            this.Controls.Add(this.BounceLabel);
+            this.Controls.Add(this.label47);
+            this.Controls.Add(this.EleSharpField);
+            this.Controls.Add(this.label45);
+            this.Controls.Add(this.RawSharpField);
+            this.Controls.Add(this.label44);
+            this.Controls.Add(this.sharpnessBox);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label43);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label42);
-            this.Controls.Add(this.label41);
-            this.Controls.Add(this.label40);
-            this.Controls.Add(this.label39);
+            this.Controls.Add(this.EleLabelBox);
+            this.Controls.Add(this.SharpnessLabel);
+            this.Controls.Add(this.AffinityLabel);
+            this.Controls.Add(this.EleTypeLabel);
+            this.Controls.Add(this.AttackLabel);
             this.Controls.Add(this.label38);
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label36);
@@ -980,8 +1104,8 @@
             this.Controls.Add(this.label33);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label31);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.WeaponFinalField);
+            this.Controls.Add(this.LevelField);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.WeaponField);
@@ -1013,7 +1137,6 @@
             this.Controls.Add(this.ElementBox);
             this.Controls.Add(this.AltDamageField);
             this.Controls.Add(this.label21);
-            this.Controls.Add(this.sharpnessBox);
             this.Controls.Add(this.NeutralSel);
             this.Controls.Add(this.NegativeSel);
             this.Controls.Add(this.PositiveSel);
@@ -1038,8 +1161,6 @@
             this.Controls.Add(this.HiddenField);
             this.Controls.Add(this.EleField);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.SharpnessLabel);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.AffinityField);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label2);
@@ -1054,7 +1175,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.KOBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1068,10 +1189,8 @@
         private System.Windows.Forms.TextBox MVField;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox AffinityField;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label SharpnessLabel;
         private System.Windows.Forms.TextBox EleField;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
@@ -1096,7 +1215,6 @@
         private System.Windows.Forms.RadioButton NegativeSel;
         private System.Windows.Forms.RadioButton PositiveSel;
         private System.Windows.Forms.RadioButton AverageSel;
-        private System.Windows.Forms.ComboBox sharpnessBox;
         private System.Windows.Forms.ToolTip TotalTip;
         private System.Windows.Forms.ComboBox AltDamageField;
         private System.Windows.Forms.Label label21;
@@ -1141,23 +1259,36 @@
         private System.Windows.Forms.ComboBox WeaponField;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label31;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox WeaponFinalField;
+        private System.Windows.Forms.ComboBox LevelField;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label SharpnessLabel;
+        private System.Windows.Forms.Label AffinityLabel;
+        private System.Windows.Forms.Label EleTypeLabel;
+        private System.Windows.Forms.Label AttackLabel;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox EleLabelBox;
+        private System.Windows.Forms.ComboBox sharpnessBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox EleSharpField;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.TextBox RawSharpField;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label BounceLabel;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.Label OneLabel;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.Label TwoLabel;
+        private System.Windows.Forms.Label label50;
     }
 }
 
