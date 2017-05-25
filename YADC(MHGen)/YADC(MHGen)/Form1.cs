@@ -40,10 +40,31 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Stores the stats of a move of a weapon type.
+        /// </summary>
+        public struct moveStat
+        {
+            string name;
+            int motionValue;
+            double sharpnessMod;
+            int KODamage;
+            int ExhDamage;
 
-        public Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
-        public Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
+            public moveStat(string _name, int _motionValue, double _sharpnessMod, int _KODamage, int _ExhDamage)
+            {
+                name = _name;
+                motionValue = _motionValue;
+                sharpnessMod = _sharpnessMod;
+                KODamage = _KODamage;
+                ExhDamage = _ExhDamage;
+            }
+        }
+
+        Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
+        Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
         Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
+        Dictionary<string, List<moveStat>> type2Moves = new Dictionary<string, List<moveStat>>(); //Stores conversion of weapon types to moves.
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
         Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
@@ -178,6 +199,8 @@ namespace YADC_MHGen_
             {
                 WeaponFinalField.Items.Add(names2FinalNames[names]);
             }
+
+            //TODO: Add Movelist to movelist box here.
         }
 
         private void WeaponField_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,16 +248,21 @@ namespace YADC_MHGen_
                     OneLabel.Text = statistics.sharpness1;
                     TwoLabel.Text = statistics.sharpness2;
 
-                    if (statistics.elementalType != "(None)")
-                    {
-                        string path = str2image[statistics.elementalType];
-                        EleLabelBox.Load(path);
-                    }
-                    else
-                    {
-                        EleLabelBox.Image = null;
-                    }
+                    WeaponAltField.SelectedItem = statistics.elementalType;
                 }
+            }
+        }
+
+        private void WeaponAltField_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((string)((ComboBox)sender).SelectedItem != "(None)")
+            {
+                string path = str2image[(string)((ComboBox)sender).SelectedItem];
+                EleLabelBox.Load(path);
+            }
+            else
+            {
+                EleLabelBox.Image = null;
             }
         }
 
@@ -400,7 +428,7 @@ namespace YADC_MHGen_
             foreach (string file in files)
             {
                 string type = file.Remove(file.Length - 4); //Strip trailing '.xml'
-                type = type.Remove(0, 10); //Strip preceeding './Weapons/'
+                type = type.Remove(0, 13); //Strip preceeding './Weapons/' and order numbers
                 if(type.Contains('_'))
                 {
                     type.Replace('_', ' ');
