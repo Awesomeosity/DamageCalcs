@@ -74,8 +74,9 @@ namespace YADC_MHGen_
             InitializeComponent();
             FillOut();
             readFiles();
-            this.sharpnessBox.SelectedIndex = 0;
-            this.AltDamageField.SelectedIndex = 0;
+            sharpnessBox.SelectedIndex = 0;
+            AltDamageField.SelectedIndex = 0;
+            MindsField.SelectedIndex = 1;
             AverageSel.Select();
             ElementBox.Image = null;
             FinalEleBox.Image = null;
@@ -85,6 +86,8 @@ namespace YADC_MHGen_
             FinalEleField.BackColor = SystemColors.Control;
             KOBox.Load("./Images/KO.png");
             ExhaustBox.Load("./Images/Exhaust.png");
+            KOBox2.Load("./Images/KO.png");
+            ExhaustBox2.Load("./Images/Exhaust.png");
         }
 
         //EVENT FUNCTIONS
@@ -519,7 +522,5 @@ namespace YADC_MHGen_
                 }
             }
         }
-
-        
     }
 }
