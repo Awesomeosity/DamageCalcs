@@ -45,19 +45,25 @@ namespace YADC_MHGen_
         /// </summary>
         public struct moveStat
         {
-            string name;
-            int motionValue;
-            double sharpnessMod;
-            int KODamage;
-            int ExhDamage;
+            public string name;
+            public int id;
+            public string damageType;
+            public int motionValue;
+            public double sharpnessMod;
+            public int KODamage;
+            public int ExhDamage;
+            public bool mindsEye;
 
-            public moveStat(string _name, int _motionValue, double _sharpnessMod, int _KODamage, int _ExhDamage)
+            public moveStat(string _name, int _id, string _damageType, int _motionValue, double _sharpnessMod, int _KODamage, int _ExhDamage, bool _mindsEye)
             {
                 name = _name;
+                id = _id;
+                damageType = _damageType;
                 motionValue = _motionValue;
                 sharpnessMod = _sharpnessMod;
                 KODamage = _KODamage;
                 ExhDamage = _ExhDamage;
+                mindsEye = _mindsEye;
             }
         }
 
@@ -204,6 +210,33 @@ namespace YADC_MHGen_
             }
 
             //TODO: Add Movelist to movelist box here.
+
+            NameSort.Items.Clear();
+            MotionSort.Items.Clear();
+            ComboSort.Items.Clear();
+
+            List<moveStat> tempListMotion = new List<moveStat>();
+            List<moveStat> tempListCombo = new List<moveStat>();
+
+            foreach (moveStat moves in type2Moves[(string)((ComboBox)sender).SelectedItem])
+            {
+                NameSort.Items.Add(moves.name);
+                tempListMotion.Add(moves);
+                tempListCombo.Add(moves);
+            }
+
+            quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1);
+            quickSortVar2(tempListCombo, 1, tempListCombo.Count - 1);
+
+            foreach(moveStat moves in tempListMotion)
+            {
+                MotionSort.Items.Add(moves.name);
+            }
+
+            foreach(moveStat moves in tempListCombo)
+            {
+                ComboSort.Items.Add(moves.name);
+            }
         }
 
         private void WeaponField_SelectedIndexChanged(object sender, EventArgs e)
@@ -411,14 +444,82 @@ namespace YADC_MHGen_
             readWeapons();
 
             //Read motion value database
-            //readMotion();
+            readMotion();
 
             //Read 
         }
 
         private void readMotion()
         {
-            throw new NotImplementedException();
+            string[] files = System.IO.Directory.GetFiles("./MotionValues/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
+            foreach (string file in files)
+            {
+                string type = file.Remove(file.Length - 4);
+                type = type.Remove(0, 18);
+                if (type.Contains('_'))
+                {
+                    type.Replace('_', ' ');
+                }
+
+                List<moveStat> moves = new List<moveStat>();
+                type2Moves.Add(type, moves);
+
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.IgnoreComments = true;
+                settings.IgnoreWhitespace = true;
+                using (XmlReader reader = XmlReader.Create(file, settings))
+                {
+                    reader.MoveToContent();
+                    while(reader.Read())
+                    {
+                        if(reader.Name == "move" && reader.NodeType != XmlNodeType.EndElement)
+                        {
+                            int id = int.Parse(reader.GetAttribute("id"));
+                            reader.Read(); //name tag
+                            reader.Read(); //name string
+                            string name = reader.Value;
+
+                            reader.Read(); //end name
+                            reader.Read(); //type tag
+                            reader.Read(); //type string
+                            string damageType = reader.Value;
+
+                            reader.Read(); //end type
+                            reader.Read(); //mv tag
+                            reader.Read(); //mv int
+                            int motionValue = int.Parse(reader.Value);
+
+                            reader.Read(); //end mv
+                            reader.Read(); //sharpness tag
+                            reader.Read(); //sharpness double
+                            double sharpnessMod = double.Parse(reader.Value);
+
+                            reader.Read(); //end sharpness
+                            reader.Read(); //KO tag
+                            reader.Read(); //KO int
+                            int KODamage = int.Parse(reader.Value);
+
+                            reader.Read(); //end KO
+                            reader.Read(); //exhaust tag
+                            reader.Read(); //exhaust string
+                            int exhaustDamage = int.Parse(reader.Value);
+
+                            reader.Read();
+                            reader.Read();
+                            reader.Read();
+                            string minds = reader.Value;
+                            bool mindsEye = false;
+                            if (minds == "Yes")
+                            {
+                                mindsEye = true;
+                            }
+
+                            moves.Add(new moveStat(name, id, damageType, motionValue, sharpnessMod, KODamage, exhaustDamage, mindsEye));
+                            
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -452,7 +553,7 @@ namespace YADC_MHGen_
                     reader.MoveToContent();
                     while(reader.Read())
                     {
-                        if(reader.Name == "weapon")
+                        if(reader.Name == "weapon" && reader.NodeType != XmlNodeType.EndElement)
                         {
                             reader.Read(); //Name tag
                             reader.Read(); //Name string
@@ -520,6 +621,147 @@ namespace YADC_MHGen_
                         }
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Implementation of QuickSort. Used for sorting by MotionValue.
+        /// </summary>
+        /// <param name="statList"></param>
+        /// <param name="loIndex"></param>
+        /// <param name="hiIndex"></param>
+        private void quickSortVar1(List<moveStat> statList, int loIndex, int hiIndex)
+        {
+            if(loIndex < hiIndex)
+            {
+                int p = partitionVar1(statList, loIndex, hiIndex);
+                quickSortVar1(statList, loIndex, p - 1);
+                quickSortVar1(statList, loIndex, p - 1);
+            }
+        }
+
+        private int partitionVar1(List<moveStat> statList, int loIndex, int hiIndex)
+        {
+            int pivot = statList[hiIndex].motionValue;
+            int i = loIndex - 1;
+
+            for(int j = loIndex; j != hiIndex; j++)
+            {
+                if(statList[j].motionValue <= pivot)
+                {
+                    i++;
+                    if(i != j)
+                    {
+                        moveStat tempStat = statList[i];
+                        statList[i] = statList[j];
+                        statList[j] = tempStat;
+                    }
+                }
+            }
+
+            moveStat temp = statList[i + 1];
+            statList[i + 1] = statList[hiIndex];
+            statList[hiIndex] = temp;
+
+            return i + 1;
+        }
+
+        /// <summary>
+        /// Implementation of QuickSort, used for sorting by ID.
+        /// </summary>
+        /// <param name="statList"></param>
+        /// <param name="loIndex"></param>
+        /// <param name="hiIndex"></param>
+        private void quickSortVar2(List<moveStat> statList, int loIndex, int hiIndex)
+        {
+            if (loIndex < hiIndex)
+            {
+                int p = partitionVar2(statList, loIndex, hiIndex);
+                quickSortVar2(statList, loIndex, p - 1);
+                quickSortVar2(statList, loIndex, p - 1);
+            }
+        }
+
+        private int partitionVar2(List<moveStat> statList, int loIndex, int hiIndex)
+        {
+            int pivot = statList[hiIndex].id;
+            int i = loIndex - 1;
+
+            for (int j = loIndex; j != hiIndex; j++)
+            {
+                if (statList[j].id <= pivot)
+                {
+                    i++;
+                    if (i != j)
+                    {
+                        moveStat tempStat = statList[i];
+                        statList[i] = statList[j];
+                        statList[j] = tempStat;
+                    }
+                }
+            }
+
+            moveStat temp = statList[i + 1];
+            statList[i + 1] = statList[hiIndex];
+            statList[hiIndex] = temp;
+
+            return i + 1;
+        }
+
+        private void NameSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = (string)((ComboBox)sender).SelectedItem;
+            if((string)MotionSort.SelectedItem != name)
+            {
+                MotionSort.SelectedItem = name;
+            }
+
+            if((string)ComboSort.SelectedItem != name)
+            {
+                ComboSort.SelectedItem = name;
+            }
+
+            //TODO: Fill out move fields here.
+
+            foreach(moveStat move in type2Moves[(string)TypeField.SelectedItem])
+            {
+                if(move.name == name)
+                {
+                    MotionValueField.Text = move.motionValue.ToString();
+                    InSharpField.Text = move.sharpnessMod.ToString();
+                    InKOField.Text = move.KODamage.ToString();
+                    InExhaustField.Text = move.ExhDamage.ToString();
+                    MindsField.SelectedItem = move.mindsEye;
+                    DamageTypeField.SelectedItem = move.damageType;
+                }
+            }
+        }
+
+        private void MotionSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = (string)((ComboBox)sender).SelectedItem;
+            if ((string)MotionSort.SelectedItem != name)
+            {
+                ComboSort.SelectedItem = name;
+            }
+
+            if ((string)ComboSort.SelectedItem != name)
+            {
+                NameSort.SelectedItem = name;
+            }
+        }
+
+        private void ComboSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = (string)((ComboBox)sender).SelectedItem;
+            if ((string)MotionSort.SelectedItem != name)
+            {
+                MotionSort.SelectedItem = name;
+            }
+
+            if ((string)NameSort.SelectedItem != name)
+            {
+                NameSort.SelectedItem = name;
             }
         }
     }
