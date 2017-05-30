@@ -1269,8 +1269,7 @@
             this.DamageTypeField.Items.AddRange(new object[] {
             "Cut",
             "Impact",
-            "Shot",
-            "Fixed"});
+            "Shot"});
             this.DamageTypeField.Location = new System.Drawing.Point(104, 148);
             this.DamageTypeField.Name = "DamageTypeField";
             this.DamageTypeField.Size = new System.Drawing.Size(78, 21);
@@ -1488,7 +1487,7 @@
             this.groupBox8.Size = new System.Drawing.Size(449, 201);
             this.groupBox8.TabIndex = 133;
             this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Modifiers:";
+            this.groupBox8.Text = "Active Modifiers:";
             // 
             // OtherButt
             // 

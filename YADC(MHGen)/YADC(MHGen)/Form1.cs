@@ -74,6 +74,7 @@ namespace YADC_MHGen_
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
         Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
+        Dictionary<string, bool> modifiers = new Dictionary<string, bool>(); //Stores conversion of strings to modifiers.
 
         public DmgCalculator()
         {
@@ -436,6 +437,38 @@ namespace YADC_MHGen_
             str2image.Add("Sleep",      "./Images/Sleep.png");
             str2image.Add("Para",       "./Images/Para.png");
             str2image.Add("Blast",      "./Images/Blast.png");
+
+            //Armor skills section
+
+            modifiers.Add("Artillery Novice", Artillery(1));
+            modifiers.Add("Artillery Expert", Artillery(2));
+            modifiers.Add("Attack Up (S)", Attack(1));
+            modifiers.Add("Attack Up (M)", Attack(2));
+            modifiers.Add("Attack Up (L)", Attack(3));
+
+            modifiers.Add("Bludgeoner", Blunt());
+            modifiers.Add("Bombardier", BombBoost());
+
+            modifiers.Add("Repeat Offender (1 Hit)", ChainCrit(1));
+            modifiers.Add("Repeat Offender (>5 Hits)", ChainCrit(2));
+            modifiers.Add("Trump Card", Chance());
+            modifiers.Add("Polar Hunter (Cool Drink)", ColdBlooded(1));
+            modifiers.Add("Polar Hunter (Cold Areas)", ColdBlooded(2));
+            modifiers.Add("Polar Hunter (Both Effects)", ColdBlooded(3));
+            modifiers.Add("Resuscitate", Crisis());
+            modifiers.Add("Critical Draw", CritDraw());
+            modifiers.Add("Elemental Crit", CritElement());
+            modifiers.Add("Critical Boost", CriticalUp());
+
+            modifiers.Add("Pro Dirty Fencer (1st Cart)", DFencing(1));
+            modifiers.Add("Pro Dirty Fencer (2nd Cart)", DFencing(2));
+            modifiers.Add("Deadeye Soul", Deadeye());
+            modifiers.Add("Dragon Atk +1", DragonAtk(1));
+            modifiers.Add("Dragon Atk +2", DragonAtk(2));
+            modifiers.Add("Dreadking Soul", Dreadking());
+            modifiers.Add("Dreadqueen Soul", Dreadqueen());
+            modifiers.Add("Drilltusk Soul", Drilltusk());
+
         }
 
         private void readFiles()
@@ -721,8 +754,6 @@ namespace YADC_MHGen_
                 ComboSort.SelectedItem = name;
             }
 
-            //TODO: Fill out move fields here.
-
             foreach(moveStat move in type2Moves[(string)TypeField.SelectedItem])
             {
                 if(move.name == name)
@@ -764,5 +795,60 @@ namespace YADC_MHGen_
                 NameSort.SelectedItem = name;
             }
         }
+
+        //Beginning of Armor Skill methods.
+        private bool Artillery(int skillVal)
+        {
+            if(WeaponField.Text == "Ballista" || WeaponField.Text == "Cannon")
+            {
+
+            }
+        }
+
+        private bool Attack(int skillVal)
+        {
+
+        }
+
+        private bool Blunt()
+        {
+
+        }
+
+        private bool BombBoost()
+        {
+
+        }
+
+        private bool ChainCrit()
+        {
+
+        }
+
+        private bool Chance()
+        {
+
+        }
+
+        private bool ColdBlooded()
+        {
+
+        }
+
+        private bool Crisis()
+        {
+
+        }
+
+        private bool CritDraw()
+        {
+
+        }
+
+        private bool CritElement()
+        {
+
+        }
+
     }
 }
