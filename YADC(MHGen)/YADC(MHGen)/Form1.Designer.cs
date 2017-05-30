@@ -1484,14 +1484,14 @@
             this.groupBox8.Controls.Add(this.ModList);
             this.groupBox8.Location = new System.Drawing.Point(351, 12);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(449, 201);
+            this.groupBox8.Size = new System.Drawing.Size(460, 201);
             this.groupBox8.TabIndex = 133;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Active Modifiers:";
             // 
             // OtherButt
             // 
-            this.OtherButt.Location = new System.Drawing.Point(377, 102);
+            this.OtherButt.Location = new System.Drawing.Point(386, 102);
             this.OtherButt.Name = "OtherButt";
             this.OtherButt.Size = new System.Drawing.Size(63, 23);
             this.OtherButt.TabIndex = 13;
@@ -1511,7 +1511,7 @@
             // 
             this.OtherSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.OtherSkillBox.FormattingEnabled = true;
-            this.OtherSkillBox.Location = new System.Drawing.Point(250, 103);
+            this.OtherSkillBox.Location = new System.Drawing.Point(259, 103);
             this.OtherSkillBox.Name = "OtherSkillBox";
             this.OtherSkillBox.Size = new System.Drawing.Size(121, 21);
             this.OtherSkillBox.TabIndex = 11;
@@ -1527,7 +1527,7 @@
             // 
             // WeaponButt
             // 
-            this.WeaponButt.Location = new System.Drawing.Point(377, 73);
+            this.WeaponButt.Location = new System.Drawing.Point(386, 73);
             this.WeaponButt.Name = "WeaponButt";
             this.WeaponButt.Size = new System.Drawing.Size(63, 23);
             this.WeaponButt.TabIndex = 9;
@@ -1536,7 +1536,7 @@
             // 
             // KitchenButt
             // 
-            this.KitchenButt.Location = new System.Drawing.Point(377, 45);
+            this.KitchenButt.Location = new System.Drawing.Point(386, 45);
             this.KitchenButt.Name = "KitchenButt";
             this.KitchenButt.Size = new System.Drawing.Size(63, 23);
             this.KitchenButt.TabIndex = 8;
@@ -1545,7 +1545,7 @@
             // 
             // ArmorButt
             // 
-            this.ArmorButt.Location = new System.Drawing.Point(377, 17);
+            this.ArmorButt.Location = new System.Drawing.Point(386, 17);
             this.ArmorButt.Name = "ArmorButt";
             this.ArmorButt.Size = new System.Drawing.Size(63, 23);
             this.ArmorButt.TabIndex = 7;
@@ -1565,7 +1565,7 @@
             // 
             this.WeaponSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.WeaponSkillBox.FormattingEnabled = true;
-            this.WeaponSkillBox.Location = new System.Drawing.Point(250, 75);
+            this.WeaponSkillBox.Location = new System.Drawing.Point(259, 75);
             this.WeaponSkillBox.Name = "WeaponSkillBox";
             this.WeaponSkillBox.Size = new System.Drawing.Size(121, 21);
             this.WeaponSkillBox.TabIndex = 5;
@@ -1575,15 +1575,15 @@
             this.label39.AutoSize = true;
             this.label39.Location = new System.Drawing.Point(155, 50);
             this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(73, 13);
+            this.label39.Size = new System.Drawing.Size(98, 13);
             this.label39.TabIndex = 4;
-            this.label39.Text = "Kitchen Skills:";
+            this.label39.Text = "Kitchen Skills/Item:";
             // 
             // KitchenSkillBox
             // 
             this.KitchenSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.KitchenSkillBox.FormattingEnabled = true;
-            this.KitchenSkillBox.Location = new System.Drawing.Point(250, 47);
+            this.KitchenSkillBox.Location = new System.Drawing.Point(259, 47);
             this.KitchenSkillBox.Name = "KitchenSkillBox";
             this.KitchenSkillBox.Size = new System.Drawing.Size(121, 21);
             this.KitchenSkillBox.TabIndex = 3;
@@ -1601,7 +1601,7 @@
             // 
             this.ArmorSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ArmorSkillBox.FormattingEnabled = true;
-            this.ArmorSkillBox.Location = new System.Drawing.Point(250, 19);
+            this.ArmorSkillBox.Location = new System.Drawing.Point(259, 19);
             this.ArmorSkillBox.Name = "ArmorSkillBox";
             this.ArmorSkillBox.Size = new System.Drawing.Size(121, 21);
             this.ArmorSkillBox.TabIndex = 1;

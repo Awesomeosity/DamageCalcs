@@ -445,6 +445,9 @@ namespace YADC_MHGen_
             modifiers.Add("Attack Up (S)", Attack(1));
             modifiers.Add("Attack Up (M)", Attack(2));
             modifiers.Add("Attack Up (L)", Attack(3));
+            modifiers.Add("Attack Down (S)", Attack(4));
+            modifiers.Add("Attack Down (M)", Attack(5));
+            modifiers.Add("Attack Down (L)", Attack(6));
 
             modifiers.Add("Bludgeoner", Blunt());
             modifiers.Add("Bombardier", BombBoost());
@@ -465,10 +468,78 @@ namespace YADC_MHGen_
             modifiers.Add("Deadeye Soul", Deadeye());
             modifiers.Add("Dragon Atk +1", DragonAtk(1));
             modifiers.Add("Dragon Atk +2", DragonAtk(2));
+            modifiers.Add("Dragon Atk Down", DragonAtk(3));
             modifiers.Add("Dreadking Soul", Dreadking());
             modifiers.Add("Dreadqueen Soul", Dreadqueen());
             modifiers.Add("Drilltusk Soul", Drilltusk());
 
+            modifiers.Add("Element Atk Up", Elemental());
+            modifiers.Add("Critical Eye +1", Expert(1));
+            modifiers.Add("Critical Eye +2", Expert(2));
+            modifiers.Add("Critical Eye +3", Expert(3));
+            modifiers.Add("Critical Eye -1", Expert(4));
+            modifiers.Add("Critical Eye -2", Expert(5));
+            modifiers.Add("Critical Eye -3", Expert(6));
+
+            modifiers.Add("Mind's Eye", Fencing(1));
+            modifiers.Add("Fire Atk +1", FireAtk(1));
+            modifiers.Add("Fire Atk +2", FireAtk(2));
+            modifiers.Add("Fire Atk Down", FireAtk(3));
+            modifiers.Add("Antivirus", FrenzyRes());
+            modifiers.Add("Resentment", Furor());
+
+            modifiers.Add("Latent Power +1", GlovesOff(1));
+            modifiers.Add("Latent Power +2", GlovesOff(2));
+            modifiers.Add("Sharpness +1", Handicraft(1));
+            modifiers.Add("Sharpness +2", Handicraft(2));
+            modifiers.Add("TrueShot Up", Haphazard());
+            modifiers.Add("Heavy/Heavy Up", HeavyUp());
+            modifiers.Add("Hellblade Soul", Hellblade());
+            modifiers.Add("Tropic Hunter (Hot Drink)", HotBlooded(1));
+            modifiers.Add("Tropic Hunter (Hot Area)", HotBlooded(2));
+            modifiers.Add("Tropic Hunter (Both Effects)", HotBlooded(3));
+
+            modifiers.Add("Ice Atk +1", IceAtk(1));
+            modifiers.Add("Ice Atk +2", IceAtk(2));
+            modifiers.Add("Ice Atk Down", IceAtk(3));
+
+            modifiers.Add("KO King", KO());
+
+            modifiers.Add("Normal/Rapid Up", NormalUp());
+
+            modifiers.Add("Pellet/Spread Up", PelletUp());
+            modifiers.Add("Pierce/Pierce Up", PierceUp());
+            modifiers.Add("Adrenaline +1", Potential(1));
+            modifiers.Add("Adrenaline +2", Potential(2));
+            modifiers.Add("Worrywart", Potential(3));
+            modifiers.Add("Punishing Draw", PunishDraw());
+
+            modifiers.Add("Bonus Shot", RapidFire());
+            modifiers.Add("Redhelm Soul", Redhelm());
+
+            modifiers.Add("Silverwind Soul", Silverwind());
+            modifiers.Add("Challenger +1", Spirit(1));
+            modifiers.Add("Challenger +2", Spirit(2));
+            modifiers.Add("Stamina Thief", StamDrain());
+            modifiers.Add("Status Atk +1", Status(1));
+            modifiers.Add("Status Atk +2", Status(2));
+            modifiers.Add("Status Atk Down", Status(3));
+            modifiers.Add("Fortify (1st Cart)", Survivor(1));
+            modifiers.Add("Fortify (2nd Cart)", Survivor(2));
+
+            modifiers.Add("Weakness Exploit", Tenderizer());
+            modifiers.Add("Thunder Atk +1", ThunderAtk(1));
+            modifiers.Add("Thunder Atk +2", ThunderAtk(2));
+            modifiers.Add("Thunder Atk Down", ThunderAtk(3));
+            modifiers.Add("Thunderlord Soul", Thunderlord());
+
+            modifiers.Add("Peak Performance", Unscathed());
+
+            modifiers.Add("Airborne", Vault());
+
+            modifiers.Add("Water Atk +1", WaterAtk(1));
+            modifiers.Add("Water Atk +2", WaterAtk(2));
+            modifiers.Add("Water Atk Down", WaterAtk(3));
         }
 
         private void readFiles()
