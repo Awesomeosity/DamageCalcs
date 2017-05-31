@@ -85,6 +85,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TypeField = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.RawLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -303,7 +306,7 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.AltDamageField.Location = new System.Drawing.Point(10, 76);
+            this.AltDamageField.Location = new System.Drawing.Point(9, 76);
             this.AltDamageField.Name = "AltDamageField";
             this.AltDamageField.Size = new System.Drawing.Size(96, 21);
             this.AltDamageField.TabIndex = 119;
@@ -683,6 +686,9 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label53);
+            this.groupBox3.Controls.Add(this.comboBox1);
+            this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.RawField);
             this.groupBox3.Controls.Add(this.RawLabel);
             this.groupBox3.Controls.Add(this.MVField);
@@ -707,10 +713,44 @@
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Location = new System.Drawing.Point(12, 406);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(422, 158);
+            this.groupBox3.Size = new System.Drawing.Size(530, 158);
             this.groupBox3.TabIndex = 128;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(415, 103);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(77, 13);
+            this.label53.TabIndex = 132;
+            this.label53.Text = "Elemental Crit?";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "No",
+            "GS",
+            "LBG/HBG",
+            "SnS/DB/Bow",
+            "Other"});
+            this.comboBox1.Location = new System.Drawing.Point(418, 119);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(96, 21);
+            this.comboBox1.TabIndex = 131;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(418, 78);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(93, 17);
+            this.checkBox1.TabIndex = 130;
+            this.checkBox1.Text = "Critical Boost?";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // RawLabel
             // 
@@ -818,7 +858,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(7, 60);
+            this.label21.Location = new System.Drawing.Point(6, 60);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(95, 13);
             this.label21.TabIndex = 118;
@@ -863,7 +903,7 @@
             this.groupBox4.Controls.Add(this.EleZoneField);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.HitzoneField);
-            this.groupBox4.Location = new System.Drawing.Point(432, 406);
+            this.groupBox4.Location = new System.Drawing.Point(541, 406);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(241, 158);
             this.groupBox4.TabIndex = 129;
@@ -1510,10 +1550,11 @@
             // OtherSkillBox
             // 
             this.OtherSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.OtherSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OtherSkillBox.FormattingEnabled = true;
             this.OtherSkillBox.Location = new System.Drawing.Point(259, 103);
             this.OtherSkillBox.Name = "OtherSkillBox";
-            this.OtherSkillBox.Size = new System.Drawing.Size(121, 21);
+            this.OtherSkillBox.Size = new System.Drawing.Size(121, 20);
             this.OtherSkillBox.TabIndex = 11;
             // 
             // RemoveButt
@@ -1564,10 +1605,11 @@
             // WeaponSkillBox
             // 
             this.WeaponSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.WeaponSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WeaponSkillBox.FormattingEnabled = true;
             this.WeaponSkillBox.Location = new System.Drawing.Point(259, 75);
             this.WeaponSkillBox.Name = "WeaponSkillBox";
-            this.WeaponSkillBox.Size = new System.Drawing.Size(121, 21);
+            this.WeaponSkillBox.Size = new System.Drawing.Size(121, 20);
             this.WeaponSkillBox.TabIndex = 5;
             // 
             // label39
@@ -1582,10 +1624,11 @@
             // KitchenSkillBox
             // 
             this.KitchenSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.KitchenSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KitchenSkillBox.FormattingEnabled = true;
             this.KitchenSkillBox.Location = new System.Drawing.Point(259, 47);
             this.KitchenSkillBox.Name = "KitchenSkillBox";
-            this.KitchenSkillBox.Size = new System.Drawing.Size(121, 21);
+            this.KitchenSkillBox.Size = new System.Drawing.Size(121, 20);
             this.KitchenSkillBox.TabIndex = 3;
             // 
             // label34
@@ -1600,10 +1643,11 @@
             // ArmorSkillBox
             // 
             this.ArmorSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ArmorSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ArmorSkillBox.FormattingEnabled = true;
             this.ArmorSkillBox.Location = new System.Drawing.Point(259, 19);
             this.ArmorSkillBox.Name = "ArmorSkillBox";
-            this.ArmorSkillBox.Size = new System.Drawing.Size(121, 21);
+            this.ArmorSkillBox.Size = new System.Drawing.Size(121, 20);
             this.ArmorSkillBox.TabIndex = 1;
             // 
             // ModList
@@ -1872,6 +1916,9 @@
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.ComboBox DamageTypeField;
         private System.Windows.Forms.ComboBox MindsField;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

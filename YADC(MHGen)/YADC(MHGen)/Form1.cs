@@ -74,7 +74,7 @@ namespace YADC_MHGen_
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
         Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
-        Dictionary<string, bool> modifiers = new Dictionary<string, bool>(); //Stores conversion of strings to modifiers.
+        Dictionary<string, Tuple<char, bool>> armorModifiers = new Dictionary<string, Tuple<char, bool>>(); //Stores conversion of strings to modifiers.
 
         public DmgCalculator()
         {
@@ -84,6 +84,7 @@ namespace YADC_MHGen_
             sharpnessBox.SelectedIndex = 0;
             AltDamageField.SelectedIndex = 0;
             MindsField.SelectedIndex = 1;
+            comboBox1.SelectedIndex = 0;
             AverageSel.Select();
             ElementBox.Image = null;
             FinalEleBox.Image = null;
@@ -345,14 +346,69 @@ namespace YADC_MHGen_
 
             if (AverageSel.Checked)
             {
-                rawTotal = total * (1 + affinity * 0.25) * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
+                if (checkBox1.Checked)
+                {
+                    rawTotal = total * (1 + affinity * 0.40) * rawSharp * hidden * motion;
+                }
+                else
+                {
+                    rawTotal = total * (1 + affinity * 0.25) * rawSharp * hidden * motion;
+                }
+
+                if(comboBox1.SelectedIndex == 0)
+                {
+                    eleTotal = element * eleSharp * hidden;
+                }
+                else if(comboBox1.SelectedIndex == 1)
+                {
+                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.2);
+                }
+                else if(comboBox1.SelectedIndex == 2)
+                {
+                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.3);
+                }
+                else if(comboBox1.SelectedIndex == 3)
+                {
+                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.35);
+                }
+                else if(comboBox1.SelectedIndex == 4)
+                {
+                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.25);
+                }
             }
 
             else if (PositiveSel.Checked)
             {
-                rawTotal = total * 1.25 * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
+                if (checkBox1.Checked)
+                {
+                    rawTotal = total * 1.40 * rawSharp * hidden * motion;
+                }
+                else
+                {
+                    rawTotal = total * 1.25 * rawSharp * hidden * motion;
+                }
+
+                if (comboBox1.SelectedIndex == 0)
+                {
+                    eleTotal = element * eleSharp * hidden;
+                }
+                else if (comboBox1.SelectedIndex == 1)
+                {
+                    eleTotal = element * eleSharp * hidden * 1.2;
+                }
+                else if (comboBox1.SelectedIndex == 2)
+                {
+                    eleTotal = element * eleSharp * hidden * 1.3;
+                }
+                else if (comboBox1.SelectedIndex == 3)
+                {
+                    eleTotal = element * eleSharp * hidden * 1.35;
+                }
+                else if (comboBox1.SelectedIndex == 4)
+                {
+                    eleTotal = element * eleSharp * hidden * 1.25;
+                }
+                
             }
 
             else if (NegativeSel.Checked)
@@ -439,107 +495,108 @@ namespace YADC_MHGen_
             str2image.Add("Blast",      "./Images/Blast.png");
 
             //Armor skills section
+#if false
+            armorModifiers.Add("Artillery Novice",              new Tuple<char, bool>('M', Artillery(1)));
+            armorModifiers.Add("Artillery Expert",              new Tuple<char, bool>('M', Artillery(2)));
+            armorModifiers.Add("Attack Up (S)",                 new Tuple<char, bool>('A', Attack(1)));
+            armorModifiers.Add("Attack Up (M)",                 new Tuple<char, bool>('A', Attack(2)));
+            armorModifiers.Add("Attack Up (L)",                 new Tuple<char, bool>('A', Attack(3)));
+            armorModifiers.Add("Attack Down (S)",               new Tuple<char, bool>('A', Attack(4)));
+            armorModifiers.Add("Attack Down (M)",               new Tuple<char, bool>('A', Attack(5)));
+            armorModifiers.Add("Attack Down (L)",               new Tuple<char, bool>('A', Attack(6)));
 
-            modifiers.Add("Artillery Novice", Artillery(1));
-            modifiers.Add("Artillery Expert", Artillery(2));
-            modifiers.Add("Attack Up (S)", Attack(1));
-            modifiers.Add("Attack Up (M)", Attack(2));
-            modifiers.Add("Attack Up (L)", Attack(3));
-            modifiers.Add("Attack Down (S)", Attack(4));
-            modifiers.Add("Attack Down (M)", Attack(5));
-            modifiers.Add("Attack Down (L)", Attack(6));
+            armorModifiers.Add("Bludgeoner",                    new Tuple<char, bool>('A', Blunt()));
+            armorModifiers.Add("Bombardier",                    new Tuple<char, bool>('M', BombBoost()));
 
-            modifiers.Add("Bludgeoner", Blunt());
-            modifiers.Add("Bombardier", BombBoost());
+            armorModifiers.Add("Repeat Offender (1 Hit)",       new Tuple<char, bool>('A', ChainCrit(1)));
+            armorModifiers.Add("Repeat Offender (>5 Hits)",     new Tuple<char, bool>('A', ChainCrit(2)));
+            armorModifiers.Add("Trump Card",                    new Tuple<char, bool>('M', Chance()));
+            armorModifiers.Add("Polar Hunter (Cool Drink)",     new Tuple<char, bool>('A', ColdBlooded(1)));
+            armorModifiers.Add("Polar Hunter (Cold Areas)",     new Tuple<char, bool>('A', ColdBlooded(2)));
+            armorModifiers.Add("Polar Hunter (Both Effects)",   new Tuple<char, bool>('A', ColdBlooded(3)));
+            armorModifiers.Add("Resuscitate",                   new Tuple<char, bool>('A', Crisis()));
+            armorModifiers.Add("Critical Draw",                 new Tuple<char, bool>('A', CritDraw()));
+            armorModifiers.Add("Elemental Crit",                new Tuple<char, bool>('M', CritElement()));
+            armorModifiers.Add("Critical Boost",                new Tuple<char, bool>('M', CriticalUp()));
 
-            modifiers.Add("Repeat Offender (1 Hit)", ChainCrit(1));
-            modifiers.Add("Repeat Offender (>5 Hits)", ChainCrit(2));
-            modifiers.Add("Trump Card", Chance());
-            modifiers.Add("Polar Hunter (Cool Drink)", ColdBlooded(1));
-            modifiers.Add("Polar Hunter (Cold Areas)", ColdBlooded(2));
-            modifiers.Add("Polar Hunter (Both Effects)", ColdBlooded(3));
-            modifiers.Add("Resuscitate", Crisis());
-            modifiers.Add("Critical Draw", CritDraw());
-            modifiers.Add("Elemental Crit", CritElement());
-            modifiers.Add("Critical Boost", CriticalUp());
+            armorModifiers.Add("P. D. Fencer (1st Cart)",       new Tuple<char, bool>('M', DFencing(1)));
+            armorModifiers.Add("P. D. Fencer (2nd Cart)",       new Tuple<char, bool>('M', DFencing(2)));
+            armorModifiers.Add("Deadeye Soul",                  new Tuple<char, bool>('A', Deadeye()));
+            armorModifiers.Add("Dragon Atk +1",                 new Tuple<char, bool>('B', DragonAtk(1)));
+            armorModifiers.Add("Dragon Atk +2",                 new Tuple<char, bool>('B', DragonAtk(2)));
+            armorModifiers.Add("Dragon Atk Down",               new Tuple<char, bool>('M', DragonAtk(3)));
+            armorModifiers.Add("Dreadking Soul",                new Tuple<char, bool>('A', Dreadking()));
+            armorModifiers.Add("Dreadqueen Soul",               new Tuple<char, bool>('M', Dreadqueen()));
+            armorModifiers.Add("Drilltusk Soul",                new Tuple<char, bool>('M', Drilltusk()));
 
-            modifiers.Add("Pro Dirty Fencer (1st Cart)", DFencing(1));
-            modifiers.Add("Pro Dirty Fencer (2nd Cart)", DFencing(2));
-            modifiers.Add("Deadeye Soul", Deadeye());
-            modifiers.Add("Dragon Atk +1", DragonAtk(1));
-            modifiers.Add("Dragon Atk +2", DragonAtk(2));
-            modifiers.Add("Dragon Atk Down", DragonAtk(3));
-            modifiers.Add("Dreadking Soul", Dreadking());
-            modifiers.Add("Dreadqueen Soul", Dreadqueen());
-            modifiers.Add("Drilltusk Soul", Drilltusk());
+            armorModifiers.Add("Element Atk Up",                new Tuple<char, bool>('M', Elemental()));
+            armorModifiers.Add("Critical Eye +1",               new Tuple<char, bool>('A', Expert(1)));
+            armorModifiers.Add("Critical Eye +2",               new Tuple<char, bool>('A', Expert(2)));
+            armorModifiers.Add("Critical Eye +3",               new Tuple<char, bool>('A', Expert(3)));
+            armorModifiers.Add("Critical Eye -1",               new Tuple<char, bool>('A', Expert(4)));
+            armorModifiers.Add("Critical Eye -2",               new Tuple<char, bool>('A', Expert(5)));
+            armorModifiers.Add("Critical Eye -3",               new Tuple<char, bool>('A', Expert(6)));
 
-            modifiers.Add("Element Atk Up", Elemental());
-            modifiers.Add("Critical Eye +1", Expert(1));
-            modifiers.Add("Critical Eye +2", Expert(2));
-            modifiers.Add("Critical Eye +3", Expert(3));
-            modifiers.Add("Critical Eye -1", Expert(4));
-            modifiers.Add("Critical Eye -2", Expert(5));
-            modifiers.Add("Critical Eye -3", Expert(6));
+            armorModifiers.Add("Mind's Eye",                    new Tuple<char, bool>('B', Fencing(1)));
+            armorModifiers.Add("Fire Atk +1",                   new Tuple<char, bool>('B', FireAtk(1)));
+            armorModifiers.Add("Fire Atk +2",                   new Tuple<char, bool>('B', FireAtk(2)));
+            armorModifiers.Add("Fire Atk Down",                 new Tuple<char, bool>('M', FireAtk(3)));
+            armorModifiers.Add("Antivirus",                     new Tuple<char, bool>('A', FrenzyRes()));
+            armorModifiers.Add("Resentment",                    new Tuple<char, bool>('A', Furor()));
 
-            modifiers.Add("Mind's Eye", Fencing(1));
-            modifiers.Add("Fire Atk +1", FireAtk(1));
-            modifiers.Add("Fire Atk +2", FireAtk(2));
-            modifiers.Add("Fire Atk Down", FireAtk(3));
-            modifiers.Add("Antivirus", FrenzyRes());
-            modifiers.Add("Resentment", Furor());
+            armorModifiers.Add("Latent Power +1",               new Tuple<char, bool>('A', GlovesOff(1)));
+            armorModifiers.Add("Latent Power +2",               new Tuple<char, bool>('A', GlovesOff(2)));
+            armorModifiers.Add("Sharpness +1",                  new Tuple<char, bool>('B', Handicraft(1)));
+            armorModifiers.Add("Sharpness +2",                  new Tuple<char, bool>('B', Handicraft(2)));
+            armorModifiers.Add("TrueShot Up",                   new Tuple<char, bool>('M', Haphazard()));
+            armorModifiers.Add("Heavy/Heavy Up",                new Tuple<char, bool>('M', HeavyUp()));
+            armorModifiers.Add("Hellblade Soul",                new Tuple<char, bool>('B', Hellblade()));
+            armorModifiers.Add("Tropic Hunter (Hot Drink)",     new Tuple<char, bool>('A', HotBlooded(1)));
+            armorModifiers.Add("Tropic Hunter (Hot Area)",      new Tuple<char, bool>('A', HotBlooded(2)));
+            armorModifiers.Add("Tropic Hunter (Both Effects)",  new Tuple<char, bool>('A', HotBlooded(3)));
 
-            modifiers.Add("Latent Power +1", GlovesOff(1));
-            modifiers.Add("Latent Power +2", GlovesOff(2));
-            modifiers.Add("Sharpness +1", Handicraft(1));
-            modifiers.Add("Sharpness +2", Handicraft(2));
-            modifiers.Add("TrueShot Up", Haphazard());
-            modifiers.Add("Heavy/Heavy Up", HeavyUp());
-            modifiers.Add("Hellblade Soul", Hellblade());
-            modifiers.Add("Tropic Hunter (Hot Drink)", HotBlooded(1));
-            modifiers.Add("Tropic Hunter (Hot Area)", HotBlooded(2));
-            modifiers.Add("Tropic Hunter (Both Effects)", HotBlooded(3));
+            armorModifiers.Add("Ice Atk +1",                    new Tuple<char, bool>('B', IceAtk(1));
+            armorModifiers.Add("Ice Atk +2",                    new Tuple<char, bool>('B', IceAtk(2));
+            armorModifiers.Add("Ice Atk Down",                  new Tuple<char, bool>('M', IceAtk(3));
 
-            modifiers.Add("Ice Atk +1", IceAtk(1));
-            modifiers.Add("Ice Atk +2", IceAtk(2));
-            modifiers.Add("Ice Atk Down", IceAtk(3));
+            armorModifiers.Add("KO King",                       new Tuple<char, bool>('A', KO());
 
-            modifiers.Add("KO King", KO());
+            armorModifiers.Add("Normal/Rapid Up",               new Tuple<char, bool>('M', NormalUp());
 
-            modifiers.Add("Normal/Rapid Up", NormalUp());
+            armorModifiers.Add("Pellet/Spread Up",              new Tuple<char, bool>('M', PelletUp());
+            armorModifiers.Add("Pierce/Pierce Up",              new Tuple<char, bool>('M', PierceUp());
+            armorModifiers.Add("Adrenaline +1",                 new Tuple<char, bool>('B', Potential(1));
+            armorModifiers.Add("Adrenaline +2",                 new Tuple<char, bool>('M', Potential(2));
+            armorModifiers.Add("Worrywart",                     new Tuple<char, bool>('M', Potential(3));
+            armorModifiers.Add("Punishing Draw",                new Tuple<char, bool>('A', PunishDraw());
 
-            modifiers.Add("Pellet/Spread Up", PelletUp());
-            modifiers.Add("Pierce/Pierce Up", PierceUp());
-            modifiers.Add("Adrenaline +1", Potential(1));
-            modifiers.Add("Adrenaline +2", Potential(2));
-            modifiers.Add("Worrywart", Potential(3));
-            modifiers.Add("Punishing Draw", PunishDraw());
+            armorModifiers.Add("Bonus Shot",                    new Tuple<char, bool>('B', RapidFire());
+            armorModifiers.Add("Redhelm Soul",                  new Tuple<char, bool>('A', Redhelm());
 
-            modifiers.Add("Bonus Shot", RapidFire());
-            modifiers.Add("Redhelm Soul", Redhelm());
+            armorModifiers.Add("Silverwind Soul",               new Tuple<char, bool>('A', Silverwind());
+            armorModifiers.Add("Challenger +1",                 new Tuple<char, bool>('A', Spirit(1));
+            armorModifiers.Add("Challenger +2",                 new Tuple<char, bool>('A', Spirit(2));
+            armorModifiers.Add("Stamina Thief",                 new Tuple<char, bool>('A', StamDrain());
+            armorModifiers.Add("Status Atk +1",                 new Tuple<char, bool>('B', Status(1));
+            armorModifiers.Add("Status Atk +2",                 new Tuple<char, bool>('B', Status(2));
+            armorModifiers.Add("Status Atk Down",               new Tuple<char, bool>('M', Status(3));
+            armorModifiers.Add("Fortify (1st Cart)",            new Tuple<char, bool>('M', Survivor(1));
+            armorModifiers.Add("Fortify (2nd Cart)",            new Tuple<char, bool>('M', Survivor(2));
 
-            modifiers.Add("Silverwind Soul", Silverwind());
-            modifiers.Add("Challenger +1", Spirit(1));
-            modifiers.Add("Challenger +2", Spirit(2));
-            modifiers.Add("Stamina Thief", StamDrain());
-            modifiers.Add("Status Atk +1", Status(1));
-            modifiers.Add("Status Atk +2", Status(2));
-            modifiers.Add("Status Atk Down", Status(3));
-            modifiers.Add("Fortify (1st Cart)", Survivor(1));
-            modifiers.Add("Fortify (2nd Cart)", Survivor(2));
+            armorModifiers.Add("Weakness Exploit",              new Tuple<char, bool>('A', Tenderizer());
+            armorModifiers.Add("Thunder Atk +1",                new Tuple<char, bool>('B', ThunderAtk(1));
+            armorModifiers.Add("Thunder Atk +2",                new Tuple<char, bool>('B', ThunderAtk(2));
+            armorModifiers.Add("Thunder Atk Down",              new Tuple<char, bool>('M', ThunderAtk(3));
+            armorModifiers.Add("Thunderlord Soul",              new Tuple<char, bool>('A', Thunderlord());
 
-            modifiers.Add("Weakness Exploit", Tenderizer());
-            modifiers.Add("Thunder Atk +1", ThunderAtk(1));
-            modifiers.Add("Thunder Atk +2", ThunderAtk(2));
-            modifiers.Add("Thunder Atk Down", ThunderAtk(3));
-            modifiers.Add("Thunderlord Soul", Thunderlord());
+            armorModifiers.Add("Peak Performance",              new Tuple<char, bool>('A', Unscathed());
 
-            modifiers.Add("Peak Performance", Unscathed());
+            armorModifiers.Add("Airborne",                      new Tuple<char, bool>('M', Vault());
 
-            modifiers.Add("Airborne", Vault());
-
-            modifiers.Add("Water Atk +1", WaterAtk(1));
-            modifiers.Add("Water Atk +2", WaterAtk(2));
-            modifiers.Add("Water Atk Down", WaterAtk(3));
+            armorModifiers.Add("Water Atk +1",                  new Tuple<char, bool>('B', WaterAtk(1));
+            armorModifiers.Add("Water Atk +2",                  new Tuple<char, bool>('B', WaterAtk(2));
+            armorModifiers.Add("Water Atk Down",                new Tuple<char, bool>('M', WaterAtk(3));
+#endif
         }
 
         private void readFiles()
@@ -867,6 +924,7 @@ namespace YADC_MHGen_
             }
         }
 
+#if false
         //Beginning of Armor Skill methods.
         private bool Artillery(int skillVal)
         {
@@ -920,6 +978,6 @@ namespace YADC_MHGen_
         {
 
         }
-
+#endif
     }
 }
