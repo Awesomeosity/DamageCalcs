@@ -173,7 +173,6 @@
             this.KitchenSkillBox = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
             this.ArmorSkillBox = new System.Windows.Forms.ComboBox();
-            this.ModList = new System.Windows.Forms.ListBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
@@ -181,6 +180,8 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
@@ -206,7 +207,7 @@
             // 
             // RawField
             // 
-            this.RawField.Location = new System.Drawing.Point(112, 32);
+            this.RawField.Location = new System.Drawing.Point(214, 32);
             this.RawField.MaxLength = 3;
             this.RawField.Name = "RawField";
             this.RawField.Size = new System.Drawing.Size(96, 20);
@@ -245,7 +246,7 @@
             // 
             // EleField
             // 
-            this.EleField.Location = new System.Drawing.Point(112, 76);
+            this.EleField.Location = new System.Drawing.Point(214, 76);
             this.EleField.Name = "EleField";
             this.EleField.Size = new System.Drawing.Size(96, 20);
             this.EleField.TabIndex = 115;
@@ -306,7 +307,7 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.AltDamageField.Location = new System.Drawing.Point(9, 76);
+            this.AltDamageField.Location = new System.Drawing.Point(112, 76);
             this.AltDamageField.Name = "AltDamageField";
             this.AltDamageField.Size = new System.Drawing.Size(96, 21);
             this.AltDamageField.TabIndex = 119;
@@ -353,7 +354,7 @@
             // 
             // KOField
             // 
-            this.KOField.Location = new System.Drawing.Point(316, 32);
+            this.KOField.Location = new System.Drawing.Point(418, 32);
             this.KOField.MaxLength = 3;
             this.KOField.Name = "KOField";
             this.KOField.Size = new System.Drawing.Size(96, 20);
@@ -367,7 +368,7 @@
             // 
             // ExhaustField
             // 
-            this.ExhaustField.Location = new System.Drawing.Point(316, 76);
+            this.ExhaustField.Location = new System.Drawing.Point(418, 76);
             this.ExhaustField.MaxLength = 3;
             this.ExhaustField.Name = "ExhaustField";
             this.ExhaustField.Size = new System.Drawing.Size(96, 20);
@@ -686,6 +687,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label53);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.checkBox1);
@@ -745,7 +747,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(418, 78);
+            this.checkBox1.Location = new System.Drawing.Point(9, 121);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(93, 17);
             this.checkBox1.TabIndex = 130;
@@ -755,7 +757,7 @@
             // RawLabel
             // 
             this.RawLabel.AutoSize = true;
-            this.RawLabel.Location = new System.Drawing.Point(109, 16);
+            this.RawLabel.Location = new System.Drawing.Point(211, 16);
             this.RawLabel.Name = "RawLabel";
             this.RawLabel.Size = new System.Drawing.Size(101, 13);
             this.RawLabel.TabIndex = 109;
@@ -781,7 +783,7 @@
             // 
             // EleSharpField
             // 
-            this.EleSharpField.Location = new System.Drawing.Point(214, 75);
+            this.EleSharpField.Location = new System.Drawing.Point(316, 75);
             this.EleSharpField.Name = "EleSharpField";
             this.EleSharpField.Size = new System.Drawing.Size(96, 20);
             this.EleSharpField.TabIndex = 129;
@@ -793,7 +795,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(109, 60);
+            this.label9.Location = new System.Drawing.Point(211, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 114;
@@ -802,7 +804,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(211, 59);
+            this.label45.Location = new System.Drawing.Point(313, 59);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(86, 13);
             this.label45.TabIndex = 128;
@@ -810,7 +812,7 @@
             // 
             // RawSharpField
             // 
-            this.RawSharpField.Location = new System.Drawing.Point(214, 33);
+            this.RawSharpField.Location = new System.Drawing.Point(316, 33);
             this.RawSharpField.Name = "RawSharpField";
             this.RawSharpField.Size = new System.Drawing.Size(96, 20);
             this.RawSharpField.TabIndex = 127;
@@ -822,7 +824,7 @@
             // label44
             // 
             this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(211, 16);
+            this.label44.Location = new System.Drawing.Point(313, 16);
             this.label44.Name = "label44";
             this.label44.Size = new System.Drawing.Size(90, 13);
             this.label44.TabIndex = 126;
@@ -849,7 +851,7 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.sharpnessBox.Location = new System.Drawing.Point(9, 32);
+            this.sharpnessBox.Location = new System.Drawing.Point(112, 32);
             this.sharpnessBox.Name = "sharpnessBox";
             this.sharpnessBox.Size = new System.Drawing.Size(97, 21);
             this.sharpnessBox.TabIndex = 125;
@@ -858,7 +860,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 60);
+            this.label21.Location = new System.Drawing.Point(109, 60);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(95, 13);
             this.label21.TabIndex = 118;
@@ -867,7 +869,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 16);
+            this.label8.Location = new System.Drawing.Point(109, 16);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(60, 13);
             this.label8.TabIndex = 124;
@@ -876,7 +878,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(313, 16);
+            this.label15.Location = new System.Drawing.Point(415, 16);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 13);
             this.label15.TabIndex = 121;
@@ -885,7 +887,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(313, 60);
+            this.label27.Location = new System.Drawing.Point(415, 60);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(81, 13);
             this.label27.TabIndex = 123;
@@ -1508,6 +1510,7 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.listView1);
             this.groupBox8.Controls.Add(this.OtherButt);
             this.groupBox8.Controls.Add(this.label42);
             this.groupBox8.Controls.Add(this.OtherSkillBox);
@@ -1521,7 +1524,6 @@
             this.groupBox8.Controls.Add(this.KitchenSkillBox);
             this.groupBox8.Controls.Add(this.label34);
             this.groupBox8.Controls.Add(this.ArmorSkillBox);
-            this.groupBox8.Controls.Add(this.ModList);
             this.groupBox8.Location = new System.Drawing.Point(351, 12);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(460, 201);
@@ -1650,14 +1652,6 @@
             this.ArmorSkillBox.Size = new System.Drawing.Size(121, 20);
             this.ArmorSkillBox.TabIndex = 1;
             // 
-            // ModList
-            // 
-            this.ModList.FormattingEnabled = true;
-            this.ModList.Location = new System.Drawing.Point(6, 19);
-            this.ModList.Name = "ModList";
-            this.ModList.Size = new System.Drawing.Size(143, 173);
-            this.ModList.TabIndex = 0;
-            // 
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.textBox3);
@@ -1720,6 +1714,23 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
+            // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(7, 17);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(142, 175);
+            this.listView1.TabIndex = 14;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 67);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Update Parameters";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // DmgCalculator
             // 
@@ -1892,7 +1903,6 @@
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ComboBox NameSort;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.ListBox ModList;
         private System.Windows.Forms.Button WeaponButt;
         private System.Windows.Forms.Button KitchenButt;
         private System.Windows.Forms.Button ArmorButt;
@@ -1919,6 +1929,8 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

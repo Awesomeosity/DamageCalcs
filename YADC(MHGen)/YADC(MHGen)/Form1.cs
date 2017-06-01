@@ -19,11 +19,11 @@ namespace YADC_MHGen_
         public struct stats
         {
             public int level;
-            public int attack;
+            public double attack;
             public string sharpness;
-            public int affinity;
+            public double affinity;
             public string elementalType;
-            public int elementalDamage;
+            public double elementalDamage;
             public string sharpness1;
             public string sharpness2;
 
@@ -67,6 +67,36 @@ namespace YADC_MHGen_
             }
         }
 
+        public struct importedStats
+        {
+            public string sharpness;
+            public string altDamageType;
+            public float affinity;
+            public float totalAttackPower;
+            public float eleAttackPower;
+            public float motionValue;
+            public float rawSharpMod;
+            public float eleSharpMod;
+            public float hiddenMod;
+            public float KOPower;
+            public float exhaustPower;
+            public string eleCrit;
+            public float hitzone;
+            public float eleHitzone;
+            public float questMod;
+            public float KOHitzone;
+            public float exhaustHitzone;
+            public bool criticalBoost;
+
+            public importedStats(string _sharpness, string _altDamageType, float _affinity, float _totalAttackPower, 
+                float _eleAttackPower, float _motionValue, float _rawSharpMod, float _eleSharpMod, float _hiddenMod, 
+                float _KOPower, float _exhaustPower, string _eleCrit, float _hitzone, float _eleHitzone, float _questMod, 
+                float _KOHitzone, float _exhaustHitzone, bool _criticalBoost)
+            {
+                
+            }
+        }
+
         Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
         Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
         Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
@@ -75,6 +105,8 @@ namespace YADC_MHGen_
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
         Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
         Dictionary<string, Tuple<char, bool>> armorModifiers = new Dictionary<string, Tuple<char, bool>>(); //Stores conversion of strings to modifiers.
+
+        stats weaponAndMods = new stats(0, 0, "Red", 0, "(None)", 0, "Red", "Red");
 
         public DmgCalculator()
         {
@@ -496,8 +528,14 @@ namespace YADC_MHGen_
 
             //Armor skills section
 #if false
-            armorModifiers.Add("Artillery Novice",              new Tuple<char, bool>('M', Artillery(1)));
-            armorModifiers.Add("Artillery Expert",              new Tuple<char, bool>('M', Artillery(2)));
+            armorModifiers.Add("Art. Novice (Fixed Weapons)",   new Tuple<char, bool>('M', Artillery(1)));
+            armorModifiers.Add("Art. Novice (Explosive Ammo)",  new Tuple<char, bool>('M', Artillery(2)));
+            armorModifiers.Add("Art. Novice (Impact CB)",       new Tuple<char, bool>('M', Artillery(3)));
+            armorModifiers.Add("Art. Novice (GL)",              new Tuple<char, bool>('M', Artillery(4)));
+            armorModifiers.Add("Art. Expert (Fixed Weapons)",   new Tuple<char, bool>('M', Artillery(5)));
+            armorModifiers.Add("Art. Expert (Explosive Ammo)",  new Tuple<char, bool>('M', Artillery(6)));
+            armorModifiers.Add("Art. Expert (Impact CB)",       new Tuple<char, bool>('M', Artillery(7)));
+            armorModifiers.Add("Art. Expert (GL)",              new Tuple<char, bool>('M', Artillery(8)));
             armorModifiers.Add("Attack Up (S)",                 new Tuple<char, bool>('A', Attack(1)));
             armorModifiers.Add("Attack Up (M)",                 new Tuple<char, bool>('A', Attack(2)));
             armorModifiers.Add("Attack Up (L)",                 new Tuple<char, bool>('A', Attack(3)));
@@ -505,18 +543,30 @@ namespace YADC_MHGen_
             armorModifiers.Add("Attack Down (M)",               new Tuple<char, bool>('A', Attack(5)));
             armorModifiers.Add("Attack Down (L)",               new Tuple<char, bool>('A', Attack(6)));
 
-            armorModifiers.Add("Bludgeoner",                    new Tuple<char, bool>('A', Blunt()));
-            armorModifiers.Add("Bombardier",                    new Tuple<char, bool>('M', BombBoost()));
+            armorModifiers.Add("Bludgeoner (Green)",            new Tuple<char, bool>('A', Blunt(1)));
+            armorModifiers.Add("Bludgeoner (Yellow)",           new Tuple<char, bool>('A', Blunt(2)));
+            armorModifiers.Add("Bludgeoner (Orange/Red)",       new Tuple<char, bool>('A', Blunt(3)));
+            armorModifiers.Add("Bombardier (Blast)",            new Tuple<char, bool>('M', BombBoost(1)));
+            armorModifiers.Add("Bombardier (Bomb)",             new Tuple<char, bool>('M', BombBoost(2)));
 
             armorModifiers.Add("Repeat Offender (1 Hit)",       new Tuple<char, bool>('A', ChainCrit(1)));
             armorModifiers.Add("Repeat Offender (>5 Hits)",     new Tuple<char, bool>('A', ChainCrit(2)));
-            armorModifiers.Add("Trump Card",                    new Tuple<char, bool>('M', Chance()));
+            armorModifiers.Add("Trump Card (Lion's Maw)",       new Tuple<char, bool>('M', Chance(1)));
+            armorModifiers.Add("Trump Card (Dragon's Breath)",  new Tuple<char, bool>('M', Chance(2)));
+            armorModifiers.Add("Trump Card (Demon Riot "Pwr")", new Tuple<char, bool>('M', Chance(3)));
+            armorModifiers.Add("Trump Card (Demon Riot "Sta")", new Tuple<char, bool>('M', Chance(4)));
+            armorModifiers.Add("Trump Card (Demon Riot "Ele")", new Tuple<char, bool>('M', Chance(5)));
+            armorModifiers.Add("Trump Card (Demon Riot "Dra")", new Tuple<char, bool>('M', Chance(6)));
+            armorModifiers.Add("Trump Card (Other HAs)",        new Tuple<char, bool>('M', Chance(7)));
             armorModifiers.Add("Polar Hunter (Cool Drink)",     new Tuple<char, bool>('A', ColdBlooded(1)));
             armorModifiers.Add("Polar Hunter (Cold Areas)",     new Tuple<char, bool>('A', ColdBlooded(2)));
             armorModifiers.Add("Polar Hunter (Both Effects)",   new Tuple<char, bool>('A', ColdBlooded(3)));
             armorModifiers.Add("Resuscitate",                   new Tuple<char, bool>('A', Crisis()));
             armorModifiers.Add("Critical Draw",                 new Tuple<char, bool>('A', CritDraw()));
-            armorModifiers.Add("Elemental Crit",                new Tuple<char, bool>('M', CritElement()));
+            armorModifiers.Add("Elemental Crit (GS)",           new Tuple<char, bool>('M', CritElement(1)));
+            armorModifiers.Add("Elemental Crit (LBG/HBG)",      new Tuple<char, bool>('M', CritElement(2)));
+            armorModifiers.Add("Elemental Crit (SnS/DB/Bow)",   new Tuple<char, bool>('M', CritElement(3)));
+            armorModifiers.Add("Elemental Crit (Other)",        new Tuple<char, bool>('M', CritElement(4)));
             armorModifiers.Add("Critical Boost",                new Tuple<char, bool>('M', CriticalUp()));
 
             armorModifiers.Add("P. D. Fencer (1st Cart)",       new Tuple<char, bool>('M', DFencing(1)));
@@ -526,7 +576,7 @@ namespace YADC_MHGen_
             armorModifiers.Add("Dragon Atk +2",                 new Tuple<char, bool>('B', DragonAtk(2)));
             armorModifiers.Add("Dragon Atk Down",               new Tuple<char, bool>('M', DragonAtk(3)));
             armorModifiers.Add("Dreadking Soul",                new Tuple<char, bool>('A', Dreadking()));
-            armorModifiers.Add("Dreadqueen Soul",               new Tuple<char, bool>('M', Dreadqueen()));
+            armorModifiers.Add("Dreadqueen Soul",               new Tuple<char, bool>('B', Dreadqueen()));
             armorModifiers.Add("Drilltusk Soul",                new Tuple<char, bool>('M', Drilltusk()));
 
             armorModifiers.Add("Element Atk Up",                new Tuple<char, bool>('M', Elemental()));
@@ -537,7 +587,7 @@ namespace YADC_MHGen_
             armorModifiers.Add("Critical Eye -2",               new Tuple<char, bool>('A', Expert(5)));
             armorModifiers.Add("Critical Eye -3",               new Tuple<char, bool>('A', Expert(6)));
 
-            armorModifiers.Add("Mind's Eye",                    new Tuple<char, bool>('B', Fencing(1)));
+            armorModifiers.Add("Mind's Eye",                    new Tuple<char, bool>('B', Fencing()));
             armorModifiers.Add("Fire Atk +1",                   new Tuple<char, bool>('B', FireAtk(1)));
             armorModifiers.Add("Fire Atk +2",                   new Tuple<char, bool>('B', FireAtk(2)));
             armorModifiers.Add("Fire Atk Down",                 new Tuple<char, bool>('M', FireAtk(3)));
@@ -563,12 +613,15 @@ namespace YADC_MHGen_
 
             armorModifiers.Add("Normal/Rapid Up",               new Tuple<char, bool>('M', NormalUp());
 
-            armorModifiers.Add("Pellet/Spread Up",              new Tuple<char, bool>('M', PelletUp());
+            armorModifiers.Add("Pellet/Spread Up (Pellet S)",   new Tuple<char, bool>('M', PelletUp());
+            armorModifiers.Add("Pellet/Spread Up (Spread)",     new Tuple<char, bool>('M', PelletUp());
+
             armorModifiers.Add("Pierce/Pierce Up",              new Tuple<char, bool>('M', PierceUp());
             armorModifiers.Add("Adrenaline +1",                 new Tuple<char, bool>('B', Potential(1));
             armorModifiers.Add("Adrenaline +2",                 new Tuple<char, bool>('M', Potential(2));
             armorModifiers.Add("Worrywart",                     new Tuple<char, bool>('M', Potential(3));
-            armorModifiers.Add("Punishing Draw",                new Tuple<char, bool>('A', PunishDraw());
+            armorModifiers.Add("Punishing Draw (Cut)",          new Tuple<char, bool>('A', PunishDraw());
+            armorModifiers.Add("Punishing Draw (Impact)",       new Tuple<char, bool>('A', PunishDraw());
 
             armorModifiers.Add("Bonus Shot",                    new Tuple<char, bool>('B', RapidFire());
             armorModifiers.Add("Redhelm Soul",                  new Tuple<char, bool>('A', Redhelm());
@@ -924,39 +977,160 @@ namespace YADC_MHGen_
             }
         }
 
-#if false
+#if true
         //Beginning of Armor Skill methods.
         private bool Artillery(int skillVal)
         {
-            if(WeaponField.Text == "Ballista" || WeaponField.Text == "Cannon")
+            if(skillVal == 1) //Art. Novice (Fixed Weapons)
             {
-
+                weaponAndMods.attack = weaponAndMods.attack * 1.1;
             }
+            else if (skillVal == 2) //Art. Novice (Explosive Ammo)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.15;
+            }
+            else if (skillVal == 3) //Art. Novice (Impact CB)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.30;
+            }
+            else if (skillVal == 4) //Art. Novice (GL)
+            {
+                weaponAndMods.elementalDamage = weaponAndMods.elementalDamage * 1.1;
+            }
+            else if (skillVal == 5) //Art. Expert (Fixed Weapons)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.2;
+            }
+            else if (skillVal == 6) //Art. Expert (Explosive Ammo)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.3;
+            }
+            else if (skillVal == 7) //Art. Expert (Impact CB)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.35;
+            }
+            else if (skillVal == 8) //Art. Expert (GL)
+            {
+                weaponAndMods.elementalDamage = weaponAndMods.elementalDamage * 1.2;
+            }
+            else
+            {
+                return false; //Failsafe.
+            }
+            return true;
         }
 
         private bool Attack(int skillVal)
         {
-
+            if (skillVal == 1)
+            {
+                weaponAndMods.attack += 10;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.attack += 15;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.attack += 20;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.attack -= 5;
+            }
+            else if (skillVal == 5)
+            {
+                weaponAndMods.attack -= 10;
+            }
+            else if (skillVal == 6)
+            {
+                weaponAndMods.attack -= 15;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
         }
 
-        private bool Blunt()
+        private bool Blunt(int skillVal)
         {
-
+            if (skillVal == 1)
+            {
+                weaponAndMods.attack += 15;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.attack += 25;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.attack += 30;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
         }
 
-        private bool BombBoost()
+        private bool BombBoost(int skillVal)
         {
-
+            if (skillVal == 1)
+            {
+                weaponAndMods.elementalDamage = weaponAndMods.elementalDamage * 1.2;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.3;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
         }
 
-        private bool ChainCrit()
+        private bool ChainCrit(int skillVal)
         {
-
+            if (skillVal == 1)
+            {
+                weaponAndMods.affinity += 25;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.affinity += 30;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
         }
 
-        private bool Chance()
+        private bool Chance(int skillVal)
         {
-
+            if (skillVal == 1)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.2 * 1.15;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.2 * 1.2;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.attack = weaponAndMods.attack * 1.15;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.attack -= 5;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
         }
 
         private bool ColdBlooded()
