@@ -85,6 +85,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TypeField = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -160,6 +161,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.NameSort = new System.Windows.Forms.ComboBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.OtherButt = new System.Windows.Forms.Button();
             this.label42 = new System.Windows.Forms.Label();
             this.OtherSkillBox = new System.Windows.Forms.ComboBox();
@@ -180,8 +182,7 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
@@ -687,6 +688,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label53);
             this.groupBox3.Controls.Add(this.comboBox1);
@@ -720,6 +722,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(8, 30);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 67);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Update Parameters";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -747,7 +758,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 121);
+            this.checkBox1.Location = new System.Drawing.Point(9, 103);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(93, 17);
             this.checkBox1.TabIndex = 130;
@@ -1531,6 +1542,14 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Active Modifiers:";
             // 
+            // listView1
+            // 
+            this.listView1.Location = new System.Drawing.Point(7, 17);
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(142, 175);
+            this.listView1.TabIndex = 14;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // OtherButt
             // 
             this.OtherButt.Location = new System.Drawing.Point(386, 102);
@@ -1715,22 +1734,15 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // listView1
+            // checkBox2
             // 
-            this.listView1.Location = new System.Drawing.Point(7, 17);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(142, 175);
-            this.listView1.TabIndex = 14;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(8, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 67);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Update Parameters";
-            this.button1.UseVisualStyleBackColor = true;
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(9, 121);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(83, 17);
+            this.checkBox2.TabIndex = 133;
+            this.checkBox2.Text = "Mind\'s Eye?";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // DmgCalculator
             // 
@@ -1931,6 +1943,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 
