@@ -41,7 +41,6 @@
             this.EleField = new System.Windows.Forms.TextBox();
             this.SharpnessTip = new System.Windows.Forms.ToolTip(this.components);
             this.HiddenTip = new System.Windows.Forms.ToolTip(this.components);
-            this.HiddenField = new System.Windows.Forms.TextBox();
             this.AltTip = new System.Windows.Forms.ToolTip(this.components);
             this.WeaponAltField = new System.Windows.Forms.ComboBox();
             this.AltDamageField = new System.Windows.Forms.ComboBox();
@@ -98,7 +97,6 @@
             this.label45 = new System.Windows.Forms.Label();
             this.RawSharpField = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.sharpnessBox = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -183,6 +181,9 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
@@ -221,7 +222,7 @@
             // 
             // MVField
             // 
-            this.MVField.Location = new System.Drawing.Point(214, 119);
+            this.MVField.Location = new System.Drawing.Point(316, 119);
             this.MVField.Name = "MVField";
             this.MVField.Size = new System.Drawing.Size(96, 20);
             this.MVField.TabIndex = 110;
@@ -234,7 +235,7 @@
             // 
             // AffinityField
             // 
-            this.AffinityField.Location = new System.Drawing.Point(112, 119);
+            this.AffinityField.Location = new System.Drawing.Point(214, 119);
             this.AffinityField.Name = "AffinityField";
             this.AffinityField.Size = new System.Drawing.Size(96, 20);
             this.AffinityField.TabIndex = 113;
@@ -257,18 +258,6 @@
         "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             this.EleField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.EleField.Validated += new System.EventHandler(this.GenericField_Validated);
-            // 
-            // HiddenField
-            // 
-            this.HiddenField.Location = new System.Drawing.Point(316, 119);
-            this.HiddenField.Name = "HiddenField";
-            this.HiddenField.Size = new System.Drawing.Size(96, 20);
-            this.HiddenField.TabIndex = 116;
-            this.HiddenField.Text = "1.0";
-            this.HiddenField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.HiddenTip.SetToolTip(this.HiddenField, resources.GetString("HiddenField.ToolTip"));
-            this.HiddenField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.HiddenField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // WeaponAltField
             // 
@@ -688,6 +677,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox3);
             this.groupBox3.Controls.Add(this.checkBox2);
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.label53);
@@ -704,9 +694,7 @@
             this.groupBox3.Controls.Add(this.label45);
             this.groupBox3.Controls.Add(this.EleField);
             this.groupBox3.Controls.Add(this.RawSharpField);
-            this.groupBox3.Controls.Add(this.HiddenField);
             this.groupBox3.Controls.Add(this.label44);
-            this.groupBox3.Controls.Add(this.label10);
             this.groupBox3.Controls.Add(this.sharpnessBox);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label8);
@@ -717,7 +705,7 @@
             this.groupBox3.Controls.Add(this.label27);
             this.groupBox3.Location = new System.Drawing.Point(12, 406);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(530, 158);
+            this.groupBox3.Size = new System.Drawing.Size(530, 177);
             this.groupBox3.TabIndex = 128;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
@@ -725,7 +713,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(9, 121);
+            this.checkBox2.Location = new System.Drawing.Point(9, 126);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(83, 17);
             this.checkBox2.TabIndex = 133;
@@ -744,7 +732,7 @@
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(415, 103);
+            this.label53.Location = new System.Drawing.Point(109, 103);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(77, 13);
             this.label53.TabIndex = 132;
@@ -760,7 +748,7 @@
             "LBG/HBG",
             "SnS/DB/Bow",
             "Other"});
-            this.comboBox1.Location = new System.Drawing.Point(418, 119);
+            this.comboBox1.Location = new System.Drawing.Point(112, 119);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(96, 21);
             this.comboBox1.TabIndex = 131;
@@ -787,7 +775,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(211, 103);
+            this.label1.Location = new System.Drawing.Point(313, 103);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 111;
@@ -796,7 +784,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(109, 103);
+            this.label7.Location = new System.Drawing.Point(211, 103);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 112;
@@ -851,18 +839,10 @@
             this.label44.TabIndex = 126;
             this.label44.Text = "Raw Sharp. Mod:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(313, 103);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(106, 13);
-            this.label10.TabIndex = 117;
-            this.label10.Text = "Hidden Mods: (Total)";
-            // 
             // sharpnessBox
             // 
             this.sharpnessBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sharpnessBox.Enabled = false;
             this.sharpnessBox.FormattingEnabled = true;
             this.sharpnessBox.Items.AddRange(new object[] {
             "(No Sharpness)",
@@ -916,6 +896,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label10);
+            this.groupBox4.Controls.Add(this.comboBox2);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Controls.Add(this.ExhaustZoneField);
             this.groupBox4.Controls.Add(this.label29);
@@ -928,7 +910,7 @@
             this.groupBox4.Controls.Add(this.HitzoneField);
             this.groupBox4.Location = new System.Drawing.Point(541, 406);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(241, 158);
+            this.groupBox4.Size = new System.Drawing.Size(241, 177);
             this.groupBox4.TabIndex = 129;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
@@ -1008,7 +990,7 @@
             this.groupBox5.Controls.Add(this.CalcButt);
             this.groupBox5.Controls.Add(this.RawOut);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(12, 567);
+            this.groupBox5.Location = new System.Drawing.Point(12, 589);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(661, 129);
             this.groupBox5.TabIndex = 130;
@@ -1744,11 +1726,45 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(9, 149);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(100, 17);
+            this.checkBox3.TabIndex = 134;
+            this.checkBox3.Text = "Fixed Damage?";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Normal",
+            "Sleeping (Bomb)",
+            "Sleeping (Else)",
+            "Paralyzed"});
+            this.comboBox2.Location = new System.Drawing.Point(118, 119);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(96, 21);
+            this.comboBox2.TabIndex = 89;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(115, 103);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.TabIndex = 90;
+            this.label10.Text = "Monster Status:";
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 708);
+            this.ClientSize = new System.Drawing.Size(959, 730);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -1844,9 +1860,7 @@
         private System.Windows.Forms.Label label45;
         private System.Windows.Forms.TextBox EleField;
         private System.Windows.Forms.TextBox RawSharpField;
-        private System.Windows.Forms.TextBox HiddenField;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox sharpnessBox;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label8;
@@ -1944,6 +1958,9 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 

@@ -116,10 +116,14 @@ namespace YADC_MHGen_
             InitializeComponent();
             FillOut();
             readFiles();
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            checkBox3.Checked = false;
             sharpnessBox.SelectedIndex = 0;
             AltDamageField.SelectedIndex = 0;
             MindsField.SelectedIndex = 1;
             comboBox1.SelectedIndex = 0;
+            comboBox2.SelectedIndex = 0;
             AverageSel.Select();
             ElementBox.Image = null;
             FinalEleBox.Image = null;
@@ -371,7 +375,6 @@ namespace YADC_MHGen_
             double motion = double.Parse(MVField.Text) * 0.01;
             double affinity = double.Parse(AffinityField.Text) * 0.01;
             double element = double.Parse(EleField.Text);
-            double hidden = double.Parse(HiddenField.Text);
 
             double rawSharp = double.Parse(RawSharpField.Text);
             double eleSharp = double.Parse(EleSharpField.Text);
@@ -379,83 +382,91 @@ namespace YADC_MHGen_
             double rawTotal = 0;
             double eleTotal = 0;
 
-            if (AverageSel.Checked)
+            if(!checkBox3.Checked)
             {
-                if (checkBox1.Checked)
+                if (AverageSel.Checked)
                 {
-                    rawTotal = total * (1 + affinity * 0.40) * rawSharp * hidden * motion;
-                }
-                else
-                {
-                    rawTotal = total * (1 + affinity * 0.25) * rawSharp * hidden * motion;
+                    if (checkBox1.Checked)
+                    {
+                        rawTotal = total * (1 + affinity * 0.40) * rawSharp * motion;
+                    }
+                    else
+                    {
+                        rawTotal = total * (1 + affinity * 0.25) * rawSharp * motion;
+                    }
+
+                    if (comboBox1.SelectedIndex == 0)
+                    {
+                        eleTotal = element * eleSharp;
+                    }
+                    else if (comboBox1.SelectedIndex == 1)
+                    {
+                        eleTotal = element * eleSharp * (1 + affinity * 0.2);
+                    }
+                    else if (comboBox1.SelectedIndex == 2)
+                    {
+                        eleTotal = element * eleSharp * (1 + affinity * 0.3);
+                    }
+                    else if (comboBox1.SelectedIndex == 3)
+                    {
+                        eleTotal = element * eleSharp * (1 + affinity * 0.35);
+                    }
+                    else if (comboBox1.SelectedIndex == 4)
+                    {
+                        eleTotal = element * eleSharp * (1 + affinity * 0.25);
+                    }
                 }
 
-                if(comboBox1.SelectedIndex == 0)
+                else if (PositiveSel.Checked)
                 {
-                    eleTotal = element * eleSharp * hidden;
+                    if (checkBox1.Checked)
+                    {
+                        rawTotal = total * 1.40 * rawSharp * motion;
+                    }
+                    else
+                    {
+                        rawTotal = total * 1.25 * rawSharp * motion;
+                    }
+
+                    if (comboBox1.SelectedIndex == 0)
+                    {
+                        eleTotal = element * eleSharp;
+                    }
+                    else if (comboBox1.SelectedIndex == 1)
+                    {
+                        eleTotal = element * eleSharp * 1.2;
+                    }
+                    else if (comboBox1.SelectedIndex == 2)
+                    {
+                        eleTotal = element * eleSharp * 1.3;
+                    }
+                    else if (comboBox1.SelectedIndex == 3)
+                    {
+                        eleTotal = element * eleSharp * 1.35;
+                    }
+                    else if (comboBox1.SelectedIndex == 4)
+                    {
+                        eleTotal = element * eleSharp * 1.25;
+                    }
+
                 }
-                else if(comboBox1.SelectedIndex == 1)
+
+                else if (NegativeSel.Checked)
                 {
-                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.2);
+                    rawTotal = total * 0.75 * rawSharp * motion;
+                    eleTotal = element * eleSharp;
                 }
-                else if(comboBox1.SelectedIndex == 2)
+
+                else if (NeutralSel.Checked)
                 {
-                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.3);
-                }
-                else if(comboBox1.SelectedIndex == 3)
-                {
-                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.35);
-                }
-                else if(comboBox1.SelectedIndex == 4)
-                {
-                    eleTotal = element * eleSharp * hidden * (1 + affinity * 0.25);
+                    rawTotal = total * rawSharp * motion;
+                    eleTotal = element * eleSharp;
                 }
             }
 
-            else if (PositiveSel.Checked)
+            else
             {
-                if (checkBox1.Checked)
-                {
-                    rawTotal = total * 1.40 * rawSharp * hidden * motion;
-                }
-                else
-                {
-                    rawTotal = total * 1.25 * rawSharp * hidden * motion;
-                }
-
-                if (comboBox1.SelectedIndex == 0)
-                {
-                    eleTotal = element * eleSharp * hidden;
-                }
-                else if (comboBox1.SelectedIndex == 1)
-                {
-                    eleTotal = element * eleSharp * hidden * 1.2;
-                }
-                else if (comboBox1.SelectedIndex == 2)
-                {
-                    eleTotal = element * eleSharp * hidden * 1.3;
-                }
-                else if (comboBox1.SelectedIndex == 3)
-                {
-                    eleTotal = element * eleSharp * hidden * 1.35;
-                }
-                else if (comboBox1.SelectedIndex == 4)
-                {
-                    eleTotal = element * eleSharp * hidden * 1.25;
-                }
-                
-            }
-
-            else if (NegativeSel.Checked)
-            {
-                rawTotal = total * 0.75 * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
-            }
-
-            else if (NeutralSel.Checked)
-            {
-                rawTotal = total * rawSharp * hidden * motion;
-                eleTotal = element * eleSharp * hidden;
+                return new Tuple<double, double>(total, element);
             }
 
             return new Tuple<double, double>(rawTotal, eleTotal);
@@ -488,7 +499,7 @@ namespace YADC_MHGen_
             }
 
             string item5 = "No";
-            if((rawZone * double.Parse(RawSharpField.Text)) > 0.25 )
+            if((rawZone * double.Parse(RawSharpField.Text)) > 0.25 || checkBox2.Checked)
             {
                 item5 = "No";
             }
@@ -684,7 +695,7 @@ namespace YADC_MHGen_
             kitchenItemModifiers.Add("Demon Affinity S",            Demon(3));
 #endif
             //Weapon Mods
-#if true
+#if false
             weaponModifiers.Add("Low Sharpness Modifier (0.6x)",        LSM(1));
             weaponModifiers.Add("Low Sharpness Modifier (0.7x)",        LSM(2));
             weaponModifiers.Add("GS - Center of Blade",                 GS(1));
@@ -709,6 +720,8 @@ namespace YADC_MHGen_
             weaponModifiers.Add("HH - Elem. Attack Boost Encore",       HH(6));
             weaponModifiers.Add("HH - Abnormal Boost Song",             HH(7));
             weaponModifiers.Add("HH - Abnormal Boost Encore",           HH(8));
+            weaponModifiers.Add("HH - Affinity Up Song",                HH(9));
+            weaponModifiers.Add("HH - Affinity Up Encore",              HH(10));
             weaponModifiers.Add("Lance - Enraged Guard (Yellow)",       Lance(1));
             weaponModifiers.Add("Lance - Enraged Guard (Orange)",       Lance(2));
             weaponModifiers.Add("Lance - Enraged Guard (Red)",          Lance(3));
@@ -755,7 +768,7 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Bow - Coating Boost",                  Bow(22));
 #endif
             //Other modifiers
-#if true
+#if false
             otherModifiers.Add("Frenzy", functionName());
 #endif
         }
@@ -2074,7 +2087,6 @@ namespace YADC_MHGen_
             if (skillVal == 1)
             {
                 weaponAndMods.rawSharpMod *= 1.06;
-                weaponAndMods.eleSharpMod *= 1.06;
             }
             else if (skillVal == 2)
             {
@@ -2089,16 +2101,65 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.mindsEye = true;
             }
+            else if (skillVal == 5)
+            {
+                weaponAndMods.affinity += 1.3;
+            }
+            else if (skillVal == 6)
+            {
+                weaponAndMods.KOPower += 8;
+                weaponAndMods.exhaustPower += 10;
+            }
+            else if (skillVal == 7)
+            {
+                weaponAndMods.mindsEye = true;
+            }
+            else if (skillVal == 8)
+            {
+                weaponAndMods.mindsEye = true;
+            }
             else
             {
                 return false;
             }
             return true;
         }
-        private bool functionName()
-        {
 
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox3.Checked)
+            {
+                sharpnessBox.SelectedIndex = 0;
+                sharpnessBox.Enabled = false;
+                comboBox1.SelectedIndex = 0;
+                comboBox1.Enabled = false;
+                AffinityField.Text = 0.ToString();
+                AffinityField.ReadOnly = true;
+                RawSharpField.Text = 1.0.ToString();
+                RawSharpField.ReadOnly = true;
+                EleSharpField.Text = 1.0.ToString();
+                EleSharpField.ReadOnly = true;
+                MVField.Text = 0.ToString();
+                MVField.ReadOnly = true;
+                HitzoneField.Text = 0.ToString();
+                HitzoneField.ReadOnly = true;
+            }
+            else
+            {
+                sharpnessBox.Enabled = true;
+                comboBox1.Enabled = true;
+                AffinityField.ReadOnly = false;
+                RawSharpField.ReadOnly = false;
+                EleSharpField.ReadOnly = false;
+                MVField.ReadOnly = false;
+                HitzoneField.ReadOnly = false;
+            }
         }
+
+        //private bool functionName()
+        //{
+
+        //}
 #endif
     }
 }
