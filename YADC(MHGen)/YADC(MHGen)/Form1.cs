@@ -87,6 +87,7 @@ namespace YADC_MHGen_
             public double KOHitzone;
             public double exhaustHitzone;
             public bool criticalBoost;
+            public bool mindsEye;
 
             public double rawMod;
             public double eleMod;
@@ -106,6 +107,7 @@ namespace YADC_MHGen_
         Dictionary<string, bool> armorModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to modifiers.
         Dictionary<string, bool> kitchenItemModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to kitchen modifiers.
         Dictionary<string, bool> weaponModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to weapon-specific modifiers.
+        Dictionary<string, bool> otherModifiers = new Dictionary<string, bool>(); //Will store other things.
 
         importedStats weaponAndMods = new importedStats();
 
@@ -683,67 +685,78 @@ namespace YADC_MHGen_
 #endif
             //Weapon Mods
 #if true
-            weaponModifiers.Add("Low Sharpness Modifier (0.6x)", functionName());
-            weaponModifiers.Add("Low Sharpness Modifier (0.7x)", functionName());
-            weaponModifiers.Add("GS - Center of Blade", functionName());
-            weaponModifiers.Add("GS - Lion's Maw", functionName());
-            weaponModifiers.Add("LS - Center of Blade", functionName());
-            weaponModifiers.Add("LS - Spirit Gauge ON", functionName());
-            weaponModifiers.Add("LS - Spirit Gauge (White)", functionName());
-            weaponModifiers.Add("LS - Spirit Gauge (Yellow)", functionName());
-            weaponModifiers.Add("LS - Spirit Gauge (Red)", functionName());
-            weaponModifiers.Add("SnS - Sword Sharpness", functionName());
-            weaponModifiers.Add("SnS - Affinity Oil", functionName());
-            weaponModifiers.Add("SnS - Stamina Oil", functionName());
-            weaponModifiers.Add("SnS - Mind's Eye Oil", functionName());
-            weaponModifiers.Add("HH - Attack Up (S) Song", functionName());
-            weaponModifiers.Add("HH - Attack Up (S) Encore", functionName());
-            weaponModifiers.Add("HH - Attack Up (L) Song", functionName());
-            weaponModifiers.Add("HH - Attack Up (L) Encore", functionName());
-            weaponModifiers.Add("Lance - Enraged Guard (Yellow)", functionName());
-            weaponModifiers.Add("Lance - Enraged Guard (Orange)", functionName());
-            weaponModifiers.Add("Lance - Enraged Guard (Red)", functionName());
-            weaponModifiers.Add("Lance - Impact/Cut Hitzone", functionName());
-            weaponModifiers.Add("GL - Dragon Breath", functionName());
-            weaponModifiers.Add("GL - Impact/Cut Hitzone", functionName());
-            weaponModifiers.Add("SA - Sword Mode", functionName());
-            weaponModifiers.Add("SA - Energy Charge", functionName());
-            weaponModifiers.Add("SA - Demon Riot 'Pwr'", functionName());
-            weaponModifiers.Add("SA - Demon Riot 'Ele'", functionName());
-            weaponModifiers.Add("SA - Demon Riot 'Drg'", functionName());
-            weaponModifiers.Add("SA - Demon Riot 'Sta'", functionName());
-            weaponModifiers.Add("CB - Red Shield", functionName());
-            weaponModifiers.Add("IG - Red (Balanced)", functionName());
-            weaponModifiers.Add("IG - Red/White", functionName());
-            weaponModifiers.Add("IG - Triple Up", functionName());
-            weaponModifiers.Add("Gunner - Normal Distance (1x)", functionName());
-            weaponModifiers.Add("Gunner - Critical Distance (1.5x)", functionName());
-            weaponModifiers.Add("Gunner - Long Range (0.8x)", functionName());
-            weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)", functionName());
-            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", functionName());
-            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (Non-Status)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Poison)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Para/Sleep)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (Non-Status)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Poison)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Para/Sleep)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (Non-Status)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Poison)", functionName());
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Para/Sleep)", functionName());
-            weaponModifiers.Add("Bow - Power C. Lvl. 1", functionName());
-            weaponModifiers.Add("Bow - Power C. Lvl. 2", functionName());
-            weaponModifiers.Add("Bow - Ele. C. Lvl. 1", functionName());
-            weaponModifiers.Add("Bow - Ele. C. Lvl. 2", functionName());
-            weaponModifiers.Add("Bow - Para. C.", functionName());
-            weaponModifiers.Add("Bow - Poison C.", functionName());
-            weaponModifiers.Add("Bow - Sleep C.", functionName());
-            weaponModifiers.Add("Bow - Blast C.", functionName());
-            weaponModifiers.Add("Bow - Exh. C.", functionName());
-            weaponModifiers.Add("Bow - Coating Boost", functionName());
+            weaponModifiers.Add("Low Sharpness Modifier (0.6x)",        LSM(1));
+            weaponModifiers.Add("Low Sharpness Modifier (0.7x)",        LSM(2));
+            weaponModifiers.Add("GS - Center of Blade",                 GS(1));
+            weaponModifiers.Add("GS - Lion's Maw I",                    GS(2));
+            weaponModifiers.Add("GS - Lion's Maw II",                   GS(3));
+            weaponModifiers.Add("GS - Lion's Maw III",                  GS(4));
+            weaponModifiers.Add("LS - Center of Blade",                 LS(1));
+            weaponModifiers.Add("LS - Spirit Gauge ON",                 LS(2));
+            weaponModifiers.Add("LS - Spirit Gauge (White)",            LS(3));
+            weaponModifiers.Add("LS - Spirit Gauge (Yellow)",           LS(4));
+            weaponModifiers.Add("LS - Spirit Gauge (Red)",              LS(5));
+            weaponModifiers.Add("SnS - Sword Sharpness",                SnS(1));
+            weaponModifiers.Add("SnS - Affinity Oil",                   SnS(2));
+            weaponModifiers.Add("SnS - Stamina Oil",                    SnS(3));
+            weaponModifiers.Add("SnS - Mind's Eye Oil",                 SnS(4));
+            weaponModifiers.Add("DB - Element Modifier (0.7x)",         DB());
+            weaponModifiers.Add("HH - Attack Up (S) Song",              HH(1));
+            weaponModifiers.Add("HH - Attack Up (S) Encore",            HH(2));
+            weaponModifiers.Add("HH - Attack Up (L) Song",              HH(3));
+            weaponModifiers.Add("HH - Attack Up (L) Encore",            HH(4));
+            weaponModifiers.Add("HH - Elem. Attack Boost Song",         HH(5));
+            weaponModifiers.Add("HH - Elem. Attack Boost Encore",       HH(6));
+            weaponModifiers.Add("HH - Abnormal Boost Song",             HH(7));
+            weaponModifiers.Add("HH - Abnormal Boost Encore",           HH(8));
+            weaponModifiers.Add("Lance - Enraged Guard (Yellow)",       Lance(1));
+            weaponModifiers.Add("Lance - Enraged Guard (Orange)",       Lance(2));
+            weaponModifiers.Add("Lance - Enraged Guard (Red)",          Lance(3));
+            weaponModifiers.Add("Lance - Impact/Cut Hitzone",           Lance(4));
+            weaponModifiers.Add("GL - Dragon Breath",                   GL(1));
+            weaponModifiers.Add("GL - Impact/Cut Hitzone",              GL(2));
+            weaponModifiers.Add("SA - Sword Mode",                      SA(1));
+            weaponModifiers.Add("SA - Energy Charge",                   SA(2));
+            weaponModifiers.Add("SA - Demon Riot 'Pwr'",                SA(3));
+            weaponModifiers.Add("SA - Demon Riot 'Ele'",                SA(4));
+            weaponModifiers.Add("SA - Demon Riot 'Drg'",                SA(5));
+            weaponModifiers.Add("SA - Demon Riot 'Sta'",                SA(6));
+            weaponModifiers.Add("CB - Red Shield",                      CB(1));
+            weaponModifiers.Add("IG - Red (Balanced)",                  IG(1));
+            weaponModifiers.Add("IG - Red/White",                       IG(2));
+            weaponModifiers.Add("IG - Triple Up",                       IG(3));
+            weaponModifiers.Add("Gunner - Normal Distance (1x)",        Gunner(1));
+            weaponModifiers.Add("Gunner - Critical Distance (1.5x)",    Gunner(2));
+            weaponModifiers.Add("Gunner - Long Range (0.8x)",           Gunner(3));
+            weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)",       Gunner(4));
+            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)",          LBG(1));
+            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)",          HBG(1));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)",     Bow(1));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)",        Bow(2));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)",    Bow(3));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (Non-Status)",     Bow(4));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Poison)",        Bow(5));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Para/Sleep)",    Bow(6));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (Non-Status)",     Bow(7));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Poison)",        Bow(8));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Para/Sleep)",    Bow(9));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (Non-Status)",     Bow(10));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Poison)",        Bow(11));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Para/Sleep)",    Bow(12));
+            weaponModifiers.Add("Bow - Power C. Lvl. 1",                Bow(13));
+            weaponModifiers.Add("Bow - Power C. Lvl. 2",                Bow(14));
+            weaponModifiers.Add("Bow - Ele. C. Lvl. 1",                 Bow(15));
+            weaponModifiers.Add("Bow - Ele. C. Lvl. 2",                 Bow(16));
+            weaponModifiers.Add("Bow - Para. C.",                       Bow(17));
+            weaponModifiers.Add("Bow - Poison C.",                      Bow(18));
+            weaponModifiers.Add("Bow - Sleep C.",                       Bow(19));
+            weaponModifiers.Add("Bow - Blast C.",                       Bow(20));
+            weaponModifiers.Add("Bow - Exh. C.",                        Bow(21));
+            weaponModifiers.Add("Bow - Coating Boost",                  Bow(22));
+#endif
+            //Other modifiers
+#if true
+            otherModifiers.Add("Frenzy", functionName());
 #endif
         }
 
@@ -1952,6 +1965,136 @@ namespace YADC_MHGen_
 #endif
         //Weapon Mods
 #if true
+        private bool LSM(int skillVal)
+        {
+            if(skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 0.6;
+            }
+            else if(skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 0.7;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool GS(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.05;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.1;
+            }
+            else if(skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.rawMod *= 1.33;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool LS(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.05;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.13;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 1.05;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.rawMod *= 1.1;
+            }
+            else if (skillVal == 5)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool SnS(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawSharpMod *= 1.06;
+                weaponAndMods.eleSharpMod *= 1.06;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.affinity += 1.3;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.KOPower += 8;
+                weaponAndMods.exhaustPower += 10;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.mindsEye = true;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool DB()
+        {
+            weaponAndMods.eleMod *= 0.7;
+            return true;
+        }
+
+        private bool HH(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawSharpMod *= 1.06;
+                weaponAndMods.eleSharpMod *= 1.06;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.affinity += 1.3;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.KOPower += 8;
+                weaponAndMods.exhaustPower += 10;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.mindsEye = true;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
         private bool functionName()
         {
 

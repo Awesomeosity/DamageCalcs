@@ -85,6 +85,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TypeField = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -182,7 +183,6 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
@@ -560,11 +560,11 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(6, 120);
+            this.label38.Location = new System.Drawing.Point(6, 114);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(83, 13);
+            this.label38.Size = new System.Drawing.Size(97, 26);
             this.label38.TabIndex = 128;
-            this.label38.Text = "Max Sharpness:";
+            this.label38.Text = "Max /\r\nCurrent Sharpness:";
             // 
             // label37
             // 
@@ -721,6 +721,16 @@
             this.groupBox3.TabIndex = 128;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Location = new System.Drawing.Point(9, 121);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(83, 17);
+            this.checkBox2.TabIndex = 133;
+            this.checkBox2.Text = "Mind\'s Eye?";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -1733,16 +1743,6 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(9, 121);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(83, 17);
-            this.checkBox2.TabIndex = 133;
-            this.checkBox2.Text = "Mind\'s Eye?";
-            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // DmgCalculator
             // 
