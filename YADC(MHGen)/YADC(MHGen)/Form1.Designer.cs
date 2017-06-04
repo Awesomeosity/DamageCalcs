@@ -39,21 +39,25 @@
             this.AffinityField = new System.Windows.Forms.TextBox();
             this.EleTip = new System.Windows.Forms.ToolTip(this.components);
             this.EleField = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.SharpnessTip = new System.Windows.Forms.ToolTip(this.components);
             this.HiddenTip = new System.Windows.Forms.ToolTip(this.components);
             this.AltTip = new System.Windows.Forms.ToolTip(this.components);
             this.WeaponAltField = new System.Windows.Forms.ComboBox();
             this.AltDamageField = new System.Windows.Forms.ComboBox();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.HitTip = new System.Windows.Forms.ToolTip(this.components);
             this.HitzoneField = new System.Windows.Forms.TextBox();
             this.EleHitTip = new System.Windows.Forms.ToolTip(this.components);
             this.EleZoneField = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.QuestTip = new System.Windows.Forms.ToolTip(this.components);
             this.QuestField = new System.Windows.Forms.TextBox();
             this.KOTip = new System.Windows.Forms.ToolTip(this.components);
             this.KOField = new System.Windows.Forms.TextBox();
             this.ExhaustTip = new System.Windows.Forms.ToolTip(this.components);
             this.ExhaustField = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.KOZoneField = new System.Windows.Forms.TextBox();
             this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
@@ -84,6 +88,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TypeField = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.UpdateButt = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
@@ -103,12 +113,21 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.BounceLabel = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
@@ -181,25 +200,6 @@
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label56 = new System.Windows.Forms.Label();
-            this.label57 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label58 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label59 = new System.Windows.Forms.Label();
-            this.label60 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label61 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
@@ -207,6 +207,8 @@
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.KOBox)).BeginInit();
@@ -217,8 +219,6 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ErrorPreventer
@@ -240,7 +240,7 @@
             // 
             // MVField
             // 
-            this.MVField.Location = new System.Drawing.Point(316, 149);
+            this.MVField.Location = new System.Drawing.Point(316, 110);
             this.MVField.Name = "MVField";
             this.MVField.Size = new System.Drawing.Size(95, 20);
             this.MVField.TabIndex = 110;
@@ -248,6 +248,7 @@
             this.MVField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.MotionTip.SetToolTip(this.MVField, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
         "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
+            this.MVField.TextChanged += new System.EventHandler(this.MVField_TextChanged);
             this.MVField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.MVField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -276,6 +277,17 @@
         "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             this.EleField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.EleField.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(214, 149);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(96, 20);
+            this.textBox5.TabIndex = 142;
+            this.textBox5.Text = "0";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.textBox5, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             // 
             // WeaponAltField
             // 
@@ -323,6 +335,29 @@
         "ludes KO and Exhaust.");
             this.AltDamageField.SelectedIndexChanged += new System.EventHandler(this.AltDamageField_SelectedIndexChanged);
             // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "(None)",
+            "Fire",
+            "Water",
+            "Ice",
+            "Thunder",
+            "Dragon",
+            "Poison",
+            "Para",
+            "Sleep",
+            "Blast"});
+            this.comboBox4.Location = new System.Drawing.Point(112, 149);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(96, 21);
+            this.comboBox4.TabIndex = 140;
+            this.AltTip.SetToolTip(this.comboBox4, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+        "ludes KO and Exhaust.");
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
             // HitzoneField
             // 
             this.HitzoneField.Location = new System.Drawing.Point(9, 32);
@@ -347,6 +382,17 @@
         "ental Hitzones.");
             this.EleZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.EleZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(9, 110);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(96, 20);
+            this.textBox7.TabIndex = 91;
+            this.textBox7.Text = "0";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleHitTip.SetToolTip(this.textBox7, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
+        "ental Hitzones.");
             // 
             // QuestField
             // 
@@ -386,6 +432,17 @@
             this.ExhaustTip.SetToolTip(this.ExhaustField, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             this.ExhaustField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.ExhaustField.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(417, 110);
+            this.textBox6.MaxLength = 3;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(96, 20);
+            this.textBox6.TabIndex = 143;
+            this.textBox6.Text = "1";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.textBox6, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             // 
             // KOZoneField
             // 
@@ -736,6 +793,62 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
             // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(210, 133);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(82, 13);
+            this.label58.TabIndex = 141;
+            this.label58.Text = "2nd Ele. Power:";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(109, 133);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(93, 13);
+            this.label57.TabIndex = 139;
+            this.label57.Text = "DB - 2nd Element:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(418, 149);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(96, 20);
+            this.textBox4.TabIndex = 138;
+            this.textBox4.Text = "0";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(415, 133);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(53, 13);
+            this.label56.TabIndex = 137;
+            this.label56.Text = "Total MV:";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(415, 94);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(80, 13);
+            this.label54.TabIndex = 136;
+            this.label54.Text = "Number of Hits:";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(9, 149);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(100, 17);
+            this.checkBox3.TabIndex = 134;
+            this.checkBox3.Text = "Fixed Damage?";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            // 
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
@@ -801,7 +914,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(313, 133);
+            this.label1.Location = new System.Drawing.Point(316, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 111;
@@ -942,6 +1055,39 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
             // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 94);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(115, 13);
+            this.label63.TabIndex = 92;
+            this.label63.Text = "DB - 2nd. Ele. Hitzone:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(125, 94);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(81, 13);
+            this.label10.TabIndex = 90;
+            this.label10.Text = "Monster Status:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Normal",
+            "Pitfall Trapped",
+            "Sleeping (Bomb)",
+            "Sleeping (Else)",
+            "Paralyzed"});
+            this.comboBox2.Location = new System.Drawing.Point(128, 110);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(96, 21);
+            this.comboBox2.TabIndex = 89;
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -1029,6 +1175,64 @@
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(463, 119);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 144;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label61
+            // 
+            this.label61.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label61.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label61.Location = new System.Drawing.Point(364, 121);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(96, 20);
+            this.label61.TabIndex = 143;
+            this.label61.Text = "0";
+            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(361, 104);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(105, 13);
+            this.label62.TabIndex = 142;
+            this.label62.Text = "DB - 2nd Ele. Output";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(222, 121);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 141;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label59
+            // 
+            this.label59.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label59.Location = new System.Drawing.Point(120, 120);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(96, 20);
+            this.label59.TabIndex = 140;
+            this.label59.Text = "0";
+            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(117, 103);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(113, 13);
+            this.label60.TabIndex = 139;
+            this.label60.Text = "DB - 2nd Ele. Damage";
             // 
             // label48
             // 
@@ -1759,209 +1963,6 @@
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(9, 149);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(100, 17);
-            this.checkBox3.TabIndex = 134;
-            this.checkBox3.Text = "Fixed Damage?";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "Normal",
-            "Pitfall Trapped",
-            "Sleeping (Bomb)",
-            "Sleeping (Else)",
-            "Paralyzed"});
-            this.comboBox2.Location = new System.Drawing.Point(128, 110);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(96, 21);
-            this.comboBox2.TabIndex = 89;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(125, 94);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(81, 13);
-            this.label10.TabIndex = 90;
-            this.label10.Text = "Monster Status:";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(415, 94);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(80, 13);
-            this.label54.TabIndex = 136;
-            this.label54.Text = "Number of Hits:";
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(316, 110);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(96, 20);
-            this.textBox4.TabIndex = 138;
-            this.textBox4.Text = "0";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label56
-            // 
-            this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(313, 94);
-            this.label56.Name = "label56";
-            this.label56.Size = new System.Drawing.Size(53, 13);
-            this.label56.TabIndex = 137;
-            this.label56.Text = "Total MV:";
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(109, 133);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(93, 13);
-            this.label57.TabIndex = 139;
-            this.label57.Text = "DB - 2nd Element:";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "(None)",
-            "Fire",
-            "Water",
-            "Ice",
-            "Thunder",
-            "Dragon",
-            "Poison",
-            "Para",
-            "Sleep",
-            "Blast"});
-            this.comboBox4.Location = new System.Drawing.Point(112, 149);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(96, 21);
-            this.comboBox4.TabIndex = 140;
-            this.AltTip.SetToolTip(this.comboBox4, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(210, 133);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(82, 13);
-            this.label58.TabIndex = 141;
-            this.label58.Text = "2nd Ele. Power:";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(214, 149);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(96, 20);
-            this.textBox5.TabIndex = 142;
-            this.textBox5.Text = "0";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.textBox5, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
-        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(222, 121);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 141;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label59
-            // 
-            this.label59.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label59.Location = new System.Drawing.Point(120, 120);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(96, 20);
-            this.label59.TabIndex = 140;
-            this.label59.Text = "0";
-            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(117, 103);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(113, 13);
-            this.label60.TabIndex = 139;
-            this.label60.Text = "DB - 2nd Ele. Damage";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(417, 110);
-            this.textBox6.MaxLength = 3;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(96, 20);
-            this.textBox6.TabIndex = 143;
-            this.textBox6.Text = "0";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.textBox6, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Location = new System.Drawing.Point(463, 119);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 144;
-            this.pictureBox2.TabStop = false;
-            // 
-            // label61
-            // 
-            this.label61.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label61.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label61.Location = new System.Drawing.Point(364, 121);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(96, 20);
-            this.label61.TabIndex = 143;
-            this.label61.Text = "0";
-            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(361, 104);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(105, 13);
-            this.label62.TabIndex = 142;
-            this.label62.Text = "DB - 2nd Ele. Output";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(6, 94);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(115, 13);
-            this.label63.TabIndex = 92;
-            this.label63.Text = "DB - 2nd. Ele. Hitzone:";
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(9, 110);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(96, 20);
-            this.textBox7.TabIndex = 91;
-            this.textBox7.Text = "0";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleHitTip.SetToolTip(this.textBox7, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
-        "ental Hitzones.");
-            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1990,6 +1991,8 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.KOBox)).EndInit();
@@ -2004,8 +2007,6 @@
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

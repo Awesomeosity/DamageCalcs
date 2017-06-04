@@ -124,7 +124,7 @@ namespace YADC_MHGen_
 
         Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
         Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
-        Dictionary<string, double> monsterStats = new Dictionary<string, double>(); //Stores conversion of string to multipliers, used for the monster's status.
+        Dictionary<string, double> monsterStatus = new Dictionary<string, double>(); //Stores conversion of string to multipliers, used for the monster's status.
         Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
         Dictionary<string, List<moveStat>> type2Moves = new Dictionary<string, List<moveStat>>(); //Stores conversion of weapon types to moves.
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
@@ -212,10 +212,11 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void CalcButt_Click(object sender, System.EventArgs e)
         {
-            Tuple<double, double> rawEleOut = calculateDamage(); //Helper function.
+            Tuple<double, double, double> rawEleOut = calculateDamage(); //Helper function.
 
             RawOut.Text = rawEleOut.Item1.ToString(); //Used the Tuple output from the function to fill in the labels.
             EleOut.Text = rawEleOut.Item2.ToString();
+            label59.Text = rawEleOut.Item3.ToString();
         }
 
         /*CalcAll Functions*/
@@ -226,21 +227,24 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
-            Tuple<double, double> rawEleTuple = calculateDamage(); //Use helper function.
-            Tuple<double, double, double, double, string> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2); //Another one.
+            Tuple<double, double, double> rawEleTuple = calculateDamage(); //Use helper function.
+            Tuple<double, double, double, double, double, string, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2, rawEleTuple.Item3); //Another one.
 
             RawOut.Text = rawEleTuple.Item1.ToString(); //Do as the CalcButt function does
             EleOut.Text = rawEleTuple.Item2.ToString();
+            label59.Text = rawEleTuple.Item3.ToString();
 
-            FinalRawField.Text = finalTuple.Item1.ToString(); //But with use of the outputted tuple from the moreDamage function.
-            FinalEleField.Text = finalTuple.Item2.ToString();
+            FinalRawField.Text = finalTuple.Item2.ToString(); //But with use of the outputted tuple from the moreDamage function.
+            FinalEleField.Text = finalTuple.Item3.ToString();
 
-            KOOut.Text = finalTuple.Item3.ToString();
-            ExhaustOut.Text = finalTuple.Item4.ToString();
+            KOOut.Text = finalTuple.Item4.ToString();
+            ExhaustOut.Text = finalTuple.Item5.ToString();
 
-            FinalField.Text = Math.Floor(finalTuple.Item1 + finalTuple.Item2).ToString();
+            label61.Text = finalTuple.Item7.ToString();
 
-            BounceLabel.Text = finalTuple.Item5;
+            FinalField.Text = finalTuple.Item1.ToString();
+
+            BounceLabel.Text = finalTuple.Item6;
         }
 
         /// <summary>
@@ -264,6 +268,7 @@ namespace YADC_MHGen_
                 if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast") //If the element is a status
                 {
                     EleZoneField.ReadOnly = true;
+                    EleZoneField.Text = 0.ToString();
                 }
                 else
                 {
@@ -308,6 +313,7 @@ namespace YADC_MHGen_
                 if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast") //If the element is a status
                 {
                     textBox7.ReadOnly = true;
+                    textBox7.Text = 0.ToString();
                 }
                 else
                 {
@@ -583,20 +589,22 @@ namespace YADC_MHGen_
         /// This function calculates damage before considering the monster parameters.
         /// </summary>
         /// <returns>A Tuple storing the Raw and Elemental damage outputs.</returns>
-        private Tuple<double, double> calculateDamage()
+        private Tuple<double, double, double> calculateDamage()
         {
             double total = double.Parse(RawField.Text);
             double motion = double.Parse(MVField.Text) * 0.01;
             double affinity = double.Parse(AffinityField.Text) * 0.01;
             double element = double.Parse(EleField.Text);
+            double DBElement = double.Parse(textBox5.Text);
 
             double rawSharp = double.Parse(RawSharpField.Text);
             double eleSharp = double.Parse(EleSharpField.Text);
 
             double rawTotal = 0;
             double eleTotal = 0;
+            double DBTotal = 0;
 
-            if(!checkBox3.Checked)
+            if(!checkBox3.Checked) //If fixed damage is not in play
             {
                 if (AverageSel.Checked)
                 {
@@ -609,25 +617,30 @@ namespace YADC_MHGen_
                         rawTotal = total * (1 + affinity * 0.25) * rawSharp * motion;
                     }
 
-                    if (comboBox1.SelectedIndex == 0)
+                    if (comboBox1.SelectedIndex == 0) //ComboBox1 stores Elemental Crit status.
                     {
                         eleTotal = element * eleSharp;
+                        DBTotal = DBElement * eleSharp;
                     }
                     else if (comboBox1.SelectedIndex == 1)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.2);
+                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.2);
                     }
                     else if (comboBox1.SelectedIndex == 2)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.3);
+                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.3);
                     }
                     else if (comboBox1.SelectedIndex == 3)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.35);
+                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.35);
                     }
                     else if (comboBox1.SelectedIndex == 4)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.25);
+                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.25);
                     }
                 }
 
@@ -645,22 +658,27 @@ namespace YADC_MHGen_
                     if (comboBox1.SelectedIndex == 0)
                     {
                         eleTotal = element * eleSharp;
+                        DBTotal = DBElement * eleSharp;
                     }
                     else if (comboBox1.SelectedIndex == 1)
                     {
                         eleTotal = element * eleSharp * 1.2;
+                        DBTotal = DBElement * eleSharp * 1.2;
                     }
                     else if (comboBox1.SelectedIndex == 2)
                     {
                         eleTotal = element * eleSharp * 1.3;
+                        DBTotal = DBElement * eleSharp * 1.3;
                     }
                     else if (comboBox1.SelectedIndex == 3)
                     {
                         eleTotal = element * eleSharp * 1.35;
+                        DBTotal = DBElement * eleSharp * 1.35;
                     }
                     else if (comboBox1.SelectedIndex == 4)
                     {
                         eleTotal = element * eleSharp * 1.25;
+                        DBTotal = DBElement * eleSharp * 1.25;
                     }
 
                 }
@@ -669,30 +687,32 @@ namespace YADC_MHGen_
                 {
                     rawTotal = total * 0.75 * rawSharp * motion;
                     eleTotal = element * eleSharp;
+                    DBTotal = DBElement * eleSharp;
                 }
 
                 else if (NeutralSel.Checked)
                 {
                     rawTotal = total * rawSharp * motion;
                     eleTotal = element * eleSharp;
+                    DBTotal = DBElement * eleSharp;
                 }
             }
 
-            else
+            else //If it is in play
             {
-                return new Tuple<double, double>(total, element);
+                return new Tuple<double, double, double>(total, element, DBElement);
             }
 
-            return new Tuple<double, double>(rawTotal, eleTotal);
+            return new Tuple<double, double, double>(rawTotal, eleTotal, DBTotal);
         }
 
         /// <summary>
         /// This function calculates the damage with hitzones.
         /// </summary>
-        /// <param name="item1">Raw damage.</param>
-        /// <param name="item2">Elemental damage.</param>
-        /// <returns>A Tuple storing the raw, element, KO, exhaust, and bounce status of the attack after calculations.</returns>
-        private Tuple<double, double, double, double, string> calculateMoreDamage(double item1, double item2)
+        /// <param name="rawDamage">Raw damage.</param>
+        /// <param name="elementalDamage">Elemental damage.</param>
+        /// <returns>A Tuple storing the total, raw, element, DB's second element, KO, exhaust, and bounce status of the attack after calculations.</returns>
+        private Tuple<double, double, double, double, double, string, double> calculateMoreDamage(double rawDamage, double elementalDamage, double DBElement)
         {
             double rawZone = double.Parse(HitzoneField.Text) * 0.01;
             double eleZone = double.Parse(EleZoneField.Text) * 0.01;
@@ -701,47 +721,51 @@ namespace YADC_MHGen_
             double KOZone = double.Parse(KOZoneField.Text) * 0.01;
             double ExhaustZone = double.Parse(ExhaustZoneField.Text) * 0.01;
             double questMod = double.Parse(QuestField.Text);
-            double item3 = KODam * KOZone;
-            double item4 = ExhDam * ExhaustZone;
-            string item5 = "No";
+
+            rawDamage *= monsterStatus[(string)comboBox2.SelectedItem];
+            double totaldamage = rawDamage;
+            double KODamage = KODam * KOZone;
+            double ExhDamage = ExhDam * ExhaustZone;
+            string BounceBool = "No";
 
             if (!checkBox3.Checked)
             {
-                item1 = item1 * rawZone * questMod;
-                
-
-                string element = (string)AltDamageField.SelectedItem;
-                if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
-                {
-                    item2 = item2 * eleZone * questMod;
-                }
-
+                rawDamage = rawDamage * rawZone * questMod;
                 
                 if ((rawZone * double.Parse(RawSharpField.Text)) > 0.25 || checkBox2.Checked)
                 {
-                    item5 = "No";
+                    BounceBool = "No";
                 }
                 else
                 {
-                    item5 = "Yes";
+                    BounceBool = "Yes";
                 }
             }
             else
             {
-                item1 *= questMod;
-
+                rawDamage *= questMod;
             }
-            
 
-            return new Tuple<double, double, double, double, string>(item1, item2, item3, item4, item5);
-        }
+            string element = (string)AltDamageField.SelectedItem;
+            if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
+            {
+                elementalDamage = elementalDamage * eleZone * questMod;
+                totaldamage = rawDamage + elementalDamage;
+            }
 
-        /// <summary>
-        /// Updates the calculation fields. Should be called when a change is made.
-        /// </summary>
-        private void UpdateCalcFields()
-        {
-            throw new NotImplementedException();
+            if(comboBox4.Text != "(None)") //For DB's Second Element
+            {
+                string altElement = (string)comboBox4.SelectedItem;
+                if(altElement != "Poison" && altElement != "Para" && altElement != "Sleep" && altElement != "Blast")
+                {
+                    DBElement = DBElement * eleZone * questMod;
+                    totaldamage += DBElement;
+                }
+            }
+
+            totaldamage = Math.Floor(totaldamage);
+
+            return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
 
         /// <summary>
@@ -767,6 +791,12 @@ namespace YADC_MHGen_
             str2image.Add("Sleep",      "./Images/Sleep.png");
             str2image.Add("Para",       "./Images/Para.png");
             str2image.Add("Blast",      "./Images/Blast.png");
+
+            monsterStatus.Add("Normal", 1);
+            monsterStatus.Add("Pitfall Trapped", 1.1);
+            monsterStatus.Add("Sleeping (Bomb)", 3);
+            monsterStatus.Add("Sleeping (Else)", 2);
+            monsterStatus.Add("Paralyzed", 1.1);
 
             //Armor skills section
 #if false
@@ -2308,7 +2338,17 @@ namespace YADC_MHGen_
             return true;
         }
 
-        
+        /// <summary>
+        /// Updates the Total MV Text Field when text is changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MVField_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         //private bool functionName()
         //{
