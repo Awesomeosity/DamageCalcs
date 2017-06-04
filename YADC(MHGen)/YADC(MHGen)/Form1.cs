@@ -27,6 +27,17 @@ namespace YADC_MHGen_
             public string sharpness1;
             public string sharpness2;
 
+            /// <summary>
+            /// Secondary constructor used while reading the database.
+            /// </summary>
+            /// <param name="_level">Incoming level.</param>
+            /// <param name="_attack">Attack power of the weapon at the enclosing level.</param>
+            /// <param name="_sharpness">Maximum sharpness of the weapon at the enclosing level.</param>
+            /// <param name="_affinity">Amount of affinity at the level.</param>
+            /// <param name="_elementalType">The secondary damage type of the weapon, element or status.</param>
+            /// <param name="_elementalDamage">The amount of elemental damage done.</param>
+            /// <param name="_sharpness1">The maximum level of sharpness with Sharpness +1</param>
+            /// <param name="_sharpness2">The maximum level of sharpness with Sharpness +2</param>
             public stats(int _level, int _attack, string _sharpness, int _affinity, string _elementalType, int _elementalDamage, string _sharpness1, string _sharpness2)
             {
                 level = _level;
@@ -67,6 +78,20 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// TODO
+        /// Stores the stats of a single hitzone.
+        /// </summary>
+        public struct monsterStat
+        {
+            
+        }
+
+        /// <summary>
+        /// Stores the relevant variables from the database portion of the application to
+        /// import to the calculator portion.
+        /// No ctor. Will be filled in when the UpdateButt is clicked.
+        /// </summary>
         public struct importedStats
         {
             public string sharpness;
@@ -89,52 +114,64 @@ namespace YADC_MHGen_
             public bool criticalBoost;
             public bool mindsEye;
 
-            public double rawMod;
-            public double eleMod;
-            public double expMod;
-            public double staMod;
-            public bool CB;
-            public bool DemonRiot;
+            public double rawMod; //Stores the multiplier of the raw damage.
+            public double eleMod; //Stores the elemental multiplier. Has a cap of 1.2x, surpassed when used Demon Riot on an Element Phial SA.
+            public double expMod; //Stores the explosive multiplier. Has a cap of 1.3x, 1.4x when considering Impact Phial CB.
+            public double staMod; //Stores the status multiplier. Has a cap of 1.25x, surpassed when using Demon Riot on a Status Phial SA.
+            public bool CB; //Shows whether or not the explosive multiplier should be increased because Impact Phials are being used. 
+            public bool DemonRiot; //Shows whether or not Demon Riot is being used.
         }
 
         Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
         Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
+        Dictionary<string, double> monsterStats = new Dictionary<string, double>(); //Stores conversion of string to multipliers, used for the monster's status.
         Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
         Dictionary<string, List<moveStat>> type2Moves = new Dictionary<string, List<moveStat>>(); //Stores conversion of weapon types to moves.
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
-        Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //God forgive me. This will store a mapping of names to a list of stats by levels.
+        Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //This will store a mapping of names to a list of stats by levels.
         Dictionary<string, bool> armorModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to modifiers.
         Dictionary<string, bool> kitchenItemModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to kitchen modifiers.
         Dictionary<string, bool> weaponModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to weapon-specific modifiers.
         Dictionary<string, bool> otherModifiers = new Dictionary<string, bool>(); //Will store other things.
 
-        importedStats weaponAndMods = new importedStats();
+        importedStats weaponAndMods = new importedStats(); //Will be used later. Required to be global for the modifier methods.
 
+        /// <summary>
+        /// Called when initializing the form.
+        /// </summary>
         public DmgCalculator()
         {
-            InitializeComponent();
-            FillOut();
-            readFiles();
-            checkBox1.Checked = false;
+            InitializeComponent(); //Required.
+            FillOut(); //Fills out dictionaries.
+            readFiles(); //Read the xml files and fills out the database.
+            checkBox1.Checked = false; //Force checkboxes to be unchecked on initialization.
             checkBox2.Checked = false;
             checkBox3.Checked = false;
-            sharpnessBox.SelectedIndex = 0;
+            sharpnessBox.SelectedIndex = 0; //Force comboBoxes to be set to a certain position.
             AltDamageField.SelectedIndex = 0;
             MindsField.SelectedIndex = 1;
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
-            AverageSel.Select();
-            ElementBox.Image = null;
+            comboBox4.SelectedIndex = 0;
+            AverageSel.Select(); //Force selection of a radio button.
+            ElementBox.Image = null; //Force clear of picture boxes.
             FinalEleBox.Image = null;
             EleLabelBox.Image = null;
-            EleZoneField.ReadOnly = true;
-            EleOut.BackColor = SystemColors.Control;
+            pictureBox1.Image = null;
+            pictureBox2.Image = null;
+            EleZoneField.ReadOnly = true; //Force readonly to be true on elemental boxes (Assume just raw damage on startup)
+            textBox5.ReadOnly = true;
+            textBox7.ReadOnly = true;
+            EleOut.BackColor = SystemColors.Control; //These are labels, which means we need to change the background color instead.
             FinalEleField.BackColor = SystemColors.Control;
-            KOBox.Load("./Images/KO.png");
+            label59.BackColor = SystemColors.Control;
+            label61.BackColor = SystemColors.Control;
+            KOBox.Load("./Images/KO.png"); //Load the images from the folder.
             ExhaustBox.Load("./Images/Exhaust.png");
             KOBox2.Load("./Images/KO.png");
             ExhaustBox2.Load("./Images/Exhaust.png");
+            comboBox4.Enabled = false;
         }
 
         //EVENT FUNCTIONS
@@ -143,7 +180,7 @@ namespace YADC_MHGen_
         /// If no, then throws an error.
         /// If yes, then allows the user to continue.
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">Any field in which the user can input numbers.</param>
         /// <param name="e"></param>
         private void GenericField_Validating(object sender, CancelEventArgs e)
         {
@@ -160,7 +197,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Resets the ErrorPreventer if the input is correct.
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">Any field in which the user can input numbers.</param>
         /// <param name="e"></param>
         private void GenericField_Validated(object sender, System.EventArgs e)
         {
@@ -168,24 +205,34 @@ namespace YADC_MHGen_
         }
 
         /*CalcButt Functions*/
+        /// <summary>
+        /// Executed when the calculate output button is clicked.
+        /// </summary>
+        /// <param name="sender">Should only be the 'Calculate Output' button.</param>
+        /// <param name="e"></param>
         private void CalcButt_Click(object sender, System.EventArgs e)
         {
-            Tuple<double, double> rawEleOut = calculateDamage();
+            Tuple<double, double> rawEleOut = calculateDamage(); //Helper function.
 
-            RawOut.Text = rawEleOut.Item1.ToString();
+            RawOut.Text = rawEleOut.Item1.ToString(); //Used the Tuple output from the function to fill in the labels.
             EleOut.Text = rawEleOut.Item2.ToString();
         }
 
         /*CalcAll Functions*/
+        /// <summary>
+        /// Executed when the 'Calculate All' button is clicked.
+        /// </summary>
+        /// <param name="sender">Should only be the 'Calculate All' button.</param>
+        /// <param name="e"></param>
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
-            Tuple<double, double> rawEleTuple = calculateDamage();
-            Tuple<double, double, double, double, string> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2);
+            Tuple<double, double> rawEleTuple = calculateDamage(); //Use helper function.
+            Tuple<double, double, double, double, string> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2); //Another one.
 
-            RawOut.Text = rawEleTuple.Item1.ToString();
+            RawOut.Text = rawEleTuple.Item1.ToString(); //Do as the CalcButt function does
             EleOut.Text = rawEleTuple.Item2.ToString();
 
-            FinalRawField.Text = finalTuple.Item1.ToString();
+            FinalRawField.Text = finalTuple.Item1.ToString(); //But with use of the outputted tuple from the moreDamage function.
             FinalEleField.Text = finalTuple.Item2.ToString();
 
             KOOut.Text = finalTuple.Item3.ToString();
@@ -196,10 +243,16 @@ namespace YADC_MHGen_
             BounceLabel.Text = finalTuple.Item5;
         }
 
+        /// <summary>
+        /// Changes several control elements on the form when the alternate damage form is changed.
+        /// Changes the picture boxes and relevant fields to be not read-only if an element is selected.
+        /// </summary>
+        /// <param name="sender">Should only be the AltDamageField text box.</param>
+        /// <param name="e"></param>
         private void AltDamageField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string element = (string)((ComboBox)sender).SelectedItem;
-            if (element != "(None)")
+            if (element != "(None)") //If there is an element
             {
                 string path = str2image[element];
                 ElementBox.Load(path);
@@ -208,7 +261,7 @@ namespace YADC_MHGen_
                 EleOut.BackColor = SystemColors.ControlLightLight;
                 FinalEleField.BackColor = SystemColors.ControlLightLight;
 
-                if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast")
+                if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast") //If the element is a status
                 {
                     EleZoneField.ReadOnly = true;
                 }
@@ -216,9 +269,11 @@ namespace YADC_MHGen_
                 {
                     EleZoneField.ReadOnly = false;
                 }
+
+                comboBox4.Enabled = true;
             }
 
-            else
+            else //If there isn't an element
             {
                 ElementBox.Image = null;
                 FinalEleBox.Image = null;
@@ -228,29 +283,69 @@ namespace YADC_MHGen_
                 EleZoneField.ReadOnly = true;
                 EleField.Text = 0.ToString();
                 EleZoneField.Text = 0.ToString();
+                comboBox4.Enabled = false;
+                comboBox4.SelectedIndex = 0;
+            }
+        }
+
+        /// <summary>
+        /// Like the above, but for a DB's secondary element.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string element = (string)((ComboBox)sender).SelectedItem;
+            if (element != "(None)") //If there is an element
+            {
+                string path = str2image[element];
+                pictureBox1.Load(path);
+                pictureBox2.Load(path);
+                textBox5.ReadOnly = false;
+                label59.BackColor = SystemColors.ControlLightLight;
+                label61.BackColor = SystemColors.ControlLightLight;
+
+                if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast") //If the element is a status
+                {
+                    textBox7.ReadOnly = true;
+                }
+                else
+                {
+                    textBox7.ReadOnly = false;
+                }
+            }
+
+            else //If there isn't an element
+            {
+                pictureBox1.Image = null;
+                pictureBox2.Image = null;
+                label59.BackColor = System.Drawing.SystemColors.Control;
+                label61.BackColor = System.Drawing.SystemColors.Control;
+                textBox5.ReadOnly = true;
+                textBox7.ReadOnly = true;
+                textBox5.Text = 0.ToString();
+                textBox7.Text = 0.ToString();
             }
         }
 
         /// <summary>
         /// Here, I want to set the weapon field's collection to a specific one, based on what was selected here.
         /// </summary>
-        /// <param name="sender"></param>
+        /// <param name="sender">Should only be the TypeField comboBox.</param>
         /// <param name="e"></param>
         private void TypeField_SelectedIndexChanged(object sender, EventArgs e)
         {
             WeaponField.Items.Clear();
             foreach (string weapons in type2Weapons[(string)((ComboBox)sender).SelectedItem])
             {
-                WeaponField.Items.Add(weapons);
+                WeaponField.Items.Add(weapons); //Fill in weapon names
             }
 
             WeaponFinalField.Items.Clear();
             foreach (string names in WeaponField.Items)
             {
-                WeaponFinalField.Items.Add(names2FinalNames[names]);
+                WeaponFinalField.Items.Add(names2FinalNames[names]); //Fill in weapon names at final forms.
             }
-
-            //TODO: Add Movelist to movelist box here.
 
             NameSort.Items.Clear();
             MotionSort.Items.Clear();
@@ -259,14 +354,14 @@ namespace YADC_MHGen_
             List<moveStat> tempListMotion = new List<moveStat>();
             List<moveStat> tempListCombo = new List<moveStat>();
 
-            foreach (moveStat moves in type2Moves[(string)((ComboBox)sender).SelectedItem])
+            foreach (moveStat moves in type2Moves[(string)((ComboBox)sender).SelectedItem]) //Fills out the moves for the move search box.
             {
                 NameSort.Items.Add(moves.name);
                 tempListMotion.Add(moves);
                 tempListCombo.Add(moves);
             }
 
-            quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1);
+            quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
             quickSortVar2(tempListCombo, 1, tempListCombo.Count - 1);
 
             foreach(moveStat moves in tempListMotion)
@@ -280,6 +375,11 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Adds levels of the weapon selected to the level selection box.
+        /// </summary>
+        /// <param name="sender">Should always be the WeaponField comboBox</param>
+        /// <param name="e"></param>
         private void WeaponField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string weaponName = (string)((ComboBox)sender).SelectedItem;
@@ -295,6 +395,11 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// This should only tell the weapon field to change its index, so that its event triggers.
+        /// </summary>
+        /// <param name="sender">Only WeaponFinalField</param>
+        /// <param name="e"></param>
         private void WeaponFinalField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string weaponFinalName = (string)((ComboBox)sender).SelectedItem;
@@ -304,6 +409,13 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Controls the sharpness box in the hunter parameters. Should automatically change the eleSharp and rawSharp boxes.
+        /// Note to self: If this event fires and forces those boxes to have sharpness mods equivalent to the sharpness,
+        /// and not considers other sharpness modifiers, look here first.
+        /// </summary>
+        /// <param name="sender">sharpnessBox Only.</param>
+        /// <param name="e"></param>
         private void sharpnessBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sharpness = (string)((ComboBox)sender).SelectedItem;
@@ -311,6 +423,11 @@ namespace YADC_MHGen_
             EleSharpField.Text = sharpnessValues[sharpness].Item2.ToString();
         }
 
+        /// <summary>
+        /// After a level is chosen, updates the Weapon Base Stats groupbox controls to have correct values.
+        /// </summary>
+        /// <param name="sender">Only LevelField.</param>
+        /// <param name="e"></param>
         private void LevelField_SelectedIndexChanged(object sender, EventArgs e)
         {
             int weaponLevel = (int)((ComboBox)sender).SelectedItem;
@@ -330,6 +447,11 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Changes the elemental picture box in weaponBaseStats.
+        /// </summary>
+        /// <param name="sender">Only Weapon AltField.</param>
+        /// <param name="e"></param>
         private void WeaponAltField_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((string)((ComboBox)sender).SelectedItem != "(None)")
@@ -340,6 +462,98 @@ namespace YADC_MHGen_
             else
             {
                 EleLabelBox.Image = null;
+            }
+        }
+
+        /// <summary>
+        /// Disables some controls or reenables them, depending on the status of the check box.
+        /// This check box controls if the damage is fixed-type.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox3.Checked)
+            {
+                sharpnessBox.SelectedIndex = 0;
+                sharpnessBox.Enabled = false;
+                comboBox1.SelectedIndex = 0;
+                comboBox1.Enabled = false;
+                AffinityField.Text = 0.ToString();
+                AffinityField.ReadOnly = true;
+                RawSharpField.Text = 1.0.ToString();
+                RawSharpField.ReadOnly = true;
+                EleSharpField.Text = 1.0.ToString();
+                EleSharpField.ReadOnly = true;
+                RawField.Text = 100.ToString();
+                RawField.ReadOnly = true;
+                HitzoneField.Text = 0.ToString();
+                HitzoneField.ReadOnly = true;
+            }
+            else
+            {
+                sharpnessBox.Enabled = true;
+                comboBox1.Enabled = true;
+                AffinityField.ReadOnly = false;
+                RawSharpField.ReadOnly = false;
+                EleSharpField.ReadOnly = false;
+                RawField.ReadOnly = false;
+                HitzoneField.ReadOnly = false;
+            }
+        }
+
+        private void NameSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = (string)((ComboBox)sender).SelectedItem;
+            if ((string)MotionSort.SelectedItem != name)
+            {
+                MotionSort.SelectedItem = name;
+            }
+
+            if ((string)ComboSort.SelectedItem != name)
+            {
+                ComboSort.SelectedItem = name;
+            }
+
+            foreach (moveStat move in type2Moves[(string)TypeField.SelectedItem])
+            {
+                if (move.name == name)
+                {
+                    MotionValueField.Text = move.motionValue.ToString();
+                    InSharpField.Text = move.sharpnessMod.ToString();
+                    InKOField.Text = move.KODamage.ToString();
+                    InExhaustField.Text = move.ExhDamage.ToString();
+                    MindsField.SelectedItem = move.mindsEye;
+                    DamageTypeField.SelectedItem = move.damageType;
+                }
+            }
+        }
+
+        private void MotionSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = (string)((ComboBox)sender).SelectedItem;
+            if ((string)MotionSort.SelectedItem != name)
+            {
+                ComboSort.SelectedItem = name;
+            }
+
+            if ((string)ComboSort.SelectedItem != name)
+            {
+                NameSort.SelectedItem = name;
+            }
+        }
+
+        private void ComboSort_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string name = (string)((ComboBox)sender).SelectedItem;
+            if ((string)MotionSort.SelectedItem != name)
+            {
+                MotionSort.SelectedItem = name;
+            }
+
+            if ((string)NameSort.SelectedItem != name)
+            {
+                NameSort.SelectedItem = name;
             }
         }
 
@@ -368,7 +582,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// This function calculates damage before considering the monster parameters.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A Tuple storing the Raw and Elemental damage outputs.</returns>
         private Tuple<double, double> calculateDamage()
         {
             double total = double.Parse(RawField.Text);
@@ -475,9 +689,9 @@ namespace YADC_MHGen_
         /// <summary>
         /// This function calculates the damage with hitzones.
         /// </summary>
-        /// <param name="item1"></param>
-        /// <param name="item2"></param>
-        /// <returns></returns>
+        /// <param name="item1">Raw damage.</param>
+        /// <param name="item2">Elemental damage.</param>
+        /// <returns>A Tuple storing the raw, element, KO, exhaust, and bounce status of the attack after calculations.</returns>
         private Tuple<double, double, double, double, string> calculateMoreDamage(double item1, double item2)
         {
             double rawZone = double.Parse(HitzoneField.Text) * 0.01;
@@ -487,26 +701,37 @@ namespace YADC_MHGen_
             double KOZone = double.Parse(KOZoneField.Text) * 0.01;
             double ExhaustZone = double.Parse(ExhaustZoneField.Text) * 0.01;
             double questMod = double.Parse(QuestField.Text);
-
-            item1 = item1 * rawZone * questMod;
             double item3 = KODam * KOZone;
             double item4 = ExhDam * ExhaustZone;
-
-            string element = (string)AltDamageField.SelectedItem;
-            if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
-            {
-                item2 = item2 * eleZone * questMod;
-            }
-
             string item5 = "No";
-            if((rawZone * double.Parse(RawSharpField.Text)) > 0.25 || checkBox2.Checked)
+
+            if (!checkBox3.Checked)
             {
-                item5 = "No";
+                item1 = item1 * rawZone * questMod;
+                
+
+                string element = (string)AltDamageField.SelectedItem;
+                if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
+                {
+                    item2 = item2 * eleZone * questMod;
+                }
+
+                
+                if ((rawZone * double.Parse(RawSharpField.Text)) > 0.25 || checkBox2.Checked)
+                {
+                    item5 = "No";
+                }
+                else
+                {
+                    item5 = "Yes";
+                }
             }
             else
             {
-                item5 = "Yes";
+                item1 *= questMod;
+
             }
+            
 
             return new Tuple<double, double, double, double, string>(item1, item2, item3, item4, item5);
         }
@@ -519,7 +744,10 @@ namespace YADC_MHGen_
             throw new NotImplementedException();
         }
 
-        private void FillOut() //Fills out the Dictionaries with data.
+        /// <summary>
+        /// Fills the global Dictionaries with data.
+        /// </summary>
+        private void FillOut()
         {
             sharpnessValues.Add("(No Sharpness)",   new Tuple<double, double>(1.00, 1.00));
             sharpnessValues.Add("White",            new Tuple<double, double>(1.32, 1.12));
@@ -541,7 +769,7 @@ namespace YADC_MHGen_
             str2image.Add("Blast",      "./Images/Blast.png");
 
             //Armor skills section
-#if true
+#if false
             armorModifiers.Add("Art. Novice (Fixed Weapons)",   Artillery(1));
             armorModifiers.Add("Art. Novice (Explosive Ammo)",  Artillery(2));
             armorModifiers.Add("Art. Novice (Impact CB)",       Artillery(3));
@@ -636,7 +864,7 @@ namespace YADC_MHGen_
             armorModifiers.Add("Punishing Draw (Cut)",          PunishDraw(1));
             armorModifiers.Add("Punishing Draw (Impact)",       PunishDraw(2));
 
-            //armorModifiers.Add("Bonus Shot",                  , RapidFire());
+            armorModifiers.Add("Bonus Shot",                    RapidFire());
             armorModifiers.Add("Redhelm Soul",                  Redhelm());
 
             armorModifiers.Add("Silverwind Soul",               Silverwind());
@@ -673,7 +901,7 @@ namespace YADC_MHGen_
             kitchenItemModifiers.Add("F.Bulldozer",                 FBulldozer());
             kitchenItemModifiers.Add("F.Heroics",                   FHeroics());
             kitchenItemModifiers.Add("F.Pyro",                      FPyro());
-            //kitchenItemModifiers.Add("F.Rider",                     FRider());
+            //kitchenItemModifiers.Add("F.Rider",                     FRider()); //Removed because not considering Mount damage.
             kitchenItemModifiers.Add("F.Sharpshooter",              FSharpshooter());
             kitchenItemModifiers.Add("F.Slugger",                   FSlugger());
             kitchenItemModifiers.Add("F.Specialist",                FSpecialist());
@@ -773,6 +1001,9 @@ namespace YADC_MHGen_
 #endif
         }
 
+        /// <summary>
+        /// Reads the files from the appropriate folders.
+        /// </summary>
         private void readFiles()
         {
             //Read weapon database
@@ -784,6 +1015,10 @@ namespace YADC_MHGen_
             //Read 
         }
 
+        /// <summary>
+        /// Reads from the MotionValues folder and retrives motion values and other stats for each move of each type of weapon.
+        /// TODO: Add Draw Attack indicators, Aerial attack indicators (for Critical Draw/Punishing Draw and Vault, respectively)
+        /// </summary>
         private void readMotion()
         {
             string[] files = System.IO.Directory.GetFiles("./MotionValues/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
@@ -860,6 +1095,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Reads the files included in the Weapons folder and generates weapon type names.
         /// Additionally, also reads inside the files and creates stats based on the weapons within.
+        /// TODO: Add secondary things (Phials, 2nd Element of DBs)
         /// </summary>
         private void readWeapons()
         {
@@ -1043,60 +1279,7 @@ namespace YADC_MHGen_
             return i + 1;
         }
 
-        private void NameSort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string name = (string)((ComboBox)sender).SelectedItem;
-            if((string)MotionSort.SelectedItem != name)
-            {
-                MotionSort.SelectedItem = name;
-            }
-
-            if((string)ComboSort.SelectedItem != name)
-            {
-                ComboSort.SelectedItem = name;
-            }
-
-            foreach(moveStat move in type2Moves[(string)TypeField.SelectedItem])
-            {
-                if(move.name == name)
-                {
-                    MotionValueField.Text = move.motionValue.ToString();
-                    InSharpField.Text = move.sharpnessMod.ToString();
-                    InKOField.Text = move.KODamage.ToString();
-                    InExhaustField.Text = move.ExhDamage.ToString();
-                    MindsField.SelectedItem = move.mindsEye;
-                    DamageTypeField.SelectedItem = move.damageType;
-                }
-            }
-        }
-
-        private void MotionSort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string name = (string)((ComboBox)sender).SelectedItem;
-            if ((string)MotionSort.SelectedItem != name)
-            {
-                ComboSort.SelectedItem = name;
-            }
-
-            if ((string)ComboSort.SelectedItem != name)
-            {
-                NameSort.SelectedItem = name;
-            }
-        }
-
-        private void ComboSort_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string name = (string)((ComboBox)sender).SelectedItem;
-            if ((string)MotionSort.SelectedItem != name)
-            {
-                MotionSort.SelectedItem = name;
-            }
-
-            if ((string)NameSort.SelectedItem != name)
-            {
-                NameSort.SelectedItem = name;
-            }
-        }
+        
 
 #if true
         //Beginning of Armor Skill methods.
@@ -2125,36 +2308,7 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-            if(checkBox3.Checked)
-            {
-                sharpnessBox.SelectedIndex = 0;
-                sharpnessBox.Enabled = false;
-                comboBox1.SelectedIndex = 0;
-                comboBox1.Enabled = false;
-                AffinityField.Text = 0.ToString();
-                AffinityField.ReadOnly = true;
-                RawSharpField.Text = 1.0.ToString();
-                RawSharpField.ReadOnly = true;
-                EleSharpField.Text = 1.0.ToString();
-                EleSharpField.ReadOnly = true;
-                MVField.Text = 0.ToString();
-                MVField.ReadOnly = true;
-                HitzoneField.Text = 0.ToString();
-                HitzoneField.ReadOnly = true;
-            }
-            else
-            {
-                sharpnessBox.Enabled = true;
-                comboBox1.Enabled = true;
-                AffinityField.ReadOnly = false;
-                RawSharpField.ReadOnly = false;
-                EleSharpField.ReadOnly = false;
-                MVField.ReadOnly = false;
-                HitzoneField.ReadOnly = false;
-            }
-        }
+        
 
         //private bool functionName()
         //{

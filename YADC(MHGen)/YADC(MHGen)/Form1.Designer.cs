@@ -85,7 +85,7 @@
             this.TypeField = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.UpdateButt = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -184,6 +184,22 @@
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.label54 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label56 = new System.Windows.Forms.Label();
+            this.label57 = new System.Windows.Forms.Label();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.label58 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
@@ -201,6 +217,8 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // ErrorPreventer
@@ -222,9 +240,9 @@
             // 
             // MVField
             // 
-            this.MVField.Location = new System.Drawing.Point(316, 119);
+            this.MVField.Location = new System.Drawing.Point(316, 149);
             this.MVField.Name = "MVField";
-            this.MVField.Size = new System.Drawing.Size(96, 20);
+            this.MVField.Size = new System.Drawing.Size(95, 20);
             this.MVField.TabIndex = 110;
             this.MVField.Text = "0";
             this.MVField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -235,7 +253,7 @@
             // 
             // AffinityField
             // 
-            this.AffinityField.Location = new System.Drawing.Point(214, 119);
+            this.AffinityField.Location = new System.Drawing.Point(214, 110);
             this.AffinityField.Name = "AffinityField";
             this.AffinityField.Size = new System.Drawing.Size(96, 20);
             this.AffinityField.TabIndex = 113;
@@ -248,7 +266,7 @@
             // 
             // EleField
             // 
-            this.EleField.Location = new System.Drawing.Point(214, 76);
+            this.EleField.Location = new System.Drawing.Point(214, 71);
             this.EleField.Name = "EleField";
             this.EleField.Size = new System.Drawing.Size(96, 20);
             this.EleField.TabIndex = 115;
@@ -297,7 +315,7 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.AltDamageField.Location = new System.Drawing.Point(112, 76);
+            this.AltDamageField.Location = new System.Drawing.Point(112, 71);
             this.AltDamageField.Name = "AltDamageField";
             this.AltDamageField.Size = new System.Drawing.Size(96, 21);
             this.AltDamageField.TabIndex = 119;
@@ -319,7 +337,7 @@
             // 
             // EleZoneField
             // 
-            this.EleZoneField.Location = new System.Drawing.Point(9, 76);
+            this.EleZoneField.Location = new System.Drawing.Point(9, 71);
             this.EleZoneField.Name = "EleZoneField";
             this.EleZoneField.Size = new System.Drawing.Size(96, 20);
             this.EleZoneField.TabIndex = 80;
@@ -332,7 +350,7 @@
             // 
             // QuestField
             // 
-            this.QuestField.Location = new System.Drawing.Point(9, 119);
+            this.QuestField.Location = new System.Drawing.Point(128, 150);
             this.QuestField.Name = "QuestField";
             this.QuestField.Size = new System.Drawing.Size(96, 20);
             this.QuestField.TabIndex = 82;
@@ -358,7 +376,7 @@
             // 
             // ExhaustField
             // 
-            this.ExhaustField.Location = new System.Drawing.Point(418, 76);
+            this.ExhaustField.Location = new System.Drawing.Point(417, 71);
             this.ExhaustField.MaxLength = 3;
             this.ExhaustField.Name = "ExhaustField";
             this.ExhaustField.Size = new System.Drawing.Size(96, 20);
@@ -371,7 +389,7 @@
             // 
             // KOZoneField
             // 
-            this.KOZoneField.Location = new System.Drawing.Point(118, 32);
+            this.KOZoneField.Location = new System.Drawing.Point(128, 32);
             this.KOZoneField.Name = "KOZoneField";
             this.KOZoneField.Size = new System.Drawing.Size(96, 20);
             this.KOZoneField.TabIndex = 85;
@@ -384,7 +402,7 @@
             // 
             // ExhaustZoneField
             // 
-            this.ExhaustZoneField.Location = new System.Drawing.Point(118, 76);
+            this.ExhaustZoneField.Location = new System.Drawing.Point(128, 71);
             this.ExhaustZoneField.Name = "ExhaustZoneField";
             this.ExhaustZoneField.Size = new System.Drawing.Size(96, 20);
             this.ExhaustZoneField.TabIndex = 87;
@@ -677,9 +695,17 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.label58);
+            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.label57);
+            this.groupBox3.Controls.Add(this.comboBox4);
+            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.label56);
+            this.groupBox3.Controls.Add(this.label54);
             this.groupBox3.Controls.Add(this.checkBox3);
             this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.UpdateButt);
             this.groupBox3.Controls.Add(this.label53);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.checkBox1);
@@ -720,19 +746,19 @@
             this.checkBox2.Text = "Mind\'s Eye?";
             this.checkBox2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // UpdateButt
             // 
-            this.button1.Location = new System.Drawing.Point(8, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 67);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Update Parameters";
-            this.button1.UseVisualStyleBackColor = true;
+            this.UpdateButt.Location = new System.Drawing.Point(8, 30);
+            this.UpdateButt.Name = "UpdateButt";
+            this.UpdateButt.Size = new System.Drawing.Size(97, 67);
+            this.UpdateButt.TabIndex = 0;
+            this.UpdateButt.Text = "Update Parameters";
+            this.UpdateButt.UseVisualStyleBackColor = true;
             // 
             // label53
             // 
             this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(109, 103);
+            this.label53.Location = new System.Drawing.Point(109, 93);
             this.label53.Name = "label53";
             this.label53.Size = new System.Drawing.Size(77, 13);
             this.label53.TabIndex = 132;
@@ -748,7 +774,7 @@
             "LBG/HBG",
             "SnS/DB/Bow",
             "Other"});
-            this.comboBox1.Location = new System.Drawing.Point(112, 119);
+            this.comboBox1.Location = new System.Drawing.Point(112, 110);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(96, 21);
             this.comboBox1.TabIndex = 131;
@@ -766,7 +792,7 @@
             // RawLabel
             // 
             this.RawLabel.AutoSize = true;
-            this.RawLabel.Location = new System.Drawing.Point(211, 16);
+            this.RawLabel.Location = new System.Drawing.Point(209, 16);
             this.RawLabel.Name = "RawLabel";
             this.RawLabel.Size = new System.Drawing.Size(101, 13);
             this.RawLabel.TabIndex = 109;
@@ -775,16 +801,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(313, 103);
+            this.label1.Location = new System.Drawing.Point(313, 133);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 111;
-            this.label1.Text = "Motion Value:";
+            this.label1.Text = "Avg. MV/Hit:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(211, 103);
+            this.label7.Location = new System.Drawing.Point(211, 93);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 13);
             this.label7.TabIndex = 112;
@@ -792,7 +818,7 @@
             // 
             // EleSharpField
             // 
-            this.EleSharpField.Location = new System.Drawing.Point(316, 75);
+            this.EleSharpField.Location = new System.Drawing.Point(316, 71);
             this.EleSharpField.Name = "EleSharpField";
             this.EleSharpField.Size = new System.Drawing.Size(96, 20);
             this.EleSharpField.TabIndex = 129;
@@ -804,7 +830,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(211, 60);
+            this.label9.Location = new System.Drawing.Point(210, 55);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(95, 13);
             this.label9.TabIndex = 114;
@@ -813,7 +839,7 @@
             // label45
             // 
             this.label45.AutoSize = true;
-            this.label45.Location = new System.Drawing.Point(313, 59);
+            this.label45.Location = new System.Drawing.Point(313, 55);
             this.label45.Name = "label45";
             this.label45.Size = new System.Drawing.Size(86, 13);
             this.label45.TabIndex = 128;
@@ -821,7 +847,7 @@
             // 
             // RawSharpField
             // 
-            this.RawSharpField.Location = new System.Drawing.Point(316, 33);
+            this.RawSharpField.Location = new System.Drawing.Point(316, 32);
             this.RawSharpField.Name = "RawSharpField";
             this.RawSharpField.Size = new System.Drawing.Size(96, 20);
             this.RawSharpField.TabIndex = 127;
@@ -842,7 +868,6 @@
             // sharpnessBox
             // 
             this.sharpnessBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sharpnessBox.Enabled = false;
             this.sharpnessBox.FormattingEnabled = true;
             this.sharpnessBox.Items.AddRange(new object[] {
             "(No Sharpness)",
@@ -861,7 +886,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(109, 60);
+            this.label21.Location = new System.Drawing.Point(109, 55);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(95, 13);
             this.label21.TabIndex = 118;
@@ -888,7 +913,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(415, 60);
+            this.label27.Location = new System.Drawing.Point(415, 55);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(81, 13);
             this.label27.TabIndex = 123;
@@ -896,6 +921,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label63);
+            this.groupBox4.Controls.Add(this.textBox7);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.comboBox2);
             this.groupBox4.Controls.Add(this.label28);
@@ -910,7 +937,7 @@
             this.groupBox4.Controls.Add(this.HitzoneField);
             this.groupBox4.Location = new System.Drawing.Point(541, 406);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(241, 177);
+            this.groupBox4.Size = new System.Drawing.Size(270, 177);
             this.groupBox4.TabIndex = 129;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
@@ -918,7 +945,7 @@
             // label28
             // 
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(115, 60);
+            this.label28.Location = new System.Drawing.Point(125, 55);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(117, 13);
             this.label28.TabIndex = 88;
@@ -927,7 +954,7 @@
             // label29
             // 
             this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(115, 16);
+            this.label29.Location = new System.Drawing.Point(125, 16);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(94, 13);
             this.label29.TabIndex = 86;
@@ -936,7 +963,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(6, 103);
+            this.label14.Location = new System.Drawing.Point(125, 134);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 13);
             this.label14.TabIndex = 83;
@@ -945,7 +972,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 60);
+            this.label13.Location = new System.Drawing.Point(6, 55);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(97, 13);
             this.label13.TabIndex = 81;
@@ -962,6 +989,12 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.pictureBox2);
+            this.groupBox5.Controls.Add(this.label61);
+            this.groupBox5.Controls.Add(this.label62);
+            this.groupBox5.Controls.Add(this.pictureBox1);
+            this.groupBox5.Controls.Add(this.label59);
+            this.groupBox5.Controls.Add(this.label60);
             this.groupBox5.Controls.Add(this.label48);
             this.groupBox5.Controls.Add(this.BounceLabel);
             this.groupBox5.Controls.Add(this.label47);
@@ -992,7 +1025,7 @@
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Location = new System.Drawing.Point(12, 589);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(661, 129);
+            this.groupBox5.Size = new System.Drawing.Size(629, 147);
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
@@ -1000,9 +1033,9 @@
             // label48
             // 
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label48.Location = new System.Drawing.Point(253, 6);
+            this.label48.Location = new System.Drawing.Point(254, 9);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(2, 120);
+            this.label48.Size = new System.Drawing.Size(2, 135);
             this.label48.TabIndex = 138;
             // 
             // BounceLabel
@@ -1010,7 +1043,7 @@
             this.BounceLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.BounceLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.BounceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BounceLabel.Location = new System.Drawing.Point(266, 99);
+            this.BounceLabel.Location = new System.Drawing.Point(493, 120);
             this.BounceLabel.Name = "BounceLabel";
             this.BounceLabel.Size = new System.Drawing.Size(96, 20);
             this.BounceLabel.TabIndex = 137;
@@ -1020,7 +1053,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(263, 82);
+            this.label47.Location = new System.Drawing.Point(490, 103);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(50, 13);
             this.label47.TabIndex = 136;
@@ -1030,7 +1063,7 @@
             // 
             this.FinalField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FinalField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalField.Location = new System.Drawing.Point(266, 57);
+            this.FinalField.Location = new System.Drawing.Point(262, 120);
             this.FinalField.Name = "FinalField";
             this.FinalField.Size = new System.Drawing.Size(96, 20);
             this.FinalField.TabIndex = 135;
@@ -1040,7 +1073,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(263, 40);
+            this.label26.Location = new System.Drawing.Point(259, 103);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(75, 13);
             this.label26.TabIndex = 134;
@@ -1050,7 +1083,7 @@
             // 
             this.FinalRawField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FinalRawField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalRawField.Location = new System.Drawing.Point(372, 57);
+            this.FinalRawField.Location = new System.Drawing.Point(364, 35);
             this.FinalRawField.Name = "FinalRawField";
             this.FinalRawField.Size = new System.Drawing.Size(96, 20);
             this.FinalRawField.TabIndex = 133;
@@ -1059,7 +1092,7 @@
             // 
             // FinalEleBox
             // 
-            this.FinalEleBox.Location = new System.Drawing.Point(470, 100);
+            this.FinalEleBox.Location = new System.Drawing.Point(465, 77);
             this.FinalEleBox.Name = "FinalEleBox";
             this.FinalEleBox.Size = new System.Drawing.Size(21, 21);
             this.FinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1070,7 +1103,7 @@
             // 
             this.FinalEleField.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.FinalEleField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalEleField.Location = new System.Drawing.Point(372, 100);
+            this.FinalEleField.Location = new System.Drawing.Point(364, 78);
             this.FinalEleField.Name = "FinalEleField";
             this.FinalEleField.Size = new System.Drawing.Size(96, 20);
             this.FinalEleField.TabIndex = 131;
@@ -1079,7 +1112,7 @@
             // 
             // ExhaustBox
             // 
-            this.ExhaustBox.Location = new System.Drawing.Point(598, 100);
+            this.ExhaustBox.Location = new System.Drawing.Point(591, 78);
             this.ExhaustBox.Name = "ExhaustBox";
             this.ExhaustBox.Size = new System.Drawing.Size(21, 21);
             this.ExhaustBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1090,7 +1123,7 @@
             // 
             this.ExhaustOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ExhaustOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ExhaustOut.Location = new System.Drawing.Point(500, 100);
+            this.ExhaustOut.Location = new System.Drawing.Point(493, 78);
             this.ExhaustOut.Name = "ExhaustOut";
             this.ExhaustOut.Size = new System.Drawing.Size(96, 20);
             this.ExhaustOut.TabIndex = 129;
@@ -1099,7 +1132,7 @@
             // 
             // KOBox
             // 
-            this.KOBox.Location = new System.Drawing.Point(598, 57);
+            this.KOBox.Location = new System.Drawing.Point(591, 35);
             this.KOBox.Name = "KOBox";
             this.KOBox.Size = new System.Drawing.Size(21, 21);
             this.KOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1110,7 +1143,7 @@
             // 
             this.KOOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.KOOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.KOOut.Location = new System.Drawing.Point(500, 57);
+            this.KOOut.Location = new System.Drawing.Point(493, 35);
             this.KOOut.Name = "KOOut";
             this.KOOut.Size = new System.Drawing.Size(96, 20);
             this.KOOut.TabIndex = 127;
@@ -1120,7 +1153,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(497, 83);
+            this.label25.Location = new System.Drawing.Point(490, 61);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 13);
             this.label25.TabIndex = 126;
@@ -1129,7 +1162,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(497, 40);
+            this.label24.Location = new System.Drawing.Point(490, 18);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 13);
             this.label24.TabIndex = 125;
@@ -1138,7 +1171,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(369, 83);
+            this.label23.Location = new System.Drawing.Point(361, 61);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(103, 13);
             this.label23.TabIndex = 124;
@@ -1147,7 +1180,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(369, 40);
+            this.label22.Location = new System.Drawing.Point(361, 18);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 123;
@@ -1155,7 +1188,7 @@
             // 
             // ElementBox
             // 
-            this.ElementBox.Location = new System.Drawing.Point(214, 100);
+            this.ElementBox.Location = new System.Drawing.Point(222, 79);
             this.ElementBox.Name = "ElementBox";
             this.ElementBox.Size = new System.Drawing.Size(21, 21);
             this.ElementBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1219,7 +1252,7 @@
             // 
             this.EleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.EleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EleOut.Location = new System.Drawing.Point(112, 99);
+            this.EleOut.Location = new System.Drawing.Point(120, 78);
             this.EleOut.Name = "EleOut";
             this.EleOut.Size = new System.Drawing.Size(96, 20);
             this.EleOut.TabIndex = 116;
@@ -1229,7 +1262,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(109, 82);
+            this.label19.Location = new System.Drawing.Point(117, 61);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(126, 13);
             this.label19.TabIndex = 115;
@@ -1237,7 +1270,7 @@
             // 
             // CalcAll
             // 
-            this.CalcAll.Location = new System.Drawing.Point(266, 13);
+            this.CalcAll.Location = new System.Drawing.Point(262, 73);
             this.CalcAll.Name = "CalcAll";
             this.CalcAll.Size = new System.Drawing.Size(96, 23);
             this.CalcAll.TabIndex = 114;
@@ -1247,7 +1280,7 @@
             // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(112, 13);
+            this.CalcButt.Location = new System.Drawing.Point(15, 118);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 113;
@@ -1259,7 +1292,7 @@
             // 
             this.RawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.RawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RawOut.Location = new System.Drawing.Point(112, 56);
+            this.RawOut.Location = new System.Drawing.Point(120, 35);
             this.RawOut.Name = "RawOut";
             this.RawOut.Size = new System.Drawing.Size(96, 20);
             this.RawOut.TabIndex = 112;
@@ -1269,7 +1302,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(109, 39);
+            this.label2.Location = new System.Drawing.Point(117, 18);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 111;
@@ -1743,10 +1776,11 @@
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Normal",
+            "Pitfall Trapped",
             "Sleeping (Bomb)",
             "Sleeping (Else)",
             "Paralyzed"});
-            this.comboBox2.Location = new System.Drawing.Point(118, 119);
+            this.comboBox2.Location = new System.Drawing.Point(128, 110);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(96, 21);
             this.comboBox2.TabIndex = 89;
@@ -1754,17 +1788,185 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(115, 103);
+            this.label10.Location = new System.Drawing.Point(125, 94);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 13);
             this.label10.TabIndex = 90;
             this.label10.Text = "Monster Status:";
             // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(415, 94);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(80, 13);
+            this.label54.TabIndex = 136;
+            this.label54.Text = "Number of Hits:";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(316, 110);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(96, 20);
+            this.textBox4.TabIndex = 138;
+            this.textBox4.Text = "0";
+            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Location = new System.Drawing.Point(313, 94);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(53, 13);
+            this.label56.TabIndex = 137;
+            this.label56.Text = "Total MV:";
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(109, 133);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(93, 13);
+            this.label57.TabIndex = 139;
+            this.label57.Text = "DB - 2nd Element:";
+            // 
+            // comboBox4
+            // 
+            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Items.AddRange(new object[] {
+            "(None)",
+            "Fire",
+            "Water",
+            "Ice",
+            "Thunder",
+            "Dragon",
+            "Poison",
+            "Para",
+            "Sleep",
+            "Blast"});
+            this.comboBox4.Location = new System.Drawing.Point(112, 149);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(96, 21);
+            this.comboBox4.TabIndex = 140;
+            this.AltTip.SetToolTip(this.comboBox4, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+        "ludes KO and Exhaust.");
+            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Location = new System.Drawing.Point(210, 133);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(82, 13);
+            this.label58.TabIndex = 141;
+            this.label58.Text = "2nd Ele. Power:";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(214, 149);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(96, 20);
+            this.textBox5.TabIndex = 142;
+            this.textBox5.Text = "0";
+            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.textBox5, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(222, 121);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 141;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label59
+            // 
+            this.label59.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label59.Location = new System.Drawing.Point(120, 120);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(96, 20);
+            this.label59.TabIndex = 140;
+            this.label59.Text = "0";
+            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(117, 103);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(113, 13);
+            this.label60.TabIndex = 139;
+            this.label60.Text = "DB - 2nd Ele. Damage";
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(417, 110);
+            this.textBox6.MaxLength = 3;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(96, 20);
+            this.textBox6.TabIndex = 143;
+            this.textBox6.Text = "0";
+            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.textBox6, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Location = new System.Drawing.Point(463, 119);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(21, 21);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 144;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label61
+            // 
+            this.label61.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label61.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label61.Location = new System.Drawing.Point(364, 121);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(96, 20);
+            this.label61.TabIndex = 143;
+            this.label61.Text = "0";
+            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(361, 104);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(105, 13);
+            this.label62.TabIndex = 142;
+            this.label62.Text = "DB - 2nd Ele. Output";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 94);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(115, 13);
+            this.label63.TabIndex = 92;
+            this.label63.Text = "DB - 2nd. Ele. Hitzone:";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(9, 110);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(96, 20);
+            this.textBox7.TabIndex = 91;
+            this.textBox7.Text = "0";
+            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleHitTip.SetToolTip(this.textBox7, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
+        "ental Hitzones.");
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(959, 730);
+            this.ClientSize = new System.Drawing.Size(826, 751);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -1802,6 +2004,8 @@
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1956,11 +2160,27 @@
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button UpdateButt;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label57;
+        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.TextBox textBox7;
     }
 }
 
