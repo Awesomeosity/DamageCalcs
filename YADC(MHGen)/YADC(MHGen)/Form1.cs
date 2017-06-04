@@ -563,6 +563,53 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Updates the Total MV Text Field when text is changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MVField_TextChanged(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text != "")
+            {
+                string temp = (double.Parse(((TextBox)sender).Text) * double.Parse(textBox6.Text)).ToString();
+                if (textBox4.Text != temp)
+                {
+                    textBox4.Text = temp;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Like the above, but for the reverse.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            if(((TextBox)sender).Text != "")
+            {
+                string temp = (double.Parse(((TextBox)sender).Text) / double.Parse(textBox6.Text)).ToString();
+                if (MVField.Text != temp)
+                {
+                    MVField.Text = temp;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Like the above. But uses the average motion values to make a new total value.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+            if(((TextBox)sender).Text != "")
+            {
+                textBox4.Text = (double.Parse(MVField.Text) * double.Parse(((TextBox)sender).Text)).ToString();
+            }
+        }
+
         /*Functions*/
         /// <summary>
         /// Validates whatever's put into the field to doubles.
@@ -592,7 +639,7 @@ namespace YADC_MHGen_
         private Tuple<double, double, double> calculateDamage()
         {
             double total = double.Parse(RawField.Text);
-            double motion = double.Parse(MVField.Text) * 0.01;
+            double motion = double.Parse(textBox4.Text) * 0.01;
             double affinity = double.Parse(AffinityField.Text) * 0.01;
             double element = double.Parse(EleField.Text);
             double DBElement = double.Parse(textBox5.Text);
@@ -2337,18 +2384,6 @@ namespace YADC_MHGen_
             }
             return true;
         }
-
-        /// <summary>
-        /// Updates the Total MV Text Field when text is changed.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MVField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
 
         //private bool functionName()
         //{

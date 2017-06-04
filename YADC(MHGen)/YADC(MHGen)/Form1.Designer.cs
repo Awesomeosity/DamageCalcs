@@ -443,6 +443,7 @@
             this.textBox6.Text = "1";
             this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ExhaustTip.SetToolTip(this.textBox6, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // KOZoneField
             // 
@@ -819,6 +820,7 @@
             this.textBox4.TabIndex = 138;
             this.textBox4.Text = "0";
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label56
             // 
