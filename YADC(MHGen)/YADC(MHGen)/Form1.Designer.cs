@@ -96,6 +96,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.weapType = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.paraStatusCrit = new System.Windows.Forms.CheckBox();
             this.paraMinds = new System.Windows.Forms.CheckBox();
             this.label58 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
@@ -239,7 +240,6 @@
             this.monHitzone = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
             this.monName = new System.Windows.Forms.ComboBox();
-            this.paraStatusCrit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -654,6 +654,7 @@
             this.weapOverride.TabIndex = 146;
             this.weapOverride.Text = "Override Base Element?";
             this.weapOverride.UseVisualStyleBackColor = true;
+            this.weapOverride.CheckedChanged += new System.EventHandler(this.weapOverride_CheckedChanged);
             // 
             // label75
             // 
@@ -988,6 +989,16 @@
             this.groupBox3.TabIndex = 128;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
+            // 
+            // paraStatusCrit
+            // 
+            this.paraStatusCrit.AutoSize = true;
+            this.paraStatusCrit.Location = new System.Drawing.Point(9, 151);
+            this.paraStatusCrit.Name = "paraStatusCrit";
+            this.paraStatusCrit.Size = new System.Drawing.Size(80, 17);
+            this.paraStatusCrit.TabIndex = 151;
+            this.paraStatusCrit.Text = "Status Crit?";
+            this.paraStatusCrit.UseVisualStyleBackColor = true;
             // 
             // paraMinds
             // 
@@ -2480,16 +2491,6 @@
             this.monName.Name = "monName";
             this.monName.Size = new System.Drawing.Size(129, 21);
             this.monName.TabIndex = 0;
-            // 
-            // paraStatusCrit
-            // 
-            this.paraStatusCrit.AutoSize = true;
-            this.paraStatusCrit.Location = new System.Drawing.Point(9, 151);
-            this.paraStatusCrit.Name = "paraStatusCrit";
-            this.paraStatusCrit.Size = new System.Drawing.Size(80, 17);
-            this.paraStatusCrit.TabIndex = 151;
-            this.paraStatusCrit.Text = "Status Crit?";
-            this.paraStatusCrit.UseVisualStyleBackColor = true;
             // 
             // DmgCalculator
             // 

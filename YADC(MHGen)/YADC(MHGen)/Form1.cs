@@ -118,7 +118,7 @@ namespace YADC_MHGen_
         /// </summary>
         public struct monsterStat
         {
-            
+
         }
 
         /// <summary>
@@ -205,6 +205,9 @@ namespace YADC_MHGen_
             calcExhBox.Load("./Images/Exhaust.png");
             moveKOBox.Load("./Images/KO.png");
             moveExhBox.Load("./Images/Exhaust.png");
+            weapSecBox.Image = null;
+            weapOverride.Checked = false;
+            weapOverride.Enabled = false;
             paraSecEle.Enabled = false;
         }
 
@@ -219,7 +222,7 @@ namespace YADC_MHGen_
         private void GenericField_Validating(object sender, CancelEventArgs e)
         {
             string errorMsg;
-            if(!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
+            if (!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
             {
                 e.Cancel = true;
                 ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
@@ -387,33 +390,12 @@ namespace YADC_MHGen_
                 weapFinal.Items.Add(names2FinalNames[names]); //Fill in weapon names at final forms.
             }
 
-            NameSort.Items.Clear();
-            MotionSort.Items.Clear();
-            ComboSort.Items.Clear();
+            fillMoves((string)((ComboBox)sender).SelectedItem, "None");
 
-            List<moveStat> tempListMotion = new List<moveStat>();
-            List<moveStat> tempListCombo = new List<moveStat>();
-
-            foreach (moveStat moves in type2Moves[(string)((ComboBox)sender).SelectedItem]) //Fills out the moves for the move search box.
-            {
-                NameSort.Items.Add(moves.name);
-                tempListMotion.Add(moves);
-                tempListCombo.Add(moves);
-            }
-
-            quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
-            quickSortVar2(tempListCombo, 1, tempListCombo.Count - 1);
-
-            foreach(moveStat moves in tempListMotion)
-            {
-                MotionSort.Items.Add(moves.name);
-            }
-
-            foreach(moveStat moves in tempListCombo)
-            {
-                ComboSort.Items.Add(moves.name);
-            }
+            
         }
+
+        
 
         /// <summary>
         /// Adds levels of the weapon selected to the level selection box.
@@ -423,7 +405,7 @@ namespace YADC_MHGen_
         private void WeaponField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string weaponName = (string)((ComboBox)sender).SelectedItem;
-            if((string)weapFinal.SelectedItem != names2FinalNames[weaponName])
+            if ((string)weapFinal.SelectedItem != names2FinalNames[weaponName])
             {
                 weapFinal.SelectedItem = names2FinalNames[weaponName];
             }
@@ -443,7 +425,7 @@ namespace YADC_MHGen_
         private void WeaponFinalField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string weaponFinalName = (string)((ComboBox)sender).SelectedItem;
-            if((string)weapName.SelectedItem != finalNames2Names[weaponFinalName])
+            if ((string)weapName.SelectedItem != finalNames2Names[weaponFinalName])
             {
                 weapName.SelectedItem = finalNames2Names[weaponFinalName];
             }
@@ -471,9 +453,9 @@ namespace YADC_MHGen_
         private void LevelField_SelectedIndexChanged(object sender, EventArgs e)
         {
             int weaponLevel = (int)((ComboBox)sender).SelectedItem;
-            foreach(stats statistics in names2Stats[weapName.Text])
+            foreach (stats statistics in names2Stats[weapName.Text])
             {
-                if(statistics.level == weaponLevel)
+                if (statistics.level == weaponLevel)
                 {
                     weapAttack.Text = statistics.attack.ToString();
                     weapAltPower.Text = statistics.elementalDamage.ToString();
@@ -627,7 +609,7 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void textBox4_TextChanged(object sender, EventArgs e)
         {
-            if(((TextBox)sender).Text != "")
+            if (((TextBox)sender).Text != "")
             {
                 string temp = (double.Parse(((TextBox)sender).Text) / double.Parse(paraHitCount.Text)).ToString();
                 if (paraMV.Text != temp)
@@ -644,7 +626,7 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void textBox6_TextChanged(object sender, EventArgs e)
         {
-            if(((TextBox)sender).Text != "")
+            if (((TextBox)sender).Text != "")
             {
                 paraTotal.Text = (double.Parse(paraMV.Text) * double.Parse(((TextBox)sender).Text)).ToString();
             }
@@ -697,6 +679,91 @@ namespace YADC_MHGen_
             }
         }
 
+        private void weapOverride_CheckedChanged(object sender, EventArgs e)
+        {
+            fillMoves(weapType.SelectedText, weapSecType.SelectedText);
+        }
+
+        private void weapSecType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = ((ComboBox)sender).SelectedIndex;
+            if(index == 0)
+            {
+                weapSecBox.Image = null;
+                weapOverride.Checked = false;
+                weapOverride.Enabled = false;
+            }
+            else if (index == 10 || index == 11 || index == 12 || index == 44)
+            {
+                weapSecBox.Image = null;
+            }
+
+            else if (index == 1 || index == 18 || index == 19 || index == 20 || index == 21)
+            {
+                weapSecBox.Load(str2image["Fire"]);
+            }
+
+            else if (index == 2 || index == 22 || index == 23 || index == 24 || index == 25)
+            {
+                weapSecBox.Load(str2image["Water"]);
+            }
+
+            else if (index == 3 || index == 30 || index == 31 || index == 32 || index == 33)
+            {
+                weapSecBox.Load(str2image["Ice"]);
+            }
+
+            else if (index == 4 || index == 26 || index == 27 || index == 28 || index == 29)
+            {
+                weapSecBox.Load(str2image["Thunder"]);
+            }
+
+            else if (index == 5 || index == 13 || index == 34 || index == 35)
+            {
+                weapSecBox.Load(str2image["Dragon"]);
+            }
+
+            else if (index == 6 || index == 14 || index == 36 || index == 37 || index == 45)
+            {
+                weapSecBox.Load(str2image["Poison"]);
+            }
+
+            else if (index == 7 || index == 15 || index == 38 || index == 39 || index == 46)
+            {
+                weapSecBox.Load(str2image["Para"]);
+            }
+
+            else if (index == 8 || index == 40 || index == 41 || index == 47)
+            {
+                weapSecBox.Load(str2image["Sleep"]);
+            }
+
+            else if (index == 9 || index == 42 || index == 43 || index == 49)
+            {
+                weapSecBox.Load(str2image["Blast"]);
+            }
+
+            else if (index == 4 || index == 26 || index == 27 || index == 28 || index == 29)
+            {
+                weapSecBox.Load(str2image["Thunder"]);
+            }
+
+            else if (index == 16 || index == 48)
+            {
+                weapSecBox.Load("./Images/KO.png");
+            }
+
+            else if (index == 17)
+            {
+                weapSecBox.Image = weapAltBox.Image;
+            }
+
+            if (index != 0)
+            {
+                weapOverride.Enabled = true;
+            }
+        }
+
         /*Functions*/
         /// <summary>
         /// Validates whatever's put into the field to doubles.
@@ -707,7 +774,7 @@ namespace YADC_MHGen_
         public bool calcFieldValidation(string input, out string ErrorMessage)
         {
             double result;
-            if(!double.TryParse(input, out result))
+            if (!double.TryParse(input, out result))
             {
                 ErrorMessage = "Enter in a valid number.";
                 return false;
@@ -775,7 +842,7 @@ namespace YADC_MHGen_
                         statusCrit = .2;
                     }
 
-                    if(paraEleCrit.SelectedIndex == 1)
+                    if (paraEleCrit.SelectedIndex == 1)
                     {
                         eleCrit = 0.2;
                     }
@@ -801,7 +868,7 @@ namespace YADC_MHGen_
                 {
                     eleTotal = element * eleSharp * (1 + subAffinity * eleCrit);
                 }
-                else if(ele != "Blast")
+                else if (ele != "Blast")
                 {
                     eleTotal = element * eleSharp * (1 + subAffinity * statusCrit);
                 }
@@ -852,7 +919,7 @@ namespace YADC_MHGen_
             if (!paraFixed.Checked)
             {
                 rawDamage = rawDamage * rawZone * questMod;
-                
+
                 if ((rawZone * double.Parse(paraRawSharp.Text)) > 0.25 || paraMinds.Checked)
                 {
                     BounceBool = "No";
@@ -874,10 +941,10 @@ namespace YADC_MHGen_
                 totaldamage = rawDamage + elementalDamage;
             }
 
-            if(paraSecEle.Text != "(None)") //For DB's Second Element
+            if (paraSecEle.Text != "(None)") //For DB's Second Element
             {
                 string altElement = (string)paraSecEle.SelectedItem;
-                if(altElement != "Poison" && altElement != "Para" && altElement != "Sleep" && altElement != "Blast")
+                if (altElement != "Poison" && altElement != "Para" && altElement != "Sleep" && altElement != "Blast")
                 {
                     DBElement = DBElement * eleZone * questMod;
                     totaldamage += DBElement;
@@ -889,29 +956,62 @@ namespace YADC_MHGen_
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
 
+        private void fillMoves(string selectedItem, string v)
+        {
+            NameSort.Items.Clear();
+            MotionSort.Items.Clear();
+            ComboSort.Items.Clear();
+
+            List<moveStat> tempListMotion = new List<moveStat>();
+            List<moveStat> tempListCombo = new List<moveStat>();
+
+            foreach (moveStat moves in type2Moves[selectedItem]) //Fills out the moves for the move search box.
+            {
+                if (moves.onlyFor == v)
+                {
+                    NameSort.Items.Add(moves.name);
+                    tempListMotion.Add(moves);
+                    tempListCombo.Add(moves);
+                }
+            }
+
+            quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
+            quickSortVar2(tempListCombo, 1, tempListCombo.Count - 1);
+
+            foreach (moveStat moves in tempListMotion)
+            {
+                MotionSort.Items.Add(moves.name);
+            }
+
+            foreach (moveStat moves in tempListCombo)
+            {
+                ComboSort.Items.Add(moves.name);
+            }
+        }
+
         /// <summary>
         /// Fills the global Dictionaries with data.
         /// </summary>
         private void FillOut()
         {
-            sharpnessValues.Add("(No Sharpness)",   new Tuple<double, double>(1.00, 1.00));
-            sharpnessValues.Add("White",            new Tuple<double, double>(1.32, 1.12));
-            sharpnessValues.Add("Blue",             new Tuple<double, double>(1.20, 1.06));
-            sharpnessValues.Add("Green",            new Tuple<double, double>(1.05, 1.0));
-            sharpnessValues.Add("Yellow",           new Tuple<double, double>(1.00, 0.75));
-            sharpnessValues.Add("Orange",           new Tuple<double, double>(0.75, 0.50));
-            sharpnessValues.Add("Red",              new Tuple<double, double>(0.50, 0.25));
+            sharpnessValues.Add("(No Sharpness)", new Tuple<double, double>(1.00, 1.00));
+            sharpnessValues.Add("White", new Tuple<double, double>(1.32, 1.12));
+            sharpnessValues.Add("Blue", new Tuple<double, double>(1.20, 1.06));
+            sharpnessValues.Add("Green", new Tuple<double, double>(1.05, 1.0));
+            sharpnessValues.Add("Yellow", new Tuple<double, double>(1.00, 0.75));
+            sharpnessValues.Add("Orange", new Tuple<double, double>(0.75, 0.50));
+            sharpnessValues.Add("Red", new Tuple<double, double>(0.50, 0.25));
 
-            str2image.Add("(None)",     "No Image");
-            str2image.Add("Fire",       "./Images/Fire.png");
-            str2image.Add("Water",      "./Images/Water.png");
-            str2image.Add("Thunder",    "./Images/Thunder.png");
-            str2image.Add("Ice",        "./Images/Ice.png");
-            str2image.Add("Dragon",     "./Images/Dragon.png");
-            str2image.Add("Poison",     "./Images/Poison.png");
-            str2image.Add("Sleep",      "./Images/Sleep.png");
-            str2image.Add("Para",       "./Images/Para.png");
-            str2image.Add("Blast",      "./Images/Blast.png");
+            str2image.Add("(None)", "No Image");
+            str2image.Add("Fire", "./Images/Fire.png");
+            str2image.Add("Water", "./Images/Water.png");
+            str2image.Add("Thunder", "./Images/Thunder.png");
+            str2image.Add("Ice", "./Images/Ice.png");
+            str2image.Add("Dragon", "./Images/Dragon.png");
+            str2image.Add("Poison", "./Images/Poison.png");
+            str2image.Add("Sleep", "./Images/Sleep.png");
+            str2image.Add("Para", "./Images/Para.png");
+            str2image.Add("Blast", "./Images/Blast.png");
 
             monsterStatus.Add("Normal", 1);
             monsterStatus.Add("Pitfall Trapped", 1.1);
@@ -1046,33 +1146,33 @@ namespace YADC_MHGen_
             //Item/Kitchen Modifiers.
 #if true
             kitchenItemModifiers.Add("F.Bombardier (Fixed Weaps.)", FBombardier(1));
-            kitchenItemModifiers.Add("F.Bombardier (Explosive S)" , FBombardier(2));
-            kitchenItemModifiers.Add("F.Bombardier (Impact CB)",    FBombardier(3));
-            kitchenItemModifiers.Add("F.Bombardier (GL)",           FBombardier(4));
-            kitchenItemModifiers.Add("F.Booster",                   FBooster());
-            kitchenItemModifiers.Add("F.Bulldozer",                 FBulldozer());
-            kitchenItemModifiers.Add("F.Heroics",                   FHeroics());
-            kitchenItemModifiers.Add("F.Pyro",                      FPyro());
+            kitchenItemModifiers.Add("F.Bombardier (Explosive S)", FBombardier(2));
+            kitchenItemModifiers.Add("F.Bombardier (Impact CB)", FBombardier(3));
+            kitchenItemModifiers.Add("F.Bombardier (GL)", FBombardier(4));
+            kitchenItemModifiers.Add("F.Booster", FBooster());
+            kitchenItemModifiers.Add("F.Bulldozer", FBulldozer());
+            kitchenItemModifiers.Add("F.Heroics", FHeroics());
+            kitchenItemModifiers.Add("F.Pyro", FPyro());
             //kitchenItemModifiers.Add("F.Rider",                     FRider()); //Removed because not considering Mount damage.
-            kitchenItemModifiers.Add("F.Sharpshooter",              FSharpshooter());
-            kitchenItemModifiers.Add("F.Slugger",                   FSlugger());
-            kitchenItemModifiers.Add("F.Specialist",                FSpecialist());
-            kitchenItemModifiers.Add("F.Temper",                    FTemper());
-            kitchenItemModifiers.Add("Cool Cat",                    CoolCat());
+            kitchenItemModifiers.Add("F.Sharpshooter", FSharpshooter());
+            kitchenItemModifiers.Add("F.Slugger", FSlugger());
+            kitchenItemModifiers.Add("F.Specialist", FSpecialist());
+            kitchenItemModifiers.Add("F.Temper", FTemper());
+            kitchenItemModifiers.Add("Cool Cat", CoolCat());
 
-            kitchenItemModifiers.Add("Powercharm",                  Powercharm());
-            kitchenItemModifiers.Add("Power Talon",                 PowerTalon());
-            kitchenItemModifiers.Add("Demon Drug",                  DemonDrug(1));
-            kitchenItemModifiers.Add("Mega Demon Drug",             DemonDrug(2));
-            kitchenItemModifiers.Add("Attack Up (S) Meal",          AUMeal(1));
-            kitchenItemModifiers.Add("Attack Up (M) Meal",          AUMeal(2));
-            kitchenItemModifiers.Add("Attack Up (L) Meal",          AUMeal(3));
-            kitchenItemModifiers.Add("Might Seed",                  MightSeed(1));
-            kitchenItemModifiers.Add("Might Pill",                  MightSeed(2));
-            kitchenItemModifiers.Add("Nitroshroom (Mushromancer)",  Nitroshroom());
-            kitchenItemModifiers.Add("Demon Horn",                  Demon(1));
-            kitchenItemModifiers.Add("Demon S",                     Demon(2));
-            kitchenItemModifiers.Add("Demon Affinity S",            Demon(3));
+            kitchenItemModifiers.Add("Powercharm", Powercharm());
+            kitchenItemModifiers.Add("Power Talon", PowerTalon());
+            kitchenItemModifiers.Add("Demon Drug", DemonDrug(1));
+            kitchenItemModifiers.Add("Mega Demon Drug", DemonDrug(2));
+            kitchenItemModifiers.Add("Attack Up (S) Meal", AUMeal(1));
+            kitchenItemModifiers.Add("Attack Up (M) Meal", AUMeal(2));
+            kitchenItemModifiers.Add("Attack Up (L) Meal", AUMeal(3));
+            kitchenItemModifiers.Add("Might Seed", MightSeed(1));
+            kitchenItemModifiers.Add("Might Pill", MightSeed(2));
+            kitchenItemModifiers.Add("Nitroshroom (Mushromancer)", Nitroshroom());
+            kitchenItemModifiers.Add("Demon Horn", Demon(1));
+            kitchenItemModifiers.Add("Demon S", Demon(2));
+            kitchenItemModifiers.Add("Demon Affinity S", Demon(3));
 #endif
             //Weapon Mods
 #if false
@@ -1191,9 +1291,9 @@ namespace YADC_MHGen_
                 using (XmlReader reader = XmlReader.Create(file, settings))
                 {
                     reader.MoveToContent();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
-                        if(reader.Name == "move" && reader.NodeType != XmlNodeType.EndElement)
+                        if (reader.Name == "move" && reader.NodeType != XmlNodeType.EndElement)
                         {
                             int id = int.Parse(reader.GetAttribute("id"));
                             reader.Read(); //name tag
@@ -1270,7 +1370,7 @@ namespace YADC_MHGen_
                                 aerialAttack = true;
                             }
                             moves.Add(new moveStat(name, id, only, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
-                            
+
                         }
                     }
                 }
@@ -1289,7 +1389,7 @@ namespace YADC_MHGen_
             {
                 string type = file.Remove(file.Length - 4); //Strip trailing '.xml'
                 type = type.Remove(0, 13); //Strip preceeding './Weapons/' and order numbers
-                if(type.Contains('_'))
+                if (type.Contains('_'))
                 {
                     type.Replace('_', ' ');
                 }
@@ -1304,12 +1404,12 @@ namespace YADC_MHGen_
                 XmlReaderSettings settings = new XmlReaderSettings();
                 settings.IgnoreComments = true;
                 settings.IgnoreWhitespace = true;
-                using (XmlReader reader = XmlReader.Create(file,settings))
+                using (XmlReader reader = XmlReader.Create(file, settings))
                 {
                     reader.MoveToContent();
-                    while(reader.Read())
+                    while (reader.Read())
                     {
-                        if(reader.Name == "weapon" && reader.NodeType != XmlNodeType.EndElement)
+                        if (reader.Name == "weapon" && reader.NodeType != XmlNodeType.EndElement)
                         {
                             reader.Read(); //Name tag
                             reader.Read(); //Name string
@@ -1329,7 +1429,7 @@ namespace YADC_MHGen_
                             reader.Read(); //end final name
                             reader.Read(); //level
 
-                            while(reader.NodeType != XmlNodeType.EndElement && reader.Name != "weapon")
+                            while (reader.NodeType != XmlNodeType.EndElement && reader.Name != "weapon")
                             {
                                 int level = int.Parse(reader.GetAttribute("number")); //Get attribute of level number.
                                 reader.Read(); //attack tag
@@ -1397,7 +1497,7 @@ namespace YADC_MHGen_
         /// <param name="hiIndex"></param>
         private void quickSortVar1(List<moveStat> statList, int loIndex, int hiIndex)
         {
-            if(loIndex < hiIndex)
+            if (loIndex < hiIndex)
             {
                 int p = partitionVar1(statList, loIndex, hiIndex);
                 quickSortVar1(statList, loIndex, p - 1);
@@ -1410,12 +1510,12 @@ namespace YADC_MHGen_
             double pivot = statList[hiIndex].totalValue;
             int i = loIndex - 1;
 
-            for(int j = loIndex; j != hiIndex; j++)
+            for (int j = loIndex; j != hiIndex; j++)
             {
-                if(statList[j].totalValue <= pivot)
+                if (statList[j].totalValue <= pivot)
                 {
                     i++;
-                    if(i != j)
+                    if (i != j)
                     {
                         moveStat tempStat = statList[i];
                         statList[i] = statList[j];
@@ -1473,13 +1573,13 @@ namespace YADC_MHGen_
             return i + 1;
         }
 
-        
+
 
 #if true
         //Beginning of Armor Skill methods.
         private bool Artillery(int skillVal)
         {
-            if(skillVal == 1) //Art. Novice (Fixed Weapons)
+            if (skillVal == 1) //Art. Novice (Fixed Weapons)
             {
                 weaponAndMods.expMod = weaponAndMods.expMod * 1.1;
             }
@@ -1937,7 +2037,7 @@ namespace YADC_MHGen_
 
         private bool KO()
         {
-            if(!modList.Items.ContainsKey("F.Slugger"))
+            if (!modList.Items.ContainsKey("F.Slugger"))
             {
                 weaponAndMods.KOPower = weaponAndMods.KOPower * 1.2;
             }
@@ -2192,7 +2292,7 @@ namespace YADC_MHGen_
 
         private bool FBulldozer()
         {
-            if(weapSharpness.Text != "(No Sharpness)")
+            if (weapSharpness.Text != "(No Sharpness)")
             {
                 weaponAndMods.rawSharpMod *= 1.05;
                 weaponAndMods.eleSharpMod *= 1.05;
@@ -2225,7 +2325,7 @@ namespace YADC_MHGen_
 
         private bool FSlugger()
         {
-            if(!modList.Items.ContainsKey("KO King"))
+            if (!modList.Items.ContainsKey("KO King"))
             {
                 weaponAndMods.KOPower *= 1.1;
             }
@@ -2264,11 +2364,11 @@ namespace YADC_MHGen_
 
         private bool DemonDrug(int skillVal)
         {
-            if(skillVal == 1)
+            if (skillVal == 1)
             {
                 weaponAndMods.totalAttackPower += 5;
             }
-            else if(skillVal == 2)
+            else if (skillVal == 2)
             {
                 weaponAndMods.totalAttackPower += 7;
             }
@@ -2289,7 +2389,7 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.totalAttackPower += 5;
             }
-            else if(skillVal == 3)
+            else if (skillVal == 3)
             {
                 weaponAndMods.totalAttackPower += 7;
             }
@@ -2332,7 +2432,7 @@ namespace YADC_MHGen_
             else if (skillVal == 2)
             {
                 weaponAndMods.totalAttackPower += 10;
-                if(weapSharpness.Text != "(No Sharpness)")
+                if (weapSharpness.Text != "(No Sharpness)")
                 {
                     weaponAndMods.rawSharpMod *= 1.1;
                 }
@@ -2357,11 +2457,11 @@ namespace YADC_MHGen_
 #if true
         private bool LSM(int skillVal)
         {
-            if(skillVal == 1)
+            if (skillVal == 1)
             {
                 weaponAndMods.rawMod *= 0.6;
             }
-            else if(skillVal == 2)
+            else if (skillVal == 2)
             {
                 weaponAndMods.rawMod *= 0.7;
             }
@@ -2382,7 +2482,7 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.rawMod *= 1.1;
             }
-            else if(skillVal == 3)
+            else if (skillVal == 3)
             {
                 weaponAndMods.rawMod *= 1.2;
             }
@@ -2502,17 +2602,9 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private void weapSecType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach(moveStat move in monName.Items)
-            {
-                if (move.onlyFor != ((ComboBox)sender).SelectedText)
-                {
+        
 
-                }
-
-            }
-        }
+        
 
         //private bool functionName()
         //{
