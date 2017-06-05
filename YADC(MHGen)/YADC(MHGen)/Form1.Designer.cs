@@ -66,6 +66,7 @@
             this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraExhZone = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.weapOverride = new System.Windows.Forms.CheckBox();
             this.label75 = new System.Windows.Forms.Label();
             this.weapSecPower = new System.Windows.Forms.TextBox();
             this.weapSecBox = new System.Windows.Forms.PictureBox();
@@ -95,6 +96,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.weapType = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.paraMinds = new System.Windows.Forms.CheckBox();
             this.label58 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
             this.paraTotal = new System.Windows.Forms.TextBox();
@@ -163,6 +165,7 @@
             this.calcRawOut = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.moveMinds = new System.Windows.Forms.CheckBox();
             this.moveAerial = new System.Windows.Forms.CheckBox();
             this.moveDraw = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
@@ -236,9 +239,7 @@
             this.monHitzone = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
             this.monName = new System.Windows.Forms.ComboBox();
-            this.moveMinds = new System.Windows.Forms.CheckBox();
-            this.paraMinds = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.paraStatusCrit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -425,7 +426,7 @@
             this.weapSecType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapSecType.FormattingEnabled = true;
             this.weapSecType.Items.AddRange(new object[] {
-            "(None)",
+            "None",
             "DB - Fire",
             "DB - Water",
             "DB - Ice",
@@ -615,7 +616,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.weapOverride);
             this.groupBox1.Controls.Add(this.weapSecType);
             this.groupBox1.Controls.Add(this.label75);
             this.groupBox1.Controls.Add(this.weapSecPower);
@@ -643,6 +644,16 @@
             this.groupBox1.TabIndex = 126;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Weapon Base Stats:";
+            // 
+            // weapOverride
+            // 
+            this.weapOverride.AutoSize = true;
+            this.weapOverride.Location = new System.Drawing.Point(189, 91);
+            this.weapOverride.Name = "weapOverride";
+            this.weapOverride.Size = new System.Drawing.Size(140, 17);
+            this.weapOverride.TabIndex = 146;
+            this.weapOverride.Text = "Override Base Element?";
+            this.weapOverride.UseVisualStyleBackColor = true;
             // 
             // label75
             // 
@@ -936,6 +947,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.paraStatusCrit);
             this.groupBox3.Controls.Add(this.paraMinds);
             this.groupBox3.Controls.Add(this.paraHitCount);
             this.groupBox3.Controls.Add(this.label58);
@@ -976,6 +988,16 @@
             this.groupBox3.TabIndex = 128;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Hunter Parameters:";
+            // 
+            // paraMinds
+            // 
+            this.paraMinds.AutoSize = true;
+            this.paraMinds.Location = new System.Drawing.Point(9, 135);
+            this.paraMinds.Name = "paraMinds";
+            this.paraMinds.Size = new System.Drawing.Size(83, 17);
+            this.paraMinds.TabIndex = 150;
+            this.paraMinds.Text = "Mind\'s Eye?";
+            this.paraMinds.UseVisualStyleBackColor = true;
             // 
             // label58
             // 
@@ -1071,7 +1093,7 @@
             // paraBoost
             // 
             this.paraBoost.AutoSize = true;
-            this.paraBoost.Location = new System.Drawing.Point(9, 126);
+            this.paraBoost.Location = new System.Drawing.Point(9, 119);
             this.paraBoost.Name = "paraBoost";
             this.paraBoost.Size = new System.Drawing.Size(93, 17);
             this.paraBoost.TabIndex = 130;
@@ -1717,6 +1739,16 @@
             this.groupBox6.TabIndex = 131;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Move Stats:";
+            // 
+            // moveMinds
+            // 
+            this.moveMinds.AutoSize = true;
+            this.moveMinds.Location = new System.Drawing.Point(189, 85);
+            this.moveMinds.Name = "moveMinds";
+            this.moveMinds.Size = new System.Drawing.Size(83, 17);
+            this.moveMinds.TabIndex = 144;
+            this.moveMinds.Text = "Mind\'s Eye?";
+            this.moveMinds.UseVisualStyleBackColor = true;
             // 
             // moveAerial
             // 
@@ -2449,35 +2481,15 @@
             this.monName.Size = new System.Drawing.Size(129, 21);
             this.monName.TabIndex = 0;
             // 
-            // moveMinds
+            // paraStatusCrit
             // 
-            this.moveMinds.AutoSize = true;
-            this.moveMinds.Location = new System.Drawing.Point(189, 85);
-            this.moveMinds.Name = "moveMinds";
-            this.moveMinds.Size = new System.Drawing.Size(83, 17);
-            this.moveMinds.TabIndex = 144;
-            this.moveMinds.Text = "Mind\'s Eye?";
-            this.moveMinds.UseVisualStyleBackColor = true;
-            // 
-            // paraMinds
-            // 
-            this.paraMinds.AutoSize = true;
-            this.paraMinds.Location = new System.Drawing.Point(9, 149);
-            this.paraMinds.Name = "paraMinds";
-            this.paraMinds.Size = new System.Drawing.Size(83, 17);
-            this.paraMinds.TabIndex = 150;
-            this.paraMinds.Text = "Mind\'s Eye?";
-            this.paraMinds.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(189, 91);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(72, 17);
-            this.checkBox1.TabIndex = 146;
-            this.checkBox1.Text = "Override?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.paraStatusCrit.AutoSize = true;
+            this.paraStatusCrit.Location = new System.Drawing.Point(9, 151);
+            this.paraStatusCrit.Name = "paraStatusCrit";
+            this.paraStatusCrit.Size = new System.Drawing.Size(80, 17);
+            this.paraStatusCrit.TabIndex = 151;
+            this.paraStatusCrit.Text = "Status Crit?";
+            this.paraStatusCrit.UseVisualStyleBackColor = true;
             // 
             // DmgCalculator
             // 
@@ -2745,7 +2757,8 @@
         private System.Windows.Forms.ComboBox monName;
         private System.Windows.Forms.CheckBox moveMinds;
         private System.Windows.Forms.CheckBox paraMinds;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox weapOverride;
+        private System.Windows.Forms.CheckBox paraStatusCrit;
     }
 }
 

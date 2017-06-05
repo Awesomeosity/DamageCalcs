@@ -59,6 +59,7 @@ namespace YADC_MHGen_
             public string name;
             public int id;
 
+            public string onlyFor;
             public string damageType;
             public double totalValue;
             public double perHitValue;
@@ -71,10 +72,27 @@ namespace YADC_MHGen_
             public bool draw;
             public bool aerial;
 
-            public moveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
+            /// <summary>
+            /// Ctor for moveStat struct.
+            /// </summary>
+            /// <param name="_name">Custom name. Doesn't really matter</param>
+            /// <param name="_id">Corresponds to how many button presses you need to get to the move.</param>
+            /// <param name="only">Restricts this move to a certain subtype of weapon (Wide Full Burst GL for example)</param>
+            /// <param name="_damageType">Cut, Impact, Shot, or Fixed.</param>
+            /// <param name="_motionValue">Total MV of the move.</param>
+            /// <param name="_perHitValue">Average MV of the move.</param>
+            /// <param name="_hitCount">Number of hits in the move.</param>
+            /// <param name="_sharpnessMod">The sharpness modifier added when executing the move.</param>
+            /// <param name="_KODamage">KO Damage dealt.</param>
+            /// <param name="_ExhDamage">Exhaust damage dealt.</param>
+            /// <param name="_mindsEye">Whether this move has natural Mind's Eye or not.</param>
+            /// <param name="_draw">Is this move a draw attack?</param>
+            /// <param name="_aerial">Is this move an aerial attack?</param>
+            public moveStat(string _name, int _id, string only, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
             {
                 name = _name;
                 id = _id;
+                onlyFor = only;
                 damageType = _damageType;
                 totalValue = _motionValue;
                 perHitValue = _perHitValue;
@@ -661,103 +679,90 @@ namespace YADC_MHGen_
             double eleTotal = 0;
             double DBTotal = 0;
 
-            if(!paraFixed.Checked) //If fixed damage is not in play
+            double subAffinity = affinity; //Temp affinity used in calculations
+            double critBoost = .25;
+            double eleCrit = 0;
+            double statusCrit = 0;
+
+            if (paraFixed.Checked) //If fixed damage is in play
             {
-                if (AverageSel.Checked)
-                {
-                    if (paraBoost.Checked)
-                    {
-                        rawTotal = total * (1 + affinity * 0.40) * rawSharp * motion;
-                    }
-                    else
-                    {
-                        rawTotal = total * (1 + affinity * 0.25) * rawSharp * motion;
-                    }
-
-                    if (paraEleCrit.SelectedIndex == 0) //ComboBox1 stores Elemental Crit status.
-                    {
-                        eleTotal = element * eleSharp;
-                        DBTotal = DBElement * eleSharp;
-                    }
-                    else if (paraEleCrit.SelectedIndex == 1)
-                    {
-                        eleTotal = element * eleSharp * (1 + affinity * 0.2);
-                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.2);
-                    }
-                    else if (paraEleCrit.SelectedIndex == 2)
-                    {
-                        eleTotal = element * eleSharp * (1 + affinity * 0.3);
-                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.3);
-                    }
-                    else if (paraEleCrit.SelectedIndex == 3)
-                    {
-                        eleTotal = element * eleSharp * (1 + affinity * 0.35);
-                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.35);
-                    }
-                    else if (paraEleCrit.SelectedIndex == 4)
-                    {
-                        eleTotal = element * eleSharp * (1 + affinity * 0.25);
-                        DBTotal = DBElement * eleSharp * (1 + affinity * 0.25);
-                    }
-                }
-
-                else if (PositiveSel.Checked)
-                {
-                    if (paraBoost.Checked)
-                    {
-                        rawTotal = total * 1.40 * rawSharp * motion;
-                    }
-                    else
-                    {
-                        rawTotal = total * 1.25 * rawSharp * motion;
-                    }
-
-                    if (paraEleCrit.SelectedIndex == 0)
-                    {
-                        eleTotal = element * eleSharp;
-                        DBTotal = DBElement * eleSharp;
-                    }
-                    else if (paraEleCrit.SelectedIndex == 1)
-                    {
-                        eleTotal = element * eleSharp * 1.2;
-                        DBTotal = DBElement * eleSharp * 1.2;
-                    }
-                    else if (paraEleCrit.SelectedIndex == 2)
-                    {
-                        eleTotal = element * eleSharp * 1.3;
-                        DBTotal = DBElement * eleSharp * 1.3;
-                    }
-                    else if (paraEleCrit.SelectedIndex == 3)
-                    {
-                        eleTotal = element * eleSharp * 1.35;
-                        DBTotal = DBElement * eleSharp * 1.35;
-                    }
-                    else if (paraEleCrit.SelectedIndex == 4)
-                    {
-                        eleTotal = element * eleSharp * 1.25;
-                        DBTotal = DBElement * eleSharp * 1.25;
-                    }
-
-                }
-
-                else if (NegativeSel.Checked)
-                {
-                    rawTotal = total * 0.75 * rawSharp * motion;
-                    eleTotal = element * eleSharp;
-                    DBTotal = DBElement * eleSharp;
-                }
-
-                else if (NeutralSel.Checked)
-                {
-                    rawTotal = total * rawSharp * motion;
-                    eleTotal = element * eleSharp;
-                    DBTotal = DBElement * eleSharp;
-                }
+                return new Tuple<double, double, double>(total, element, DBElement);
             }
 
             else //If it is in play
             {
-                return new Tuple<double, double, double>(total, element, DBElement);
+                if (NeutralSel.Checked)
+                {
+                    subAffinity = 0;
+                }
+                else if (PositiveSel.Checked)
+                {
+                    subAffinity = 100;
+                }
+                else if (NegativeSel.Checked)
+                {
+                    subAffinity = -100;
+                }
+
+                if (AverageSel.Checked || PositiveSel.Checked)
+                {
+                    if (paraBoost.Checked)
+                    {
+                        critBoost = .40;
+                    }
+
+                    if (paraStatusCrit.Checked)
+                    {
+                        statusCrit = .2;
+                    }
+
+                    if(paraEleCrit.SelectedIndex == 1)
+                    {
+                        eleCrit = 0.2;
+                    }
+                    else if (paraEleCrit.SelectedIndex == 2)
+                    {
+                        eleCrit = 0.3;
+                    }
+                    else if (paraEleCrit.SelectedIndex == 3)
+                    {
+                        eleCrit = 0.35;
+                    }
+                    else if (paraEleCrit.SelectedIndex == 4)
+                    {
+                        eleCrit = 0.25;
+                    }
+                }
+
+                rawTotal = total * (1 + subAffinity * critBoost) * rawSharp * motion;
+
+                string ele = (string)paraAltType.SelectedItem;
+                string secEle = (string)paraSecEle.SelectedItem;
+                if (ele != "Poison" && ele != "Para" && ele != "Sleep" && ele != "Blast")
+                {
+                    eleTotal = element * eleSharp * (1 + subAffinity * eleCrit);
+                }
+                else if(ele != "Blast")
+                {
+                    eleTotal = element * eleSharp * (1 + subAffinity * statusCrit);
+                }
+                else
+                {
+                    eleTotal = element * eleSharp;
+                }
+
+                if (secEle != "Poison" && secEle != "Para" && secEle != "Sleep" && secEle != "Blast")
+                {
+                    DBTotal = DBElement * eleSharp * (1 + subAffinity * eleCrit);
+                }
+                else if (secEle != "Blast")
+                {
+                    DBTotal = DBElement * eleSharp * (1 + subAffinity * statusCrit);
+                }
+                else
+                {
+                    DBTotal = DBElement * eleSharp;
+                }
             }
 
             return new Tuple<double, double, double>(rawTotal, eleTotal, DBTotal);
@@ -1104,7 +1109,6 @@ namespace YADC_MHGen_
 
         /// <summary>
         /// Reads from the MotionValues folder and retrives motion values and other stats for each move of each type of weapon.
-        /// TODO: Add Draw Attack indicators, Aerial attack indicators (for Critical Draw/Punishing Draw and Vault, respectively)
         /// </summary>
         private void readMotion()
         {
@@ -1137,6 +1141,11 @@ namespace YADC_MHGen_
                             string name = reader.Value;
 
                             reader.Read(); //end name
+                            reader.Read(); //onlyfor tag
+                            reader.Read(); //onlyfor string
+                            string only = reader.Value;
+
+                            reader.Read(); //end onlyfor
                             reader.Read(); //type tag
                             reader.Read(); //type string
                             string damageType = reader.Value;
@@ -1200,7 +1209,7 @@ namespace YADC_MHGen_
                             {
                                 aerialAttack = true;
                             }
-                            moves.Add(new moveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
+                            moves.Add(new moveStat(name, id, only, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
                             
                         }
                     }
@@ -2426,7 +2435,14 @@ namespace YADC_MHGen_
 
         private void weapSecType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            foreach(moveStat move in monName.Items)
+            {
+                if (move.onlyFor != ((ComboBox)sender).SelectedText)
+                {
 
+                }
+
+            }
         }
 
         //private bool functionName()
