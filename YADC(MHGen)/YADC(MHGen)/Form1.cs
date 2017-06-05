@@ -58,23 +58,33 @@ namespace YADC_MHGen_
         {
             public string name;
             public int id;
-            public string damageType;
-            public int motionValue;
-            public double sharpnessMod;
-            public int KODamage;
-            public int ExhDamage;
-            public bool mindsEye;
 
-            public moveStat(string _name, int _id, string _damageType, int _motionValue, double _sharpnessMod, int _KODamage, int _ExhDamage, bool _mindsEye)
+            public string damageType;
+            public double totalValue;
+            public double perHitValue;
+            public int hitCount;
+            public double sharpnessMod;
+            public double KODamage;
+            public double ExhDamage;
+
+            public bool mindsEye;
+            public bool draw;
+            public bool aerial;
+
+            public moveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
             {
                 name = _name;
                 id = _id;
                 damageType = _damageType;
-                motionValue = _motionValue;
+                totalValue = _motionValue;
+                perHitValue = _perHitValue;
+                hitCount = _hitCount;
                 sharpnessMod = _sharpnessMod;
                 KODamage = _KODamage;
                 ExhDamage = _ExhDamage;
                 mindsEye = _mindsEye;
+                draw = _draw;
+                aerial = _aerial;
             }
         }
 
@@ -145,33 +155,33 @@ namespace YADC_MHGen_
             InitializeComponent(); //Required.
             FillOut(); //Fills out dictionaries.
             readFiles(); //Read the xml files and fills out the database.
-            checkBox1.Checked = false; //Force checkboxes to be unchecked on initialization.
-            checkBox2.Checked = false;
-            checkBox3.Checked = false;
-            sharpnessBox.SelectedIndex = 0; //Force comboBoxes to be set to a certain position.
-            AltDamageField.SelectedIndex = 0;
-            MindsField.SelectedIndex = 1;
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
-            comboBox4.SelectedIndex = 0;
+            paraBoost.Checked = false; //Force checkboxes to be unchecked on initialization.
+            moveMinds.Checked = false;
+            paraFixed.Checked = false;
+            paraMinds.Checked = false;
+            paraSharpness.SelectedIndex = 0; //Force comboBoxes to be set to a certain position.
+            paraAltType.SelectedIndex = 0;
+            paraEleCrit.SelectedIndex = 0;
+            paraMonStat.SelectedIndex = 0;
+            paraSecEle.SelectedIndex = 0;
             AverageSel.Select(); //Force selection of a radio button.
-            ElementBox.Image = null; //Force clear of picture boxes.
-            FinalEleBox.Image = null;
-            EleLabelBox.Image = null;
-            pictureBox1.Image = null;
-            pictureBox2.Image = null;
-            EleZoneField.ReadOnly = true; //Force readonly to be true on elemental boxes (Assume just raw damage on startup)
-            textBox5.ReadOnly = true;
-            textBox7.ReadOnly = true;
-            EleOut.BackColor = SystemColors.Control; //These are labels, which means we need to change the background color instead.
-            FinalEleField.BackColor = SystemColors.Control;
-            label59.BackColor = SystemColors.Control;
-            label61.BackColor = SystemColors.Control;
-            KOBox.Load("./Images/KO.png"); //Load the images from the folder.
-            ExhaustBox.Load("./Images/Exhaust.png");
-            KOBox2.Load("./Images/KO.png");
-            ExhaustBox2.Load("./Images/Exhaust.png");
-            comboBox4.Enabled = false;
+            calcEleBox.Image = null; //Force clear of picture boxes.
+            calcFinalEleBox.Image = null;
+            weapAltBox.Image = null;
+            calcSecBox.Image = null;
+            calcFinalSecBox.Image = null;
+            paraEleHitzone.ReadOnly = true; //Force readonly to be true on elemental boxes (Assume just raw damage on startup)
+            paraSecPower.ReadOnly = true;
+            paraSecHitzone.ReadOnly = true;
+            calcEleOut.BackColor = SystemColors.Control; //These are labels, which means we need to change the background color instead.
+            calcEle.BackColor = SystemColors.Control;
+            calcSecOut.BackColor = SystemColors.Control;
+            calcFinalSec.BackColor = SystemColors.Control;
+            calcKOBox.Load("./Images/KO.png"); //Load the images from the folder.
+            calcExhBox.Load("./Images/Exhaust.png");
+            moveKOBox.Load("./Images/KO.png");
+            moveExhBox.Load("./Images/Exhaust.png");
+            paraSecEle.Enabled = false;
         }
 
         //EVENT FUNCTIONS
@@ -214,9 +224,9 @@ namespace YADC_MHGen_
         {
             Tuple<double, double, double> rawEleOut = calculateDamage(); //Helper function.
 
-            RawOut.Text = rawEleOut.Item1.ToString(); //Used the Tuple output from the function to fill in the labels.
-            EleOut.Text = rawEleOut.Item2.ToString();
-            label59.Text = rawEleOut.Item3.ToString();
+            calcRawOut.Text = rawEleOut.Item1.ToString(); //Used the Tuple output from the function to fill in the labels.
+            calcEleOut.Text = rawEleOut.Item2.ToString();
+            calcSecOut.Text = rawEleOut.Item3.ToString();
         }
 
         /*CalcAll Functions*/
@@ -230,21 +240,21 @@ namespace YADC_MHGen_
             Tuple<double, double, double> rawEleTuple = calculateDamage(); //Use helper function.
             Tuple<double, double, double, double, double, string, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2, rawEleTuple.Item3); //Another one.
 
-            RawOut.Text = rawEleTuple.Item1.ToString(); //Do as the CalcButt function does
-            EleOut.Text = rawEleTuple.Item2.ToString();
-            label59.Text = rawEleTuple.Item3.ToString();
+            calcRawOut.Text = rawEleTuple.Item1.ToString(); //Do as the CalcButt function does
+            calcEleOut.Text = rawEleTuple.Item2.ToString();
+            calcSecOut.Text = rawEleTuple.Item3.ToString();
 
-            FinalRawField.Text = finalTuple.Item2.ToString(); //But with use of the outputted tuple from the moreDamage function.
-            FinalEleField.Text = finalTuple.Item3.ToString();
+            calcFinalRaw.Text = finalTuple.Item2.ToString(); //But with use of the outputted tuple from the moreDamage function.
+            calcEle.Text = finalTuple.Item3.ToString();
 
-            KOOut.Text = finalTuple.Item4.ToString();
-            ExhaustOut.Text = finalTuple.Item5.ToString();
+            calcKO.Text = finalTuple.Item4.ToString();
+            calcExh.Text = finalTuple.Item5.ToString();
 
-            label61.Text = finalTuple.Item7.ToString();
+            calcFinalSec.Text = finalTuple.Item7.ToString();
 
-            FinalField.Text = finalTuple.Item1.ToString();
+            calcFinal.Text = finalTuple.Item1.ToString();
 
-            BounceLabel.Text = finalTuple.Item6;
+            calcBounce.Text = finalTuple.Item6;
         }
 
         /// <summary>
@@ -259,37 +269,37 @@ namespace YADC_MHGen_
             if (element != "(None)") //If there is an element
             {
                 string path = str2image[element];
-                ElementBox.Load(path);
-                FinalEleBox.Load(path);
-                EleField.ReadOnly = false;
-                EleOut.BackColor = SystemColors.ControlLightLight;
-                FinalEleField.BackColor = SystemColors.ControlLightLight;
+                calcEleBox.Load(path);
+                calcFinalEleBox.Load(path);
+                paraEle.ReadOnly = false;
+                calcEleOut.BackColor = SystemColors.ControlLightLight;
+                calcEle.BackColor = SystemColors.ControlLightLight;
 
                 if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast") //If the element is a status
                 {
-                    EleZoneField.ReadOnly = true;
-                    EleZoneField.Text = 0.ToString();
+                    paraEleHitzone.ReadOnly = true;
+                    paraEleHitzone.Text = 0.ToString();
                 }
                 else
                 {
-                    EleZoneField.ReadOnly = false;
+                    paraEleHitzone.ReadOnly = false;
                 }
 
-                comboBox4.Enabled = true;
+                paraSecEle.Enabled = true;
             }
 
             else //If there isn't an element
             {
-                ElementBox.Image = null;
-                FinalEleBox.Image = null;
-                EleOut.BackColor = System.Drawing.SystemColors.Control;
-                FinalEleField.BackColor = System.Drawing.SystemColors.Control;
-                EleField.ReadOnly = true;
-                EleZoneField.ReadOnly = true;
-                EleField.Text = 0.ToString();
-                EleZoneField.Text = 0.ToString();
-                comboBox4.Enabled = false;
-                comboBox4.SelectedIndex = 0;
+                calcEleBox.Image = null;
+                calcFinalEleBox.Image = null;
+                calcEleOut.BackColor = System.Drawing.SystemColors.Control;
+                calcEle.BackColor = System.Drawing.SystemColors.Control;
+                paraEle.ReadOnly = true;
+                paraEleHitzone.ReadOnly = true;
+                paraEle.Text = 0.ToString();
+                paraEleHitzone.Text = 0.ToString();
+                paraSecEle.Enabled = false;
+                paraSecEle.SelectedIndex = 0;
             }
         }
 
@@ -304,33 +314,33 @@ namespace YADC_MHGen_
             if (element != "(None)") //If there is an element
             {
                 string path = str2image[element];
-                pictureBox1.Load(path);
-                pictureBox2.Load(path);
-                textBox5.ReadOnly = false;
-                label59.BackColor = SystemColors.ControlLightLight;
-                label61.BackColor = SystemColors.ControlLightLight;
+                calcSecBox.Load(path);
+                calcFinalSecBox.Load(path);
+                paraSecPower.ReadOnly = false;
+                calcSecOut.BackColor = SystemColors.ControlLightLight;
+                calcFinalSec.BackColor = SystemColors.ControlLightLight;
 
                 if (element == "Poison" | element == "Para" | element == "Sleep" | element == "Blast") //If the element is a status
                 {
-                    textBox7.ReadOnly = true;
-                    textBox7.Text = 0.ToString();
+                    paraSecHitzone.ReadOnly = true;
+                    paraSecHitzone.Text = 0.ToString();
                 }
                 else
                 {
-                    textBox7.ReadOnly = false;
+                    paraSecHitzone.ReadOnly = false;
                 }
             }
 
             else //If there isn't an element
             {
-                pictureBox1.Image = null;
-                pictureBox2.Image = null;
-                label59.BackColor = System.Drawing.SystemColors.Control;
-                label61.BackColor = System.Drawing.SystemColors.Control;
-                textBox5.ReadOnly = true;
-                textBox7.ReadOnly = true;
-                textBox5.Text = 0.ToString();
-                textBox7.Text = 0.ToString();
+                calcSecBox.Image = null;
+                calcFinalSecBox.Image = null;
+                calcSecOut.BackColor = System.Drawing.SystemColors.Control;
+                calcFinalSec.BackColor = System.Drawing.SystemColors.Control;
+                paraSecPower.ReadOnly = true;
+                paraSecHitzone.ReadOnly = true;
+                paraSecPower.Text = 0.ToString();
+                paraSecHitzone.Text = 0.ToString();
             }
         }
 
@@ -341,16 +351,16 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void TypeField_SelectedIndexChanged(object sender, EventArgs e)
         {
-            WeaponField.Items.Clear();
+            weapName.Items.Clear();
             foreach (string weapons in type2Weapons[(string)((ComboBox)sender).SelectedItem])
             {
-                WeaponField.Items.Add(weapons); //Fill in weapon names
+                weapName.Items.Add(weapons); //Fill in weapon names
             }
 
-            WeaponFinalField.Items.Clear();
-            foreach (string names in WeaponField.Items)
+            weapFinal.Items.Clear();
+            foreach (string names in weapName.Items)
             {
-                WeaponFinalField.Items.Add(names2FinalNames[names]); //Fill in weapon names at final forms.
+                weapFinal.Items.Add(names2FinalNames[names]); //Fill in weapon names at final forms.
             }
 
             NameSort.Items.Clear();
@@ -389,15 +399,15 @@ namespace YADC_MHGen_
         private void WeaponField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string weaponName = (string)((ComboBox)sender).SelectedItem;
-            if((string)WeaponFinalField.SelectedItem != names2FinalNames[weaponName])
+            if((string)weapFinal.SelectedItem != names2FinalNames[weaponName])
             {
-                WeaponFinalField.SelectedItem = names2FinalNames[weaponName];
+                weapFinal.SelectedItem = names2FinalNames[weaponName];
             }
 
-            LevelField.Items.Clear();
+            weapLevel.Items.Clear();
             foreach (stats levels in names2Stats[weaponName])
             {
-                LevelField.Items.Add(levels.level);
+                weapLevel.Items.Add(levels.level);
             }
         }
 
@@ -409,9 +419,9 @@ namespace YADC_MHGen_
         private void WeaponFinalField_SelectedIndexChanged(object sender, EventArgs e)
         {
             string weaponFinalName = (string)((ComboBox)sender).SelectedItem;
-            if((string)WeaponField.SelectedItem != finalNames2Names[weaponFinalName])
+            if((string)weapName.SelectedItem != finalNames2Names[weaponFinalName])
             {
-                WeaponField.SelectedItem = finalNames2Names[weaponFinalName];
+                weapName.SelectedItem = finalNames2Names[weaponFinalName];
             }
         }
 
@@ -425,8 +435,8 @@ namespace YADC_MHGen_
         private void sharpnessBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sharpness = (string)((ComboBox)sender).SelectedItem;
-            RawSharpField.Text = sharpnessValues[sharpness].Item1.ToString();
-            EleSharpField.Text = sharpnessValues[sharpness].Item2.ToString();
+            paraRawSharp.Text = sharpnessValues[sharpness].Item1.ToString();
+            paraEleSharp.Text = sharpnessValues[sharpness].Item2.ToString();
         }
 
         /// <summary>
@@ -437,18 +447,18 @@ namespace YADC_MHGen_
         private void LevelField_SelectedIndexChanged(object sender, EventArgs e)
         {
             int weaponLevel = (int)((ComboBox)sender).SelectedItem;
-            foreach(stats statistics in names2Stats[WeaponField.Text])
+            foreach(stats statistics in names2Stats[weapName.Text])
             {
                 if(statistics.level == weaponLevel)
                 {
-                    AttackLabel.Text = statistics.attack.ToString();
-                    EleTypeLabel.Text = statistics.elementalDamage.ToString();
-                    AffinityLabel.Text = statistics.affinity.ToString();
-                    SharpnessLabel.Text = statistics.sharpness;
-                    OneLabel.Text = statistics.sharpness1;
-                    TwoLabel.Text = statistics.sharpness2;
+                    weapAttack.Text = statistics.attack.ToString();
+                    weapAltPower.Text = statistics.elementalDamage.ToString();
+                    weapAffinity.Text = statistics.affinity.ToString();
+                    weapSharpness.Text = statistics.sharpness;
+                    weapOne.Text = statistics.sharpness1;
+                    weapTwo.Text = statistics.sharpness2;
 
-                    WeaponAltField.SelectedItem = statistics.elementalType;
+                    weapAlt.SelectedItem = statistics.elementalType;
                 }
             }
         }
@@ -463,11 +473,11 @@ namespace YADC_MHGen_
             if ((string)((ComboBox)sender).SelectedItem != "(None)")
             {
                 string path = str2image[(string)((ComboBox)sender).SelectedItem];
-                EleLabelBox.Load(path);
+                weapAltBox.Load(path);
             }
             else
             {
-                EleLabelBox.Image = null;
+                weapAltBox.Image = null;
             }
         }
 
@@ -479,32 +489,32 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked)
+            if (paraFixed.Checked)
             {
-                sharpnessBox.SelectedIndex = 0;
-                sharpnessBox.Enabled = false;
-                comboBox1.SelectedIndex = 0;
-                comboBox1.Enabled = false;
-                AffinityField.Text = 0.ToString();
-                AffinityField.ReadOnly = true;
-                RawSharpField.Text = 1.0.ToString();
-                RawSharpField.ReadOnly = true;
-                EleSharpField.Text = 1.0.ToString();
-                EleSharpField.ReadOnly = true;
-                RawField.Text = 100.ToString();
-                RawField.ReadOnly = true;
-                HitzoneField.Text = 0.ToString();
-                HitzoneField.ReadOnly = true;
+                paraSharpness.SelectedIndex = 0;
+                paraSharpness.Enabled = false;
+                paraEleCrit.SelectedIndex = 0;
+                paraEleCrit.Enabled = false;
+                paraAffinity.Text = 0.ToString();
+                paraAffinity.ReadOnly = true;
+                paraRawSharp.Text = 1.0.ToString();
+                paraRawSharp.ReadOnly = true;
+                paraEleSharp.Text = 1.0.ToString();
+                paraEleSharp.ReadOnly = true;
+                paraRaw.Text = 100.ToString();
+                paraRaw.ReadOnly = true;
+                paraRawHitzone.Text = 0.ToString();
+                paraRawHitzone.ReadOnly = true;
             }
             else
             {
-                sharpnessBox.Enabled = true;
-                comboBox1.Enabled = true;
-                AffinityField.ReadOnly = false;
-                RawSharpField.ReadOnly = false;
-                EleSharpField.ReadOnly = false;
-                RawField.ReadOnly = false;
-                HitzoneField.ReadOnly = false;
+                paraSharpness.Enabled = true;
+                paraEleCrit.Enabled = true;
+                paraAffinity.ReadOnly = false;
+                paraRawSharp.ReadOnly = false;
+                paraEleSharp.ReadOnly = false;
+                paraRaw.ReadOnly = false;
+                paraRawHitzone.ReadOnly = false;
             }
         }
 
@@ -521,16 +531,16 @@ namespace YADC_MHGen_
                 ComboSort.SelectedItem = name;
             }
 
-            foreach (moveStat move in type2Moves[(string)TypeField.SelectedItem])
+            foreach (moveStat move in type2Moves[(string)weapType.SelectedItem])
             {
                 if (move.name == name)
                 {
-                    MotionValueField.Text = move.motionValue.ToString();
-                    InSharpField.Text = move.sharpnessMod.ToString();
-                    InKOField.Text = move.KODamage.ToString();
-                    InExhaustField.Text = move.ExhDamage.ToString();
-                    MindsField.SelectedItem = move.mindsEye;
-                    DamageTypeField.SelectedItem = move.damageType;
+                    moveTotal.Text = move.totalValue.ToString();
+                    moveSharp.Text = move.sharpnessMod.ToString();
+                    moveKO.Text = move.KODamage.ToString();
+                    moveExh.Text = move.ExhDamage.ToString();
+                    moveMinds.Checked = move.mindsEye;
+                    moveDamType.SelectedItem = move.damageType;
                 }
             }
         }
@@ -572,10 +582,10 @@ namespace YADC_MHGen_
         {
             if (((TextBox)sender).Text != "")
             {
-                string temp = (double.Parse(((TextBox)sender).Text) * double.Parse(textBox6.Text)).ToString();
-                if (textBox4.Text != temp)
+                string temp = (double.Parse(((TextBox)sender).Text) * double.Parse(paraHitCount.Text)).ToString();
+                if (paraTotal.Text != temp)
                 {
-                    textBox4.Text = temp;
+                    paraTotal.Text = temp;
                 }
             }
         }
@@ -589,10 +599,10 @@ namespace YADC_MHGen_
         {
             if(((TextBox)sender).Text != "")
             {
-                string temp = (double.Parse(((TextBox)sender).Text) / double.Parse(textBox6.Text)).ToString();
-                if (MVField.Text != temp)
+                string temp = (double.Parse(((TextBox)sender).Text) / double.Parse(paraHitCount.Text)).ToString();
+                if (paraMV.Text != temp)
                 {
-                    MVField.Text = temp;
+                    paraMV.Text = temp;
                 }
             }
         }
@@ -606,7 +616,7 @@ namespace YADC_MHGen_
         {
             if(((TextBox)sender).Text != "")
             {
-                textBox4.Text = (double.Parse(MVField.Text) * double.Parse(((TextBox)sender).Text)).ToString();
+                paraTotal.Text = (double.Parse(paraMV.Text) * double.Parse(((TextBox)sender).Text)).ToString();
             }
         }
 
@@ -638,24 +648,24 @@ namespace YADC_MHGen_
         /// <returns>A Tuple storing the Raw and Elemental damage outputs.</returns>
         private Tuple<double, double, double> calculateDamage()
         {
-            double total = double.Parse(RawField.Text);
-            double motion = double.Parse(textBox4.Text) * 0.01;
-            double affinity = double.Parse(AffinityField.Text) * 0.01;
-            double element = double.Parse(EleField.Text);
-            double DBElement = double.Parse(textBox5.Text);
+            double total = double.Parse(paraRaw.Text);
+            double motion = double.Parse(paraTotal.Text) * 0.01;
+            double affinity = double.Parse(paraAffinity.Text) * 0.01;
+            double element = double.Parse(paraEle.Text);
+            double DBElement = double.Parse(paraSecPower.Text);
 
-            double rawSharp = double.Parse(RawSharpField.Text);
-            double eleSharp = double.Parse(EleSharpField.Text);
+            double rawSharp = double.Parse(paraRawSharp.Text);
+            double eleSharp = double.Parse(paraEleSharp.Text);
 
             double rawTotal = 0;
             double eleTotal = 0;
             double DBTotal = 0;
 
-            if(!checkBox3.Checked) //If fixed damage is not in play
+            if(!paraFixed.Checked) //If fixed damage is not in play
             {
                 if (AverageSel.Checked)
                 {
-                    if (checkBox1.Checked)
+                    if (paraBoost.Checked)
                     {
                         rawTotal = total * (1 + affinity * 0.40) * rawSharp * motion;
                     }
@@ -664,27 +674,27 @@ namespace YADC_MHGen_
                         rawTotal = total * (1 + affinity * 0.25) * rawSharp * motion;
                     }
 
-                    if (comboBox1.SelectedIndex == 0) //ComboBox1 stores Elemental Crit status.
+                    if (paraEleCrit.SelectedIndex == 0) //ComboBox1 stores Elemental Crit status.
                     {
                         eleTotal = element * eleSharp;
                         DBTotal = DBElement * eleSharp;
                     }
-                    else if (comboBox1.SelectedIndex == 1)
+                    else if (paraEleCrit.SelectedIndex == 1)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.2);
                         DBTotal = DBElement * eleSharp * (1 + affinity * 0.2);
                     }
-                    else if (comboBox1.SelectedIndex == 2)
+                    else if (paraEleCrit.SelectedIndex == 2)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.3);
                         DBTotal = DBElement * eleSharp * (1 + affinity * 0.3);
                     }
-                    else if (comboBox1.SelectedIndex == 3)
+                    else if (paraEleCrit.SelectedIndex == 3)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.35);
                         DBTotal = DBElement * eleSharp * (1 + affinity * 0.35);
                     }
-                    else if (comboBox1.SelectedIndex == 4)
+                    else if (paraEleCrit.SelectedIndex == 4)
                     {
                         eleTotal = element * eleSharp * (1 + affinity * 0.25);
                         DBTotal = DBElement * eleSharp * (1 + affinity * 0.25);
@@ -693,7 +703,7 @@ namespace YADC_MHGen_
 
                 else if (PositiveSel.Checked)
                 {
-                    if (checkBox1.Checked)
+                    if (paraBoost.Checked)
                     {
                         rawTotal = total * 1.40 * rawSharp * motion;
                     }
@@ -702,27 +712,27 @@ namespace YADC_MHGen_
                         rawTotal = total * 1.25 * rawSharp * motion;
                     }
 
-                    if (comboBox1.SelectedIndex == 0)
+                    if (paraEleCrit.SelectedIndex == 0)
                     {
                         eleTotal = element * eleSharp;
                         DBTotal = DBElement * eleSharp;
                     }
-                    else if (comboBox1.SelectedIndex == 1)
+                    else if (paraEleCrit.SelectedIndex == 1)
                     {
                         eleTotal = element * eleSharp * 1.2;
                         DBTotal = DBElement * eleSharp * 1.2;
                     }
-                    else if (comboBox1.SelectedIndex == 2)
+                    else if (paraEleCrit.SelectedIndex == 2)
                     {
                         eleTotal = element * eleSharp * 1.3;
                         DBTotal = DBElement * eleSharp * 1.3;
                     }
-                    else if (comboBox1.SelectedIndex == 3)
+                    else if (paraEleCrit.SelectedIndex == 3)
                     {
                         eleTotal = element * eleSharp * 1.35;
                         DBTotal = DBElement * eleSharp * 1.35;
                     }
-                    else if (comboBox1.SelectedIndex == 4)
+                    else if (paraEleCrit.SelectedIndex == 4)
                     {
                         eleTotal = element * eleSharp * 1.25;
                         DBTotal = DBElement * eleSharp * 1.25;
@@ -761,25 +771,25 @@ namespace YADC_MHGen_
         /// <returns>A Tuple storing the total, raw, element, DB's second element, KO, exhaust, and bounce status of the attack after calculations.</returns>
         private Tuple<double, double, double, double, double, string, double> calculateMoreDamage(double rawDamage, double elementalDamage, double DBElement)
         {
-            double rawZone = double.Parse(HitzoneField.Text) * 0.01;
-            double eleZone = double.Parse(EleZoneField.Text) * 0.01;
-            double KODam = double.Parse(KOField.Text);
-            double ExhDam = double.Parse(ExhaustField.Text);
-            double KOZone = double.Parse(KOZoneField.Text) * 0.01;
-            double ExhaustZone = double.Parse(ExhaustZoneField.Text) * 0.01;
-            double questMod = double.Parse(QuestField.Text);
+            double rawZone = double.Parse(paraRawHitzone.Text) * 0.01;
+            double eleZone = double.Parse(paraEleHitzone.Text) * 0.01;
+            double KODam = double.Parse(paraKO.Text);
+            double ExhDam = double.Parse(paraExh.Text);
+            double KOZone = double.Parse(paraKOZone.Text) * 0.01;
+            double ExhaustZone = double.Parse(paraExhZone.Text) * 0.01;
+            double questMod = double.Parse(paraQuest.Text);
 
-            rawDamage *= monsterStatus[(string)comboBox2.SelectedItem];
+            rawDamage *= monsterStatus[(string)paraMonStat.SelectedItem];
             double totaldamage = rawDamage;
             double KODamage = KODam * KOZone;
             double ExhDamage = ExhDam * ExhaustZone;
             string BounceBool = "No";
 
-            if (!checkBox3.Checked)
+            if (!paraFixed.Checked)
             {
                 rawDamage = rawDamage * rawZone * questMod;
                 
-                if ((rawZone * double.Parse(RawSharpField.Text)) > 0.25 || checkBox2.Checked)
+                if ((rawZone * double.Parse(paraRawSharp.Text)) > 0.25 || paraMinds.Checked)
                 {
                     BounceBool = "No";
                 }
@@ -793,16 +803,16 @@ namespace YADC_MHGen_
                 rawDamage *= questMod;
             }
 
-            string element = (string)AltDamageField.SelectedItem;
+            string element = (string)paraAltType.SelectedItem;
             if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
             {
                 elementalDamage = elementalDamage * eleZone * questMod;
                 totaldamage = rawDamage + elementalDamage;
             }
 
-            if(comboBox4.Text != "(None)") //For DB's Second Element
+            if(paraSecEle.Text != "(None)") //For DB's Second Element
             {
-                string altElement = (string)comboBox4.SelectedItem;
+                string altElement = (string)paraSecEle.SelectedItem;
                 if(altElement != "Poison" && altElement != "Para" && altElement != "Sleep" && altElement != "Blast")
                 {
                     DBElement = DBElement * eleZone * questMod;
@@ -1134,9 +1144,19 @@ namespace YADC_MHGen_
                             reader.Read(); //end type
                             reader.Read(); //mv tag
                             reader.Read(); //mv int
-                            int motionValue = int.Parse(reader.Value);
+                            double motionValue = double.Parse(reader.Value);
 
                             reader.Read(); //end mv
+                            reader.Read(); //perHit tag
+                            reader.Read(); //perHit value
+                            double perHit = double.Parse(reader.Value);
+
+                            reader.Read(); //end perHit
+                            reader.Read(); //hitCount tag
+                            reader.Read(); //hitCount value
+                            int hitCount = int.Parse(reader.Value);
+
+                            reader.Read(); //end hitcount
                             reader.Read(); //sharpness tag
                             reader.Read(); //sharpness double
                             double sharpnessMod = double.Parse(reader.Value);
@@ -1151,9 +1171,9 @@ namespace YADC_MHGen_
                             reader.Read(); //exhaust string
                             int exhaustDamage = int.Parse(reader.Value);
 
-                            reader.Read();
-                            reader.Read();
-                            reader.Read();
+                            reader.Read(); //end exhaust
+                            reader.Read(); //minds tag
+                            reader.Read(); //minds value
                             string minds = reader.Value;
                             bool mindsEye = false;
                             if (minds == "Yes")
@@ -1161,7 +1181,26 @@ namespace YADC_MHGen_
                                 mindsEye = true;
                             }
 
-                            moves.Add(new moveStat(name, id, damageType, motionValue, sharpnessMod, KODamage, exhaustDamage, mindsEye));
+                            reader.Read(); //end minds
+                            reader.Read(); //draw tag
+                            reader.Read(); //draw value
+                            string draw = reader.Value;
+                            bool drawAttack = false;
+                            if (draw == "Yes")
+                            {
+                                drawAttack = true;
+                            }
+
+                            reader.Read();
+                            reader.Read();
+                            reader.Read();
+                            string aerial = reader.Value;
+                            bool aerialAttack = false;
+                            if (aerial == "Yes")
+                            {
+                                aerialAttack = true;
+                            }
+                            moves.Add(new moveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
                             
                         }
                     }
@@ -1186,7 +1225,7 @@ namespace YADC_MHGen_
                     type.Replace('_', ' ');
                 }
 
-                TypeField.Items.Add(type);
+                weapType.Items.Add(type);
 
                 List<string> weapons = new List<string>();
                 type2Weapons.Add(type, weapons); //Mapping of weapon types to weapons
@@ -1290,12 +1329,12 @@ namespace YADC_MHGen_
 
         private int partitionVar1(List<moveStat> statList, int loIndex, int hiIndex)
         {
-            int pivot = statList[hiIndex].motionValue;
+            double pivot = statList[hiIndex].totalValue;
             int i = loIndex - 1;
 
             for(int j = loIndex; j != hiIndex; j++)
             {
-                if(statList[j].motionValue <= pivot)
+                if(statList[j].totalValue <= pivot)
                 {
                     i++;
                     if(i != j)
@@ -1566,13 +1605,13 @@ namespace YADC_MHGen_
 
         private bool CritElement(int skillVal)
         {
-            comboBox1.SelectedIndex = skillVal;
+            paraEleCrit.SelectedIndex = skillVal;
             return true;
         }
 
         private bool CriticalUp()
         {
-            checkBox1.Checked = true;
+            paraBoost.Checked = true;
             return true;
         }
 
@@ -1683,7 +1722,7 @@ namespace YADC_MHGen_
 
         private bool Fencing()
         {
-            checkBox2.Checked = true;
+            moveMinds.Checked = true;
             return true;
         }
 
@@ -1743,11 +1782,11 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.sharpness = (string)OneLabel.SelectedItem;
+                weaponAndMods.sharpness = (string)weapOne.SelectedItem;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.sharpness = (string)TwoLabel.SelectedItem;
+                weaponAndMods.sharpness = (string)weapTwo.SelectedItem;
             }
             else
             {
@@ -1770,7 +1809,7 @@ namespace YADC_MHGen_
 
         private bool Hellblade()
         {
-            weaponAndMods.sharpness = (string)TwoLabel.SelectedItem;
+            weaponAndMods.sharpness = (string)weapTwo.SelectedItem;
             return true;
         }
 
@@ -1820,7 +1859,7 @@ namespace YADC_MHGen_
 
         private bool KO()
         {
-            if(!listView1.Items.ContainsKey("F.Slugger"))
+            if(!modList.Items.ContainsKey("F.Slugger"))
             {
                 weaponAndMods.KOPower = weaponAndMods.KOPower * 1.2;
             }
@@ -2075,7 +2114,7 @@ namespace YADC_MHGen_
 
         private bool FBulldozer()
         {
-            if(SharpnessLabel.Text != "(No Sharpness)")
+            if(weapSharpness.Text != "(No Sharpness)")
             {
                 weaponAndMods.rawSharpMod *= 1.05;
                 weaponAndMods.eleSharpMod *= 1.05;
@@ -2108,7 +2147,7 @@ namespace YADC_MHGen_
 
         private bool FSlugger()
         {
-            if(!listView1.Items.ContainsKey("KO King"))
+            if(!modList.Items.ContainsKey("KO King"))
             {
                 weaponAndMods.KOPower *= 1.1;
             }
@@ -2215,7 +2254,7 @@ namespace YADC_MHGen_
             else if (skillVal == 2)
             {
                 weaponAndMods.totalAttackPower += 10;
-                if(SharpnessLabel.Text != "(No Sharpness)")
+                if(weapSharpness.Text != "(No Sharpness)")
                 {
                     weaponAndMods.rawSharpMod *= 1.1;
                 }
@@ -2223,7 +2262,7 @@ namespace YADC_MHGen_
             else if (skillVal == 3)
             {
                 weaponAndMods.totalAttackPower += 7;
-                if (SharpnessLabel.Text != "(No Sharpness)")
+                if (weapSharpness.Text != "(No Sharpness)")
                 {
                     weaponAndMods.rawSharpMod *= 1.1;
                 }
@@ -2383,6 +2422,11 @@ namespace YADC_MHGen_
                 return false;
             }
             return true;
+        }
+
+        private void weapSecType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
         //private bool functionName()

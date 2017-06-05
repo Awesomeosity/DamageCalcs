@@ -32,82 +32,88 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
-            this.RawField = new System.Windows.Forms.TextBox();
+            this.paraRaw = new System.Windows.Forms.TextBox();
             this.MotionTip = new System.Windows.Forms.ToolTip(this.components);
-            this.MVField = new System.Windows.Forms.TextBox();
+            this.paraMV = new System.Windows.Forms.TextBox();
+            this.moveAvg = new System.Windows.Forms.TextBox();
             this.AffinityTip = new System.Windows.Forms.ToolTip(this.components);
-            this.AffinityField = new System.Windows.Forms.TextBox();
+            this.paraAffinity = new System.Windows.Forms.TextBox();
             this.EleTip = new System.Windows.Forms.ToolTip(this.components);
-            this.EleField = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.paraEle = new System.Windows.Forms.TextBox();
+            this.paraSecPower = new System.Windows.Forms.TextBox();
             this.SharpnessTip = new System.Windows.Forms.ToolTip(this.components);
             this.HiddenTip = new System.Windows.Forms.ToolTip(this.components);
             this.AltTip = new System.Windows.Forms.ToolTip(this.components);
-            this.WeaponAltField = new System.Windows.Forms.ComboBox();
-            this.AltDamageField = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.weapAlt = new System.Windows.Forms.ComboBox();
+            this.paraAltType = new System.Windows.Forms.ComboBox();
+            this.paraSecEle = new System.Windows.Forms.ComboBox();
+            this.weapSecType = new System.Windows.Forms.ComboBox();
             this.HitTip = new System.Windows.Forms.ToolTip(this.components);
-            this.HitzoneField = new System.Windows.Forms.TextBox();
+            this.paraRawHitzone = new System.Windows.Forms.TextBox();
             this.EleHitTip = new System.Windows.Forms.ToolTip(this.components);
-            this.EleZoneField = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.paraEleHitzone = new System.Windows.Forms.TextBox();
+            this.paraSecHitzone = new System.Windows.Forms.TextBox();
             this.QuestTip = new System.Windows.Forms.ToolTip(this.components);
-            this.QuestField = new System.Windows.Forms.TextBox();
+            this.paraQuest = new System.Windows.Forms.TextBox();
             this.KOTip = new System.Windows.Forms.ToolTip(this.components);
-            this.KOField = new System.Windows.Forms.TextBox();
+            this.paraKO = new System.Windows.Forms.TextBox();
             this.ExhaustTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ExhaustField = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.paraExh = new System.Windows.Forms.TextBox();
+            this.paraHitCount = new System.Windows.Forms.TextBox();
+            this.moveHitCount = new System.Windows.Forms.TextBox();
             this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
-            this.KOZoneField = new System.Windows.Forms.TextBox();
+            this.paraKOZone = new System.Windows.Forms.TextBox();
             this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
-            this.ExhaustZoneField = new System.Windows.Forms.TextBox();
+            this.paraExhZone = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label75 = new System.Windows.Forms.Label();
+            this.weapSecPower = new System.Windows.Forms.TextBox();
+            this.weapSecBox = new System.Windows.Forms.PictureBox();
+            this.label76 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.TwoLabel = new System.Windows.Forms.ComboBox();
-            this.OneLabel = new System.Windows.Forms.ComboBox();
-            this.SharpnessLabel = new System.Windows.Forms.ComboBox();
-            this.AffinityLabel = new System.Windows.Forms.TextBox();
-            this.EleTypeLabel = new System.Windows.Forms.TextBox();
-            this.AttackLabel = new System.Windows.Forms.TextBox();
+            this.weapTwo = new System.Windows.Forms.ComboBox();
+            this.weapOne = new System.Windows.Forms.ComboBox();
+            this.weapSharpness = new System.Windows.Forms.ComboBox();
+            this.weapAffinity = new System.Windows.Forms.TextBox();
+            this.weapAltPower = new System.Windows.Forms.TextBox();
+            this.weapAttack = new System.Windows.Forms.TextBox();
             this.label50 = new System.Windows.Forms.Label();
             this.label46 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.EleLabelBox = new System.Windows.Forms.PictureBox();
+            this.weapAltBox = new System.Windows.Forms.PictureBox();
             this.label38 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.WeaponFinalField = new System.Windows.Forms.ComboBox();
-            this.LevelField = new System.Windows.Forms.ComboBox();
+            this.weapFinal = new System.Windows.Forms.ComboBox();
+            this.weapLevel = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.WeaponField = new System.Windows.Forms.ComboBox();
+            this.weapName = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.TypeField = new System.Windows.Forms.ComboBox();
+            this.weapType = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label58 = new System.Windows.Forms.Label();
             this.label57 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.paraTotal = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
             this.label54 = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.UpdateButt = new System.Windows.Forms.Button();
+            this.paraFixed = new System.Windows.Forms.CheckBox();
+            this.paraUpdate = new System.Windows.Forms.Button();
             this.label53 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.paraEleCrit = new System.Windows.Forms.ComboBox();
+            this.paraBoost = new System.Windows.Forms.CheckBox();
             this.RawLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.EleSharpField = new System.Windows.Forms.TextBox();
+            this.paraEleSharp = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
-            this.RawSharpField = new System.Windows.Forms.TextBox();
+            this.paraRawSharp = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
-            this.sharpnessBox = new System.Windows.Forms.ComboBox();
+            this.paraSharpness = new System.Windows.Forms.ComboBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -115,61 +121,63 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label63 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.paraMonStat = new System.Windows.Forms.ComboBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label61 = new System.Windows.Forms.Label();
+            this.calcFinalSecBox = new System.Windows.Forms.PictureBox();
+            this.calcFinalSec = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label59 = new System.Windows.Forms.Label();
+            this.calcSecBox = new System.Windows.Forms.PictureBox();
+            this.calcSecOut = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
-            this.BounceLabel = new System.Windows.Forms.Label();
+            this.calcBounce = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.FinalField = new System.Windows.Forms.Label();
+            this.calcFinal = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.FinalRawField = new System.Windows.Forms.Label();
-            this.FinalEleBox = new System.Windows.Forms.PictureBox();
-            this.FinalEleField = new System.Windows.Forms.Label();
-            this.ExhaustBox = new System.Windows.Forms.PictureBox();
-            this.ExhaustOut = new System.Windows.Forms.Label();
-            this.KOBox = new System.Windows.Forms.PictureBox();
-            this.KOOut = new System.Windows.Forms.Label();
+            this.calcFinalRaw = new System.Windows.Forms.Label();
+            this.calcFinalEleBox = new System.Windows.Forms.PictureBox();
+            this.calcEle = new System.Windows.Forms.Label();
+            this.calcExhBox = new System.Windows.Forms.PictureBox();
+            this.calcExh = new System.Windows.Forms.Label();
+            this.calcKOBox = new System.Windows.Forms.PictureBox();
+            this.calcKO = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.ElementBox = new System.Windows.Forms.PictureBox();
+            this.calcEleBox = new System.Windows.Forms.PictureBox();
             this.NeutralSel = new System.Windows.Forms.RadioButton();
             this.NegativeSel = new System.Windows.Forms.RadioButton();
             this.PositiveSel = new System.Windows.Forms.RadioButton();
             this.AverageSel = new System.Windows.Forms.RadioButton();
             this.label20 = new System.Windows.Forms.Label();
-            this.EleOut = new System.Windows.Forms.Label();
+            this.calcEleOut = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.CalcAll = new System.Windows.Forms.Button();
             this.CalcButt = new System.Windows.Forms.Button();
-            this.RawOut = new System.Windows.Forms.Label();
+            this.calcRawOut = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.moveAerial = new System.Windows.Forms.CheckBox();
+            this.moveDraw = new System.Windows.Forms.CheckBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.DamageTypeField = new System.Windows.Forms.ComboBox();
-            this.MindsField = new System.Windows.Forms.ComboBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.ExhaustBox2 = new System.Windows.Forms.PictureBox();
-            this.KOBox2 = new System.Windows.Forms.PictureBox();
+            this.label73 = new System.Windows.Forms.Label();
+            this.moveDamType = new System.Windows.Forms.ComboBox();
+            this.label74 = new System.Windows.Forms.Label();
+            this.moveExhBox = new System.Windows.Forms.PictureBox();
+            this.moveKOBox = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.InExhaustField = new System.Windows.Forms.TextBox();
+            this.moveExh = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.InKOField = new System.Windows.Forms.TextBox();
+            this.moveKO = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.InSharpField = new System.Windows.Forms.TextBox();
-            this.MotionValueField = new System.Windows.Forms.TextBox();
+            this.moveSharp = new System.Windows.Forms.TextBox();
+            this.moveTotal = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label33 = new System.Windows.Forms.Label();
@@ -179,121 +187,175 @@
             this.label31 = new System.Windows.Forms.Label();
             this.NameSort = new System.Windows.Forms.ComboBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.modList = new System.Windows.Forms.ListView();
             this.OtherButt = new System.Windows.Forms.Button();
             this.label42 = new System.Windows.Forms.Label();
-            this.OtherSkillBox = new System.Windows.Forms.ComboBox();
+            this.modOther = new System.Windows.Forms.ComboBox();
             this.RemoveButt = new System.Windows.Forms.Button();
             this.WeaponButt = new System.Windows.Forms.Button();
             this.KitchenButt = new System.Windows.Forms.Button();
             this.ArmorButt = new System.Windows.Forms.Button();
             this.label41 = new System.Windows.Forms.Label();
-            this.WeaponSkillBox = new System.Windows.Forms.ComboBox();
+            this.modWeapon = new System.Windows.Forms.ComboBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.KitchenSkillBox = new System.Windows.Forms.ComboBox();
+            this.modKitchen = new System.Windows.Forms.ComboBox();
             this.label34 = new System.Windows.Forms.Label();
-            this.ArmorSkillBox = new System.Windows.Forms.ComboBox();
+            this.modArmor = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.monDragonBox = new System.Windows.Forms.PictureBox();
+            this.monIceBox = new System.Windows.Forms.PictureBox();
+            this.monThunderBox = new System.Windows.Forms.PictureBox();
+            this.monWaterBox = new System.Windows.Forms.PictureBox();
+            this.monFireBox = new System.Windows.Forms.PictureBox();
+            this.monQuestMod = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.monDragon = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.monIce = new System.Windows.Forms.TextBox();
+            this.monExh = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.monKO = new System.Windows.Forms.TextBox();
+            this.monThunder = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.monWater = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.monFire = new System.Windows.Forms.TextBox();
+            this.monShot = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.monImpact = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.monCut = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.label72 = new System.Windows.Forms.Label();
+            this.monQuest = new System.Windows.Forms.ComboBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.monHitzone = new System.Windows.Forms.ComboBox();
+            this.label78 = new System.Windows.Forms.Label();
+            this.monName = new System.Windows.Forms.ComboBox();
+            this.moveMinds = new System.Windows.Forms.CheckBox();
+            this.paraMinds = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weapAltBox)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KOBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcFinalSecBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcSecBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcFinalEleBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcExhBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcKOBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEleBox)).BeginInit();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KOBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveExhBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveKOBox)).BeginInit();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monDragonBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monIceBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monThunderBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monWaterBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monFireBox)).BeginInit();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorPreventer
             // 
             this.ErrorPreventer.ContainerControl = this;
             // 
-            // RawField
+            // paraRaw
             // 
-            this.RawField.Location = new System.Drawing.Point(214, 32);
-            this.RawField.MaxLength = 3;
-            this.RawField.Name = "RawField";
-            this.RawField.Size = new System.Drawing.Size(96, 20);
-            this.RawField.TabIndex = 108;
-            this.RawField.Text = "0";
-            this.RawField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TotalTip.SetToolTip(this.RawField, resources.GetString("RawField.ToolTip"));
-            this.RawField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.RawField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraRaw.Location = new System.Drawing.Point(214, 32);
+            this.paraRaw.MaxLength = 4;
+            this.paraRaw.Name = "paraRaw";
+            this.paraRaw.Size = new System.Drawing.Size(96, 20);
+            this.paraRaw.TabIndex = 108;
+            this.paraRaw.Text = "0";
+            this.paraRaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.TotalTip.SetToolTip(this.paraRaw, resources.GetString("paraRaw.ToolTip"));
+            this.paraRaw.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraRaw.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // MVField
+            // paraMV
             // 
-            this.MVField.Location = new System.Drawing.Point(316, 110);
-            this.MVField.Name = "MVField";
-            this.MVField.Size = new System.Drawing.Size(95, 20);
-            this.MVField.TabIndex = 110;
-            this.MVField.Text = "0";
-            this.MVField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.MotionTip.SetToolTip(this.MVField, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
+            this.paraMV.Location = new System.Drawing.Point(316, 110);
+            this.paraMV.MaxLength = 4;
+            this.paraMV.Name = "paraMV";
+            this.paraMV.Size = new System.Drawing.Size(95, 20);
+            this.paraMV.TabIndex = 110;
+            this.paraMV.Text = "0";
+            this.paraMV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.MotionTip.SetToolTip(this.paraMV, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
         "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
-            this.MVField.TextChanged += new System.EventHandler(this.MVField_TextChanged);
-            this.MVField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.MVField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraMV.TextChanged += new System.EventHandler(this.MVField_TextChanged);
+            this.paraMV.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraMV.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // AffinityField
+            // moveAvg
             // 
-            this.AffinityField.Location = new System.Drawing.Point(214, 110);
-            this.AffinityField.Name = "AffinityField";
-            this.AffinityField.Size = new System.Drawing.Size(96, 20);
-            this.AffinityField.TabIndex = 113;
-            this.AffinityField.Text = "0";
-            this.AffinityField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AffinityTip.SetToolTip(this.AffinityField, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
+            this.moveAvg.Location = new System.Drawing.Point(104, 119);
+            this.moveAvg.MaxLength = 4;
+            this.moveAvg.Name = "moveAvg";
+            this.moveAvg.Size = new System.Drawing.Size(51, 20);
+            this.moveAvg.TabIndex = 144;
+            this.moveAvg.Text = "0";
+            this.moveAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.MotionTip.SetToolTip(this.moveAvg, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
+        "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
+            // 
+            // paraAffinity
+            // 
+            this.paraAffinity.Location = new System.Drawing.Point(214, 110);
+            this.paraAffinity.MaxLength = 4;
+            this.paraAffinity.Name = "paraAffinity";
+            this.paraAffinity.Size = new System.Drawing.Size(96, 20);
+            this.paraAffinity.TabIndex = 113;
+            this.paraAffinity.Text = "0";
+            this.paraAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AffinityTip.SetToolTip(this.paraAffinity, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
         "more or less damage.");
-            this.AffinityField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.AffinityField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // EleField
+            // paraEle
             // 
-            this.EleField.Location = new System.Drawing.Point(214, 71);
-            this.EleField.Name = "EleField";
-            this.EleField.Size = new System.Drawing.Size(96, 20);
-            this.EleField.TabIndex = 115;
-            this.EleField.Text = "0";
-            this.EleField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.EleField, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+            this.paraEle.Location = new System.Drawing.Point(214, 71);
+            this.paraEle.MaxLength = 4;
+            this.paraEle.Name = "paraEle";
+            this.paraEle.Size = new System.Drawing.Size(96, 20);
+            this.paraEle.TabIndex = 115;
+            this.paraEle.Text = "0";
+            this.paraEle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.paraEle, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
         "umber shown on the \r\nStatus screen may not be the number used in calculations.");
-            this.EleField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.EleField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraEle.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraEle.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // textBox5
+            // paraSecPower
             // 
-            this.textBox5.Location = new System.Drawing.Point(214, 149);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(96, 20);
-            this.textBox5.TabIndex = 142;
-            this.textBox5.Text = "0";
-            this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.textBox5, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+            this.paraSecPower.Location = new System.Drawing.Point(214, 149);
+            this.paraSecPower.MaxLength = 4;
+            this.paraSecPower.Name = "paraSecPower";
+            this.paraSecPower.Size = new System.Drawing.Size(96, 20);
+            this.paraSecPower.TabIndex = 142;
+            this.paraSecPower.Text = "0";
+            this.paraSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.paraSecPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
         "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             // 
-            // WeaponAltField
+            // weapAlt
             // 
-            this.WeaponAltField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.WeaponAltField.FormattingEnabled = true;
-            this.WeaponAltField.Items.AddRange(new object[] {
+            this.weapAlt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapAlt.FormattingEnabled = true;
+            this.weapAlt.Items.AddRange(new object[] {
             "(None)",
             "Fire",
             "Water",
@@ -304,19 +366,19 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.WeaponAltField.Location = new System.Drawing.Point(104, 37);
-            this.WeaponAltField.Name = "WeaponAltField";
-            this.WeaponAltField.Size = new System.Drawing.Size(74, 21);
-            this.WeaponAltField.TabIndex = 140;
-            this.AltTip.SetToolTip(this.WeaponAltField, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+            this.weapAlt.Location = new System.Drawing.Point(104, 37);
+            this.weapAlt.Name = "weapAlt";
+            this.weapAlt.Size = new System.Drawing.Size(74, 21);
+            this.weapAlt.TabIndex = 140;
+            this.AltTip.SetToolTip(this.weapAlt, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
         "ludes KO and Exhaust.");
-            this.WeaponAltField.SelectedIndexChanged += new System.EventHandler(this.WeaponAltField_SelectedIndexChanged);
+            this.weapAlt.SelectedIndexChanged += new System.EventHandler(this.WeaponAltField_SelectedIndexChanged);
             // 
-            // AltDamageField
+            // paraAltType
             // 
-            this.AltDamageField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AltDamageField.FormattingEnabled = true;
-            this.AltDamageField.Items.AddRange(new object[] {
+            this.paraAltType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paraAltType.FormattingEnabled = true;
+            this.paraAltType.Items.AddRange(new object[] {
             "(None)",
             "Fire",
             "Water",
@@ -327,19 +389,19 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.AltDamageField.Location = new System.Drawing.Point(112, 71);
-            this.AltDamageField.Name = "AltDamageField";
-            this.AltDamageField.Size = new System.Drawing.Size(96, 21);
-            this.AltDamageField.TabIndex = 119;
-            this.AltTip.SetToolTip(this.AltDamageField, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+            this.paraAltType.Location = new System.Drawing.Point(112, 71);
+            this.paraAltType.Name = "paraAltType";
+            this.paraAltType.Size = new System.Drawing.Size(96, 21);
+            this.paraAltType.TabIndex = 119;
+            this.AltTip.SetToolTip(this.paraAltType, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
         "ludes KO and Exhaust.");
-            this.AltDamageField.SelectedIndexChanged += new System.EventHandler(this.AltDamageField_SelectedIndexChanged);
+            this.paraAltType.SelectedIndexChanged += new System.EventHandler(this.AltDamageField_SelectedIndexChanged);
             // 
-            // comboBox4
+            // paraSecEle
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.paraSecEle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paraSecEle.FormattingEnabled = true;
+            this.paraSecEle.Items.AddRange(new object[] {
             "(None)",
             "Fire",
             "Water",
@@ -350,151 +412,272 @@
             "Para",
             "Sleep",
             "Blast"});
-            this.comboBox4.Location = new System.Drawing.Point(112, 149);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(96, 21);
-            this.comboBox4.TabIndex = 140;
-            this.AltTip.SetToolTip(this.comboBox4, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+            this.paraSecEle.Location = new System.Drawing.Point(112, 149);
+            this.paraSecEle.Name = "paraSecEle";
+            this.paraSecEle.Size = new System.Drawing.Size(96, 21);
+            this.paraSecEle.TabIndex = 140;
+            this.AltTip.SetToolTip(this.paraSecEle, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
         "ludes KO and Exhaust.");
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.paraSecEle.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
-            // HitzoneField
+            // weapSecType
             // 
-            this.HitzoneField.Location = new System.Drawing.Point(9, 32);
-            this.HitzoneField.Name = "HitzoneField";
-            this.HitzoneField.Size = new System.Drawing.Size(96, 20);
-            this.HitzoneField.TabIndex = 78;
-            this.HitzoneField.Text = "0";
-            this.HitzoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.HitTip.SetToolTip(this.HitzoneField, "The Hitzone Value of a monster\'s body part.\r\nHigher values = higher damage.");
-            this.HitzoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.HitzoneField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.weapSecType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapSecType.FormattingEnabled = true;
+            this.weapSecType.Items.AddRange(new object[] {
+            "(None)",
+            "DB - Fire",
+            "DB - Water",
+            "DB - Ice",
+            "DB - Thunder",
+            "DB - Dragon",
+            "DB - Poison",
+            "DB - Para",
+            "DB - Sleep",
+            "DB - Blast",
+            "GL - Normal",
+            "GL - Long",
+            "GL - Wide",
+            "SA - Dragon Phial",
+            "SA - Poison Phial",
+            "SA - Para Phial",
+            "CB - Impact Phial",
+            "CB - Element Phial",
+            "BG - Flaming 1",
+            "BG - Flaming 2",
+            "BG - P. Flam. 1",
+            "BG - P. Flam. 2",
+            "BG - Water 1",
+            "BG - Water 2",
+            "BG - P. Water 1",
+            "BG - P. Water 2",
+            "BG - Thunder 1",
+            "BG - Thunder 2",
+            "BG - P. Thun. 1",
+            "BG - P. Thun. 2",
+            "BG - Freeze 1",
+            "BG - Freeze 2",
+            "BG - P. Freez. 1",
+            "BG - P. Freez. 2",
+            "BG - Dragon 1",
+            "BG - Dragon 2",
+            "BG - Poison 1",
+            "BG - Poison 2",
+            "BG - Para. 1",
+            "BG - Para. 2",
+            "BG - Sleep 1",
+            "BG - Sleep 2",
+            "BG - Blast 1",
+            "BG - Blast 2",
+            "Bow - C.Range C.",
+            "Bow - Poison C.",
+            "Bow - Para C.",
+            "Bow - Sleep C.",
+            "Bow - Exhaust C.",
+            "Bow - Blast C."});
+            this.weapSecType.Location = new System.Drawing.Point(254, 37);
+            this.weapSecType.Name = "weapSecType";
+            this.weapSecType.Size = new System.Drawing.Size(111, 21);
+            this.weapSecType.TabIndex = 145;
+            this.AltTip.SetToolTip(this.weapSecType, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+        "ludes KO and Exhaust.");
+            this.weapSecType.SelectedIndexChanged += new System.EventHandler(this.weapSecType_SelectedIndexChanged);
             // 
-            // EleZoneField
+            // paraRawHitzone
             // 
-            this.EleZoneField.Location = new System.Drawing.Point(9, 71);
-            this.EleZoneField.Name = "EleZoneField";
-            this.EleZoneField.Size = new System.Drawing.Size(96, 20);
-            this.EleZoneField.TabIndex = 80;
-            this.EleZoneField.Text = "0";
-            this.EleZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleHitTip.SetToolTip(this.EleZoneField, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
+            this.paraRawHitzone.Location = new System.Drawing.Point(9, 32);
+            this.paraRawHitzone.MaxLength = 4;
+            this.paraRawHitzone.Name = "paraRawHitzone";
+            this.paraRawHitzone.Size = new System.Drawing.Size(96, 20);
+            this.paraRawHitzone.TabIndex = 78;
+            this.paraRawHitzone.Text = "0";
+            this.paraRawHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.HitTip.SetToolTip(this.paraRawHitzone, "The Hitzone Value of a monster\'s body part.\r\nHigher values = higher damage.");
+            this.paraRawHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraRawHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // paraEleHitzone
+            // 
+            this.paraEleHitzone.Location = new System.Drawing.Point(9, 71);
+            this.paraEleHitzone.MaxLength = 4;
+            this.paraEleHitzone.Name = "paraEleHitzone";
+            this.paraEleHitzone.Size = new System.Drawing.Size(96, 20);
+            this.paraEleHitzone.TabIndex = 80;
+            this.paraEleHitzone.Text = "0";
+            this.paraEleHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleHitTip.SetToolTip(this.paraEleHitzone, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
         "ental Hitzones.");
-            this.EleZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.EleZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraEleHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraEleHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // textBox7
+            // paraSecHitzone
             // 
-            this.textBox7.Location = new System.Drawing.Point(9, 110);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(96, 20);
-            this.textBox7.TabIndex = 91;
-            this.textBox7.Text = "0";
-            this.textBox7.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleHitTip.SetToolTip(this.textBox7, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
+            this.paraSecHitzone.Location = new System.Drawing.Point(9, 110);
+            this.paraSecHitzone.MaxLength = 4;
+            this.paraSecHitzone.Name = "paraSecHitzone";
+            this.paraSecHitzone.Size = new System.Drawing.Size(96, 20);
+            this.paraSecHitzone.TabIndex = 91;
+            this.paraSecHitzone.Text = "0";
+            this.paraSecHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleHitTip.SetToolTip(this.paraSecHitzone, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
         "ental Hitzones.");
             // 
-            // QuestField
+            // paraQuest
             // 
-            this.QuestField.Location = new System.Drawing.Point(128, 150);
-            this.QuestField.Name = "QuestField";
-            this.QuestField.Size = new System.Drawing.Size(96, 20);
-            this.QuestField.TabIndex = 82;
-            this.QuestField.Text = "1.0";
-            this.QuestField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.QuestTip.SetToolTip(this.QuestField, "The Quest Modifier for the monster\'s Defense.");
-            this.QuestField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.QuestField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraQuest.Location = new System.Drawing.Point(128, 150);
+            this.paraQuest.MaxLength = 4;
+            this.paraQuest.Name = "paraQuest";
+            this.paraQuest.Size = new System.Drawing.Size(96, 20);
+            this.paraQuest.TabIndex = 82;
+            this.paraQuest.Text = "1.0";
+            this.paraQuest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.QuestTip.SetToolTip(this.paraQuest, "The Quest Modifier for the monster\'s Defense.");
+            this.paraQuest.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraQuest.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // KOField
+            // paraKO
             // 
-            this.KOField.Location = new System.Drawing.Point(418, 32);
-            this.KOField.MaxLength = 3;
-            this.KOField.Name = "KOField";
-            this.KOField.Size = new System.Drawing.Size(96, 20);
-            this.KOField.TabIndex = 120;
-            this.KOField.Text = "0";
-            this.KOField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOTip.SetToolTip(this.KOField, "The amount of KO damage you would do with an attack\r\nregardless if you would hit " +
+            this.paraKO.Location = new System.Drawing.Point(418, 32);
+            this.paraKO.MaxLength = 4;
+            this.paraKO.Name = "paraKO";
+            this.paraKO.Size = new System.Drawing.Size(96, 20);
+            this.paraKO.TabIndex = 120;
+            this.paraKO.Text = "0";
+            this.paraKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOTip.SetToolTip(this.paraKO, "The amount of KO damage you would do with an attack\r\nregardless if you would hit " +
         "the head or not.");
-            this.KOField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.KOField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraKO.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraKO.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // ExhaustField
+            // paraExh
             // 
-            this.ExhaustField.Location = new System.Drawing.Point(417, 71);
-            this.ExhaustField.MaxLength = 3;
-            this.ExhaustField.Name = "ExhaustField";
-            this.ExhaustField.Size = new System.Drawing.Size(96, 20);
-            this.ExhaustField.TabIndex = 122;
-            this.ExhaustField.Text = "0";
-            this.ExhaustField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.ExhaustField, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
-            this.ExhaustField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.ExhaustField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraExh.Location = new System.Drawing.Point(417, 71);
+            this.paraExh.MaxLength = 4;
+            this.paraExh.Name = "paraExh";
+            this.paraExh.Size = new System.Drawing.Size(96, 20);
+            this.paraExh.TabIndex = 122;
+            this.paraExh.Text = "0";
+            this.paraExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.paraExh, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            this.paraExh.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraExh.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // textBox6
+            // paraHitCount
             // 
-            this.textBox6.Location = new System.Drawing.Point(417, 110);
-            this.textBox6.MaxLength = 3;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(96, 20);
-            this.textBox6.TabIndex = 143;
-            this.textBox6.Text = "1";
-            this.textBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.textBox6, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
-            this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.paraHitCount.Location = new System.Drawing.Point(417, 110);
+            this.paraHitCount.MaxLength = 4;
+            this.paraHitCount.Name = "paraHitCount";
+            this.paraHitCount.Size = new System.Drawing.Size(96, 20);
+            this.paraHitCount.TabIndex = 143;
+            this.paraHitCount.Text = "1";
+            this.paraHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.paraHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            this.paraHitCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
-            // KOZoneField
+            // moveHitCount
             // 
-            this.KOZoneField.Location = new System.Drawing.Point(128, 32);
-            this.KOZoneField.Name = "KOZoneField";
-            this.KOZoneField.Size = new System.Drawing.Size(96, 20);
-            this.KOZoneField.TabIndex = 85;
-            this.KOZoneField.Text = "0";
-            this.KOZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOZoneTip.SetToolTip(this.KOZoneField, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
+            this.moveHitCount.Location = new System.Drawing.Point(104, 145);
+            this.moveHitCount.MaxLength = 4;
+            this.moveHitCount.Name = "moveHitCount";
+            this.moveHitCount.Size = new System.Drawing.Size(51, 20);
+            this.moveHitCount.TabIndex = 149;
+            this.moveHitCount.Text = "1";
+            this.moveHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.moveHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            // 
+            // paraKOZone
+            // 
+            this.paraKOZone.Location = new System.Drawing.Point(128, 32);
+            this.paraKOZone.MaxLength = 4;
+            this.paraKOZone.Name = "paraKOZone";
+            this.paraKOZone.Size = new System.Drawing.Size(96, 20);
+            this.paraKOZone.TabIndex = 85;
+            this.paraKOZone.Text = "0";
+            this.paraKOZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOZoneTip.SetToolTip(this.paraKOZone, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
         "e head will take KO damage\r\nand very rarely is it not 100.");
-            this.KOZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.KOZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraKOZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraKOZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // ExhaustZoneField
+            // paraExhZone
             // 
-            this.ExhaustZoneField.Location = new System.Drawing.Point(128, 71);
-            this.ExhaustZoneField.Name = "ExhaustZoneField";
-            this.ExhaustZoneField.Size = new System.Drawing.Size(96, 20);
-            this.ExhaustZoneField.TabIndex = 87;
-            this.ExhaustZoneField.Text = "0";
-            this.ExhaustZoneField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustZoneTip.SetToolTip(this.ExhaustZoneField, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
+            this.paraExhZone.Location = new System.Drawing.Point(128, 71);
+            this.paraExhZone.MaxLength = 4;
+            this.paraExhZone.Name = "paraExhZone";
+            this.paraExhZone.Size = new System.Drawing.Size(96, 20);
+            this.paraExhZone.TabIndex = 87;
+            this.paraExhZone.Text = "0";
+            this.paraExhZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustZoneTip.SetToolTip(this.paraExhZone, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
         "y few zones are\r\nbelow 100.");
-            this.ExhaustZoneField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.ExhaustZoneField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraExhZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraExhZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.WeaponAltField);
+            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.weapSecType);
+            this.groupBox1.Controls.Add(this.label75);
+            this.groupBox1.Controls.Add(this.weapSecPower);
+            this.groupBox1.Controls.Add(this.weapSecBox);
+            this.groupBox1.Controls.Add(this.label76);
+            this.groupBox1.Controls.Add(this.weapAlt);
             this.groupBox1.Controls.Add(this.label40);
-            this.groupBox1.Controls.Add(this.TwoLabel);
-            this.groupBox1.Controls.Add(this.OneLabel);
-            this.groupBox1.Controls.Add(this.SharpnessLabel);
-            this.groupBox1.Controls.Add(this.AffinityLabel);
-            this.groupBox1.Controls.Add(this.EleTypeLabel);
-            this.groupBox1.Controls.Add(this.AttackLabel);
+            this.groupBox1.Controls.Add(this.weapTwo);
+            this.groupBox1.Controls.Add(this.weapOne);
+            this.groupBox1.Controls.Add(this.weapSharpness);
+            this.groupBox1.Controls.Add(this.weapAffinity);
+            this.groupBox1.Controls.Add(this.weapAltPower);
+            this.groupBox1.Controls.Add(this.weapAttack);
             this.groupBox1.Controls.Add(this.label50);
             this.groupBox1.Controls.Add(this.label46);
             this.groupBox1.Controls.Add(this.label43);
-            this.groupBox1.Controls.Add(this.EleLabelBox);
+            this.groupBox1.Controls.Add(this.weapAltBox);
             this.groupBox1.Controls.Add(this.label38);
             this.groupBox1.Controls.Add(this.label37);
             this.groupBox1.Controls.Add(this.label36);
             this.groupBox1.Controls.Add(this.label35);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 201);
+            this.groupBox1.Size = new System.Drawing.Size(371, 178);
             this.groupBox1.TabIndex = 126;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Weapon Base Stats:";
+            // 
+            // label75
+            // 
+            this.label75.AutoSize = true;
+            this.label75.Location = new System.Drawing.Point(186, 40);
+            this.label75.Name = "label75";
+            this.label75.Size = new System.Drawing.Size(63, 13);
+            this.label75.TabIndex = 144;
+            this.label75.Text = "2nd Typing:";
+            // 
+            // weapSecPower
+            // 
+            this.weapSecPower.Location = new System.Drawing.Point(291, 65);
+            this.weapSecPower.Name = "weapSecPower";
+            this.weapSecPower.Size = new System.Drawing.Size(51, 20);
+            this.weapSecPower.TabIndex = 143;
+            this.weapSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // weapSecBox
+            // 
+            this.weapSecBox.Location = new System.Drawing.Point(344, 64);
+            this.weapSecBox.Name = "weapSecBox";
+            this.weapSecBox.Size = new System.Drawing.Size(21, 21);
+            this.weapSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.weapSecBox.TabIndex = 142;
+            this.weapSecBox.TabStop = false;
+            // 
+            // label76
+            // 
+            this.label76.AutoSize = true;
+            this.label76.Location = new System.Drawing.Point(186, 68);
+            this.label76.Name = "label76";
+            this.label76.Size = new System.Drawing.Size(82, 13);
+            this.label76.TabIndex = 141;
+            this.label76.Text = "2nd Ele. Power:";
             // 
             // label40
             // 
@@ -505,11 +688,11 @@
             this.label40.TabIndex = 139;
             this.label40.Text = "Alt. Damage Type:";
             // 
-            // TwoLabel
+            // weapTwo
             // 
-            this.TwoLabel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TwoLabel.FormattingEnabled = true;
-            this.TwoLabel.Items.AddRange(new object[] {
+            this.weapTwo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapTwo.FormattingEnabled = true;
+            this.weapTwo.Items.AddRange(new object[] {
             "(No Sharpness)",
             "White",
             "Blue",
@@ -517,16 +700,16 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.TwoLabel.Location = new System.Drawing.Point(104, 173);
-            this.TwoLabel.Name = "TwoLabel";
-            this.TwoLabel.Size = new System.Drawing.Size(74, 21);
-            this.TwoLabel.TabIndex = 138;
+            this.weapTwo.Location = new System.Drawing.Point(284, 146);
+            this.weapTwo.Name = "weapTwo";
+            this.weapTwo.Size = new System.Drawing.Size(74, 21);
+            this.weapTwo.TabIndex = 138;
             // 
-            // OneLabel
+            // weapOne
             // 
-            this.OneLabel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.OneLabel.FormattingEnabled = true;
-            this.OneLabel.Items.AddRange(new object[] {
+            this.weapOne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapOne.FormattingEnabled = true;
+            this.weapOne.Items.AddRange(new object[] {
             "(No Sharpness)",
             "White",
             "Blue",
@@ -534,16 +717,16 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.OneLabel.Location = new System.Drawing.Point(104, 145);
-            this.OneLabel.Name = "OneLabel";
-            this.OneLabel.Size = new System.Drawing.Size(74, 21);
-            this.OneLabel.TabIndex = 137;
+            this.weapOne.Location = new System.Drawing.Point(284, 118);
+            this.weapOne.Name = "weapOne";
+            this.weapOne.Size = new System.Drawing.Size(74, 21);
+            this.weapOne.TabIndex = 137;
             // 
-            // SharpnessLabel
+            // weapSharpness
             // 
-            this.SharpnessLabel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.SharpnessLabel.FormattingEnabled = true;
-            this.SharpnessLabel.Items.AddRange(new object[] {
+            this.weapSharpness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapSharpness.FormattingEnabled = true;
+            this.weapSharpness.Items.AddRange(new object[] {
             "(No Sharpness)",
             "White",
             "Blue",
@@ -551,45 +734,45 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.SharpnessLabel.Location = new System.Drawing.Point(104, 117);
-            this.SharpnessLabel.Name = "SharpnessLabel";
-            this.SharpnessLabel.Size = new System.Drawing.Size(74, 21);
-            this.SharpnessLabel.TabIndex = 136;
+            this.weapSharpness.Location = new System.Drawing.Point(104, 117);
+            this.weapSharpness.Name = "weapSharpness";
+            this.weapSharpness.Size = new System.Drawing.Size(74, 21);
+            this.weapSharpness.TabIndex = 136;
             // 
-            // AffinityLabel
+            // weapAffinity
             // 
-            this.AffinityLabel.Location = new System.Drawing.Point(104, 91);
-            this.AffinityLabel.Name = "AffinityLabel";
-            this.AffinityLabel.Size = new System.Drawing.Size(51, 20);
-            this.AffinityLabel.TabIndex = 135;
-            this.AffinityLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AffinityLabel.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.AffinityLabel.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.weapAffinity.Location = new System.Drawing.Point(104, 91);
+            this.weapAffinity.Name = "weapAffinity";
+            this.weapAffinity.Size = new System.Drawing.Size(51, 20);
+            this.weapAffinity.TabIndex = 135;
+            this.weapAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.weapAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.weapAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // EleTypeLabel
+            // weapAltPower
             // 
-            this.EleTypeLabel.Location = new System.Drawing.Point(104, 65);
-            this.EleTypeLabel.Name = "EleTypeLabel";
-            this.EleTypeLabel.Size = new System.Drawing.Size(51, 20);
-            this.EleTypeLabel.TabIndex = 134;
-            this.EleTypeLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTypeLabel.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.EleTypeLabel.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.weapAltPower.Location = new System.Drawing.Point(104, 65);
+            this.weapAltPower.Name = "weapAltPower";
+            this.weapAltPower.Size = new System.Drawing.Size(51, 20);
+            this.weapAltPower.TabIndex = 134;
+            this.weapAltPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.weapAltPower.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.weapAltPower.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // AttackLabel
+            // weapAttack
             // 
-            this.AttackLabel.Location = new System.Drawing.Point(104, 13);
-            this.AttackLabel.Name = "AttackLabel";
-            this.AttackLabel.Size = new System.Drawing.Size(51, 20);
-            this.AttackLabel.TabIndex = 133;
-            this.AttackLabel.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AttackLabel.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.AttackLabel.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.weapAttack.Location = new System.Drawing.Point(104, 13);
+            this.weapAttack.Name = "weapAttack";
+            this.weapAttack.Size = new System.Drawing.Size(51, 20);
+            this.weapAttack.TabIndex = 133;
+            this.weapAttack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.weapAttack.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.weapAttack.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(6, 176);
+            this.label50.Location = new System.Drawing.Point(186, 149);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(88, 13);
             this.label50.TabIndex = 132;
@@ -598,7 +781,7 @@
             // label46
             // 
             this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(6, 147);
+            this.label46.Location = new System.Drawing.Point(186, 120);
             this.label46.Name = "label46";
             this.label46.Size = new System.Drawing.Size(88, 13);
             this.label46.TabIndex = 131;
@@ -613,14 +796,14 @@
             this.label43.TabIndex = 130;
             this.label43.Text = "%";
             // 
-            // EleLabelBox
+            // weapAltBox
             // 
-            this.EleLabelBox.Location = new System.Drawing.Point(157, 64);
-            this.EleLabelBox.Name = "EleLabelBox";
-            this.EleLabelBox.Size = new System.Drawing.Size(21, 21);
-            this.EleLabelBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.EleLabelBox.TabIndex = 129;
-            this.EleLabelBox.TabStop = false;
+            this.weapAltBox.Location = new System.Drawing.Point(157, 64);
+            this.weapAltBox.Name = "weapAltBox";
+            this.weapAltBox.Size = new System.Drawing.Size(21, 21);
+            this.weapAltBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.weapAltBox.TabIndex = 129;
+            this.weapAltBox.TabStop = false;
             // 
             // label38
             // 
@@ -660,45 +843,45 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.WeaponFinalField);
-            this.groupBox2.Controls.Add(this.LevelField);
+            this.groupBox2.Controls.Add(this.weapFinal);
+            this.groupBox2.Controls.Add(this.weapLevel);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.WeaponField);
+            this.groupBox2.Controls.Add(this.weapName);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Controls.Add(this.TypeField);
-            this.groupBox2.Location = new System.Drawing.Point(211, 12);
+            this.groupBox2.Controls.Add(this.weapType);
+            this.groupBox2.Location = new System.Drawing.Point(382, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(134, 178);
             this.groupBox2.TabIndex = 127;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Weapon Search";
             // 
-            // WeaponFinalField
+            // weapFinal
             // 
-            this.WeaponFinalField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.WeaponFinalField.FormattingEnabled = true;
-            this.WeaponFinalField.Location = new System.Drawing.Point(9, 110);
-            this.WeaponFinalField.Name = "WeaponFinalField";
-            this.WeaponFinalField.Size = new System.Drawing.Size(121, 21);
-            this.WeaponFinalField.TabIndex = 95;
-            this.WeaponFinalField.SelectedIndexChanged += new System.EventHandler(this.WeaponFinalField_SelectedIndexChanged);
+            this.weapFinal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapFinal.FormattingEnabled = true;
+            this.weapFinal.Location = new System.Drawing.Point(7, 110);
+            this.weapFinal.Name = "weapFinal";
+            this.weapFinal.Size = new System.Drawing.Size(121, 21);
+            this.weapFinal.TabIndex = 95;
+            this.weapFinal.SelectedIndexChanged += new System.EventHandler(this.WeaponFinalField_SelectedIndexChanged);
             // 
-            // LevelField
+            // weapLevel
             // 
-            this.LevelField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.LevelField.FormattingEnabled = true;
-            this.LevelField.Location = new System.Drawing.Point(9, 150);
-            this.LevelField.Name = "LevelField";
-            this.LevelField.Size = new System.Drawing.Size(42, 21);
-            this.LevelField.TabIndex = 94;
-            this.LevelField.SelectedIndexChanged += new System.EventHandler(this.LevelField_SelectedIndexChanged);
+            this.weapLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapLevel.FormattingEnabled = true;
+            this.weapLevel.Location = new System.Drawing.Point(7, 150);
+            this.weapLevel.Name = "weapLevel";
+            this.weapLevel.Size = new System.Drawing.Size(42, 21);
+            this.weapLevel.TabIndex = 94;
+            this.weapLevel.SelectedIndexChanged += new System.EventHandler(this.LevelField_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 134);
+            this.label6.Location = new System.Drawing.Point(4, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 13);
             this.label6.TabIndex = 93;
@@ -707,26 +890,26 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 94);
+            this.label5.Location = new System.Drawing.Point(4, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(107, 13);
             this.label5.TabIndex = 92;
             this.label5.Text = "Weapon Final Name:";
             // 
-            // WeaponField
+            // weapName
             // 
-            this.WeaponField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.WeaponField.FormattingEnabled = true;
-            this.WeaponField.Location = new System.Drawing.Point(9, 70);
-            this.WeaponField.Name = "WeaponField";
-            this.WeaponField.Size = new System.Drawing.Size(121, 21);
-            this.WeaponField.TabIndex = 91;
-            this.WeaponField.SelectedIndexChanged += new System.EventHandler(this.WeaponField_SelectedIndexChanged);
+            this.weapName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapName.FormattingEnabled = true;
+            this.weapName.Location = new System.Drawing.Point(7, 70);
+            this.weapName.Name = "weapName";
+            this.weapName.Size = new System.Drawing.Size(121, 21);
+            this.weapName.TabIndex = 91;
+            this.weapName.SelectedIndexChanged += new System.EventHandler(this.WeaponField_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 54);
+            this.label4.Location = new System.Drawing.Point(4, 54);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 13);
             this.label4.TabIndex = 90;
@@ -735,59 +918,59 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 14);
+            this.label3.Location = new System.Drawing.Point(4, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 89;
             this.label3.Text = "Weapon Type:";
             // 
-            // TypeField
+            // weapType
             // 
-            this.TypeField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.TypeField.FormattingEnabled = true;
-            this.TypeField.Location = new System.Drawing.Point(9, 30);
-            this.TypeField.Name = "TypeField";
-            this.TypeField.Size = new System.Drawing.Size(121, 21);
-            this.TypeField.TabIndex = 88;
-            this.TypeField.SelectedIndexChanged += new System.EventHandler(this.TypeField_SelectedIndexChanged);
+            this.weapType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapType.FormattingEnabled = true;
+            this.weapType.Location = new System.Drawing.Point(7, 30);
+            this.weapType.Name = "weapType";
+            this.weapType.Size = new System.Drawing.Size(121, 21);
+            this.weapType.TabIndex = 88;
+            this.weapType.SelectedIndexChanged += new System.EventHandler(this.TypeField_SelectedIndexChanged);
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox6);
+            this.groupBox3.Controls.Add(this.paraMinds);
+            this.groupBox3.Controls.Add(this.paraHitCount);
             this.groupBox3.Controls.Add(this.label58);
-            this.groupBox3.Controls.Add(this.textBox5);
+            this.groupBox3.Controls.Add(this.paraSecPower);
             this.groupBox3.Controls.Add(this.label57);
-            this.groupBox3.Controls.Add(this.comboBox4);
-            this.groupBox3.Controls.Add(this.textBox4);
+            this.groupBox3.Controls.Add(this.paraSecEle);
+            this.groupBox3.Controls.Add(this.paraTotal);
             this.groupBox3.Controls.Add(this.label56);
             this.groupBox3.Controls.Add(this.label54);
-            this.groupBox3.Controls.Add(this.checkBox3);
-            this.groupBox3.Controls.Add(this.checkBox2);
-            this.groupBox3.Controls.Add(this.UpdateButt);
+            this.groupBox3.Controls.Add(this.paraFixed);
+            this.groupBox3.Controls.Add(this.paraUpdate);
             this.groupBox3.Controls.Add(this.label53);
-            this.groupBox3.Controls.Add(this.comboBox1);
-            this.groupBox3.Controls.Add(this.checkBox1);
-            this.groupBox3.Controls.Add(this.RawField);
+            this.groupBox3.Controls.Add(this.paraEleCrit);
+            this.groupBox3.Controls.Add(this.paraBoost);
+            this.groupBox3.Controls.Add(this.paraRaw);
             this.groupBox3.Controls.Add(this.RawLabel);
-            this.groupBox3.Controls.Add(this.MVField);
+            this.groupBox3.Controls.Add(this.paraMV);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.AffinityField);
-            this.groupBox3.Controls.Add(this.EleSharpField);
+            this.groupBox3.Controls.Add(this.paraAffinity);
+            this.groupBox3.Controls.Add(this.paraEleSharp);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.label45);
-            this.groupBox3.Controls.Add(this.EleField);
-            this.groupBox3.Controls.Add(this.RawSharpField);
+            this.groupBox3.Controls.Add(this.paraEle);
+            this.groupBox3.Controls.Add(this.paraRawSharp);
             this.groupBox3.Controls.Add(this.label44);
-            this.groupBox3.Controls.Add(this.sharpnessBox);
+            this.groupBox3.Controls.Add(this.paraSharpness);
             this.groupBox3.Controls.Add(this.label21);
             this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.AltDamageField);
-            this.groupBox3.Controls.Add(this.KOField);
+            this.groupBox3.Controls.Add(this.paraAltType);
+            this.groupBox3.Controls.Add(this.paraKO);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.ExhaustField);
+            this.groupBox3.Controls.Add(this.paraExh);
             this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Location = new System.Drawing.Point(12, 406);
+            this.groupBox3.Location = new System.Drawing.Point(12, 410);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(530, 177);
             this.groupBox3.TabIndex = 128;
@@ -812,15 +995,16 @@
             this.label57.TabIndex = 139;
             this.label57.Text = "DB - 2nd Element:";
             // 
-            // textBox4
+            // paraTotal
             // 
-            this.textBox4.Location = new System.Drawing.Point(418, 149);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(96, 20);
-            this.textBox4.TabIndex = 138;
-            this.textBox4.Text = "0";
-            this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox4.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.paraTotal.Location = new System.Drawing.Point(418, 149);
+            this.paraTotal.MaxLength = 4;
+            this.paraTotal.Name = "paraTotal";
+            this.paraTotal.Size = new System.Drawing.Size(96, 20);
+            this.paraTotal.TabIndex = 138;
+            this.paraTotal.Text = "0";
+            this.paraTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.paraTotal.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             // 
             // label56
             // 
@@ -840,35 +1024,25 @@
             this.label54.TabIndex = 136;
             this.label54.Text = "Number of Hits:";
             // 
-            // checkBox3
+            // paraFixed
             // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(9, 149);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(100, 17);
-            this.checkBox3.TabIndex = 134;
-            this.checkBox3.Text = "Fixed Damage?";
-            this.checkBox3.UseVisualStyleBackColor = true;
-            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.paraFixed.AutoSize = true;
+            this.paraFixed.Location = new System.Drawing.Point(9, 103);
+            this.paraFixed.Name = "paraFixed";
+            this.paraFixed.Size = new System.Drawing.Size(100, 17);
+            this.paraFixed.TabIndex = 134;
+            this.paraFixed.Text = "Fixed Damage?";
+            this.paraFixed.UseVisualStyleBackColor = true;
+            this.paraFixed.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
-            // checkBox2
+            // paraUpdate
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(9, 126);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(83, 17);
-            this.checkBox2.TabIndex = 133;
-            this.checkBox2.Text = "Mind\'s Eye?";
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // UpdateButt
-            // 
-            this.UpdateButt.Location = new System.Drawing.Point(8, 30);
-            this.UpdateButt.Name = "UpdateButt";
-            this.UpdateButt.Size = new System.Drawing.Size(97, 67);
-            this.UpdateButt.TabIndex = 0;
-            this.UpdateButt.Text = "Update Parameters";
-            this.UpdateButt.UseVisualStyleBackColor = true;
+            this.paraUpdate.Location = new System.Drawing.Point(8, 30);
+            this.paraUpdate.Name = "paraUpdate";
+            this.paraUpdate.Size = new System.Drawing.Size(97, 67);
+            this.paraUpdate.TabIndex = 0;
+            this.paraUpdate.Text = "Update Parameters";
+            this.paraUpdate.UseVisualStyleBackColor = true;
             // 
             // label53
             // 
@@ -879,30 +1053,30 @@
             this.label53.TabIndex = 132;
             this.label53.Text = "Elemental Crit?";
             // 
-            // comboBox1
+            // paraEleCrit
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.paraEleCrit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paraEleCrit.FormattingEnabled = true;
+            this.paraEleCrit.Items.AddRange(new object[] {
             "No",
             "GS",
             "LBG/HBG",
             "SnS/DB/Bow",
             "Other"});
-            this.comboBox1.Location = new System.Drawing.Point(112, 110);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(96, 21);
-            this.comboBox1.TabIndex = 131;
+            this.paraEleCrit.Location = new System.Drawing.Point(112, 110);
+            this.paraEleCrit.Name = "paraEleCrit";
+            this.paraEleCrit.Size = new System.Drawing.Size(96, 21);
+            this.paraEleCrit.TabIndex = 131;
             // 
-            // checkBox1
+            // paraBoost
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(9, 103);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 17);
-            this.checkBox1.TabIndex = 130;
-            this.checkBox1.Text = "Critical Boost?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.paraBoost.AutoSize = true;
+            this.paraBoost.Location = new System.Drawing.Point(9, 126);
+            this.paraBoost.Name = "paraBoost";
+            this.paraBoost.Size = new System.Drawing.Size(93, 17);
+            this.paraBoost.TabIndex = 130;
+            this.paraBoost.Text = "Critical Boost?";
+            this.paraBoost.UseVisualStyleBackColor = true;
             // 
             // RawLabel
             // 
@@ -916,7 +1090,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(316, 94);
+            this.label1.Location = new System.Drawing.Point(313, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 111;
@@ -931,16 +1105,17 @@
             this.label7.TabIndex = 112;
             this.label7.Text = "Affinity (%):";
             // 
-            // EleSharpField
+            // paraEleSharp
             // 
-            this.EleSharpField.Location = new System.Drawing.Point(316, 71);
-            this.EleSharpField.Name = "EleSharpField";
-            this.EleSharpField.Size = new System.Drawing.Size(96, 20);
-            this.EleSharpField.TabIndex = 129;
-            this.EleSharpField.Text = "1.0";
-            this.EleSharpField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleSharpField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.EleSharpField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraEleSharp.Location = new System.Drawing.Point(316, 71);
+            this.paraEleSharp.MaxLength = 4;
+            this.paraEleSharp.Name = "paraEleSharp";
+            this.paraEleSharp.Size = new System.Drawing.Size(96, 20);
+            this.paraEleSharp.TabIndex = 129;
+            this.paraEleSharp.Text = "1.0";
+            this.paraEleSharp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.paraEleSharp.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraEleSharp.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label9
             // 
@@ -960,16 +1135,17 @@
             this.label45.TabIndex = 128;
             this.label45.Text = "Ele. Sharp. Mod:";
             // 
-            // RawSharpField
+            // paraRawSharp
             // 
-            this.RawSharpField.Location = new System.Drawing.Point(316, 32);
-            this.RawSharpField.Name = "RawSharpField";
-            this.RawSharpField.Size = new System.Drawing.Size(96, 20);
-            this.RawSharpField.TabIndex = 127;
-            this.RawSharpField.Text = "1.0";
-            this.RawSharpField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.RawSharpField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.RawSharpField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.paraRawSharp.Location = new System.Drawing.Point(316, 32);
+            this.paraRawSharp.MaxLength = 4;
+            this.paraRawSharp.Name = "paraRawSharp";
+            this.paraRawSharp.Size = new System.Drawing.Size(96, 20);
+            this.paraRawSharp.TabIndex = 127;
+            this.paraRawSharp.Text = "1.0";
+            this.paraRawSharp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.paraRawSharp.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraRawSharp.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label44
             // 
@@ -980,11 +1156,11 @@
             this.label44.TabIndex = 126;
             this.label44.Text = "Raw Sharp. Mod:";
             // 
-            // sharpnessBox
+            // paraSharpness
             // 
-            this.sharpnessBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sharpnessBox.FormattingEnabled = true;
-            this.sharpnessBox.Items.AddRange(new object[] {
+            this.paraSharpness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paraSharpness.FormattingEnabled = true;
+            this.paraSharpness.Items.AddRange(new object[] {
             "(No Sharpness)",
             "White",
             "Blue",
@@ -992,11 +1168,11 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.sharpnessBox.Location = new System.Drawing.Point(112, 32);
-            this.sharpnessBox.Name = "sharpnessBox";
-            this.sharpnessBox.Size = new System.Drawing.Size(97, 21);
-            this.sharpnessBox.TabIndex = 125;
-            this.sharpnessBox.SelectedIndexChanged += new System.EventHandler(this.sharpnessBox_SelectedIndexChanged);
+            this.paraSharpness.Location = new System.Drawing.Point(112, 32);
+            this.paraSharpness.Name = "paraSharpness";
+            this.paraSharpness.Size = new System.Drawing.Size(97, 21);
+            this.paraSharpness.TabIndex = 125;
+            this.paraSharpness.SelectedIndexChanged += new System.EventHandler(this.sharpnessBox_SelectedIndexChanged);
             // 
             // label21
             // 
@@ -1037,20 +1213,20 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label63);
-            this.groupBox4.Controls.Add(this.textBox7);
+            this.groupBox4.Controls.Add(this.paraSecHitzone);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.comboBox2);
+            this.groupBox4.Controls.Add(this.paraMonStat);
             this.groupBox4.Controls.Add(this.label28);
-            this.groupBox4.Controls.Add(this.ExhaustZoneField);
+            this.groupBox4.Controls.Add(this.paraExhZone);
             this.groupBox4.Controls.Add(this.label29);
-            this.groupBox4.Controls.Add(this.KOZoneField);
+            this.groupBox4.Controls.Add(this.paraKOZone);
             this.groupBox4.Controls.Add(this.label14);
-            this.groupBox4.Controls.Add(this.QuestField);
+            this.groupBox4.Controls.Add(this.paraQuest);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.EleZoneField);
+            this.groupBox4.Controls.Add(this.paraEleHitzone);
             this.groupBox4.Controls.Add(this.label12);
-            this.groupBox4.Controls.Add(this.HitzoneField);
-            this.groupBox4.Location = new System.Drawing.Point(541, 406);
+            this.groupBox4.Controls.Add(this.paraRawHitzone);
+            this.groupBox4.Location = new System.Drawing.Point(541, 410);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(270, 177);
             this.groupBox4.TabIndex = 129;
@@ -1075,20 +1251,20 @@
             this.label10.TabIndex = 90;
             this.label10.Text = "Monster Status:";
             // 
-            // comboBox2
+            // paraMonStat
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.paraMonStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.paraMonStat.FormattingEnabled = true;
+            this.paraMonStat.Items.AddRange(new object[] {
             "Normal",
             "Pitfall Trapped",
             "Sleeping (Bomb)",
             "Sleeping (Else)",
             "Paralyzed"});
-            this.comboBox2.Location = new System.Drawing.Point(128, 110);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(96, 21);
-            this.comboBox2.TabIndex = 89;
+            this.paraMonStat.Location = new System.Drawing.Point(128, 110);
+            this.paraMonStat.Name = "paraMonStat";
+            this.paraMonStat.Size = new System.Drawing.Size(96, 21);
+            this.paraMonStat.TabIndex = 89;
             // 
             // label28
             // 
@@ -1137,100 +1313,100 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.pictureBox2);
-            this.groupBox5.Controls.Add(this.label61);
+            this.groupBox5.Controls.Add(this.calcFinalSecBox);
+            this.groupBox5.Controls.Add(this.calcFinalSec);
             this.groupBox5.Controls.Add(this.label62);
-            this.groupBox5.Controls.Add(this.pictureBox1);
-            this.groupBox5.Controls.Add(this.label59);
+            this.groupBox5.Controls.Add(this.calcSecBox);
+            this.groupBox5.Controls.Add(this.calcSecOut);
             this.groupBox5.Controls.Add(this.label60);
             this.groupBox5.Controls.Add(this.label48);
-            this.groupBox5.Controls.Add(this.BounceLabel);
+            this.groupBox5.Controls.Add(this.calcBounce);
             this.groupBox5.Controls.Add(this.label47);
-            this.groupBox5.Controls.Add(this.FinalField);
+            this.groupBox5.Controls.Add(this.calcFinal);
             this.groupBox5.Controls.Add(this.label26);
-            this.groupBox5.Controls.Add(this.FinalRawField);
-            this.groupBox5.Controls.Add(this.FinalEleBox);
-            this.groupBox5.Controls.Add(this.FinalEleField);
-            this.groupBox5.Controls.Add(this.ExhaustBox);
-            this.groupBox5.Controls.Add(this.ExhaustOut);
-            this.groupBox5.Controls.Add(this.KOBox);
-            this.groupBox5.Controls.Add(this.KOOut);
+            this.groupBox5.Controls.Add(this.calcFinalRaw);
+            this.groupBox5.Controls.Add(this.calcFinalEleBox);
+            this.groupBox5.Controls.Add(this.calcEle);
+            this.groupBox5.Controls.Add(this.calcExhBox);
+            this.groupBox5.Controls.Add(this.calcExh);
+            this.groupBox5.Controls.Add(this.calcKOBox);
+            this.groupBox5.Controls.Add(this.calcKO);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Controls.Add(this.label23);
             this.groupBox5.Controls.Add(this.label22);
-            this.groupBox5.Controls.Add(this.ElementBox);
+            this.groupBox5.Controls.Add(this.calcEleBox);
             this.groupBox5.Controls.Add(this.NeutralSel);
             this.groupBox5.Controls.Add(this.NegativeSel);
             this.groupBox5.Controls.Add(this.PositiveSel);
             this.groupBox5.Controls.Add(this.AverageSel);
             this.groupBox5.Controls.Add(this.label20);
-            this.groupBox5.Controls.Add(this.EleOut);
+            this.groupBox5.Controls.Add(this.calcEleOut);
             this.groupBox5.Controls.Add(this.label19);
             this.groupBox5.Controls.Add(this.CalcAll);
             this.groupBox5.Controls.Add(this.CalcButt);
-            this.groupBox5.Controls.Add(this.RawOut);
+            this.groupBox5.Controls.Add(this.calcRawOut);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(12, 589);
+            this.groupBox5.Location = new System.Drawing.Point(12, 590);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(629, 147);
+            this.groupBox5.Size = new System.Drawing.Size(849, 112);
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
             // 
-            // pictureBox2
+            // calcFinalSecBox
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(463, 119);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 144;
-            this.pictureBox2.TabStop = false;
+            this.calcFinalSecBox.Location = new System.Drawing.Point(695, 75);
+            this.calcFinalSecBox.Name = "calcFinalSecBox";
+            this.calcFinalSecBox.Size = new System.Drawing.Size(21, 21);
+            this.calcFinalSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calcFinalSecBox.TabIndex = 144;
+            this.calcFinalSecBox.TabStop = false;
             // 
-            // label61
+            // calcFinalSec
             // 
-            this.label61.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label61.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label61.Location = new System.Drawing.Point(364, 121);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(96, 20);
-            this.label61.TabIndex = 143;
-            this.label61.Text = "0";
-            this.label61.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcFinalSec.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcFinalSec.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcFinalSec.Location = new System.Drawing.Point(596, 77);
+            this.calcFinalSec.Name = "calcFinalSec";
+            this.calcFinalSec.Size = new System.Drawing.Size(96, 20);
+            this.calcFinalSec.TabIndex = 143;
+            this.calcFinalSec.Text = "0";
+            this.calcFinalSec.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(361, 104);
+            this.label62.Location = new System.Drawing.Point(593, 60);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(105, 13);
             this.label62.TabIndex = 142;
             this.label62.Text = "DB - 2nd Ele. Output";
             // 
-            // pictureBox1
+            // calcSecBox
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(222, 121);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 21);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 141;
-            this.pictureBox1.TabStop = false;
+            this.calcSecBox.Location = new System.Drawing.Point(316, 78);
+            this.calcSecBox.Name = "calcSecBox";
+            this.calcSecBox.Size = new System.Drawing.Size(21, 21);
+            this.calcSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calcSecBox.TabIndex = 141;
+            this.calcSecBox.TabStop = false;
             // 
-            // label59
+            // calcSecOut
             // 
-            this.label59.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label59.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label59.Location = new System.Drawing.Point(120, 120);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(96, 20);
-            this.label59.TabIndex = 140;
-            this.label59.Text = "0";
-            this.label59.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcSecOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcSecOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcSecOut.Location = new System.Drawing.Point(214, 77);
+            this.calcSecOut.Name = "calcSecOut";
+            this.calcSecOut.Size = new System.Drawing.Size(96, 20);
+            this.calcSecOut.TabIndex = 140;
+            this.calcSecOut.Text = "0";
+            this.calcSecOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(117, 103);
+            this.label60.Location = new System.Drawing.Point(211, 60);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(113, 13);
             this.label60.TabIndex = 139;
@@ -1239,127 +1415,127 @@
             // label48
             // 
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label48.Location = new System.Drawing.Point(254, 9);
+            this.label48.Location = new System.Drawing.Point(348, 10);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(2, 135);
+            this.label48.Size = new System.Drawing.Size(2, 90);
             this.label48.TabIndex = 138;
             // 
-            // BounceLabel
+            // calcBounce
             // 
-            this.BounceLabel.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BounceLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BounceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BounceLabel.Location = new System.Drawing.Point(493, 120);
-            this.BounceLabel.Name = "BounceLabel";
-            this.BounceLabel.Size = new System.Drawing.Size(96, 20);
-            this.BounceLabel.TabIndex = 137;
-            this.BounceLabel.Text = "No";
-            this.BounceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcBounce.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcBounce.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcBounce.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calcBounce.Location = new System.Drawing.Point(596, 31);
+            this.calcBounce.Name = "calcBounce";
+            this.calcBounce.Size = new System.Drawing.Size(96, 20);
+            this.calcBounce.TabIndex = 137;
+            this.calcBounce.Text = "No";
+            this.calcBounce.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(490, 103);
+            this.label47.Location = new System.Drawing.Point(593, 14);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(50, 13);
             this.label47.TabIndex = 136;
             this.label47.Text = "Bounce?";
             // 
-            // FinalField
+            // calcFinal
             // 
-            this.FinalField.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FinalField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalField.Location = new System.Drawing.Point(262, 120);
-            this.FinalField.Name = "FinalField";
-            this.FinalField.Size = new System.Drawing.Size(96, 20);
-            this.FinalField.TabIndex = 135;
-            this.FinalField.Text = "0";
-            this.FinalField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcFinal.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcFinal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcFinal.Location = new System.Drawing.Point(357, 77);
+            this.calcFinal.Name = "calcFinal";
+            this.calcFinal.Size = new System.Drawing.Size(96, 20);
+            this.calcFinal.TabIndex = 135;
+            this.calcFinal.Text = "0";
+            this.calcFinal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(259, 103);
+            this.label26.Location = new System.Drawing.Point(354, 60);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(75, 13);
             this.label26.TabIndex = 134;
             this.label26.Text = "Final Damage:";
             // 
-            // FinalRawField
+            // calcFinalRaw
             // 
-            this.FinalRawField.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FinalRawField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalRawField.Location = new System.Drawing.Point(364, 35);
-            this.FinalRawField.Name = "FinalRawField";
-            this.FinalRawField.Size = new System.Drawing.Size(96, 20);
-            this.FinalRawField.TabIndex = 133;
-            this.FinalRawField.Text = "0";
-            this.FinalRawField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcFinalRaw.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcFinalRaw.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcFinalRaw.Location = new System.Drawing.Point(459, 31);
+            this.calcFinalRaw.Name = "calcFinalRaw";
+            this.calcFinalRaw.Size = new System.Drawing.Size(96, 20);
+            this.calcFinalRaw.TabIndex = 133;
+            this.calcFinalRaw.Text = "0";
+            this.calcFinalRaw.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // FinalEleBox
+            // calcFinalEleBox
             // 
-            this.FinalEleBox.Location = new System.Drawing.Point(465, 77);
-            this.FinalEleBox.Name = "FinalEleBox";
-            this.FinalEleBox.Size = new System.Drawing.Size(21, 21);
-            this.FinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.FinalEleBox.TabIndex = 132;
-            this.FinalEleBox.TabStop = false;
+            this.calcFinalEleBox.Location = new System.Drawing.Point(561, 76);
+            this.calcFinalEleBox.Name = "calcFinalEleBox";
+            this.calcFinalEleBox.Size = new System.Drawing.Size(21, 21);
+            this.calcFinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calcFinalEleBox.TabIndex = 132;
+            this.calcFinalEleBox.TabStop = false;
             // 
-            // FinalEleField
+            // calcEle
             // 
-            this.FinalEleField.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FinalEleField.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.FinalEleField.Location = new System.Drawing.Point(364, 78);
-            this.FinalEleField.Name = "FinalEleField";
-            this.FinalEleField.Size = new System.Drawing.Size(96, 20);
-            this.FinalEleField.TabIndex = 131;
-            this.FinalEleField.Text = "0";
-            this.FinalEleField.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcEle.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcEle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcEle.Location = new System.Drawing.Point(460, 77);
+            this.calcEle.Name = "calcEle";
+            this.calcEle.Size = new System.Drawing.Size(96, 20);
+            this.calcEle.TabIndex = 131;
+            this.calcEle.Text = "0";
+            this.calcEle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ExhaustBox
+            // calcExhBox
             // 
-            this.ExhaustBox.Location = new System.Drawing.Point(591, 78);
-            this.ExhaustBox.Name = "ExhaustBox";
-            this.ExhaustBox.Size = new System.Drawing.Size(21, 21);
-            this.ExhaustBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ExhaustBox.TabIndex = 130;
-            this.ExhaustBox.TabStop = false;
+            this.calcExhBox.Location = new System.Drawing.Point(820, 77);
+            this.calcExhBox.Name = "calcExhBox";
+            this.calcExhBox.Size = new System.Drawing.Size(21, 21);
+            this.calcExhBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calcExhBox.TabIndex = 130;
+            this.calcExhBox.TabStop = false;
             // 
-            // ExhaustOut
+            // calcExh
             // 
-            this.ExhaustOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ExhaustOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.ExhaustOut.Location = new System.Drawing.Point(493, 78);
-            this.ExhaustOut.Name = "ExhaustOut";
-            this.ExhaustOut.Size = new System.Drawing.Size(96, 20);
-            this.ExhaustOut.TabIndex = 129;
-            this.ExhaustOut.Text = "0";
-            this.ExhaustOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcExh.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcExh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcExh.Location = new System.Drawing.Point(722, 77);
+            this.calcExh.Name = "calcExh";
+            this.calcExh.Size = new System.Drawing.Size(96, 20);
+            this.calcExh.TabIndex = 129;
+            this.calcExh.Text = "0";
+            this.calcExh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // KOBox
+            // calcKOBox
             // 
-            this.KOBox.Location = new System.Drawing.Point(591, 35);
-            this.KOBox.Name = "KOBox";
-            this.KOBox.Size = new System.Drawing.Size(21, 21);
-            this.KOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.KOBox.TabIndex = 128;
-            this.KOBox.TabStop = false;
+            this.calcKOBox.Location = new System.Drawing.Point(820, 34);
+            this.calcKOBox.Name = "calcKOBox";
+            this.calcKOBox.Size = new System.Drawing.Size(21, 21);
+            this.calcKOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calcKOBox.TabIndex = 128;
+            this.calcKOBox.TabStop = false;
             // 
-            // KOOut
+            // calcKO
             // 
-            this.KOOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.KOOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.KOOut.Location = new System.Drawing.Point(493, 35);
-            this.KOOut.Name = "KOOut";
-            this.KOOut.Size = new System.Drawing.Size(96, 20);
-            this.KOOut.TabIndex = 127;
-            this.KOOut.Text = "0";
-            this.KOOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcKO.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcKO.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcKO.Location = new System.Drawing.Point(722, 34);
+            this.calcKO.Name = "calcKO";
+            this.calcKO.Size = new System.Drawing.Size(96, 20);
+            this.calcKO.TabIndex = 127;
+            this.calcKO.Text = "0";
+            this.calcKO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(490, 61);
+            this.label25.Location = new System.Drawing.Point(719, 60);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 13);
             this.label25.TabIndex = 126;
@@ -1368,7 +1544,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(490, 18);
+            this.label24.Location = new System.Drawing.Point(719, 17);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 13);
             this.label24.TabIndex = 125;
@@ -1377,7 +1553,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(361, 61);
+            this.label23.Location = new System.Drawing.Point(457, 60);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(103, 13);
             this.label23.TabIndex = 124;
@@ -1386,20 +1562,20 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(361, 18);
+            this.label22.Location = new System.Drawing.Point(456, 14);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 123;
             this.label22.Text = "Raw Damage:";
             // 
-            // ElementBox
+            // calcEleBox
             // 
-            this.ElementBox.Location = new System.Drawing.Point(222, 79);
-            this.ElementBox.Name = "ElementBox";
-            this.ElementBox.Size = new System.Drawing.Size(21, 21);
-            this.ElementBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ElementBox.TabIndex = 122;
-            this.ElementBox.TabStop = false;
+            this.calcEleBox.Location = new System.Drawing.Point(316, 36);
+            this.calcEleBox.Name = "calcEleBox";
+            this.calcEleBox.Size = new System.Drawing.Size(21, 21);
+            this.calcEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.calcEleBox.TabIndex = 122;
+            this.calcEleBox.TabStop = false;
             // 
             // NeutralSel
             // 
@@ -1454,21 +1630,21 @@
             this.label20.TabIndex = 117;
             this.label20.Text = "Calculation Type:";
             // 
-            // EleOut
+            // calcEleOut
             // 
-            this.EleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.EleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.EleOut.Location = new System.Drawing.Point(120, 78);
-            this.EleOut.Name = "EleOut";
-            this.EleOut.Size = new System.Drawing.Size(96, 20);
-            this.EleOut.TabIndex = 116;
-            this.EleOut.Text = "0";
-            this.EleOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcEleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcEleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcEleOut.Location = new System.Drawing.Point(214, 35);
+            this.calcEleOut.Name = "calcEleOut";
+            this.calcEleOut.Size = new System.Drawing.Size(96, 20);
+            this.calcEleOut.TabIndex = 116;
+            this.calcEleOut.Text = "0";
+            this.calcEleOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(117, 61);
+            this.label19.Location = new System.Drawing.Point(211, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(126, 13);
             this.label19.TabIndex = 115;
@@ -1476,7 +1652,7 @@
             // 
             // CalcAll
             // 
-            this.CalcAll.Location = new System.Drawing.Point(262, 73);
+            this.CalcAll.Location = new System.Drawing.Point(357, 30);
             this.CalcAll.Name = "CalcAll";
             this.CalcAll.Size = new System.Drawing.Size(96, 23);
             this.CalcAll.TabIndex = 114;
@@ -1486,7 +1662,7 @@
             // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(15, 118);
+            this.CalcButt.Location = new System.Drawing.Point(112, 30);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 113;
@@ -1494,21 +1670,21 @@
             this.CalcButt.UseVisualStyleBackColor = true;
             this.CalcButt.Click += new System.EventHandler(this.CalcButt_Click);
             // 
-            // RawOut
+            // calcRawOut
             // 
-            this.RawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.RawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.RawOut.Location = new System.Drawing.Point(120, 35);
-            this.RawOut.Name = "RawOut";
-            this.RawOut.Size = new System.Drawing.Size(96, 20);
-            this.RawOut.TabIndex = 112;
-            this.RawOut.Text = "0";
-            this.RawOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.calcRawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcRawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcRawOut.Location = new System.Drawing.Point(112, 77);
+            this.calcRawOut.Name = "calcRawOut";
+            this.calcRawOut.Size = new System.Drawing.Size(96, 20);
+            this.calcRawOut.TabIndex = 112;
+            this.calcRawOut.Text = "0";
+            this.calcRawOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(117, 18);
+            this.label2.Location = new System.Drawing.Point(109, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 111;
@@ -1516,87 +1692,110 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.moveMinds);
+            this.groupBox6.Controls.Add(this.moveHitCount);
+            this.groupBox6.Controls.Add(this.moveAerial);
+            this.groupBox6.Controls.Add(this.moveDraw);
             this.groupBox6.Controls.Add(this.label55);
-            this.groupBox6.Controls.Add(this.DamageTypeField);
-            this.groupBox6.Controls.Add(this.MindsField);
-            this.groupBox6.Controls.Add(this.label30);
-            this.groupBox6.Controls.Add(this.ExhaustBox2);
-            this.groupBox6.Controls.Add(this.KOBox2);
+            this.groupBox6.Controls.Add(this.label73);
+            this.groupBox6.Controls.Add(this.moveDamType);
+            this.groupBox6.Controls.Add(this.moveAvg);
+            this.groupBox6.Controls.Add(this.label74);
+            this.groupBox6.Controls.Add(this.moveExhBox);
+            this.groupBox6.Controls.Add(this.moveKOBox);
             this.groupBox6.Controls.Add(this.label18);
-            this.groupBox6.Controls.Add(this.InExhaustField);
+            this.groupBox6.Controls.Add(this.moveExh);
             this.groupBox6.Controls.Add(this.label17);
-            this.groupBox6.Controls.Add(this.InKOField);
+            this.groupBox6.Controls.Add(this.moveKO);
             this.groupBox6.Controls.Add(this.label16);
-            this.groupBox6.Controls.Add(this.InSharpField);
-            this.groupBox6.Controls.Add(this.MotionValueField);
+            this.groupBox6.Controls.Add(this.moveSharp);
+            this.groupBox6.Controls.Add(this.moveTotal);
             this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Location = new System.Drawing.Point(12, 219);
+            this.groupBox6.Location = new System.Drawing.Point(12, 196);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(200, 181);
+            this.groupBox6.Size = new System.Drawing.Size(312, 174);
             this.groupBox6.TabIndex = 131;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Move Stats:";
             // 
+            // moveAerial
+            // 
+            this.moveAerial.AutoSize = true;
+            this.moveAerial.Location = new System.Drawing.Point(189, 62);
+            this.moveAerial.Name = "moveAerial";
+            this.moveAerial.Size = new System.Drawing.Size(86, 17);
+            this.moveAerial.TabIndex = 146;
+            this.moveAerial.Text = "Aerial Attack";
+            this.moveAerial.UseVisualStyleBackColor = true;
+            // 
+            // moveDraw
+            // 
+            this.moveDraw.AutoSize = true;
+            this.moveDraw.Location = new System.Drawing.Point(189, 39);
+            this.moveDraw.Name = "moveDraw";
+            this.moveDraw.Size = new System.Drawing.Size(85, 17);
+            this.moveDraw.TabIndex = 145;
+            this.moveDraw.Text = "Draw Attack";
+            this.moveDraw.UseVisualStyleBackColor = true;
+            // 
             // label55
             // 
             this.label55.AutoSize = true;
-            this.label55.Location = new System.Drawing.Point(6, 151);
+            this.label55.Location = new System.Drawing.Point(158, 16);
             this.label55.Name = "label55";
             this.label55.Size = new System.Drawing.Size(77, 13);
             this.label55.TabIndex = 144;
             this.label55.Text = "Damage Type:";
             // 
-            // DamageTypeField
+            // label73
             // 
-            this.DamageTypeField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DamageTypeField.FormattingEnabled = true;
-            this.DamageTypeField.Items.AddRange(new object[] {
+            this.label73.AutoSize = true;
+            this.label73.Location = new System.Drawing.Point(6, 148);
+            this.label73.Name = "label73";
+            this.label73.Size = new System.Drawing.Size(80, 13);
+            this.label73.TabIndex = 146;
+            this.label73.Text = "Number of Hits:";
+            // 
+            // moveDamType
+            // 
+            this.moveDamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moveDamType.FormattingEnabled = true;
+            this.moveDamType.Items.AddRange(new object[] {
             "Cut",
             "Impact",
-            "Shot"});
-            this.DamageTypeField.Location = new System.Drawing.Point(104, 148);
-            this.DamageTypeField.Name = "DamageTypeField";
-            this.DamageTypeField.Size = new System.Drawing.Size(78, 21);
-            this.DamageTypeField.TabIndex = 143;
+            "Shot",
+            "Fixed"});
+            this.moveDamType.Location = new System.Drawing.Point(238, 12);
+            this.moveDamType.Name = "moveDamType";
+            this.moveDamType.Size = new System.Drawing.Size(64, 21);
+            this.moveDamType.TabIndex = 143;
             // 
-            // MindsField
+            // label74
             // 
-            this.MindsField.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.MindsField.FormattingEnabled = true;
-            this.MindsField.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.MindsField.Location = new System.Drawing.Point(104, 121);
-            this.MindsField.Name = "MindsField";
-            this.MindsField.Size = new System.Drawing.Size(51, 21);
-            this.MindsField.TabIndex = 142;
+            this.label74.AutoSize = true;
+            this.label74.Location = new System.Drawing.Point(6, 122);
+            this.label74.Name = "label74";
+            this.label74.Size = new System.Drawing.Size(69, 13);
+            this.label74.TabIndex = 145;
+            this.label74.Text = "Avg. MV/Hit:";
             // 
-            // label30
+            // moveExhBox
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(6, 124);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(64, 13);
-            this.label30.TabIndex = 141;
-            this.label30.Text = "Mind\'s Eye?";
+            this.moveExhBox.Location = new System.Drawing.Point(161, 93);
+            this.moveExhBox.Name = "moveExhBox";
+            this.moveExhBox.Size = new System.Drawing.Size(21, 21);
+            this.moveExhBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.moveExhBox.TabIndex = 140;
+            this.moveExhBox.TabStop = false;
             // 
-            // ExhaustBox2
+            // moveKOBox
             // 
-            this.ExhaustBox2.Location = new System.Drawing.Point(161, 93);
-            this.ExhaustBox2.Name = "ExhaustBox2";
-            this.ExhaustBox2.Size = new System.Drawing.Size(21, 21);
-            this.ExhaustBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.ExhaustBox2.TabIndex = 140;
-            this.ExhaustBox2.TabStop = false;
-            // 
-            // KOBox2
-            // 
-            this.KOBox2.Location = new System.Drawing.Point(161, 66);
-            this.KOBox2.Name = "KOBox2";
-            this.KOBox2.Size = new System.Drawing.Size(21, 21);
-            this.KOBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.KOBox2.TabIndex = 139;
-            this.KOBox2.TabStop = false;
+            this.moveKOBox.Location = new System.Drawing.Point(161, 66);
+            this.moveKOBox.Name = "moveKOBox";
+            this.moveKOBox.Size = new System.Drawing.Size(21, 21);
+            this.moveKOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.moveKOBox.TabIndex = 139;
+            this.moveKOBox.TabStop = false;
             // 
             // label18
             // 
@@ -1607,16 +1806,16 @@
             this.label18.TabIndex = 7;
             this.label18.Text = "Exhaust Damage:";
             // 
-            // InExhaustField
+            // moveExh
             // 
-            this.InExhaustField.Location = new System.Drawing.Point(104, 94);
-            this.InExhaustField.Name = "InExhaustField";
-            this.InExhaustField.Size = new System.Drawing.Size(51, 20);
-            this.InExhaustField.TabIndex = 6;
-            this.InExhaustField.Text = "0";
-            this.InExhaustField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.InExhaustField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.InExhaustField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.moveExh.Location = new System.Drawing.Point(104, 94);
+            this.moveExh.Name = "moveExh";
+            this.moveExh.Size = new System.Drawing.Size(51, 20);
+            this.moveExh.TabIndex = 6;
+            this.moveExh.Text = "0";
+            this.moveExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.moveExh.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveExh.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label17
             // 
@@ -1627,16 +1826,16 @@
             this.label17.TabIndex = 5;
             this.label17.Text = "KO Damage:";
             // 
-            // InKOField
+            // moveKO
             // 
-            this.InKOField.Location = new System.Drawing.Point(104, 67);
-            this.InKOField.Name = "InKOField";
-            this.InKOField.Size = new System.Drawing.Size(51, 20);
-            this.InKOField.TabIndex = 4;
-            this.InKOField.Text = "0";
-            this.InKOField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.InKOField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.InKOField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.moveKO.Location = new System.Drawing.Point(104, 67);
+            this.moveKO.Name = "moveKO";
+            this.moveKO.Size = new System.Drawing.Size(51, 20);
+            this.moveKO.TabIndex = 4;
+            this.moveKO.Text = "0";
+            this.moveKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.moveKO.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveKO.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label16
             // 
@@ -1647,36 +1846,36 @@
             this.label16.TabIndex = 3;
             this.label16.Text = "Sharpness Mod:";
             // 
-            // InSharpField
+            // moveSharp
             // 
-            this.InSharpField.Location = new System.Drawing.Point(104, 40);
-            this.InSharpField.Name = "InSharpField";
-            this.InSharpField.Size = new System.Drawing.Size(51, 20);
-            this.InSharpField.TabIndex = 2;
-            this.InSharpField.Text = "1.0";
-            this.InSharpField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.InSharpField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.InSharpField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.moveSharp.Location = new System.Drawing.Point(104, 40);
+            this.moveSharp.Name = "moveSharp";
+            this.moveSharp.Size = new System.Drawing.Size(51, 20);
+            this.moveSharp.TabIndex = 2;
+            this.moveSharp.Text = "1.0";
+            this.moveSharp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.moveSharp.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveSharp.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
-            // MotionValueField
+            // moveTotal
             // 
-            this.MotionValueField.Location = new System.Drawing.Point(104, 13);
-            this.MotionValueField.Name = "MotionValueField";
-            this.MotionValueField.Size = new System.Drawing.Size(51, 20);
-            this.MotionValueField.TabIndex = 1;
-            this.MotionValueField.Text = "0";
-            this.MotionValueField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.MotionValueField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
-            this.MotionValueField.Validated += new System.EventHandler(this.GenericField_Validated);
+            this.moveTotal.Location = new System.Drawing.Point(104, 13);
+            this.moveTotal.Name = "moveTotal";
+            this.moveTotal.Size = new System.Drawing.Size(51, 20);
+            this.moveTotal.TabIndex = 1;
+            this.moveTotal.Text = "0";
+            this.moveTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.moveTotal.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveTotal.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 16);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 13);
+            this.label11.Size = new System.Drawing.Size(99, 13);
             this.label11.TabIndex = 0;
-            this.label11.Text = "Motion Value:";
+            this.label11.Text = "Total Motion Value:";
             // 
             // groupBox7
             // 
@@ -1686,9 +1885,9 @@
             this.groupBox7.Controls.Add(this.MotionSort);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.NameSort);
-            this.groupBox7.Location = new System.Drawing.Point(211, 219);
+            this.groupBox7.Location = new System.Drawing.Point(323, 196);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(200, 154);
+            this.groupBox7.Size = new System.Drawing.Size(200, 104);
             this.groupBox7.TabIndex = 132;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Move Search";
@@ -1696,7 +1895,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(7, 75);
+            this.label33.Location = new System.Drawing.Point(6, 75);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(58, 13);
             this.label33.TabIndex = 134;
@@ -1706,7 +1905,7 @@
             // 
             this.ComboSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboSort.FormattingEnabled = true;
-            this.ComboSort.Location = new System.Drawing.Point(66, 72);
+            this.ComboSort.Location = new System.Drawing.Point(65, 72);
             this.ComboSort.Name = "ComboSort";
             this.ComboSort.Size = new System.Drawing.Size(121, 21);
             this.ComboSort.TabIndex = 133;
@@ -1715,7 +1914,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(7, 48);
+            this.label32.Location = new System.Drawing.Point(6, 48);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(41, 13);
             this.label32.TabIndex = 3;
@@ -1725,7 +1924,7 @@
             // 
             this.MotionSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MotionSort.FormattingEnabled = true;
-            this.MotionSort.Location = new System.Drawing.Point(66, 45);
+            this.MotionSort.Location = new System.Drawing.Point(65, 45);
             this.MotionSort.Name = "MotionSort";
             this.MotionSort.Size = new System.Drawing.Size(121, 21);
             this.MotionSort.TabIndex = 2;
@@ -1734,7 +1933,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(7, 20);
+            this.label31.Location = new System.Drawing.Point(6, 20);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(53, 13);
             this.label31.TabIndex = 1;
@@ -1744,7 +1943,7 @@
             // 
             this.NameSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NameSort.FormattingEnabled = true;
-            this.NameSort.Location = new System.Drawing.Point(66, 17);
+            this.NameSort.Location = new System.Drawing.Point(65, 17);
             this.NameSort.Name = "NameSort";
             this.NameSort.Size = new System.Drawing.Size(121, 21);
             this.NameSort.TabIndex = 0;
@@ -1752,38 +1951,38 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.listView1);
+            this.groupBox8.Controls.Add(this.modList);
             this.groupBox8.Controls.Add(this.OtherButt);
             this.groupBox8.Controls.Add(this.label42);
-            this.groupBox8.Controls.Add(this.OtherSkillBox);
+            this.groupBox8.Controls.Add(this.modOther);
             this.groupBox8.Controls.Add(this.RemoveButt);
             this.groupBox8.Controls.Add(this.WeaponButt);
             this.groupBox8.Controls.Add(this.KitchenButt);
             this.groupBox8.Controls.Add(this.ArmorButt);
             this.groupBox8.Controls.Add(this.label41);
-            this.groupBox8.Controls.Add(this.WeaponSkillBox);
+            this.groupBox8.Controls.Add(this.modWeapon);
             this.groupBox8.Controls.Add(this.label39);
-            this.groupBox8.Controls.Add(this.KitchenSkillBox);
+            this.groupBox8.Controls.Add(this.modKitchen);
             this.groupBox8.Controls.Add(this.label34);
-            this.groupBox8.Controls.Add(this.ArmorSkillBox);
-            this.groupBox8.Location = new System.Drawing.Point(351, 12);
+            this.groupBox8.Controls.Add(this.modArmor);
+            this.groupBox8.Location = new System.Drawing.Point(529, 12);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(460, 201);
+            this.groupBox8.Size = new System.Drawing.Size(461, 191);
             this.groupBox8.TabIndex = 133;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Active Modifiers:";
             // 
-            // listView1
+            // modList
             // 
-            this.listView1.Location = new System.Drawing.Point(7, 17);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(142, 175);
-            this.listView1.TabIndex = 14;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.modList.Location = new System.Drawing.Point(7, 17);
+            this.modList.Name = "modList";
+            this.modList.Size = new System.Drawing.Size(139, 168);
+            this.modList.TabIndex = 14;
+            this.modList.UseCompatibleStateImageBehavior = false;
             // 
             // OtherButt
             // 
-            this.OtherButt.Location = new System.Drawing.Point(386, 102);
+            this.OtherButt.Location = new System.Drawing.Point(383, 103);
             this.OtherButt.Name = "OtherButt";
             this.OtherButt.Size = new System.Drawing.Size(63, 23);
             this.OtherButt.TabIndex = 13;
@@ -1793,25 +1992,25 @@
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(155, 106);
+            this.label42.Location = new System.Drawing.Point(152, 107);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(36, 13);
             this.label42.TabIndex = 12;
             this.label42.Text = "Other:";
             // 
-            // OtherSkillBox
+            // modOther
             // 
-            this.OtherSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.OtherSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OtherSkillBox.FormattingEnabled = true;
-            this.OtherSkillBox.Location = new System.Drawing.Point(259, 103);
-            this.OtherSkillBox.Name = "OtherSkillBox";
-            this.OtherSkillBox.Size = new System.Drawing.Size(121, 20);
-            this.OtherSkillBox.TabIndex = 11;
+            this.modOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modOther.FormattingEnabled = true;
+            this.modOther.Location = new System.Drawing.Point(256, 104);
+            this.modOther.Name = "modOther";
+            this.modOther.Size = new System.Drawing.Size(121, 20);
+            this.modOther.TabIndex = 11;
             // 
             // RemoveButt
             // 
-            this.RemoveButt.Location = new System.Drawing.Point(155, 169);
+            this.RemoveButt.Location = new System.Drawing.Point(152, 162);
             this.RemoveButt.Name = "RemoveButt";
             this.RemoveButt.Size = new System.Drawing.Size(135, 23);
             this.RemoveButt.TabIndex = 10;
@@ -1820,7 +2019,7 @@
             // 
             // WeaponButt
             // 
-            this.WeaponButt.Location = new System.Drawing.Point(386, 73);
+            this.WeaponButt.Location = new System.Drawing.Point(383, 74);
             this.WeaponButt.Name = "WeaponButt";
             this.WeaponButt.Size = new System.Drawing.Size(63, 23);
             this.WeaponButt.TabIndex = 9;
@@ -1829,7 +2028,7 @@
             // 
             // KitchenButt
             // 
-            this.KitchenButt.Location = new System.Drawing.Point(386, 45);
+            this.KitchenButt.Location = new System.Drawing.Point(383, 46);
             this.KitchenButt.Name = "KitchenButt";
             this.KitchenButt.Size = new System.Drawing.Size(63, 23);
             this.KitchenButt.TabIndex = 8;
@@ -1838,7 +2037,7 @@
             // 
             // ArmorButt
             // 
-            this.ArmorButt.Location = new System.Drawing.Point(386, 17);
+            this.ArmorButt.Location = new System.Drawing.Point(383, 18);
             this.ArmorButt.Name = "ArmorButt";
             this.ArmorButt.Size = new System.Drawing.Size(63, 23);
             this.ArmorButt.TabIndex = 7;
@@ -1848,102 +2047,316 @@
             // label41
             // 
             this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(155, 78);
+            this.label41.Location = new System.Drawing.Point(152, 79);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(92, 13);
             this.label41.TabIndex = 6;
             this.label41.Text = "Weapon-Specific:";
             // 
-            // WeaponSkillBox
+            // modWeapon
             // 
-            this.WeaponSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.WeaponSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WeaponSkillBox.FormattingEnabled = true;
-            this.WeaponSkillBox.Location = new System.Drawing.Point(259, 75);
-            this.WeaponSkillBox.Name = "WeaponSkillBox";
-            this.WeaponSkillBox.Size = new System.Drawing.Size(121, 20);
-            this.WeaponSkillBox.TabIndex = 5;
+            this.modWeapon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modWeapon.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modWeapon.FormattingEnabled = true;
+            this.modWeapon.Location = new System.Drawing.Point(256, 76);
+            this.modWeapon.Name = "modWeapon";
+            this.modWeapon.Size = new System.Drawing.Size(121, 20);
+            this.modWeapon.TabIndex = 5;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(155, 50);
+            this.label39.Location = new System.Drawing.Point(152, 51);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(98, 13);
             this.label39.TabIndex = 4;
             this.label39.Text = "Kitchen Skills/Item:";
             // 
-            // KitchenSkillBox
+            // modKitchen
             // 
-            this.KitchenSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.KitchenSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KitchenSkillBox.FormattingEnabled = true;
-            this.KitchenSkillBox.Location = new System.Drawing.Point(259, 47);
-            this.KitchenSkillBox.Name = "KitchenSkillBox";
-            this.KitchenSkillBox.Size = new System.Drawing.Size(121, 20);
-            this.KitchenSkillBox.TabIndex = 3;
+            this.modKitchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modKitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modKitchen.FormattingEnabled = true;
+            this.modKitchen.Location = new System.Drawing.Point(256, 48);
+            this.modKitchen.Name = "modKitchen";
+            this.modKitchen.Size = new System.Drawing.Size(121, 20);
+            this.modKitchen.TabIndex = 3;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(155, 22);
+            this.label34.Location = new System.Drawing.Point(152, 23);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(64, 13);
             this.label34.TabIndex = 2;
             this.label34.Text = "Armor Skills:";
             // 
-            // ArmorSkillBox
+            // modArmor
             // 
-            this.ArmorSkillBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ArmorSkillBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArmorSkillBox.FormattingEnabled = true;
-            this.ArmorSkillBox.Location = new System.Drawing.Point(259, 19);
-            this.ArmorSkillBox.Name = "ArmorSkillBox";
-            this.ArmorSkillBox.Size = new System.Drawing.Size(121, 20);
-            this.ArmorSkillBox.TabIndex = 1;
+            this.modArmor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.modArmor.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.modArmor.FormattingEnabled = true;
+            this.modArmor.Location = new System.Drawing.Point(256, 20);
+            this.modArmor.Name = "modArmor";
+            this.modArmor.Size = new System.Drawing.Size(121, 20);
+            this.modArmor.TabIndex = 1;
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.textBox3);
+            this.groupBox9.Controls.Add(this.monDragonBox);
+            this.groupBox9.Controls.Add(this.monIceBox);
+            this.groupBox9.Controls.Add(this.monThunderBox);
+            this.groupBox9.Controls.Add(this.monWaterBox);
+            this.groupBox9.Controls.Add(this.monFireBox);
+            this.groupBox9.Controls.Add(this.monQuestMod);
+            this.groupBox9.Controls.Add(this.label71);
+            this.groupBox9.Controls.Add(this.monDragon);
+            this.groupBox9.Controls.Add(this.label67);
+            this.groupBox9.Controls.Add(this.label68);
+            this.groupBox9.Controls.Add(this.monIce);
+            this.groupBox9.Controls.Add(this.monExh);
+            this.groupBox9.Controls.Add(this.label69);
+            this.groupBox9.Controls.Add(this.label70);
+            this.groupBox9.Controls.Add(this.monKO);
+            this.groupBox9.Controls.Add(this.monThunder);
+            this.groupBox9.Controls.Add(this.label64);
+            this.groupBox9.Controls.Add(this.monWater);
+            this.groupBox9.Controls.Add(this.label65);
+            this.groupBox9.Controls.Add(this.label66);
+            this.groupBox9.Controls.Add(this.monFire);
+            this.groupBox9.Controls.Add(this.monShot);
             this.groupBox9.Controls.Add(this.label52);
-            this.groupBox9.Controls.Add(this.textBox2);
+            this.groupBox9.Controls.Add(this.monImpact);
             this.groupBox9.Controls.Add(this.label51);
             this.groupBox9.Controls.Add(this.label49);
-            this.groupBox9.Controls.Add(this.textBox1);
-            this.groupBox9.Location = new System.Drawing.Point(417, 219);
+            this.groupBox9.Controls.Add(this.monCut);
+            this.groupBox9.Location = new System.Drawing.Point(557, 216);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(256, 154);
+            this.groupBox9.Size = new System.Drawing.Size(383, 188);
             this.groupBox9.TabIndex = 134;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Monster Data:";
             // 
-            // textBox3
+            // monDragonBox
             // 
-            this.textBox3.Location = new System.Drawing.Point(105, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
+            this.monDragonBox.Location = new System.Drawing.Point(356, 116);
+            this.monDragonBox.Name = "monDragonBox";
+            this.monDragonBox.Size = new System.Drawing.Size(21, 21);
+            this.monDragonBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monDragonBox.TabIndex = 149;
+            this.monDragonBox.TabStop = false;
+            // 
+            // monIceBox
+            // 
+            this.monIceBox.Location = new System.Drawing.Point(356, 90);
+            this.monIceBox.Name = "monIceBox";
+            this.monIceBox.Size = new System.Drawing.Size(21, 21);
+            this.monIceBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monIceBox.TabIndex = 148;
+            this.monIceBox.TabStop = false;
+            // 
+            // monThunderBox
+            // 
+            this.monThunderBox.Location = new System.Drawing.Point(356, 64);
+            this.monThunderBox.Name = "monThunderBox";
+            this.monThunderBox.Size = new System.Drawing.Size(21, 21);
+            this.monThunderBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monThunderBox.TabIndex = 147;
+            this.monThunderBox.TabStop = false;
+            // 
+            // monWaterBox
+            // 
+            this.monWaterBox.Location = new System.Drawing.Point(356, 40);
+            this.monWaterBox.Name = "monWaterBox";
+            this.monWaterBox.Size = new System.Drawing.Size(21, 21);
+            this.monWaterBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monWaterBox.TabIndex = 146;
+            this.monWaterBox.TabStop = false;
+            // 
+            // monFireBox
+            // 
+            this.monFireBox.Location = new System.Drawing.Point(356, 14);
+            this.monFireBox.Name = "monFireBox";
+            this.monFireBox.Size = new System.Drawing.Size(21, 21);
+            this.monFireBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monFireBox.TabIndex = 145;
+            this.monFireBox.TabStop = false;
+            // 
+            // monQuestMod
+            // 
+            this.monQuestMod.Location = new System.Drawing.Point(270, 143);
+            this.monQuestMod.Name = "monQuestMod";
+            this.monQuestMod.Size = new System.Drawing.Size(80, 20);
+            this.monQuestMod.TabIndex = 21;
+            this.monQuestMod.Text = "1.0";
+            this.monQuestMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(179, 146);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(62, 13);
+            this.label71.TabIndex = 20;
+            this.label71.Text = "Quest Mod:";
+            // 
+            // monDragon
+            // 
+            this.monDragon.Location = new System.Drawing.Point(270, 117);
+            this.monDragon.Name = "monDragon";
+            this.monDragon.Size = new System.Drawing.Size(80, 20);
+            this.monDragon.TabIndex = 19;
+            this.monDragon.Text = "0";
+            this.monDragon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label67
+            // 
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(179, 120);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(84, 13);
+            this.label67.TabIndex = 18;
+            this.label67.Text = "Dragon Hitzone:";
+            // 
+            // label68
+            // 
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(179, 94);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(64, 13);
+            this.label68.TabIndex = 17;
+            this.label68.Text = "Ice Hitzone:";
+            // 
+            // monIce
+            // 
+            this.monIce.Location = new System.Drawing.Point(270, 91);
+            this.monIce.Name = "monIce";
+            this.monIce.Size = new System.Drawing.Size(80, 20);
+            this.monIce.TabIndex = 16;
+            this.monIce.Text = "0";
+            this.monIce.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // monExh
+            // 
+            this.monExh.Location = new System.Drawing.Point(94, 118);
+            this.monExh.Name = "monExh";
+            this.monExh.Size = new System.Drawing.Size(80, 20);
+            this.monExh.TabIndex = 15;
+            this.monExh.Text = "0";
+            this.monExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label69
+            // 
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(8, 120);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(87, 13);
+            this.label69.TabIndex = 14;
+            this.label69.Text = "Exhaust Hitzone:";
+            // 
+            // label70
+            // 
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(8, 94);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(64, 13);
+            this.label70.TabIndex = 13;
+            this.label70.Text = "KO Hitzone:";
+            // 
+            // monKO
+            // 
+            this.monKO.Location = new System.Drawing.Point(94, 92);
+            this.monKO.Name = "monKO";
+            this.monKO.Size = new System.Drawing.Size(80, 20);
+            this.monKO.TabIndex = 12;
+            this.monKO.Text = "0";
+            this.monKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // monThunder
+            // 
+            this.monThunder.Location = new System.Drawing.Point(270, 65);
+            this.monThunder.Name = "monThunder";
+            this.monThunder.Size = new System.Drawing.Size(80, 20);
+            this.monThunder.TabIndex = 11;
+            this.monThunder.Text = "0";
+            this.monThunder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(179, 68);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(91, 13);
+            this.label64.TabIndex = 10;
+            this.label64.Text = "Thunder Element:";
+            // 
+            // monWater
+            // 
+            this.monWater.Location = new System.Drawing.Point(270, 39);
+            this.monWater.Name = "monWater";
+            this.monWater.Size = new System.Drawing.Size(80, 20);
+            this.monWater.TabIndex = 9;
+            this.monWater.Text = "0";
+            this.monWater.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(179, 42);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(78, 13);
+            this.label65.TabIndex = 8;
+            this.label65.Text = "Water Hitzone:";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(179, 16);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(66, 13);
+            this.label66.TabIndex = 7;
+            this.label66.Text = "Fire Hitzone:";
+            // 
+            // monFire
+            // 
+            this.monFire.Location = new System.Drawing.Point(270, 13);
+            this.monFire.Name = "monFire";
+            this.monFire.Size = new System.Drawing.Size(80, 20);
+            this.monFire.TabIndex = 6;
+            this.monFire.Text = "0";
+            this.monFire.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // monShot
+            // 
+            this.monShot.Location = new System.Drawing.Point(94, 66);
+            this.monShot.Name = "monShot";
+            this.monShot.Size = new System.Drawing.Size(80, 20);
+            this.monShot.TabIndex = 5;
+            this.monShot.Text = "0";
+            this.monShot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label52
             // 
             this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(6, 74);
+            this.label52.Location = new System.Drawing.Point(8, 68);
             this.label52.Name = "label52";
             this.label52.Size = new System.Drawing.Size(71, 13);
             this.label52.TabIndex = 4;
             this.label52.Text = "Shot Hitzone:";
             // 
-            // textBox2
+            // monImpact
             // 
-            this.textBox2.Location = new System.Drawing.Point(105, 45);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 3;
+            this.monImpact.Location = new System.Drawing.Point(94, 40);
+            this.monImpact.Name = "monImpact";
+            this.monImpact.Size = new System.Drawing.Size(80, 20);
+            this.monImpact.TabIndex = 3;
+            this.monImpact.Text = "0";
+            this.monImpact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label51
             // 
             this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(6, 48);
+            this.label51.Location = new System.Drawing.Point(8, 42);
             this.label51.Name = "label51";
             this.label51.Size = new System.Drawing.Size(81, 13);
             this.label51.TabIndex = 2;
@@ -1952,24 +2365,126 @@
             // label49
             // 
             this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(6, 22);
+            this.label49.Location = new System.Drawing.Point(8, 16);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(65, 13);
             this.label49.TabIndex = 1;
             this.label49.Text = "Cut Hitzone:";
             // 
-            // textBox1
+            // monCut
             // 
-            this.textBox1.Location = new System.Drawing.Point(105, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.monCut.Location = new System.Drawing.Point(94, 14);
+            this.monCut.Name = "monCut";
+            this.monCut.Size = new System.Drawing.Size(80, 20);
+            this.monCut.TabIndex = 0;
+            this.monCut.Text = "0";
+            this.monCut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.label72);
+            this.groupBox10.Controls.Add(this.monQuest);
+            this.groupBox10.Controls.Add(this.label77);
+            this.groupBox10.Controls.Add(this.monHitzone);
+            this.groupBox10.Controls.Add(this.label78);
+            this.groupBox10.Controls.Add(this.monName);
+            this.groupBox10.Location = new System.Drawing.Point(330, 306);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(228, 98);
+            this.groupBox10.TabIndex = 135;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Monster Search";
+            // 
+            // label72
+            // 
+            this.label72.AutoSize = true;
+            this.label72.Location = new System.Drawing.Point(6, 75);
+            this.label72.Name = "label72";
+            this.label72.Size = new System.Drawing.Size(69, 13);
+            this.label72.TabIndex = 134;
+            this.label72.Text = "Quest Name:";
+            // 
+            // monQuest
+            // 
+            this.monQuest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monQuest.FormattingEnabled = true;
+            this.monQuest.Location = new System.Drawing.Point(89, 69);
+            this.monQuest.Name = "monQuest";
+            this.monQuest.Size = new System.Drawing.Size(129, 21);
+            this.monQuest.TabIndex = 133;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(6, 48);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(77, 13);
+            this.label77.TabIndex = 3;
+            this.label77.Text = "Hitzone Name:";
+            // 
+            // monHitzone
+            // 
+            this.monHitzone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monHitzone.FormattingEnabled = true;
+            this.monHitzone.Location = new System.Drawing.Point(89, 42);
+            this.monHitzone.Name = "monHitzone";
+            this.monHitzone.Size = new System.Drawing.Size(129, 21);
+            this.monHitzone.TabIndex = 2;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(6, 20);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(79, 13);
+            this.label78.TabIndex = 1;
+            this.label78.Text = "Monster Name:";
+            // 
+            // monName
+            // 
+            this.monName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monName.FormattingEnabled = true;
+            this.monName.Location = new System.Drawing.Point(89, 14);
+            this.monName.Name = "monName";
+            this.monName.Size = new System.Drawing.Size(129, 21);
+            this.monName.TabIndex = 0;
+            // 
+            // moveMinds
+            // 
+            this.moveMinds.AutoSize = true;
+            this.moveMinds.Location = new System.Drawing.Point(189, 85);
+            this.moveMinds.Name = "moveMinds";
+            this.moveMinds.Size = new System.Drawing.Size(83, 17);
+            this.moveMinds.TabIndex = 144;
+            this.moveMinds.Text = "Mind\'s Eye?";
+            this.moveMinds.UseVisualStyleBackColor = true;
+            // 
+            // paraMinds
+            // 
+            this.paraMinds.AutoSize = true;
+            this.paraMinds.Location = new System.Drawing.Point(9, 149);
+            this.paraMinds.Name = "paraMinds";
+            this.paraMinds.Size = new System.Drawing.Size(83, 17);
+            this.paraMinds.TabIndex = 150;
+            this.paraMinds.Text = "Mind\'s Eye?";
+            this.paraMinds.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(189, 91);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(72, 17);
+            this.checkBox1.TabIndex = 146;
+            this.checkBox1.Text = "Override?";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 751);
+            this.ClientSize = new System.Drawing.Size(1006, 716);
+            this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox7);
@@ -1984,7 +2499,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EleLabelBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weapAltBox)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -1993,22 +2509,29 @@
             this.groupBox4.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FinalEleBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KOBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ElementBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcFinalSecBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcSecBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcFinalEleBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcExhBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcKOBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.calcEleBox)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExhaustBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.KOBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveExhBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moveKOBox)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monDragonBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monIceBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monThunderBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monWaterBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monFireBox)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -2031,103 +2554,102 @@
         private System.Windows.Forms.ToolTip ExhaustZoneTip;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox WeaponFinalField;
-        private System.Windows.Forms.ComboBox LevelField;
+        private System.Windows.Forms.ComboBox weapFinal;
+        private System.Windows.Forms.ComboBox weapLevel;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox WeaponField;
+        private System.Windows.Forms.ComboBox weapName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox TypeField;
-        private System.Windows.Forms.ComboBox WeaponAltField;
+        private System.Windows.Forms.ComboBox weapType;
+        private System.Windows.Forms.ComboBox weapAlt;
         private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.ComboBox TwoLabel;
-        private System.Windows.Forms.ComboBox OneLabel;
-        private System.Windows.Forms.ComboBox SharpnessLabel;
-        private System.Windows.Forms.TextBox AffinityLabel;
-        private System.Windows.Forms.TextBox EleTypeLabel;
-        private System.Windows.Forms.TextBox AttackLabel;
+        private System.Windows.Forms.ComboBox weapTwo;
+        private System.Windows.Forms.ComboBox weapOne;
+        private System.Windows.Forms.ComboBox weapSharpness;
+        private System.Windows.Forms.TextBox weapAffinity;
+        private System.Windows.Forms.TextBox weapAltPower;
+        private System.Windows.Forms.TextBox weapAttack;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.Label label43;
-        private System.Windows.Forms.PictureBox EleLabelBox;
+        private System.Windows.Forms.PictureBox weapAltBox;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox RawField;
+        private System.Windows.Forms.TextBox paraRaw;
         private System.Windows.Forms.Label RawLabel;
-        private System.Windows.Forms.TextBox MVField;
+        private System.Windows.Forms.TextBox paraMV;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox AffinityField;
-        private System.Windows.Forms.TextBox EleSharpField;
+        private System.Windows.Forms.TextBox paraAffinity;
+        private System.Windows.Forms.TextBox paraEleSharp;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox EleField;
-        private System.Windows.Forms.TextBox RawSharpField;
+        private System.Windows.Forms.TextBox paraEle;
+        private System.Windows.Forms.TextBox paraRawSharp;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.ComboBox sharpnessBox;
+        private System.Windows.Forms.ComboBox paraSharpness;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox AltDamageField;
-        private System.Windows.Forms.TextBox KOField;
+        private System.Windows.Forms.ComboBox paraAltType;
+        private System.Windows.Forms.TextBox paraKO;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox ExhaustField;
+        private System.Windows.Forms.TextBox paraExh;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox ExhaustZoneField;
+        private System.Windows.Forms.TextBox paraExhZone;
         private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.TextBox KOZoneField;
+        private System.Windows.Forms.TextBox paraKOZone;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox QuestField;
+        private System.Windows.Forms.TextBox paraQuest;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox EleZoneField;
+        private System.Windows.Forms.TextBox paraEleHitzone;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox HitzoneField;
+        private System.Windows.Forms.TextBox paraRawHitzone;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.Label BounceLabel;
+        private System.Windows.Forms.Label calcBounce;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.Label FinalField;
+        private System.Windows.Forms.Label calcFinal;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label FinalRawField;
-        private System.Windows.Forms.PictureBox FinalEleBox;
-        private System.Windows.Forms.Label FinalEleField;
-        private System.Windows.Forms.PictureBox ExhaustBox;
-        private System.Windows.Forms.Label ExhaustOut;
-        private System.Windows.Forms.PictureBox KOBox;
-        private System.Windows.Forms.Label KOOut;
+        private System.Windows.Forms.Label calcFinalRaw;
+        private System.Windows.Forms.PictureBox calcFinalEleBox;
+        private System.Windows.Forms.Label calcEle;
+        private System.Windows.Forms.PictureBox calcExhBox;
+        private System.Windows.Forms.Label calcExh;
+        private System.Windows.Forms.PictureBox calcKOBox;
+        private System.Windows.Forms.Label calcKO;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.PictureBox ElementBox;
+        private System.Windows.Forms.PictureBox calcEleBox;
         private System.Windows.Forms.RadioButton NeutralSel;
         private System.Windows.Forms.RadioButton NegativeSel;
         private System.Windows.Forms.RadioButton PositiveSel;
         private System.Windows.Forms.RadioButton AverageSel;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label EleOut;
+        private System.Windows.Forms.Label calcEleOut;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button CalcAll;
         private System.Windows.Forms.Button CalcButt;
-        private System.Windows.Forms.Label RawOut;
+        private System.Windows.Forms.Label calcRawOut;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.PictureBox ExhaustBox2;
-        private System.Windows.Forms.PictureBox KOBox2;
+        private System.Windows.Forms.PictureBox moveExhBox;
+        private System.Windows.Forms.PictureBox moveKOBox;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox InExhaustField;
+        private System.Windows.Forms.TextBox moveExh;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox InKOField;
+        private System.Windows.Forms.TextBox moveKO;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox InSharpField;
-        private System.Windows.Forms.TextBox MotionValueField;
-        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox moveSharp;
+        private System.Windows.Forms.TextBox moveTotal;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.ComboBox ComboSort;
@@ -2140,50 +2662,90 @@
         private System.Windows.Forms.Button KitchenButt;
         private System.Windows.Forms.Button ArmorButt;
         private System.Windows.Forms.Label label41;
-        private System.Windows.Forms.ComboBox WeaponSkillBox;
+        private System.Windows.Forms.ComboBox modWeapon;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.ComboBox KitchenSkillBox;
+        private System.Windows.Forms.ComboBox modKitchen;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.ComboBox ArmorSkillBox;
+        private System.Windows.Forms.ComboBox modArmor;
         private System.Windows.Forms.Button RemoveButt;
         private System.Windows.Forms.Button OtherButt;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.ComboBox OtherSkillBox;
+        private System.Windows.Forms.ComboBox modOther;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox monCut;
+        private System.Windows.Forms.TextBox monShot;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox monImpact;
         private System.Windows.Forms.Label label51;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.ComboBox DamageTypeField;
-        private System.Windows.Forms.ComboBox MindsField;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ComboBox moveDamType;
+        private System.Windows.Forms.CheckBox paraBoost;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.Button UpdateButt;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.ComboBox paraEleCrit;
+        private System.Windows.Forms.ListView modList;
+        private System.Windows.Forms.Button paraUpdate;
+        private System.Windows.Forms.CheckBox paraFixed;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox paraMonStat;
+        private System.Windows.Forms.TextBox paraTotal;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.ComboBox paraSecEle;
+        private System.Windows.Forms.PictureBox calcSecBox;
+        private System.Windows.Forms.Label calcSecOut;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label58;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.TextBox paraSecPower;
+        private System.Windows.Forms.TextBox paraHitCount;
+        private System.Windows.Forms.PictureBox calcFinalSecBox;
+        private System.Windows.Forms.Label calcFinalSec;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox paraSecHitzone;
+        private System.Windows.Forms.TextBox monQuestMod;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox monDragon;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox monIce;
+        private System.Windows.Forms.TextBox monExh;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox monKO;
+        private System.Windows.Forms.TextBox monThunder;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox monWater;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox monFire;
+        private System.Windows.Forms.PictureBox monDragonBox;
+        private System.Windows.Forms.PictureBox monIceBox;
+        private System.Windows.Forms.PictureBox monThunderBox;
+        private System.Windows.Forms.PictureBox monWaterBox;
+        private System.Windows.Forms.PictureBox monFireBox;
+        private System.Windows.Forms.ComboBox weapSecType;
+        private System.Windows.Forms.Label label75;
+        private System.Windows.Forms.TextBox weapSecPower;
+        private System.Windows.Forms.PictureBox weapSecBox;
+        private System.Windows.Forms.Label label76;
+        private System.Windows.Forms.CheckBox moveAerial;
+        private System.Windows.Forms.CheckBox moveDraw;
+        private System.Windows.Forms.TextBox moveHitCount;
+        private System.Windows.Forms.Label label73;
+        private System.Windows.Forms.TextBox moveAvg;
+        private System.Windows.Forms.Label label74;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label72;
+        private System.Windows.Forms.ComboBox monQuest;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.ComboBox monHitzone;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.ComboBox monName;
+        private System.Windows.Forms.CheckBox moveMinds;
+        private System.Windows.Forms.CheckBox paraMinds;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 
