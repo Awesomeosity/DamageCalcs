@@ -20,10 +20,12 @@ namespace YADC_MHGen_
         {
             public int level;
             public double attack;
+            public string secType;
             public string sharpness;
             public double affinity;
             public string elementalType;
             public double elementalDamage;
+            public double secDamage;
             public string sharpness1;
             public string sharpness2;
 
@@ -32,20 +34,24 @@ namespace YADC_MHGen_
             /// </summary>
             /// <param name="_level">Incoming level.</param>
             /// <param name="_attack">Attack power of the weapon at the enclosing level.</param>
+            /// <param name="_secType">Secondary typing of the weapon.</param>
             /// <param name="_sharpness">Maximum sharpness of the weapon at the enclosing level.</param>
             /// <param name="_affinity">Amount of affinity at the level.</param>
             /// <param name="_elementalType">The secondary damage type of the weapon, element or status.</param>
             /// <param name="_elementalDamage">The amount of elemental damage done.</param>
+            /// <param name="_secDamage">The amount of elemental damage done.</param>
             /// <param name="_sharpness1">The maximum level of sharpness with Sharpness +1</param>
             /// <param name="_sharpness2">The maximum level of sharpness with Sharpness +2</param>
-            public stats(int _level, int _attack, string _sharpness, int _affinity, string _elementalType, int _elementalDamage, string _sharpness1, string _sharpness2)
+            public stats(int _level, double _attack, string _secType, string _sharpness, double _affinity, string _elementalType, double _elementalDamage, double _secDamage, string _sharpness1, string _sharpness2)
             {
                 level = _level;
                 attack = _attack;
+                secType = _secType;
                 sharpness = _sharpness;
                 affinity = _affinity;
                 elementalType = _elementalType;
                 elementalDamage = _elementalDamage;
+                secDamage = _secDamage;
                 sharpness1 = _sharpness1;
                 sharpness2 = _sharpness2;
             }
@@ -471,12 +477,14 @@ namespace YADC_MHGen_
                 {
                     weapAttack.Text = statistics.attack.ToString();
                     weapAltPower.Text = statistics.elementalDamage.ToString();
+                    weapSecPower.Text = statistics.secDamage.ToString();
                     weapAffinity.Text = statistics.affinity.ToString();
                     weapSharpness.Text = statistics.sharpness;
                     weapOne.Text = statistics.sharpness1;
                     weapTwo.Text = statistics.sharpness2;
 
                     weapAlt.SelectedItem = statistics.elementalType;
+                    weapSecType.SelectedItem = statistics.secType;
                 }
             }
         }
@@ -555,10 +563,14 @@ namespace YADC_MHGen_
                 {
                     moveTotal.Text = move.totalValue.ToString();
                     moveSharp.Text = move.sharpnessMod.ToString();
+                    moveAvg.Text = move.perHitValue.ToString();
+                    moveHitCount.Text = move.hitCount.ToString();
                     moveKO.Text = move.KODamage.ToString();
                     moveExh.Text = move.ExhDamage.ToString();
                     moveMinds.Checked = move.mindsEye;
                     moveDamType.SelectedItem = move.damageType;
+                    moveDraw.Checked = move.draw;
+                    moveAerial.Checked = move.aerial;
                 }
             }
         }
@@ -635,6 +647,53 @@ namespace YADC_MHGen_
             if(((TextBox)sender).Text != "")
             {
                 paraTotal.Text = (double.Parse(paraMV.Text) * double.Parse(((TextBox)sender).Text)).ToString();
+            }
+        }
+
+        /// <summary>
+        /// Updates the Avg MV Text Field when text is changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void moveAvg_TextChanged(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text != "")
+            {
+                string temp = (double.Parse(((TextBox)sender).Text) * double.Parse(moveHitCount.Text)).ToString();
+                if (moveTotal.Text != temp)
+                {
+                    moveTotal.Text = temp;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Like the above, but for the reverse.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void moveTotal_TextChanged(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text != "")
+            {
+                string temp = (double.Parse(((TextBox)sender).Text) / double.Parse(moveHitCount.Text)).ToString();
+                if (moveAvg.Text != temp)
+                {
+                    moveAvg.Text = temp;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Like the above. But uses the average motion values to make a new total value.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void moveHitCount_TextChanged(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text != "")
+            {
+                moveTotal.Text = (double.Parse(moveAvg.Text) * double.Parse(((TextBox)sender).Text)).ToString();
             }
         }
 
@@ -901,6 +960,7 @@ namespace YADC_MHGen_
             armorModifiers.Add("Elemental Crit (LBG/HBG)",      CritElement(2));
             armorModifiers.Add("Elemental Crit (SnS/DB/Bow)",   CritElement(3));
             armorModifiers.Add("Elemental Crit (Other)",        CritElement(4));
+            armorModifiers.Add("Status Crit",                   CritStatus();
             armorModifiers.Add("Critical Boost",                CriticalUp());
 
             armorModifiers.Add("P. D. Fencer (1st Cart)",       DFencing(1));
@@ -1275,8 +1335,13 @@ namespace YADC_MHGen_
                                 reader.Read(); //attack tag
                                 reader.Read(); //attack int
 
-                                int attack = int.Parse(reader.Value);
+                                double attack = double.Parse(reader.Value);
                                 reader.Read(); //end attack
+                                reader.Read(); //second type tag
+                                reader.Read(); //second type string
+
+                                string secType = reader.Value;
+                                reader.Read(); //end second type
                                 reader.Read(); //sharpness tag
                                 reader.Read(); //sharpness string
 
@@ -1286,7 +1351,7 @@ namespace YADC_MHGen_
                                 reader.Read(); //affinity int
 
                                 string affinity = reader.Value; //Extract affinity
-                                int aff = int.Parse(affinity.Remove(affinity.Length - 1)); //Remove percentage sign
+                                double aff = double.Parse(affinity.Remove(affinity.Length - 1)); //Remove percentage sign
                                 reader.Read(); //end affinity tag
                                 reader.Read(); //eleType tag
                                 reader.Read(); //eleType string
@@ -1296,9 +1361,13 @@ namespace YADC_MHGen_
                                 reader.Read(); //eleDamage tag
                                 reader.Read(); //eleDamage int
 
-                                int eleDamage = int.Parse(reader.Value);
-
+                                double eleDamage = double.Parse(reader.Value);
                                 reader.Read(); //end eleDamage
+                                reader.Read(); //secDamage tag
+                                reader.Read(); //secDamage double
+
+                                double secDamage = double.Parse(reader.Value);
+                                reader.Read(); //end secDamage
                                 reader.Read(); //sharpness1 tag
                                 reader.Read(); //sharpness1 string
 
@@ -1312,7 +1381,7 @@ namespace YADC_MHGen_
                                 reader.Read(); //end level
                                 reader.Read(); //new level
 
-                                statistics.Add(new stats(level, attack, sharpness, aff, eleType, eleDamage, sharpness1, sharpness2));
+                                statistics.Add(new stats(level, attack, secType, sharpness, aff, eleType, eleDamage, secDamage, sharpness1, sharpness2));
                             }
                         }
                     }
