@@ -128,25 +128,33 @@ namespace YADC_MHGen_
         /// </summary>
         public struct importedStats
         {
-            public string sharpness;
+            public string sharpness; //Current Sharpness
             public string altDamageType;
-            public double affinity;
             public double totalAttackPower;
             public double eleAttackPower;
-            public double motionValue;
+            public double affinity;
             public double rawSharpMod;
             public double eleSharpMod;
-            public double hiddenMod;
+            public double avgMV;
+            public int hitCount;
+            public double totalMV;
             public double KOPower;
             public double exhaustPower;
+            public bool criticalBoost;
+            public bool mindsEye;
+            public bool fixedDamage;
             public string eleCrit;
+            public bool statusCrit;
+
+            public string secElement;
+            public float secPower;
+
             public double hitzone;
             public double eleHitzone;
+            public double secHitzone;
             public double questMod;
             public double KOHitzone;
             public double exhaustHitzone;
-            public bool criticalBoost;
-            public bool mindsEye;
 
             public double rawMod; //Stores the multiplier of the raw damage.
             public double eleMod; //Stores the elemental multiplier. Has a cap of 1.2x, surpassed when used Demon Riot on an Element Phial SA.
@@ -392,10 +400,10 @@ namespace YADC_MHGen_
 
             fillMoves((string)((ComboBox)sender).SelectedItem, "None");
 
-            
+
         }
 
-        
+
 
         /// <summary>
         /// Adds levels of the weapon selected to the level selection box.
@@ -681,74 +689,76 @@ namespace YADC_MHGen_
 
         private void weapOverride_CheckedChanged(object sender, EventArgs e)
         {
-            fillMoves(weapType.SelectedText, weapSecType.SelectedText);
+            if (weapOverride.Checked)
+            {
+                fillMoves(weapType.SelectedText, weapSecType.SelectedText);
+            }
+            else
+            {
+                fillMoves((string)((ComboBox)sender).SelectedItem, "None");
+            }
         }
 
         private void weapSecType_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = ((ComboBox)sender).SelectedIndex;
-            if(index == 0)
+            if (index == 0)
             {
                 weapSecBox.Image = null;
                 weapOverride.Checked = false;
                 weapOverride.Enabled = false;
             }
-            else if (index == 10 || index == 11 || index == 12 || index == 44)
+            else if (index == 10 || index == 11 || index == 12 || index == 13 || index == 14 || index == 15 || index == 16 || index == 17 || index == 18 || index == 19 || index == 20 || index == 21)
             {
                 weapSecBox.Image = null;
             }
 
-            else if (index == 1 || index == 18 || index == 19 || index == 20 || index == 21)
+            else if (index == 1 || index == 27 || index == 28 || index == 29 || index == 30)
             {
                 weapSecBox.Load(str2image["Fire"]);
             }
 
-            else if (index == 2 || index == 22 || index == 23 || index == 24 || index == 25)
+            else if (index == 2 || index == 31 || index == 32 || index == 33 || index == 34)
             {
                 weapSecBox.Load(str2image["Water"]);
             }
 
-            else if (index == 3 || index == 30 || index == 31 || index == 32 || index == 33)
+            else if (index == 3 || index == 39 || index == 40 || index == 41 || index == 42)
             {
                 weapSecBox.Load(str2image["Ice"]);
             }
 
-            else if (index == 4 || index == 26 || index == 27 || index == 28 || index == 29)
+            else if (index == 4 || index == 35 || index == 36 || index == 37 || index == 38)
             {
                 weapSecBox.Load(str2image["Thunder"]);
             }
 
-            else if (index == 5 || index == 13 || index == 34 || index == 35)
+            else if (index == 5 || index == 22 || index == 43 || index == 44)
             {
                 weapSecBox.Load(str2image["Dragon"]);
             }
 
-            else if (index == 6 || index == 14 || index == 36 || index == 37 || index == 45)
+            else if (index == 6 || index == 23 || index == 45 || index == 46 || index == 54)
             {
                 weapSecBox.Load(str2image["Poison"]);
             }
 
-            else if (index == 7 || index == 15 || index == 38 || index == 39 || index == 46)
+            else if (index == 7 || index == 24 || index == 47 || index == 48 || index == 55)
             {
                 weapSecBox.Load(str2image["Para"]);
             }
 
-            else if (index == 8 || index == 40 || index == 41 || index == 47)
+            else if (index == 8 || index == 49 || index == 50 || index == 56)
             {
                 weapSecBox.Load(str2image["Sleep"]);
             }
 
-            else if (index == 9 || index == 42 || index == 43 || index == 49)
+            else if (index == 9 || index == 51 || index == 52 || index == 58)
             {
                 weapSecBox.Load(str2image["Blast"]);
             }
 
-            else if (index == 4 || index == 26 || index == 27 || index == 28 || index == 29)
-            {
-                weapSecBox.Load(str2image["Thunder"]);
-            }
-
-            else if (index == 16 || index == 48)
+            else if (index == 25 || index == 57)
             {
                 weapSecBox.Load("./Images/KO.png");
             }
@@ -864,11 +874,11 @@ namespace YADC_MHGen_
 
                 string ele = (string)paraAltType.SelectedItem;
                 string secEle = (string)paraSecEle.SelectedItem;
-                if (ele != "Poison" && ele != "Para" && ele != "Sleep" && ele != "Blast")
+                if (isElement(ele))
                 {
                     eleTotal = element * eleSharp * (1 + subAffinity * eleCrit);
                 }
-                else if (ele != "Blast")
+                else if (isStatus(ele))
                 {
                     eleTotal = element * eleSharp * (1 + subAffinity * statusCrit);
                 }
@@ -877,11 +887,11 @@ namespace YADC_MHGen_
                     eleTotal = element * eleSharp;
                 }
 
-                if (secEle != "Poison" && secEle != "Para" && secEle != "Sleep" && secEle != "Blast")
+                if (isElement(secEle))
                 {
                     DBTotal = DBElement * eleSharp * (1 + subAffinity * eleCrit);
                 }
-                else if (secEle != "Blast")
+                else if (isStatus(secEle))
                 {
                     DBTotal = DBElement * eleSharp * (1 + subAffinity * statusCrit);
                 }
@@ -935,7 +945,7 @@ namespace YADC_MHGen_
             }
 
             string element = (string)paraAltType.SelectedItem;
-            if (element != "Poison" && element != "Para" && element != "Sleep" && element != "Blast")
+            if (isElement(element))
             {
                 elementalDamage = elementalDamage * eleZone * questMod;
                 totaldamage = rawDamage + elementalDamage;
@@ -944,7 +954,7 @@ namespace YADC_MHGen_
             if (paraSecEle.Text != "(None)") //For DB's Second Element
             {
                 string altElement = (string)paraSecEle.SelectedItem;
-                if (altElement != "Poison" && altElement != "Para" && altElement != "Sleep" && altElement != "Blast")
+                if (isElement(altElement))
                 {
                     DBElement = DBElement * eleZone * questMod;
                     totaldamage += DBElement;
@@ -989,6 +999,24 @@ namespace YADC_MHGen_
             }
         }
 
+        private bool isElement(string element)
+        {
+            if (element == "Fire" || element == "Water" || element == "Thunder" || element == "Ice" || element == "Dragon")
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool isStatus(string element)
+        {
+            if (element == "Poison" || element == "Para" || element == "Sleep")
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Fills the global Dictionaries with data.
         /// </summary>
@@ -1020,128 +1048,126 @@ namespace YADC_MHGen_
             monsterStatus.Add("Paralyzed", 1.1);
 
             //Armor skills section
-#if false
-            armorModifiers.Add("Art. Novice (Fixed Weapons)",   Artillery(1));
-            armorModifiers.Add("Art. Novice (Explosive Ammo)",  Artillery(2));
-            armorModifiers.Add("Art. Novice (Impact CB)",       Artillery(3));
-            armorModifiers.Add("Art. Novice (GL)",              Artillery(4));
-            armorModifiers.Add("Art. Expert (Fixed Weapons)",   Artillery(5));
-            armorModifiers.Add("Art. Expert (Explosive Ammo)",  Artillery(6));
-            armorModifiers.Add("Art. Expert (Impact CB)",       Artillery(7));
-            armorModifiers.Add("Art. Expert (GL)",              Artillery(8));
-            armorModifiers.Add("Attack Up (S)",                 Attack(1));
-            armorModifiers.Add("Attack Up (M)",                 Attack(2));
-            armorModifiers.Add("Attack Up (L)",                 Attack(3));
-            armorModifiers.Add("Attack Down (S)",               Attack(4));
-            armorModifiers.Add("Attack Down (M)",               Attack(5));
-            armorModifiers.Add("Attack Down (L)",               Attack(6));
+#if true
+            armorModifiers.Add("Art. Novice (Fixed Weapons)", Artillery(1));
+            armorModifiers.Add("Art. Novice (Explosive Ammo)", Artillery(2));
+            armorModifiers.Add("Art. Novice (Impact CB)", Artillery(3));
+            armorModifiers.Add("Art. Novice (GL)", Artillery(4));
+            armorModifiers.Add("Art. Expert (Fixed Weapons)", Artillery(5));
+            armorModifiers.Add("Art. Expert (Explosive Ammo)", Artillery(6));
+            armorModifiers.Add("Art. Expert (Impact CB)", Artillery(7));
+            armorModifiers.Add("Art. Expert (GL)", Artillery(8));
+            armorModifiers.Add("Attack Up (S)", Attack(1));
+            armorModifiers.Add("Attack Up (M)", Attack(2));
+            armorModifiers.Add("Attack Up (L)", Attack(3));
+            armorModifiers.Add("Attack Down (S)", Attack(4));
+            armorModifiers.Add("Attack Down (M)", Attack(5));
+            armorModifiers.Add("Attack Down (L)", Attack(6));
 
-            armorModifiers.Add("Bludgeoner (Green)",            Blunt(1));
-            armorModifiers.Add("Bludgeoner (Yellow)",           Blunt(2));
-            armorModifiers.Add("Bludgeoner (Orange/Red)",       Blunt(3));
-            armorModifiers.Add("Bombardier (Blast)",            BombBoost(1));
-            armorModifiers.Add("Bombardier (Bomb)",             BombBoost(2));
+            armorModifiers.Add("Bludgeoner", Blunt());
+            armorModifiers.Add("Bombardier (Blast)", BombBoost(1));
+            armorModifiers.Add("Bombardier (Bomb)", BombBoost(2));
 
-            armorModifiers.Add("Repeat Offender (1 Hit)",       ChainCrit(1));
-            armorModifiers.Add("Repeat Offender (>5 Hits)",     ChainCrit(2));
-            armorModifiers.Add("Trump Card (Lion's Maw)",       Chance(1));
-            armorModifiers.Add("Trump Card (Dragon's Breath)",  Chance(2));
+            armorModifiers.Add("Repeat Offender (1 Hit)", ChainCrit(1));
+            armorModifiers.Add("Repeat Offender (>5 Hits)", ChainCrit(2));
+            armorModifiers.Add("Trump Card (Lion's Maw)", Chance(1));
+            armorModifiers.Add("Trump Card (Dragon's Breath)", Chance(2));
             armorModifiers.Add("Trump Card (Demon Riot 'Pwr')", Chance(3));
             armorModifiers.Add("Trump Card (Demon Riot 'Sta')", Chance(4));
             armorModifiers.Add("Trump Card (Demon Riot 'Ele')", Chance(5));
             armorModifiers.Add("Trump Card (Demon Riot 'Dra')", Chance(6));
-            armorModifiers.Add("Trump Card (Other HAs)",        Chance(7));
-            armorModifiers.Add("Polar Hunter (Cool Drink)",     ColdBlooded(1));
-            armorModifiers.Add("Polar Hunter (Cold Areas)",     ColdBlooded(2));
-            armorModifiers.Add("Polar Hunter (Both Effects)",   ColdBlooded(3));
-            armorModifiers.Add("Resuscitate",                   Crisis());
-            armorModifiers.Add("Critical Draw",                 CritDraw());
-            armorModifiers.Add("Elemental Crit (GS)",           CritElement(1));
-            armorModifiers.Add("Elemental Crit (LBG/HBG)",      CritElement(2));
-            armorModifiers.Add("Elemental Crit (SnS/DB/Bow)",   CritElement(3));
-            armorModifiers.Add("Elemental Crit (Other)",        CritElement(4));
-            armorModifiers.Add("Status Crit",                   CritStatus();
-            armorModifiers.Add("Critical Boost",                CriticalUp());
+            armorModifiers.Add("Trump Card (Other HAs)", Chance(7));
+            armorModifiers.Add("Polar Hunter (Cool Drink)", ColdBlooded(1));
+            armorModifiers.Add("Polar Hunter (Cold Areas)", ColdBlooded(2));
+            armorModifiers.Add("Polar Hunter (Both Effects)", ColdBlooded(3));
+            armorModifiers.Add("Resuscitate", Crisis());
+            armorModifiers.Add("Critical Draw", CritDraw());
+            armorModifiers.Add("Elemental Crit (GS)", CritElement(1));
+            armorModifiers.Add("Elemental Crit (LBG/HBG)", CritElement(2));
+            armorModifiers.Add("Elemental Crit (SnS/DB/Bow)", CritElement(3));
+            armorModifiers.Add("Elemental Crit (Other)", CritElement(4));
+            armorModifiers.Add("Status Crit", CritStatus());
+            armorModifiers.Add("Critical Boost", CriticalUp());
 
-            armorModifiers.Add("P. D. Fencer (1st Cart)",       DFencing(1));
-            armorModifiers.Add("P. D. Fencer (2nd Cart)",       DFencing(2));
-            armorModifiers.Add("Deadeye Soul",                  Deadeye());
-            armorModifiers.Add("Dragon Atk +1",                 DragonAtk(1));
-            armorModifiers.Add("Dragon Atk +2",                 DragonAtk(2));
-            armorModifiers.Add("Dragon Atk Down",               DragonAtk(3));
-            armorModifiers.Add("Dreadking Soul",                Dreadking());
-            armorModifiers.Add("Dreadqueen Soul",               Dreadqueen());
-            armorModifiers.Add("Drilltusk Soul",                Drilltusk());
+            armorModifiers.Add("P. D. Fencer (1st Cart)", DFencing(1));
+            armorModifiers.Add("P. D. Fencer (2nd Cart)", DFencing(2));
+            armorModifiers.Add("Deadeye Soul", Deadeye());
+            armorModifiers.Add("Dragon Atk +1", DragonAtk(1));
+            armorModifiers.Add("Dragon Atk +2", DragonAtk(2));
+            armorModifiers.Add("Dragon Atk Down", DragonAtk(3));
+            armorModifiers.Add("Dreadking Soul", Dreadking());
+            armorModifiers.Add("Dreadqueen Soul", Dreadqueen());
+            armorModifiers.Add("Drilltusk Soul", Drilltusk());
 
-            armorModifiers.Add("Element Atk Up",                Elemental());
-            armorModifiers.Add("Critical Eye +1",               Expert(1));
-            armorModifiers.Add("Critical Eye +2",               Expert(2));
-            armorModifiers.Add("Critical Eye +3",               Expert(3));
-            armorModifiers.Add("Critical Eye -1",               Expert(4));
-            armorModifiers.Add("Critical Eye -2",               Expert(5));
-            armorModifiers.Add("Critical Eye -3",               Expert(6));
+            armorModifiers.Add("Element Atk Up", Elemental());
+            armorModifiers.Add("Critical Eye +1", Expert(1));
+            armorModifiers.Add("Critical Eye +2", Expert(2));
+            armorModifiers.Add("Critical Eye +3", Expert(3));
+            armorModifiers.Add("Critical Eye -1", Expert(4));
+            armorModifiers.Add("Critical Eye -2", Expert(5));
+            armorModifiers.Add("Critical Eye -3", Expert(6));
 
-            armorModifiers.Add("Mind's Eye",                    Fencing());
-            armorModifiers.Add("Fire Atk +1",                   FireAtk(1));
-            armorModifiers.Add("Fire Atk +2",                   FireAtk(2));
-            armorModifiers.Add("Fire Atk Down",                 FireAtk(3));
-            armorModifiers.Add("Antivirus",                     FrenzyRes());
-            armorModifiers.Add("Resentment",                    Furor());
+            armorModifiers.Add("Mind's Eye", Fencing());
+            armorModifiers.Add("Fire Atk +1", FireAtk(1));
+            armorModifiers.Add("Fire Atk +2", FireAtk(2));
+            armorModifiers.Add("Fire Atk Down", FireAtk(3));
+            armorModifiers.Add("Antivirus", FrenzyRes());
+            armorModifiers.Add("Resentment", Furor());
 
-            armorModifiers.Add("Latent Power +1",               GlovesOff(1));
-            armorModifiers.Add("Latent Power +2",               GlovesOff(2));
-            
-            armorModifiers.Add("Sharpness +1",                  Handicraft(1));
-            armorModifiers.Add("Sharpness +2",                  Handicraft(2));
-            armorModifiers.Add("TrueShot Up",                   Haphazard());
-            armorModifiers.Add("Heavy/Heavy Up",                HeavyUp());
-            armorModifiers.Add("Hellblade Soul",                Hellblade());
-            armorModifiers.Add("Tropic Hunter (Hot Drink)",     HotBlooded(1));
-            armorModifiers.Add("Tropic Hunter (Hot Area)",      HotBlooded(2));
-            armorModifiers.Add("Tropic Hunter (Both Effects)",  HotBlooded(3));
+            armorModifiers.Add("Latent Power +1", GlovesOff(1));
+            armorModifiers.Add("Latent Power +2", GlovesOff(2));
 
-            armorModifiers.Add("Ice Atk +1",                    IceAtk(1));
-            armorModifiers.Add("Ice Atk +2",                    IceAtk(2));
-            armorModifiers.Add("Ice Atk Down",                  IceAtk(3));
+            armorModifiers.Add("Sharpness +1", Handicraft(1));
+            armorModifiers.Add("Sharpness +2", Handicraft(2));
+            armorModifiers.Add("TrueShot Up", Haphazard());
+            armorModifiers.Add("Heavy/Heavy Up", HeavyUp());
+            armorModifiers.Add("Hellblade Soul", Hellblade());
+            armorModifiers.Add("Tropic Hunter (Hot Drink)", HotBlooded(1));
+            armorModifiers.Add("Tropic Hunter (Hot Area)", HotBlooded(2));
+            armorModifiers.Add("Tropic Hunter (Both Effects)", HotBlooded(3));
 
-            armorModifiers.Add("KO King",                       KO());
+            armorModifiers.Add("Ice Atk +1", IceAtk(1));
+            armorModifiers.Add("Ice Atk +2", IceAtk(2));
+            armorModifiers.Add("Ice Atk Down", IceAtk(3));
 
-            armorModifiers.Add("Normal/Rapid Up",               NormalUp());
+            armorModifiers.Add("KO King", KO());
 
-            armorModifiers.Add("Pellet/Spread Up (Pellet S)",   PelletUp(1));
-            armorModifiers.Add("Pellet/Spread Up (Spread)",     PelletUp(2));
-            armorModifiers.Add("Pierce/Pierce Up",              PierceUp());
-            armorModifiers.Add("Adrenaline +2",                 Potential(2));
-            armorModifiers.Add("Worrywart",                     Potential(3));
-            armorModifiers.Add("Punishing Draw (Cut)",          PunishDraw(1));
-            armorModifiers.Add("Punishing Draw (Impact)",       PunishDraw(2));
+            armorModifiers.Add("Normal/Rapid Up", NormalUp());
 
-            armorModifiers.Add("Bonus Shot",                    RapidFire());
-            armorModifiers.Add("Redhelm Soul",                  Redhelm());
+            armorModifiers.Add("Pellet/Spread Up (Pellet S)", PelletUp(1));
+            armorModifiers.Add("Pellet/Spread Up (Spread)", PelletUp(2));
+            armorModifiers.Add("Pierce/Pierce Up", PierceUp());
+            armorModifiers.Add("Adrenaline +2", Potential(2));
+            armorModifiers.Add("Worrywart", Potential(3));
+            armorModifiers.Add("Punishing Draw (Cut)", PunishDraw(1));
+            armorModifiers.Add("Punishing Draw (Impact)", PunishDraw(2));
 
-            armorModifiers.Add("Silverwind Soul",               Silverwind());
-            armorModifiers.Add("Challenger +1",                 Spirit(1));
-            armorModifiers.Add("Challenger +2",                 Spirit(2));
-            armorModifiers.Add("Stamina Thief",                 StamDrain());
-            armorModifiers.Add("Status Atk +1",                 Status(1));
-            armorModifiers.Add("Status Atk +2",                 Status(2));
-            armorModifiers.Add("Status Atk Down",               Status(3));
-            armorModifiers.Add("Fortify (1st Cart)",            Survivor(1));
-            armorModifiers.Add("Fortify (2nd Cart)",            Survivor(2));
+            armorModifiers.Add("Bonus Shot", RapidFire());
+            armorModifiers.Add("Redhelm Soul", Redhelm());
 
-            armorModifiers.Add("Weakness Exploit",              Tenderizer());
-            armorModifiers.Add("Thunder Atk +1",                ThunderAtk(1));
-            armorModifiers.Add("Thunder Atk +2",                ThunderAtk(2));
-            armorModifiers.Add("Thunder Atk Down",              ThunderAtk(3));
-            armorModifiers.Add("Thunderlord Soul",              Thunderlord());
+            armorModifiers.Add("Silverwind Soul", Silverwind());
+            armorModifiers.Add("Challenger +1", Spirit(1));
+            armorModifiers.Add("Challenger +2", Spirit(2));
+            armorModifiers.Add("Stamina Thief", StamDrain());
+            armorModifiers.Add("Status Atk +1", Status(1));
+            armorModifiers.Add("Status Atk +2", Status(2));
+            armorModifiers.Add("Status Atk Down", Status(3));
+            armorModifiers.Add("Fortify (1st Cart)", Survivor(1));
+            armorModifiers.Add("Fortify (2nd Cart)", Survivor(2));
 
-            armorModifiers.Add("Peak Performance",              Unscathed());
+            armorModifiers.Add("Weakness Exploit", Tenderizer());
+            armorModifiers.Add("Thunder Atk +1", ThunderAtk(1));
+            armorModifiers.Add("Thunder Atk +2", ThunderAtk(2));
+            armorModifiers.Add("Thunder Atk Down", ThunderAtk(3));
+            armorModifiers.Add("Thunderlord Soul", Thunderlord());
 
-            armorModifiers.Add("Airborne",                      Vault());
+            armorModifiers.Add("Peak Performance", Unscathed());
 
-            armorModifiers.Add("Water Atk +1",                  WaterAtk(1));
-            armorModifiers.Add("Water Atk +2",                  WaterAtk(2));
-            armorModifiers.Add("Water Atk Down",                WaterAtk(3));
+            armorModifiers.Add("Airborne", Vault());
+
+            armorModifiers.Add("Water Atk +1", WaterAtk(1));
+            armorModifiers.Add("Water Atk +2", WaterAtk(2));
+            armorModifiers.Add("Water Atk Down", WaterAtk(3));
 #endif
             //Item/Kitchen Modifiers.
 #if true
@@ -1152,7 +1178,7 @@ namespace YADC_MHGen_
             kitchenItemModifiers.Add("F.Booster", FBooster());
             kitchenItemModifiers.Add("F.Bulldozer", FBulldozer());
             kitchenItemModifiers.Add("F.Heroics", FHeroics());
-            kitchenItemModifiers.Add("F.Pyro", FPyro());
+            kitchenItemModifiers.Add("F.Pyro (Blast)", FPyro());
             //kitchenItemModifiers.Add("F.Rider",                     FRider()); //Removed because not considering Mount damage.
             kitchenItemModifiers.Add("F.Sharpshooter", FSharpshooter());
             kitchenItemModifiers.Add("F.Slugger", FSlugger());
@@ -1175,81 +1201,89 @@ namespace YADC_MHGen_
             kitchenItemModifiers.Add("Demon Affinity S", Demon(3));
 #endif
             //Weapon Mods
-#if false
-            weaponModifiers.Add("Low Sharpness Modifier (0.6x)",        LSM(1));
-            weaponModifiers.Add("Low Sharpness Modifier (0.7x)",        LSM(2));
-            weaponModifiers.Add("GS - Center of Blade",                 GS(1));
-            weaponModifiers.Add("GS - Lion's Maw I",                    GS(2));
-            weaponModifiers.Add("GS - Lion's Maw II",                   GS(3));
-            weaponModifiers.Add("GS - Lion's Maw III",                  GS(4));
-            weaponModifiers.Add("LS - Center of Blade",                 LS(1));
-            weaponModifiers.Add("LS - Spirit Gauge ON",                 LS(2));
-            weaponModifiers.Add("LS - Spirit Gauge (White)",            LS(3));
-            weaponModifiers.Add("LS - Spirit Gauge (Yellow)",           LS(4));
-            weaponModifiers.Add("LS - Spirit Gauge (Red)",              LS(5));
-            weaponModifiers.Add("SnS - Sword Sharpness",                SnS(1));
-            weaponModifiers.Add("SnS - Affinity Oil",                   SnS(2));
-            weaponModifiers.Add("SnS - Stamina Oil",                    SnS(3));
-            weaponModifiers.Add("SnS - Mind's Eye Oil",                 SnS(4));
-            weaponModifiers.Add("DB - Element Modifier (0.7x)",         DB());
-            weaponModifiers.Add("HH - Attack Up (S) Song",              HH(1));
-            weaponModifiers.Add("HH - Attack Up (S) Encore",            HH(2));
-            weaponModifiers.Add("HH - Attack Up (L) Song",              HH(3));
-            weaponModifiers.Add("HH - Attack Up (L) Encore",            HH(4));
-            weaponModifiers.Add("HH - Elem. Attack Boost Song",         HH(5));
-            weaponModifiers.Add("HH - Elem. Attack Boost Encore",       HH(6));
-            weaponModifiers.Add("HH - Abnormal Boost Song",             HH(7));
-            weaponModifiers.Add("HH - Abnormal Boost Encore",           HH(8));
-            weaponModifiers.Add("HH - Affinity Up Song",                HH(9));
-            weaponModifiers.Add("HH - Affinity Up Encore",              HH(10));
-            weaponModifiers.Add("Lance - Enraged Guard (Yellow)",       Lance(1));
-            weaponModifiers.Add("Lance - Enraged Guard (Orange)",       Lance(2));
-            weaponModifiers.Add("Lance - Enraged Guard (Red)",          Lance(3));
-            weaponModifiers.Add("Lance - Impact/Cut Hitzone",           Lance(4));
-            weaponModifiers.Add("GL - Dragon Breath",                   GL(1));
-            weaponModifiers.Add("GL - Impact/Cut Hitzone",              GL(2));
-            weaponModifiers.Add("SA - Sword Mode",                      SA(1));
-            weaponModifiers.Add("SA - Energy Charge",                   SA(2));
-            weaponModifiers.Add("SA - Demon Riot 'Pwr'",                SA(3));
-            weaponModifiers.Add("SA - Demon Riot 'Ele'",                SA(4));
-            weaponModifiers.Add("SA - Demon Riot 'Drg'",                SA(5));
-            weaponModifiers.Add("SA - Demon Riot 'Sta'",                SA(6));
-            weaponModifiers.Add("CB - Red Shield",                      CB(1));
-            weaponModifiers.Add("IG - Red (Balanced)",                  IG(1));
-            weaponModifiers.Add("IG - Red/White",                       IG(2));
-            weaponModifiers.Add("IG - Triple Up",                       IG(3));
-            weaponModifiers.Add("Gunner - Normal Distance (1x)",        Gunner(1));
-            weaponModifiers.Add("Gunner - Critical Distance (1.5x)",    Gunner(2));
-            weaponModifiers.Add("Gunner - Long Range (0.8x)",           Gunner(3));
-            weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)",       Gunner(4));
-            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)",          LBG(1));
-            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)",          HBG(1));
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)",     Bow(1));
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)",        Bow(2));
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)",    Bow(3));
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (Non-Status)",     Bow(4));
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Poison)",        Bow(5));
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Para/Sleep)",    Bow(6));
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (Non-Status)",     Bow(7));
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Poison)",        Bow(8));
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Para/Sleep)",    Bow(9));
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (Non-Status)",     Bow(10));
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Poison)",        Bow(11));
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Para/Sleep)",    Bow(12));
-            weaponModifiers.Add("Bow - Power C. Lvl. 1",                Bow(13));
-            weaponModifiers.Add("Bow - Power C. Lvl. 2",                Bow(14));
-            weaponModifiers.Add("Bow - Ele. C. Lvl. 1",                 Bow(15));
-            weaponModifiers.Add("Bow - Ele. C. Lvl. 2",                 Bow(16));
-            weaponModifiers.Add("Bow - Para. C.",                       Bow(17));
-            weaponModifiers.Add("Bow - Poison C.",                      Bow(18));
-            weaponModifiers.Add("Bow - Sleep C.",                       Bow(19));
-            weaponModifiers.Add("Bow - Blast C.",                       Bow(20));
-            weaponModifiers.Add("Bow - Exh. C.",                        Bow(21));
-            weaponModifiers.Add("Bow - Coating Boost",                  Bow(22));
+#if true
+            weaponModifiers.Add("Low Sharpness Modifier (Hit Early)", LSM(1));
+            weaponModifiers.Add("Low Sharpness Modifier (Hit Late)", LSM(2));
+            weaponModifiers.Add("GS - Center of Blade", GS(1));
+            weaponModifiers.Add("GS - Lion's Maw I", GS(2));
+            weaponModifiers.Add("GS - Lion's Maw II", GS(3));
+            weaponModifiers.Add("GS - Lion's Maw III", GS(4));
+            weaponModifiers.Add("LS - Center of Blade", LS(1));
+            weaponModifiers.Add("LS - Spirit Gauge ON", LS(2));
+            weaponModifiers.Add("LS - Spirit Gauge (White)", LS(3));
+            weaponModifiers.Add("LS - Spirit Gauge (Yellow)", LS(4));
+            weaponModifiers.Add("LS - Spirit Gauge (Red)", LS(5));
+            weaponModifiers.Add("SnS - Sword Sharpness", SnS(1));
+            weaponModifiers.Add("SnS - Affinity Oil", SnS(2));
+            weaponModifiers.Add("SnS - Stamina Oil", SnS(3));
+            weaponModifiers.Add("SnS - Mind's Eye Oil", SnS(4));
+            weaponModifiers.Add("DB - Element Modifier (0.7x)", DB());
+            weaponModifiers.Add("HH - Attack Up (S) Song", HH(1));
+            weaponModifiers.Add("HH - Attack Up (S) Encore", HH(2));
+            weaponModifiers.Add("HH - Attack Up (L) Song", HH(3));
+            weaponModifiers.Add("HH - Attack Up (L) Encore", HH(4));
+            weaponModifiers.Add("HH - Elem. Attack Boost Song", HH(5));
+            weaponModifiers.Add("HH - Elem. Attack Boost Encore", HH(6));
+            weaponModifiers.Add("HH - Abnormal Boost Song", HH(7));
+            weaponModifiers.Add("HH - Abnormal Boost Encore", HH(8));
+            weaponModifiers.Add("HH - Affinity Up Song", HH(9));
+            weaponModifiers.Add("HH - Affinity Up Encore", HH(10));
+            weaponModifiers.Add("HH - Self-Improvement Encore", HH(11));
+            weaponModifiers.Add("Lance - Enraged Guard (Yellow)", Lance(1));
+            weaponModifiers.Add("Lance - Enraged Guard (Orange)", Lance(2));
+            weaponModifiers.Add("Lance - Enraged Guard (Red)", Lance(3));
+            weaponModifiers.Add("Lance - Impact/Cut Hitzone", Lance(4));
+            weaponModifiers.Add("GL - Dragon Breath", GL(1));
+            weaponModifiers.Add("GL - Orange Heat", GL(2));
+            weaponModifiers.Add("GL - Red Heat", GL(3));
+            weaponModifiers.Add("SA - Power Phial", SA(1));
+            weaponModifiers.Add("SA - Element Phial", SA(2));
+            weaponModifiers.Add("SA - Energy Charge II", SA(3));
+            weaponModifiers.Add("SA - Energy Charge III", SA(4));
+            weaponModifiers.Add("SA - Demon Riot I 'Pwr'", SA(5));
+            weaponModifiers.Add("SA - Demon Riot II 'Pwr'", SA(6));
+            weaponModifiers.Add("SA - Demon Riot III 'Pwr'", SA(7));
+            weaponModifiers.Add("SA - Demon Riot I 'Ele'", SA(8));
+            weaponModifiers.Add("SA - Demon Riot II 'Ele'", SA(9));
+            weaponModifiers.Add("SA - Demon Riot III 'Ele'", SA(10));
+            weaponModifiers.Add("SA - Demon Riot I 'Sta'", SA(11));
+            weaponModifiers.Add("SA - Demon Riot II 'Sta'", SA(12));
+            weaponModifiers.Add("SA - Demon Riot III 'Sta'", SA(13));
+            weaponModifiers.Add("CB - Red Shield (Other Styles)", CB(1));
+            weaponModifiers.Add("CB - Red Shield (Striker)", CB(2));
+            weaponModifiers.Add("IG - Red (Balanced)", IG(1));
+            weaponModifiers.Add("IG - Red/White", IG(2));
+            weaponModifiers.Add("IG - Triple Up", IG(3));
+            weaponModifiers.Add("Gunner - Normal Distance (1x)", Gunner(1));
+            weaponModifiers.Add("Gunner - Critical Distance (1.5x)", Gunner(2));
+            weaponModifiers.Add("Gunner - Long Range (0.8x)", Gunner(3));
+            weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)", Gunner(4));
+            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", LBG());
+            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", HBG());
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", Bow(1));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)", Bow(2));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)", Bow(3));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (Non-Status)", Bow(4));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Poison)", Bow(5));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Para/Sleep)", Bow(6));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (Non-Status)", Bow(7));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Poison)", Bow(8));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Para/Sleep)", Bow(9));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (Non-Status)", Bow(10));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Poison)", Bow(11));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Para/Sleep)", Bow(12));
+            weaponModifiers.Add("Bow - Power C. Lvl. 1", Bow(13));
+            weaponModifiers.Add("Bow - Power C. Lvl. 2", Bow(14));
+            weaponModifiers.Add("Bow - Ele. C. Lvl. 1", Bow(15));
+            weaponModifiers.Add("Bow - Ele. C. Lvl. 2", Bow(16));
+            weaponModifiers.Add("Bow - Coating Boost 'Pwr'", Bow(17));
+            weaponModifiers.Add("Bow - Coating Boost 'Ele'", Bow(18));
+            weaponModifiers.Add("Bow - Coating Boost 'C.Range'", Bow(19));
+            weaponModifiers.Add("Bow - Coating Boost 'Sta'", Bow(20));
 #endif
             //Other modifiers
-#if false
-            otherModifiers.Add("Frenzy", functionName());
+#if true
+            otherModifiers.Add("Frenzy", Frenzy());
 #endif
         }
 
@@ -1264,7 +1298,7 @@ namespace YADC_MHGen_
             //Read motion value database
             readMotion();
 
-            //Read 
+            //Read monster database
         }
 
         /// <summary>
@@ -1653,17 +1687,17 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private bool Blunt(int skillVal)
+        private bool Blunt()
         {
-            if (skillVal == 1)
+            if (weaponAndMods.sharpness == "Green")
             {
                 weaponAndMods.totalAttackPower += 15;
             }
-            else if (skillVal == 2)
+            else if (weaponAndMods.sharpness == "Yellow")
             {
                 weaponAndMods.totalAttackPower += 25;
             }
-            else if (skillVal == 3)
+            else if (weaponAndMods.sharpness == "Orange" || weaponAndMods.sharpness == "Red")
             {
                 weaponAndMods.totalAttackPower += 30;
             }
@@ -1678,7 +1712,10 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                if (weaponAndMods.altDamageType == "Blast" || weaponAndMods.secElement == "Blast")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                }
             }
             else if (skillVal == 2)
             {
@@ -1777,19 +1814,47 @@ namespace YADC_MHGen_
 
         private bool CritDraw()
         {
-            weaponAndMods.affinity = 100;
+            if (moveDraw.Checked)
+            {
+                weaponAndMods.affinity = 100;
+            }
             return true;
         }
 
         private bool CritElement(int skillVal)
         {
-            paraEleCrit.SelectedIndex = skillVal;
+            if (skillVal == 1)
+            {
+                weaponAndMods.eleCrit = "GS";
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.eleCrit = "LBG/HBG";
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.eleCrit = "SnS/DB/Bow";
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.eleCrit = "Other";
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool CritStatus()
+        {
+            weaponAndMods.statusCrit = true;
             return true;
         }
 
         private bool CriticalUp()
         {
-            paraBoost.Checked = true;
+            weaponAndMods.criticalBoost = true;
             return true;
         }
 
@@ -1821,17 +1886,26 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleAttackPower += 4;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                if (weaponAndMods.altDamageType == "Dragon" || weaponAndMods.secElement == "Dragon")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleAttackPower += 4;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.eleAttackPower += 6;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                if (weaponAndMods.altDamageType == "Dragon" || weaponAndMods.secElement == "Dragon")
+                {
+                    weaponAndMods.eleAttackPower += 6;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                }
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                if (weaponAndMods.altDamageType == "Dragon" || weaponAndMods.secElement == "Dragon")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                }
             }
             else
             {
@@ -1848,8 +1922,11 @@ namespace YADC_MHGen_
 
         private bool Dreadqueen()
         {
-            weaponAndMods.eleAttackPower += 1;
-            weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
+            if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+            {
+                weaponAndMods.eleAttackPower += 1;
+                weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
+            }
             return true;
         }
 
@@ -1861,7 +1938,10 @@ namespace YADC_MHGen_
 
         private bool Elemental()
         {
-            weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+            if (isElement(weaponAndMods.altDamageType) || isElement(weaponAndMods.secElement))
+            {
+                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+            }
             return true;
         }
 
@@ -1908,17 +1988,26 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleAttackPower += 4;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                if (weaponAndMods.altDamageType == "Fire" || weaponAndMods.secElement == "Fire")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleAttackPower += 4;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.eleAttackPower += 6;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                if (weaponAndMods.altDamageType == "Fire" || weaponAndMods.secElement == "Fire")
+                {
+                    weaponAndMods.eleAttackPower += 6;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                }
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                if (weaponAndMods.altDamageType == "Fire" || weaponAndMods.secElement == "Fire")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                }
             }
             else
             {
@@ -2016,17 +2105,26 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleAttackPower += 4;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                if (weaponAndMods.altDamageType == "Ice" || weaponAndMods.secElement == "Ice")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleAttackPower += 4;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.eleAttackPower += 6;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                if (weaponAndMods.altDamageType == "Ice" || weaponAndMods.secElement == "Ice")
+                {
+                    weaponAndMods.eleAttackPower += 6;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                }
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                if (weaponAndMods.altDamageType == "Ice" || weaponAndMods.secElement == "Ice")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                }
             }
             else
             {
@@ -2094,18 +2192,31 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 5;
-                weaponAndMods.KOPower += 30;
-                weaponAndMods.exhaustPower += 20;
+                if (moveDraw.Checked)
+                {
+                    weaponAndMods.totalAttackPower += 5;
+                    weaponAndMods.KOPower += 30;
+                    weaponAndMods.exhaustPower += 20;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 5;
+                if (moveDraw.Checked)
+                {
+                    weaponAndMods.totalAttackPower += 5;
+                }
             }
             else
             {
                 return false;
             }
+            return true;
+        }
+
+        private bool RapidFire()
+        {
+            weaponAndMods.hitCount++;
+            weaponAndMods.totalMV = weaponAndMods.hitCount * weaponAndMods.avgMV;
             return true;
         }
 
@@ -2150,17 +2261,26 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleAttackPower += 1;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+                {
+                    weaponAndMods.eleAttackPower += 1;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.eleAttackPower += 1;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+                {
+                    weaponAndMods.eleAttackPower += 1;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                }
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 0.9;
+                if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.9;
+                }
             }
             else
             {
@@ -2196,17 +2316,26 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleAttackPower += 4;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                if (weaponAndMods.altDamageType == "Thunder" || weaponAndMods.secElement == "Thunder")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleAttackPower += 4;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.eleAttackPower += 6;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                if (weaponAndMods.altDamageType == "Thunder" || weaponAndMods.secElement == "Thunder")
+                {
+                    weaponAndMods.eleAttackPower += 6;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                }
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                if (weaponAndMods.altDamageType == "Thunder" || weaponAndMods.secElement == "Thunder")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                }
             }
             else
             {
@@ -2229,7 +2358,10 @@ namespace YADC_MHGen_
 
         private bool Vault()
         {
-            weaponAndMods.rawMod = weaponAndMods.rawMod * 1.1;
+            if (moveAerial.Checked)
+            {
+                weaponAndMods.rawMod = weaponAndMods.rawMod * 1.1;
+            }
             return true;
         }
 
@@ -2237,17 +2369,26 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.eleAttackPower += 4;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                if (weaponAndMods.altDamageType == "Water" || weaponAndMods.secElement == "Water")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleAttackPower += 4;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.eleAttackPower += 6;
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                if (weaponAndMods.altDamageType == "Water" || weaponAndMods.secElement == "Water")
+                {
+                    weaponAndMods.eleAttackPower += 6;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                }
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                if (weaponAndMods.altDamageType == "Water" || weaponAndMods.secElement == "Water")
+                {
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.75;
+                }
             }
             else
             {
@@ -2308,7 +2449,11 @@ namespace YADC_MHGen_
 
         private bool FPyro()
         {
-            weaponAndMods.staMod *= 1.1;
+            if (weaponAndMods.altDamageType == "Blast" || weaponAndMods.secElement == "Blast")
+            {
+                weaponAndMods.staMod *= 1.1;
+            }
+
             return true;
         }
 
@@ -2334,7 +2479,10 @@ namespace YADC_MHGen_
 
         private bool FSpecialist()
         {
-            weaponAndMods.staMod *= 1.125;
+            if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+            {
+                weaponAndMods.staMod *= 1.125;
+            }
             return true;
         }
 
@@ -2459,11 +2607,17 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.rawMod *= 0.6;
+                if (weaponAndMods.sharpness == "Yellow" || weaponAndMods.sharpness == "Orange" || weaponAndMods.sharpness == "Red")
+                {
+                    weaponAndMods.rawMod *= 0.6;
+                }
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.rawMod *= 0.7;
+                if (weaponAndMods.sharpness == "Yellow" || weaponAndMods.sharpness == "Orange" || weaponAndMods.sharpness == "Red")
+                {
+                    weaponAndMods.rawMod *= 0.7;
+                }
             }
             else
             {
@@ -2563,35 +2717,45 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.rawSharpMod *= 1.06;
+                weaponAndMods.rawMod *= 1.10;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.affinity += 1.3;
+                weaponAndMods.rawMod *= 1.15;
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.KOPower += 8;
-                weaponAndMods.exhaustPower += 10;
+                weaponAndMods.rawMod *= 1.15;
             }
             else if (skillVal == 4)
             {
-                weaponAndMods.mindsEye = true;
+                weaponAndMods.rawMod *= 1.20;
             }
             else if (skillVal == 5)
             {
-                weaponAndMods.affinity += 1.3;
+                weaponAndMods.eleMod *= 1.08;
             }
             else if (skillVal == 6)
             {
-                weaponAndMods.KOPower += 8;
-                weaponAndMods.exhaustPower += 10;
+                weaponAndMods.eleMod *= 1.10;
             }
             else if (skillVal == 7)
             {
-                weaponAndMods.mindsEye = true;
+                weaponAndMods.staMod *= 1.1;
             }
             else if (skillVal == 8)
+            {
+                weaponAndMods.staMod *= 1.15;
+            }
+            else if (skillVal == 9)
+            {
+                weaponAndMods.affinity += 15;
+            }
+            else if (skillVal == 10)
+            {
+                weaponAndMods.affinity += 20;
+            }
+            else if (skillVal == 11)
             {
                 weaponAndMods.mindsEye = true;
             }
@@ -2602,14 +2766,306 @@ namespace YADC_MHGen_
             return true;
         }
 
-        
+        private bool Lance(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.1;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 1.3;
+            }
+            else if (skillVal == 4)
+            {
+                if (double.Parse(monImpact.Text) * 0.72 > double.Parse(monCut.Text))
+                {
+                    weaponAndMods.hitzone = double.Parse(monImpact.Text) * 0.72;
+                }
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
 
-        
+        private bool GL(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.avgMV += 10;
+                weaponAndMods.secPower += 10;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.15;
+            }
+            else if(skillVal ==3)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
 
-        //private bool functionName()
-        //{
+        private bool SA(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.eleMod *= 1.25;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.affinity += 10;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.affinity += 30;
+            }
+            else if (skillVal == 5)
+            {
+                weaponAndMods.rawMod *= 1.05;
+            }
+            else if (skillVal == 6)
+            {
+                weaponAndMods.rawMod *= 1.10;
+            }
+            else if (skillVal == 7)
+            {
+                weaponAndMods.rawMod *= 1.20;
+            }
+            else if (skillVal == 8)
+            {
+                weaponAndMods.eleMod *= 1.05;
+                weaponAndMods.DemonRiot = true;
+            }
+            else if (skillVal == 9)
+            {
+                weaponAndMods.eleMod *= 1.10;
+                weaponAndMods.DemonRiot = true;
+            }
+            else if (skillVal == 10)
+            {
+                weaponAndMods.eleMod *= 1.20;
+                weaponAndMods.DemonRiot = true;
+            }
+            else if (skillVal == 11)
+            {
+                weaponAndMods.staMod *= 1.05;
+                weaponAndMods.DemonRiot = true;
+            }
+            else if (skillVal == 12)
+            {
+                weaponAndMods.staMod *= 1.10;
+                weaponAndMods.DemonRiot = true;
+            }
+            else if (skillVal == 13)
+            {
+                weaponAndMods.staMod *= 1.20;
+                weaponAndMods.DemonRiot = true;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
 
-        //}
+        private bool CB(int skillVal)
+        {
+            if(skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.15;
+            }
+            else if(skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool IG(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.totalAttackPower += 5;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.15;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 1.2;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool Gunner(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 1.5;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 0.8;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.rawMod *= 0.5;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool LBG()
+        {
+            weaponAndMods.rawMod *= 1.3;
+            return true;
+        }
+
+        private bool HBG()
+        {
+            weaponAndMods.rawMod *= 1.5;
+            return true;
+        }
+
+        private bool Bow(int skillVal)
+        {
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 0.4;
+                weaponAndMods.eleMod *= 0.7;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.rawMod *= 0.4;
+                weaponAndMods.staMod *= 0.5;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 0.4;
+                weaponAndMods.staMod *= 0.5;
+            }
+            else if (skillVal == 4)
+            {
+                weaponAndMods.rawMod *= 1.0;
+                weaponAndMods.eleMod *= 0.85;
+            }
+            else if (skillVal == 5)
+            {
+                weaponAndMods.rawMod *= 1.0;
+                weaponAndMods.staMod *= 1.0;
+            }
+            else if (skillVal == 6)
+            {
+                weaponAndMods.rawMod *= 1.0;
+                weaponAndMods.staMod *= 1.0;
+            }
+            else if (skillVal == 7)
+            {
+                weaponAndMods.rawMod *= 1.5;
+                weaponAndMods.eleMod *= 1.0;
+            }
+            else if (skillVal == 8)
+            {
+                weaponAndMods.rawMod *= 1.5;
+                weaponAndMods.staMod *= 1.5;
+            }
+            else if (skillVal == 9)
+            {
+                weaponAndMods.rawMod *= 0.4;
+                weaponAndMods.staMod *= 0.7;
+            }
+            else if (skillVal == 10)
+            {
+                weaponAndMods.rawMod *= 1.7;
+                weaponAndMods.eleMod *= 1.125;
+            }
+            else if (skillVal == 11)
+            {
+                weaponAndMods.rawMod *= 1.7;
+                weaponAndMods.staMod *= 1.5;
+            }
+            else if (skillVal == 12)
+            {
+                weaponAndMods.rawMod *= 1.7;
+                weaponAndMods.staMod *= 1.3;
+            }
+            else if (skillVal == 13)
+            {
+                weaponAndMods.rawMod *= 1.35;
+            }
+            else if (skillVal == 14)
+            {
+                weaponAndMods.rawMod *= 1.5;
+            }
+            else if (skillVal == 15)
+            {
+                weaponAndMods.eleMod *= 1.35;
+            }
+            else if (skillVal == 16)
+            {
+                weaponAndMods.eleMod *= 1.50;
+            }
+            else if (skillVal == 17)
+            {
+                weaponAndMods.rawMod *= 1.20;
+            }
+            else if (skillVal == 18)
+            {
+                weaponAndMods.eleMod *= 1.20;
+            }
+            else if (skillVal == 19)
+            {
+                weaponAndMods.rawMod *= 1.20;
+            }
+            else if (skillVal == 20)
+            {
+                weaponAndMods.staMod *= 1.20;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+#endif
+        //Other modifiers
+#if true
+        private bool Frenzy()
+        {
+            weaponAndMods.affinity += 15;
+            return true;
+        }
 #endif
     }
 }
