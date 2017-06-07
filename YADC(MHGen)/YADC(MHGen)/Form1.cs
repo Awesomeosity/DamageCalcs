@@ -187,37 +187,10 @@ namespace YADC_MHGen_
             InitializeComponent(); //Required.
             FillOut(); //Fills out dictionaries.
             readFiles(); //Read the xml files and fills out the database.
-            paraBoost.Checked = false; //Force checkboxes to be unchecked on initialization.
-            moveMinds.Checked = false;
-            paraFixed.Checked = false;
-            paraMinds.Checked = false;
-            paraSharpness.SelectedIndex = 0; //Force comboBoxes to be set to a certain position.
-            paraAltType.SelectedIndex = 0;
-            paraEleCrit.SelectedIndex = 0;
-            paraMonStat.SelectedIndex = 0;
-            paraSecEle.SelectedIndex = 0;
-            AverageSel.Select(); //Force selection of a radio button.
-            calcEleBox.Image = null; //Force clear of picture boxes.
-            calcFinalEleBox.Image = null;
-            weapAltBox.Image = null;
-            calcSecBox.Image = null;
-            calcFinalSecBox.Image = null;
-            paraEleHitzone.ReadOnly = true; //Force readonly to be true on elemental boxes (Assume just raw damage on startup)
-            paraSecPower.ReadOnly = true;
-            paraSecHitzone.ReadOnly = true;
-            calcEleOut.BackColor = SystemColors.Control; //These are labels, which means we need to change the background color instead.
-            calcEle.BackColor = SystemColors.Control;
-            calcSecOut.BackColor = SystemColors.Control;
-            calcFinalSec.BackColor = SystemColors.Control;
-            calcKOBox.Load("./Images/KO.png"); //Load the images from the folder.
-            calcExhBox.Load("./Images/Exhaust.png");
-            moveKOBox.Load("./Images/KO.png");
-            moveExhBox.Load("./Images/Exhaust.png");
-            weapSecBox.Image = null;
-            weapOverride.Checked = false;
-            weapOverride.Enabled = false;
-            paraSecEle.Enabled = false;
+            prep();
         }
+
+        
 
         //EVENT FUNCTIONS
         /// <summary>
@@ -776,6 +749,56 @@ namespace YADC_MHGen_
 
         /*Functions*/
         /// <summary>
+        /// Help function which sets up the form appropriately.
+        /// </summary>
+        private void prep()
+        {
+            paraBoost.Checked = false; //Force checkboxes to be unchecked on initialization.
+            moveMinds.Checked = false;
+            paraFixed.Checked = false;
+            paraMinds.Checked = false;
+            paraSharpness.SelectedIndex = 0; //Force comboBoxes to be set to a certain position.
+            paraAltType.SelectedIndex = 0;
+            paraEleCrit.SelectedIndex = 0;
+            paraMonStat.SelectedIndex = 0;
+            paraSecEle.SelectedIndex = 0;
+            AverageSel.Select(); //Force selection of a radio button.
+            calcEleBox.Image = null; //Force clear of picture boxes.
+            calcFinalEleBox.Image = null;
+            weapAltBox.Image = null;
+            calcSecBox.Image = null;
+            calcFinalSecBox.Image = null;
+            paraEleHitzone.ReadOnly = true; //Force readonly to be true on elemental boxes (Assume just raw damage on startup)
+            paraSecPower.ReadOnly = true;
+            paraSecHitzone.ReadOnly = true;
+            calcEleOut.BackColor = SystemColors.Control; //These are labels, which means we need to change the background color instead.
+            calcEle.BackColor = SystemColors.Control;
+            calcSecOut.BackColor = SystemColors.Control;
+            calcFinalSec.BackColor = SystemColors.Control;
+            calcKOBox.Load("./Images/KO.png"); //Load the images from the folder.
+            calcExhBox.Load("./Images/Exhaust.png");
+            moveKOBox.Load("./Images/KO.png");
+            moveExhBox.Load("./Images/Exhaust.png");
+            weapSecBox.Image = null;
+            weapOverride.Checked = false;
+            weapOverride.Enabled = false;
+            paraSecEle.Enabled = false;
+
+            modList.View = View.Details;
+            modList.CheckBoxes = true;
+            modList.GridLines = true;
+
+            //ListViewItem testItem = new ListViewItem("Test");
+            //ListViewItem testItem2 = new ListViewItem("PogChamp");
+
+            modList.Columns.Add("All Modifiers", -2, HorizontalAlignment.Left);
+            modList.ShowGroups = true;
+            //testItem.Group = modList.Groups[0];
+            //testItem2.Group = modList.Groups[0];
+            //modList.Items.AddRange(new ListViewItem[] { testItem, testItem2 });
+        }
+
+        /// <summary>
         /// Validates whatever's put into the field to doubles.
         /// </summary>
         /// <param name="input"></param>
@@ -1169,6 +1192,12 @@ namespace YADC_MHGen_
             armorModifiers.Add("Water Atk +2", WaterAtk(2));
             armorModifiers.Add("Water Atk Down", WaterAtk(3));
 #endif
+
+            foreach(KeyValuePair<string, bool> pair in armorModifiers)
+            {
+                modArmor.Items.Add(pair.Key);
+            }
+
             //Item/Kitchen Modifiers.
 #if true
             kitchenItemModifiers.Add("F.Bombardier (Fixed Weaps.)", FBombardier(1));
@@ -1200,10 +1229,15 @@ namespace YADC_MHGen_
             kitchenItemModifiers.Add("Demon S", Demon(2));
             kitchenItemModifiers.Add("Demon Affinity S", Demon(3));
 #endif
+            foreach (KeyValuePair<string, bool> pair in kitchenItemModifiers)
+            {
+                modKitchen.Items.Add(pair.Key);
+            }
+
             //Weapon Mods
 #if true
-            weaponModifiers.Add("Low Sharpness Modifier (Hit Early)", LSM(1));
-            weaponModifiers.Add("Low Sharpness Modifier (Hit Late)", LSM(2));
+            weaponModifiers.Add("LSM (Hit Early)", LSM(1));
+            weaponModifiers.Add("LSM (Hit Late)", LSM(2));
             weaponModifiers.Add("GS - Center of Blade", GS(1));
             weaponModifiers.Add("GS - Lion's Maw I", GS(2));
             weaponModifiers.Add("GS - Lion's Maw II", GS(3));
@@ -1217,7 +1251,6 @@ namespace YADC_MHGen_
             weaponModifiers.Add("SnS - Affinity Oil", SnS(2));
             weaponModifiers.Add("SnS - Stamina Oil", SnS(3));
             weaponModifiers.Add("SnS - Mind's Eye Oil", SnS(4));
-            weaponModifiers.Add("DB - Element Modifier (0.7x)", DB());
             weaponModifiers.Add("HH - Attack Up (S) Song", HH(1));
             weaponModifiers.Add("HH - Attack Up (S) Encore", HH(2));
             weaponModifiers.Add("HH - Attack Up (L) Song", HH(3));
@@ -1281,10 +1314,20 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Bow - Coating Boost 'C.Range'", Bow(19));
             weaponModifiers.Add("Bow - Coating Boost 'Sta'", Bow(20));
 #endif
+            foreach (KeyValuePair<string, bool> pair in weaponModifiers)
+            {
+                modWeapon.Items.Add(pair.Key);
+            }
+
             //Other modifiers
 #if true
             otherModifiers.Add("Frenzy", Frenzy());
 #endif
+
+            foreach (KeyValuePair<string, bool> pair in otherModifiers)
+            {
+                modOther.Items.Add(pair.Key);
+            }
         }
 
         /// <summary>
@@ -2707,12 +2750,6 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private bool DB()
-        {
-            weaponAndMods.eleMod *= 0.7;
-            return true;
-        }
-
         private bool HH(int skillVal)
         {
             if (skillVal == 1)
@@ -2888,10 +2925,14 @@ namespace YADC_MHGen_
             if(skillVal == 1)
             {
                 weaponAndMods.rawMod *= 1.15;
+                weaponAndMods.KOPower *= 1.35;
+                weaponAndMods.exhaustPower *= 1.35;
             }
             else if(skillVal == 2)
             {
                 weaponAndMods.rawMod *= 1.2;
+                weaponAndMods.KOPower *= 1.35;
+                weaponAndMods.exhaustPower *= 1.35;
             }
             else
             {
@@ -2954,7 +2995,7 @@ namespace YADC_MHGen_
 
         private bool HBG()
         {
-            weaponAndMods.rawMod *= 1.5;
+            weaponAndMods.rawMod *= 1.48;
             return true;
         }
 
@@ -3066,6 +3107,35 @@ namespace YADC_MHGen_
             weaponAndMods.affinity += 15;
             return true;
         }
+
+        private void ArmorButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modArmor.Text);
+            item.Group = modList.Groups[0];
+            modList.Items.Add(item);
+        }
+
+        private void KitchenButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modKitchen.Text);
+            item.Group = modList.Groups[1];
+            modList.Items.Add(item);
+        }
+
+        private void WeaponButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modWeapon.Text);
+            item.Group = modList.Groups[2];
+            modList.Items.Add(item);
+        }
+
+        private void OtherButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modOther.Text);
+            item.Group = modList.Groups[3];
+            modList.Items.Add(item);
+        }
+
 #endif
     }
 }
