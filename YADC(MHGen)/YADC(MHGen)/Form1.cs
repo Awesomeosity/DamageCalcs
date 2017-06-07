@@ -172,10 +172,10 @@ namespace YADC_MHGen_
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
         Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //This will store a mapping of names to a list of stats by levels.
-        Dictionary<string, bool> armorModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to modifiers.
-        Dictionary<string, bool> kitchenItemModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to kitchen modifiers.
-        Dictionary<string, bool> weaponModifiers = new Dictionary<string, bool>(); //Stores conversion of strings to weapon-specific modifiers.
-        Dictionary<string, bool> otherModifiers = new Dictionary<string, bool>(); //Will store other things.
+        Dictionary<string, Func<int, bool>> armorModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to modifiers.
+        Dictionary<string, Func<int, bool>> kitchenItemModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to kitchen modifiers.
+        Dictionary<string, Func<int, bool>> weaponModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to weapon-specific modifiers.
+        Dictionary<string, Func<int, bool>> otherModifiers = new Dictionary<string, Func<int, bool>>(); //Will store other things.
 
         importedStats weaponAndMods = new importedStats(); //Will be used later. Required to be global for the modifier methods.
 
@@ -747,12 +747,61 @@ namespace YADC_MHGen_
             }
         }
 
+        private void ArmorButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modArmor.Text);
+            item.Group = modList.Groups[0];
+            modList.Items.Add(item);
+        }
+
+        private void KitchenButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modKitchen.Text);
+            item.Group = modList.Groups[1];
+            modList.Items.Add(item);
+        }
+
+        private void WeaponButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modWeapon.Text);
+            item.Group = modList.Groups[2];
+            modList.Items.Add(item);
+        }
+
+        private void OtherButt_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = new ListViewItem(modOther.Text);
+            item.Group = modList.Groups[3];
+            modList.Items.Add(item);
+        }
+
+        private void RemoveButt_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in modList.SelectedItems)
+            {
+                modList.Items.Remove(item);
+            }
+        }
+
+        private void RemoveAllButt_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in modList.Items)
+            {
+                modList.Items.Remove(item);
+            }
+        }
+
         /*Functions*/
         /// <summary>
         /// Help function which sets up the form appropriately.
         /// </summary>
         private void prep()
         {
+            //monFireBox.Load(str2image["Fire"]);
+            //monWaterBox.Load(str2image["Water"]);
+            //monThunderBox.Load(str2image["Thunder"]);
+            //monIceBox.Load(str2image["Ice"]);
+            //monDragonBox.Load(str2image["Dragon"]);
             paraBoost.Checked = false; //Force checkboxes to be unchecked on initialization.
             moveMinds.Checked = false;
             paraFixed.Checked = false;
@@ -788,14 +837,8 @@ namespace YADC_MHGen_
             modList.CheckBoxes = true;
             modList.GridLines = true;
 
-            //ListViewItem testItem = new ListViewItem("Test");
-            //ListViewItem testItem2 = new ListViewItem("PogChamp");
-
             modList.Columns.Add("All Modifiers", -2, HorizontalAlignment.Left);
             modList.ShowGroups = true;
-            //testItem.Group = modList.Groups[0];
-            //testItem2.Group = modList.Groups[0];
-            //modList.Items.AddRange(new ListViewItem[] { testItem, testItem2 });
         }
 
         /// <summary>
@@ -1072,259 +1115,260 @@ namespace YADC_MHGen_
 
             //Armor skills section
 #if true
-            armorModifiers.Add("Art. Novice (Fixed Weapons)", Artillery(1));
-            armorModifiers.Add("Art. Novice (Explosive Ammo)", Artillery(2));
-            armorModifiers.Add("Art. Novice (Impact CB)", Artillery(3));
-            armorModifiers.Add("Art. Novice (GL)", Artillery(4));
-            armorModifiers.Add("Art. Expert (Fixed Weapons)", Artillery(5));
-            armorModifiers.Add("Art. Expert (Explosive Ammo)", Artillery(6));
-            armorModifiers.Add("Art. Expert (Impact CB)", Artillery(7));
-            armorModifiers.Add("Art. Expert (GL)", Artillery(8));
-            armorModifiers.Add("Attack Up (S)", Attack(1));
-            armorModifiers.Add("Attack Up (M)", Attack(2));
-            armorModifiers.Add("Attack Up (L)", Attack(3));
-            armorModifiers.Add("Attack Down (S)", Attack(4));
-            armorModifiers.Add("Attack Down (M)", Attack(5));
-            armorModifiers.Add("Attack Down (L)", Attack(6));
+            armorModifiers.Add("Art. Novice (Fixed Weapons)", x => Artillery(1));
+            armorModifiers.Add("Art. Novice (Explosive Ammo)", x => Artillery(2));
+            armorModifiers.Add("Art. Novice (Impact CB)", x => Artillery(3));
+            armorModifiers.Add("Art. Novice (GL)", x => Artillery(4));
+            armorModifiers.Add("Art. Expert (Fixed Weapons)", x => Artillery(5));
+            armorModifiers.Add("Art. Expert (Explosive Ammo)", x => Artillery(6));
+            armorModifiers.Add("Art. Expert (Impact CB)", x => Artillery(7));
+            armorModifiers.Add("Art. Expert (GL)", x => Artillery(8));
+            armorModifiers.Add("Attack Up (S)", x => Attack(1));
+            armorModifiers.Add("Attack Up (M)", x => Attack(2));
+            armorModifiers.Add("Attack Up (L)", x => Attack(3));
+            armorModifiers.Add("Attack Down (S)", x => Attack(4));
+            armorModifiers.Add("Attack Down (M)", x => Attack(5));
+            armorModifiers.Add("Attack Down (L)", x => Attack(6));
 
-            armorModifiers.Add("Bludgeoner", Blunt());
-            armorModifiers.Add("Bombardier (Blast)", BombBoost(1));
-            armorModifiers.Add("Bombardier (Bomb)", BombBoost(2));
+            armorModifiers.Add("Bludgeoner", x => Blunt());
+            armorModifiers.Add("Bombardier (Blast)", x => BombBoost(1));
+            armorModifiers.Add("Bombardier (Bomb)", x => BombBoost(2));
 
-            armorModifiers.Add("Repeat Offender (1 Hit)", ChainCrit(1));
-            armorModifiers.Add("Repeat Offender (>5 Hits)", ChainCrit(2));
-            armorModifiers.Add("Trump Card (Lion's Maw)", Chance(1));
-            armorModifiers.Add("Trump Card (Dragon's Breath)", Chance(2));
-            armorModifiers.Add("Trump Card (Demon Riot 'Pwr')", Chance(3));
-            armorModifiers.Add("Trump Card (Demon Riot 'Sta')", Chance(4));
-            armorModifiers.Add("Trump Card (Demon Riot 'Ele')", Chance(5));
-            armorModifiers.Add("Trump Card (Demon Riot 'Dra')", Chance(6));
-            armorModifiers.Add("Trump Card (Other HAs)", Chance(7));
-            armorModifiers.Add("Polar Hunter (Cool Drink)", ColdBlooded(1));
-            armorModifiers.Add("Polar Hunter (Cold Areas)", ColdBlooded(2));
-            armorModifiers.Add("Polar Hunter (Both Effects)", ColdBlooded(3));
-            armorModifiers.Add("Resuscitate", Crisis());
-            armorModifiers.Add("Critical Draw", CritDraw());
-            armorModifiers.Add("Elemental Crit (GS)", CritElement(1));
-            armorModifiers.Add("Elemental Crit (LBG/HBG)", CritElement(2));
-            armorModifiers.Add("Elemental Crit (SnS/DB/Bow)", CritElement(3));
-            armorModifiers.Add("Elemental Crit (Other)", CritElement(4));
-            armorModifiers.Add("Status Crit", CritStatus());
-            armorModifiers.Add("Critical Boost", CriticalUp());
+            armorModifiers.Add("Repeat Offender (1 Hit)", x => ChainCrit(1));
+            armorModifiers.Add("Repeat Offender (>5 Hits)", x => ChainCrit(2));
+            armorModifiers.Add("Trump Card (Lion's Maw)", x => Chance(1));
+            armorModifiers.Add("Trump Card (Dragon's Breath)", x => Chance(2));
+            armorModifiers.Add("Trump Card (Demon Riot 'Pwr')", x => Chance(3));
+            armorModifiers.Add("Trump Card (Demon Riot 'Sta')", x => Chance(4));
+            armorModifiers.Add("Trump Card (Demon Riot 'Ele')", x => Chance(5));
+            armorModifiers.Add("Trump Card (Demon Riot 'Dra')", x => Chance(6));
+            armorModifiers.Add("Trump Card (Other HAs)", x => Chance(7));
+            armorModifiers.Add("Polar Hunter (Cool Drink)", x => ColdBlooded(1));
+            armorModifiers.Add("Polar Hunter (Cold Areas)", x => ColdBlooded(2));
+            armorModifiers.Add("Polar Hunter (Both Effects)", x => ColdBlooded(3));
+            armorModifiers.Add("Resuscitate", x => Crisis());
+            armorModifiers.Add("Critical Draw", x => CritDraw());
+            armorModifiers.Add("Elemental Crit (GS)", x => CritElement(1));
+            armorModifiers.Add("Elemental Crit (LBG/HBG)", x => CritElement(2));
+            armorModifiers.Add("Elemental Crit (SnS/DB/Bow)", x => CritElement(3));
+            armorModifiers.Add("Elemental Crit (Other)", x => CritElement(4));
+            armorModifiers.Add("Status Crit", x => CritStatus());
+            armorModifiers.Add("Critical Boost", x => CriticalUp());
 
-            armorModifiers.Add("P. D. Fencer (1st Cart)", DFencing(1));
-            armorModifiers.Add("P. D. Fencer (2nd Cart)", DFencing(2));
-            armorModifiers.Add("Deadeye Soul", Deadeye());
-            armorModifiers.Add("Dragon Atk +1", DragonAtk(1));
-            armorModifiers.Add("Dragon Atk +2", DragonAtk(2));
-            armorModifiers.Add("Dragon Atk Down", DragonAtk(3));
-            armorModifiers.Add("Dreadking Soul", Dreadking());
-            armorModifiers.Add("Dreadqueen Soul", Dreadqueen());
-            armorModifiers.Add("Drilltusk Soul", Drilltusk());
+            armorModifiers.Add("P. D. Fencer (1st Cart)", x => DFencing(1));
+            armorModifiers.Add("P. D. Fencer (2nd Cart)", x => DFencing(2));
+            armorModifiers.Add("Deadeye Soul", x => Deadeye());
+            armorModifiers.Add("Dragon Atk +1", x => DragonAtk(1));
+            armorModifiers.Add("Dragon Atk +2", x => DragonAtk(2));
+            armorModifiers.Add("Dragon Atk Down", x => DragonAtk(3));
+            armorModifiers.Add("Dreadking Soul", x => Dreadking());
+            armorModifiers.Add("Dreadqueen Soul", x => Dreadqueen());
+            armorModifiers.Add("Drilltusk Soul", x => Drilltusk());
 
-            armorModifiers.Add("Element Atk Up", Elemental());
-            armorModifiers.Add("Critical Eye +1", Expert(1));
-            armorModifiers.Add("Critical Eye +2", Expert(2));
-            armorModifiers.Add("Critical Eye +3", Expert(3));
-            armorModifiers.Add("Critical Eye -1", Expert(4));
-            armorModifiers.Add("Critical Eye -2", Expert(5));
-            armorModifiers.Add("Critical Eye -3", Expert(6));
+            armorModifiers.Add("Element Atk Up", x => Elemental());
+            armorModifiers.Add("Critical Eye +1", x => Expert(1));
+            armorModifiers.Add("Critical Eye +2", x => Expert(2));
+            armorModifiers.Add("Critical Eye +3", x => Expert(3));
+            armorModifiers.Add("Critical Eye -1", x => Expert(4));
+            armorModifiers.Add("Critical Eye -2", x => Expert(5));
+            armorModifiers.Add("Critical Eye -3", x => Expert(6));
 
-            armorModifiers.Add("Mind's Eye", Fencing());
-            armorModifiers.Add("Fire Atk +1", FireAtk(1));
-            armorModifiers.Add("Fire Atk +2", FireAtk(2));
-            armorModifiers.Add("Fire Atk Down", FireAtk(3));
-            armorModifiers.Add("Antivirus", FrenzyRes());
-            armorModifiers.Add("Resentment", Furor());
+            armorModifiers.Add("Mind's Eye", x => Fencing());
+            armorModifiers.Add("Fire Atk +1", x => FireAtk(1));
+            armorModifiers.Add("Fire Atk +2", x => FireAtk(2));
+            armorModifiers.Add("Fire Atk Down", x => FireAtk(3));
+            armorModifiers.Add("Antivirus", x => FrenzyRes());
+            armorModifiers.Add("Resentment", x => Furor());
 
-            armorModifiers.Add("Latent Power +1", GlovesOff(1));
-            armorModifiers.Add("Latent Power +2", GlovesOff(2));
+            armorModifiers.Add("Latent Power +1", x => GlovesOff(1));
+            armorModifiers.Add("Latent Power +2", x => GlovesOff(2));
 
-            armorModifiers.Add("Sharpness +1", Handicraft(1));
-            armorModifiers.Add("Sharpness +2", Handicraft(2));
-            armorModifiers.Add("TrueShot Up", Haphazard());
-            armorModifiers.Add("Heavy/Heavy Up", HeavyUp());
-            armorModifiers.Add("Hellblade Soul", Hellblade());
-            armorModifiers.Add("Tropic Hunter (Hot Drink)", HotBlooded(1));
-            armorModifiers.Add("Tropic Hunter (Hot Area)", HotBlooded(2));
-            armorModifiers.Add("Tropic Hunter (Both Effects)", HotBlooded(3));
+            armorModifiers.Add("Sharpness +1", x => Handicraft(1));
+            armorModifiers.Add("Sharpness +2", x => Handicraft(2));
+            armorModifiers.Add("TrueShot Up", x => Haphazard());
+            armorModifiers.Add("Heavy/Heavy Up", x => HeavyUp());
+            armorModifiers.Add("Hellblade Soul", x => Hellblade());
+            armorModifiers.Add("Tropic Hunter (Hot Drink)", x => HotBlooded(1));
+            armorModifiers.Add("Tropic Hunter (Hot Area)", x => HotBlooded(2));
+            armorModifiers.Add("Tropic Hunter (Both Effects)", x => HotBlooded(3));
 
-            armorModifiers.Add("Ice Atk +1", IceAtk(1));
-            armorModifiers.Add("Ice Atk +2", IceAtk(2));
-            armorModifiers.Add("Ice Atk Down", IceAtk(3));
+            armorModifiers.Add("Ice Atk +1", x => IceAtk(1));
+            armorModifiers.Add("Ice Atk +2", x => IceAtk(2));
+            armorModifiers.Add("Ice Atk Down", x => IceAtk(3));
 
-            armorModifiers.Add("KO King", KO());
+            armorModifiers.Add("KO King", x => KO());
 
-            armorModifiers.Add("Normal/Rapid Up", NormalUp());
+            armorModifiers.Add("Normal/Rapid Up", x => NormalUp());
 
-            armorModifiers.Add("Pellet/Spread Up (Pellet S)", PelletUp(1));
-            armorModifiers.Add("Pellet/Spread Up (Spread)", PelletUp(2));
-            armorModifiers.Add("Pierce/Pierce Up", PierceUp());
-            armorModifiers.Add("Adrenaline +2", Potential(2));
-            armorModifiers.Add("Worrywart", Potential(3));
-            armorModifiers.Add("Punishing Draw (Cut)", PunishDraw(1));
-            armorModifiers.Add("Punishing Draw (Impact)", PunishDraw(2));
+            armorModifiers.Add("Pellet/Spread Up (Pellet S)", x => PelletUp(1));
+            armorModifiers.Add("Pellet/Spread Up (Spread)", x => PelletUp(2));
+            armorModifiers.Add("Pierce/Pierce Up", x => PierceUp());
+            armorModifiers.Add("Adrenaline +2", x => Potential(2));
+            armorModifiers.Add("Worrywart", x => Potential(3));
+            armorModifiers.Add("Punishing Draw (Cut)", x => PunishDraw(1));
+            armorModifiers.Add("Punishing Draw (Impact)", x => PunishDraw(2));
 
-            armorModifiers.Add("Bonus Shot", RapidFire());
-            armorModifiers.Add("Redhelm Soul", Redhelm());
+            armorModifiers.Add("Bonus Shot", x => RapidFire());
+            armorModifiers.Add("Redhelm Soul", x => Redhelm());
 
-            armorModifiers.Add("Silverwind Soul", Silverwind());
-            armorModifiers.Add("Challenger +1", Spirit(1));
-            armorModifiers.Add("Challenger +2", Spirit(2));
-            armorModifiers.Add("Stamina Thief", StamDrain());
-            armorModifiers.Add("Status Atk +1", Status(1));
-            armorModifiers.Add("Status Atk +2", Status(2));
-            armorModifiers.Add("Status Atk Down", Status(3));
-            armorModifiers.Add("Fortify (1st Cart)", Survivor(1));
-            armorModifiers.Add("Fortify (2nd Cart)", Survivor(2));
+            armorModifiers.Add("Silverwind Soul", x => Silverwind());
+            armorModifiers.Add("Challenger +1", x => Spirit(1));
+            armorModifiers.Add("Challenger +2", x => Spirit(2));
+            armorModifiers.Add("Stamina Thief", x => StamDrain());
+            armorModifiers.Add("Status Atk +1", x => Status(1));
+            armorModifiers.Add("Status Atk +2", x => Status(2));
+            armorModifiers.Add("Status Atk Down", x => Status(3));
+            armorModifiers.Add("Fortify (1st Cart)", x => Survivor(1));
+            armorModifiers.Add("Fortify (2nd Cart)", x => Survivor(2));
 
-            armorModifiers.Add("Weakness Exploit", Tenderizer());
-            armorModifiers.Add("Thunder Atk +1", ThunderAtk(1));
-            armorModifiers.Add("Thunder Atk +2", ThunderAtk(2));
-            armorModifiers.Add("Thunder Atk Down", ThunderAtk(3));
-            armorModifiers.Add("Thunderlord Soul", Thunderlord());
+            armorModifiers.Add("Weakness Exploit", x => Tenderizer());
+            armorModifiers.Add("Thunder Atk +1", x => ThunderAtk(1));
+            armorModifiers.Add("Thunder Atk +2", x => ThunderAtk(2));
+            armorModifiers.Add("Thunder Atk Down", x => ThunderAtk(3));
+            armorModifiers.Add("Thunderlord Soul", x => Thunderlord());
 
-            armorModifiers.Add("Peak Performance", Unscathed());
+            armorModifiers.Add("Peak Performance", x => Unscathed());
 
-            armorModifiers.Add("Airborne", Vault());
+            armorModifiers.Add("Airborne", x => Vault());
 
-            armorModifiers.Add("Water Atk +1", WaterAtk(1));
-            armorModifiers.Add("Water Atk +2", WaterAtk(2));
-            armorModifiers.Add("Water Atk Down", WaterAtk(3));
+            armorModifiers.Add("Water Atk +1", x => WaterAtk(1));
+            armorModifiers.Add("Water Atk +2", x => WaterAtk(2));
+            armorModifiers.Add("Water Atk Down", x => WaterAtk(3));
 #endif
 
-            foreach(KeyValuePair<string, bool> pair in armorModifiers)
+            foreach(KeyValuePair<string, Func<int, bool>> pair in armorModifiers)
             {
                 modArmor.Items.Add(pair.Key);
             }
 
             //Item/Kitchen Modifiers.
 #if true
-            kitchenItemModifiers.Add("F.Bombardier (Fixed Weaps.)", FBombardier(1));
-            kitchenItemModifiers.Add("F.Bombardier (Explosive S)", FBombardier(2));
-            kitchenItemModifiers.Add("F.Bombardier (Impact CB)", FBombardier(3));
-            kitchenItemModifiers.Add("F.Bombardier (GL)", FBombardier(4));
-            kitchenItemModifiers.Add("F.Booster", FBooster());
-            kitchenItemModifiers.Add("F.Bulldozer", FBulldozer());
-            kitchenItemModifiers.Add("F.Heroics", FHeroics());
-            kitchenItemModifiers.Add("F.Pyro (Blast)", FPyro());
-            //kitchenItemModifiers.Add("F.Rider",                     FRider()); //Removed because not considering Mount damage.
-            kitchenItemModifiers.Add("F.Sharpshooter", FSharpshooter());
-            kitchenItemModifiers.Add("F.Slugger", FSlugger());
-            kitchenItemModifiers.Add("F.Specialist", FSpecialist());
-            kitchenItemModifiers.Add("F.Temper", FTemper());
-            kitchenItemModifiers.Add("Cool Cat", CoolCat());
+            kitchenItemModifiers.Add("F.Bombardier (Fixed Weaps.)", x => FBombardier(1));
+            kitchenItemModifiers.Add("F.Bombardier (Explosive S)", x => FBombardier(2));
+            kitchenItemModifiers.Add("F.Bombardier (Impact CB)", x => FBombardier(3));
+            kitchenItemModifiers.Add("F.Bombardier (GL)", x => FBombardier(4));
+            kitchenItemModifiers.Add("F.Booster", x => FBooster());
+            kitchenItemModifiers.Add("F.Bulldozer", x => FBulldozer());
+            kitchenItemModifiers.Add("F.Heroics", x => FHeroics());
+            kitchenItemModifiers.Add("F.Pyro (Blast)", x => FPyro());
+            //kitchenItemModifiers.Add("F.Rider",                     x => FRider()); //Removed because not considering Mount damage.
+            kitchenItemModifiers.Add("F.Sharpshooter", x => FSharpshooter());
+            kitchenItemModifiers.Add("F.Slugger", x => FSlugger());
+            kitchenItemModifiers.Add("F.Specialist", x => FSpecialist());
+            kitchenItemModifiers.Add("F.Temper", x => FTemper());
+            kitchenItemModifiers.Add("Cool Cat", x => CoolCat());
 
-            kitchenItemModifiers.Add("Powercharm", Powercharm());
-            kitchenItemModifiers.Add("Power Talon", PowerTalon());
-            kitchenItemModifiers.Add("Demon Drug", DemonDrug(1));
-            kitchenItemModifiers.Add("Mega Demon Drug", DemonDrug(2));
-            kitchenItemModifiers.Add("Attack Up (S) Meal", AUMeal(1));
-            kitchenItemModifiers.Add("Attack Up (M) Meal", AUMeal(2));
-            kitchenItemModifiers.Add("Attack Up (L) Meal", AUMeal(3));
-            kitchenItemModifiers.Add("Might Seed", MightSeed(1));
-            kitchenItemModifiers.Add("Might Pill", MightSeed(2));
-            kitchenItemModifiers.Add("Nitroshroom (Mushromancer)", Nitroshroom());
-            kitchenItemModifiers.Add("Demon Horn", Demon(1));
-            kitchenItemModifiers.Add("Demon S", Demon(2));
-            kitchenItemModifiers.Add("Demon Affinity S", Demon(3));
+            kitchenItemModifiers.Add("Powercharm", x => Powercharm());
+            kitchenItemModifiers.Add("Power Talon", x => PowerTalon());
+            kitchenItemModifiers.Add("Demon Drug", x => DemonDrug(1));
+            kitchenItemModifiers.Add("Mega Demon Drug", x => DemonDrug(2));
+            kitchenItemModifiers.Add("Attack Up (S) Meal", x => AUMeal(1));
+            kitchenItemModifiers.Add("Attack Up (M) Meal", x => AUMeal(2));
+            kitchenItemModifiers.Add("Attack Up (L) Meal", x => AUMeal(3));
+            kitchenItemModifiers.Add("Might Seed", x => MightSeed(1));
+            kitchenItemModifiers.Add("Might Pill", x => MightSeed(2));
+            kitchenItemModifiers.Add("Nitroshroom (Mushromancer)", x => Nitroshroom());
+            kitchenItemModifiers.Add("Demon Horn", x => Demon(1));
+            kitchenItemModifiers.Add("Demon S", x => Demon(2));
+            kitchenItemModifiers.Add("Demon Affinity S", x => Demon(3));
 #endif
-            foreach (KeyValuePair<string, bool> pair in kitchenItemModifiers)
+            foreach (KeyValuePair<string, Func<int, bool>> pair in kitchenItemModifiers)
             {
                 modKitchen.Items.Add(pair.Key);
             }
 
             //Weapon Mods
 #if true
-            weaponModifiers.Add("LSM (Hit Early)", LSM(1));
-            weaponModifiers.Add("LSM (Hit Late)", LSM(2));
-            weaponModifiers.Add("GS - Center of Blade", GS(1));
-            weaponModifiers.Add("GS - Lion's Maw I", GS(2));
-            weaponModifiers.Add("GS - Lion's Maw II", GS(3));
-            weaponModifiers.Add("GS - Lion's Maw III", GS(4));
-            weaponModifiers.Add("LS - Center of Blade", LS(1));
-            weaponModifiers.Add("LS - Spirit Gauge ON", LS(2));
-            weaponModifiers.Add("LS - Spirit Gauge (White)", LS(3));
-            weaponModifiers.Add("LS - Spirit Gauge (Yellow)", LS(4));
-            weaponModifiers.Add("LS - Spirit Gauge (Red)", LS(5));
-            weaponModifiers.Add("SnS - Sword Sharpness", SnS(1));
-            weaponModifiers.Add("SnS - Affinity Oil", SnS(2));
-            weaponModifiers.Add("SnS - Stamina Oil", SnS(3));
-            weaponModifiers.Add("SnS - Mind's Eye Oil", SnS(4));
-            weaponModifiers.Add("HH - Attack Up (S) Song", HH(1));
-            weaponModifiers.Add("HH - Attack Up (S) Encore", HH(2));
-            weaponModifiers.Add("HH - Attack Up (L) Song", HH(3));
-            weaponModifiers.Add("HH - Attack Up (L) Encore", HH(4));
-            weaponModifiers.Add("HH - Elem. Attack Boost Song", HH(5));
-            weaponModifiers.Add("HH - Elem. Attack Boost Encore", HH(6));
-            weaponModifiers.Add("HH - Abnormal Boost Song", HH(7));
-            weaponModifiers.Add("HH - Abnormal Boost Encore", HH(8));
-            weaponModifiers.Add("HH - Affinity Up Song", HH(9));
-            weaponModifiers.Add("HH - Affinity Up Encore", HH(10));
-            weaponModifiers.Add("HH - Self-Improvement Encore", HH(11));
-            weaponModifiers.Add("Lance - Enraged Guard (Yellow)", Lance(1));
-            weaponModifiers.Add("Lance - Enraged Guard (Orange)", Lance(2));
-            weaponModifiers.Add("Lance - Enraged Guard (Red)", Lance(3));
-            weaponModifiers.Add("Lance - Impact/Cut Hitzone", Lance(4));
-            weaponModifiers.Add("GL - Dragon Breath", GL(1));
-            weaponModifiers.Add("GL - Orange Heat", GL(2));
-            weaponModifiers.Add("GL - Red Heat", GL(3));
-            weaponModifiers.Add("SA - Power Phial", SA(1));
-            weaponModifiers.Add("SA - Element Phial", SA(2));
-            weaponModifiers.Add("SA - Energy Charge II", SA(3));
-            weaponModifiers.Add("SA - Energy Charge III", SA(4));
-            weaponModifiers.Add("SA - Demon Riot I 'Pwr'", SA(5));
-            weaponModifiers.Add("SA - Demon Riot II 'Pwr'", SA(6));
-            weaponModifiers.Add("SA - Demon Riot III 'Pwr'", SA(7));
-            weaponModifiers.Add("SA - Demon Riot I 'Ele'", SA(8));
-            weaponModifiers.Add("SA - Demon Riot II 'Ele'", SA(9));
-            weaponModifiers.Add("SA - Demon Riot III 'Ele'", SA(10));
-            weaponModifiers.Add("SA - Demon Riot I 'Sta'", SA(11));
-            weaponModifiers.Add("SA - Demon Riot II 'Sta'", SA(12));
-            weaponModifiers.Add("SA - Demon Riot III 'Sta'", SA(13));
-            weaponModifiers.Add("CB - Red Shield (Other Styles)", CB(1));
-            weaponModifiers.Add("CB - Red Shield (Striker)", CB(2));
-            weaponModifiers.Add("IG - Red (Balanced)", IG(1));
-            weaponModifiers.Add("IG - Red/White", IG(2));
-            weaponModifiers.Add("IG - Triple Up", IG(3));
-            weaponModifiers.Add("Gunner - Normal Distance (1x)", Gunner(1));
-            weaponModifiers.Add("Gunner - Critical Distance (1.5x)", Gunner(2));
-            weaponModifiers.Add("Gunner - Long Range (0.8x)", Gunner(3));
-            weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)", Gunner(4));
-            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", LBG());
-            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", HBG());
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", Bow(1));
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)", Bow(2));
-            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)", Bow(3));
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (Non-Status)", Bow(4));
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Poison)", Bow(5));
-            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Para/Sleep)", Bow(6));
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (Non-Status)", Bow(7));
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Poison)", Bow(8));
-            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Para/Sleep)", Bow(9));
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (Non-Status)", Bow(10));
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Poison)", Bow(11));
-            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Para/Sleep)", Bow(12));
-            weaponModifiers.Add("Bow - Power C. Lvl. 1", Bow(13));
-            weaponModifiers.Add("Bow - Power C. Lvl. 2", Bow(14));
-            weaponModifiers.Add("Bow - Ele. C. Lvl. 1", Bow(15));
-            weaponModifiers.Add("Bow - Ele. C. Lvl. 2", Bow(16));
-            weaponModifiers.Add("Bow - Coating Boost 'Pwr'", Bow(17));
-            weaponModifiers.Add("Bow - Coating Boost 'Ele'", Bow(18));
-            weaponModifiers.Add("Bow - Coating Boost 'C.Range'", Bow(19));
-            weaponModifiers.Add("Bow - Coating Boost 'Sta'", Bow(20));
+            weaponModifiers.Add("LSM (Hit Early)", x => LSM(1));
+            weaponModifiers.Add("LSM (Hit Late)", x => LSM(2));
+            weaponModifiers.Add("GS - Center of Blade", x => GS(1));
+            weaponModifiers.Add("GS - Lion's Maw I", x => GS(2));
+            weaponModifiers.Add("GS - Lion's Maw II", x => GS(3));
+            weaponModifiers.Add("GS - Lion's Maw III", x => GS(4));
+            weaponModifiers.Add("LS - Center of Blade", x => LS(1));
+            weaponModifiers.Add("LS - Spirit Gauge ON", x => LS(2));
+            weaponModifiers.Add("LS - Spirit Gauge (White)", x => LS(3));
+            weaponModifiers.Add("LS - Spirit Gauge (Yellow)", x => LS(4));
+            weaponModifiers.Add("LS - Spirit Gauge (Red)", x => LS(5));
+            weaponModifiers.Add("SnS - Sword Sharpness", x => SnS(1));
+            weaponModifiers.Add("SnS - Affinity Oil", x => SnS(2));
+            weaponModifiers.Add("SnS - Stamina Oil", x => SnS(3));
+            weaponModifiers.Add("SnS - Mind's Eye Oil", x => SnS(4));
+            weaponModifiers.Add("HH - Attack Up (S) Song", x => HH(1));
+            weaponModifiers.Add("HH - Attack Up (S) Encore", x => HH(2));
+            weaponModifiers.Add("HH - Attack Up (L) Song", x => HH(3));
+            weaponModifiers.Add("HH - Attack Up (L) Encore", x => HH(4));
+            weaponModifiers.Add("HH - Elem. Attack Boost Song", x => HH(5));
+            weaponModifiers.Add("HH - Elem. Attack Boost Encore", x => HH(6));
+            weaponModifiers.Add("HH - Abnormal Boost Song", x => HH(7));
+            weaponModifiers.Add("HH - Abnormal Boost Encore", x => HH(8));
+            weaponModifiers.Add("HH - Affinity Up Song", x => HH(9));
+            weaponModifiers.Add("HH - Affinity Up Encore", x => HH(10));
+            weaponModifiers.Add("HH - Self-Improvement Encore", x => HH(11));
+            weaponModifiers.Add("Lance - Enraged Guard (Yellow)", x => Lance(1));
+            weaponModifiers.Add("Lance - Enraged Guard (Orange)", x => Lance(2));
+            weaponModifiers.Add("Lance - Enraged Guard (Red)", x => Lance(3));
+            weaponModifiers.Add("Lance - Impact/Cut Hitzone", x => Lance(4));
+            weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
+            weaponModifiers.Add("GL - Orange Heat", x => GL(2));
+            weaponModifiers.Add("GL - Red Heat", x => GL(3));
+            weaponModifiers.Add("SA - Power Phial", x => SA(1));
+            weaponModifiers.Add("SA - Element Phial", x => SA(2));
+            weaponModifiers.Add("SA - Energy Charge II", x => SA(3));
+            weaponModifiers.Add("SA - Energy Charge III", x => SA(4));
+            weaponModifiers.Add("SA - Demon Riot I 'Pwr'", x => SA(5));
+            weaponModifiers.Add("SA - Demon Riot II 'Pwr'", x => SA(6));
+            weaponModifiers.Add("SA - Demon Riot III 'Pwr'", x => SA(7));
+            weaponModifiers.Add("SA - Demon Riot I 'Ele'", x => SA(8));
+            weaponModifiers.Add("SA - Demon Riot II 'Ele'", x => SA(9));
+            weaponModifiers.Add("SA - Demon Riot III 'Ele'", x => SA(10));
+            weaponModifiers.Add("SA - Demon Riot I 'Sta'", x => SA(11));
+            weaponModifiers.Add("SA - Demon Riot II 'Sta'", x => SA(12));
+            weaponModifiers.Add("SA - Demon Riot III 'Sta'", x => SA(13));
+            weaponModifiers.Add("CB - Red Shield (Other Styles)", x => CB(1));
+            weaponModifiers.Add("CB - Red Shield (Striker)", x => CB(2));
+            weaponModifiers.Add("IG - Red (Balanced)", x => IG(1));
+            weaponModifiers.Add("IG - White (Balanced)", x => IG(2));
+            weaponModifiers.Add("IG - Red/White", x => IG(3));
+            weaponModifiers.Add("IG - Triple Up", x => IG(4));
+            weaponModifiers.Add("Gunner - Normal Distance (1x)", x => Gunner(1));
+            weaponModifiers.Add("Gunner - Critical Distance (1.5x)", x => Gunner(2));
+            weaponModifiers.Add("Gunner - Long Range (0.8x)", x => Gunner(3));
+            weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)", x => Gunner(4));
+            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", x => LBG());
+            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", x => HBG());
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", x => Bow(1));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)", x => Bow(2));
+            weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)", x => Bow(3));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (Non-Status)", x => Bow(4));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Poison)", x => Bow(5));
+            weaponModifiers.Add("Bow - Charge Lvl. 2 (+Para/Sleep)", x => Bow(6));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (Non-Status)", x => Bow(7));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Poison)", x => Bow(8));
+            weaponModifiers.Add("Bow - Charge Lvl. 3 (+Para/Sleep)", x => Bow(9));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (Non-Status)", x => Bow(10));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Poison)", x => Bow(11));
+            weaponModifiers.Add("Bow - Charge Lvl. 4 (+Para/Sleep)", x => Bow(12));
+            weaponModifiers.Add("Bow - Power C. Lvl. 1", x => Bow(13));
+            weaponModifiers.Add("Bow - Power C. Lvl. 2", x => Bow(14));
+            weaponModifiers.Add("Bow - Ele. C. Lvl. 1", x => Bow(15));
+            weaponModifiers.Add("Bow - Ele. C. Lvl. 2", x => Bow(16));
+            weaponModifiers.Add("Bow - Coating Boost 'Pwr'", x => Bow(17));
+            weaponModifiers.Add("Bow - Coating Boost 'Ele'", x => Bow(18));
+            weaponModifiers.Add("Bow - Coating Boost 'C.Range'", x => Bow(19));
+            weaponModifiers.Add("Bow - Coating Boost 'Sta'", x => Bow(20));
 #endif
-            foreach (KeyValuePair<string, bool> pair in weaponModifiers)
+            foreach (KeyValuePair<string, Func<int, bool>> pair in weaponModifiers)
             {
                 modWeapon.Items.Add(pair.Key);
             }
 
             //Other modifiers
 #if true
-            otherModifiers.Add("Frenzy", Frenzy());
+            otherModifiers.Add("Frenzy", x => Frenzy());
 #endif
 
-            foreach (KeyValuePair<string, bool> pair in otherModifiers)
+            foreach (KeyValuePair<string, Func<int, bool>> pair in otherModifiers)
             {
                 modOther.Items.Add(pair.Key);
             }
@@ -2819,9 +2863,9 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 4)
             {
-                if (double.Parse(monImpact.Text) * 0.72 > double.Parse(monCut.Text))
+                if (double.Parse(monsterList.SelectedItems[0].SubItems[2].Text) * 0.72 > double.Parse(monsterList.SelectedItems[0].SubItems[1].Text))
                 {
-                    weaponAndMods.hitzone = double.Parse(monImpact.Text) * 0.72;
+                    weaponAndMods.hitzone = double.Parse(monsterList.SelectedItems[0].SubItems[2].Text) * 0.72;
                 }
             }
             else
@@ -2947,11 +2991,15 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.totalAttackPower += 5;
             }
-            else if (skillVal == 2)
+            else if(skillVal == 2)
+            {
+                weaponAndMods.affinity += 10;
+            }
+            else if (skillVal == 3)
             {
                 weaponAndMods.rawMod *= 1.15;
             }
-            else if (skillVal == 3)
+            else if (skillVal == 4)
             {
                 weaponAndMods.rawMod *= 1.2;
             }
@@ -3108,33 +3156,7 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private void ArmorButt_Click(object sender, EventArgs e)
-        {
-            ListViewItem item = new ListViewItem(modArmor.Text);
-            item.Group = modList.Groups[0];
-            modList.Items.Add(item);
-        }
-
-        private void KitchenButt_Click(object sender, EventArgs e)
-        {
-            ListViewItem item = new ListViewItem(modKitchen.Text);
-            item.Group = modList.Groups[1];
-            modList.Items.Add(item);
-        }
-
-        private void WeaponButt_Click(object sender, EventArgs e)
-        {
-            ListViewItem item = new ListViewItem(modWeapon.Text);
-            item.Group = modList.Groups[2];
-            modList.Items.Add(item);
-        }
-
-        private void OtherButt_Click(object sender, EventArgs e)
-        {
-            ListViewItem item = new ListViewItem(modOther.Text);
-            item.Group = modList.Groups[3];
-            modList.Items.Add(item);
-        }
+        
 
 #endif
     }

@@ -1,0 +1,65 @@
+None
+DB - Fire
+DB - Water
+DB - Ice
+DB - Thunder
+DB - Dragon
+DB - Poison
+DB - Para
+DB - Sleep
+DB - Blast
+GL - Normal 1
+GL - Normal 2
+GL - Normal 3
+GL - Normal 4
+GL - Long 1
+GL - Long 2
+GL - Long 3
+GL - Long 4
+GL - Wide 1
+GL - Wide 2
+GL - Wide 3
+GL - Wide 4
+SA - Dragon Phial
+SA - Poison Phial
+SA - Para Phial
+CB - Impact Phial
+CB - Element Phial
+BG - Flaming 1
+BG - Flaming 2
+BG - P. Flam. 1
+BG - P. Flam. 2
+BG - Water 1
+BG - Water 2
+BG - P. Water 1
+BG - P. Water 2
+BG - Thunder 1
+BG - Thunder 2
+BG - P. Thun. 1
+BG - P. Thun. 2
+BG - Freeze 1
+BG - Freeze 2
+BG - P. Freez. 1
+BG - P. Freez. 2
+BG - Dragon 1
+BG - Dragon 2
+BG - Poison 1
+BG - Poison 2
+BG - Para. 1
+BG - Para. 2
+BG - Sleep 1
+BG - Sleep 2
+BG - Blast 1
+BG - Blast 2
+Bow - C.Range C.
+Bow - Poison C.
+Bow - Para C.
+Bow - Sleep C.
+Bow - Exhaust C.
+Bow - Blast C.
+
+No
+GS
+LBG/HBG
+SnS/DB/Bow
+Other
