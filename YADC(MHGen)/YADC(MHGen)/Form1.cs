@@ -832,13 +832,6 @@ namespace YADC_MHGen_
             weapOverride.Checked = false;
             weapOverride.Enabled = false;
             paraSecEle.Enabled = false;
-
-            modList.View = View.Details;
-            modList.CheckBoxes = true;
-            modList.GridLines = true;
-
-            modList.Columns.Add("All Modifiers", -2, HorizontalAlignment.Left);
-            modList.ShowGroups = true;
         }
 
         /// <summary>
@@ -2863,9 +2856,9 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 4)
             {
-                if (double.Parse(monsterList.SelectedItems[0].SubItems[2].Text) * 0.72 > double.Parse(monsterList.SelectedItems[0].SubItems[1].Text))
+                if ((double)(monsterList.SelectedRows[0].Cells[3].Value) * 0.72 > (double)(monsterList.SelectedRows[0].Cells[2].Value))
                 {
-                    weaponAndMods.hitzone = double.Parse(monsterList.SelectedItems[0].SubItems[2].Text) * 0.72;
+                    weaponAndMods.hitzone = (double)(monsterList.SelectedRows[0].Cells[3].Value) * 0.72;
                 }
             }
             else
@@ -3155,8 +3148,6 @@ namespace YADC_MHGen_
             weaponAndMods.affinity += 15;
             return true;
         }
-
-        
 
 #endif
     }
