@@ -212,32 +212,41 @@
             this.label34 = new System.Windows.Forms.Label();
             this.modArmor = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.initCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.incrCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.maxCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.monsterList = new System.Windows.Forms.DataGridView();
-            this.CheckCol = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.nameCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cutCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.impactCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.shotCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fireCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.waterCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.thunderCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dragonCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KOCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.exhaustCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.monDragonBox = new System.Windows.Forms.PictureBox();
+            this.monIceBox = new System.Windows.Forms.PictureBox();
+            this.monThunderBox = new System.Windows.Forms.PictureBox();
+            this.monWaterBox = new System.Windows.Forms.PictureBox();
+            this.monFireBox = new System.Windows.Forms.PictureBox();
+            this.monQuestMod = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.monDragon = new System.Windows.Forms.TextBox();
+            this.label67 = new System.Windows.Forms.Label();
+            this.label68 = new System.Windows.Forms.Label();
+            this.monIce = new System.Windows.Forms.TextBox();
+            this.monExh = new System.Windows.Forms.TextBox();
+            this.label69 = new System.Windows.Forms.Label();
+            this.label70 = new System.Windows.Forms.Label();
+            this.monKO = new System.Windows.Forms.TextBox();
+            this.monThunder = new System.Windows.Forms.TextBox();
+            this.label64 = new System.Windows.Forms.Label();
+            this.monWater = new System.Windows.Forms.TextBox();
+            this.label65 = new System.Windows.Forms.Label();
+            this.label66 = new System.Windows.Forms.Label();
+            this.monFire = new System.Windows.Forms.TextBox();
+            this.monShot = new System.Windows.Forms.TextBox();
+            this.label52 = new System.Windows.Forms.Label();
+            this.monImpact = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.monCut = new System.Windows.Forms.TextBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label72 = new System.Windows.Forms.Label();
             this.monQuest = new System.Windows.Forms.ComboBox();
+            this.label77 = new System.Windows.Forms.Label();
+            this.monHitzone = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
             this.monName = new System.Windows.Forms.ComboBox();
             this.modList = new System.Windows.Forms.ListView();
-            this.modColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.monHitzone = new System.Windows.Forms.ComboBox();
-            this.label77 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -258,8 +267,11 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.monsterList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monDragonBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monIceBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monThunderBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monWaterBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monFireBox)).BeginInit();
             this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -675,7 +687,6 @@
             this.weapSecPower.Name = "weapSecPower";
             this.weapSecPower.Size = new System.Drawing.Size(51, 20);
             this.weapSecPower.TabIndex = 143;
-            this.weapSecPower.Text = "0";
             this.weapSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // weapSecBox
@@ -762,7 +773,6 @@
             this.weapAffinity.Name = "weapAffinity";
             this.weapAffinity.Size = new System.Drawing.Size(51, 20);
             this.weapAffinity.TabIndex = 135;
-            this.weapAffinity.Text = "0";
             this.weapAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.weapAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.weapAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -773,7 +783,6 @@
             this.weapAltPower.Name = "weapAltPower";
             this.weapAltPower.Size = new System.Drawing.Size(51, 20);
             this.weapAltPower.TabIndex = 134;
-            this.weapAltPower.Text = "0";
             this.weapAltPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.weapAltPower.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.weapAltPower.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -784,7 +793,6 @@
             this.weapAttack.Name = "weapAttack";
             this.weapAttack.Size = new System.Drawing.Size(51, 20);
             this.weapAttack.TabIndex = 133;
-            this.weapAttack.Text = "0";
             this.weapAttack.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.weapAttack.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.weapAttack.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -991,7 +999,7 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.paraExh);
             this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Location = new System.Drawing.Point(8, 636);
+            this.groupBox3.Location = new System.Drawing.Point(12, 485);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(530, 177);
             this.groupBox3.TabIndex = 128;
@@ -1267,7 +1275,7 @@
             this.groupBox4.Controls.Add(this.paraEleHitzone);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.paraRawHitzone);
-            this.groupBox4.Location = new System.Drawing.Point(537, 636);
+            this.groupBox4.Location = new System.Drawing.Point(541, 485);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(258, 177);
             this.groupBox4.TabIndex = 129;
@@ -1388,16 +1396,16 @@
             this.groupBox5.Controls.Add(this.CalcButt);
             this.groupBox5.Controls.Add(this.calcRawOut);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(794, 665);
+            this.groupBox5.Location = new System.Drawing.Point(12, 665);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(619, 148);
+            this.groupBox5.Size = new System.Drawing.Size(849, 112);
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
             // 
             // calcFinalSecBox
             // 
-            this.calcFinalSecBox.Location = new System.Drawing.Point(452, 118);
+            this.calcFinalSecBox.Location = new System.Drawing.Point(695, 75);
             this.calcFinalSecBox.Name = "calcFinalSecBox";
             this.calcFinalSecBox.Size = new System.Drawing.Size(21, 21);
             this.calcFinalSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1408,7 +1416,7 @@
             // 
             this.calcFinalSec.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcFinalSec.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcFinalSec.Location = new System.Drawing.Point(353, 120);
+            this.calcFinalSec.Location = new System.Drawing.Point(596, 77);
             this.calcFinalSec.Name = "calcFinalSec";
             this.calcFinalSec.Size = new System.Drawing.Size(96, 20);
             this.calcFinalSec.TabIndex = 143;
@@ -1418,7 +1426,7 @@
             // label62
             // 
             this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(350, 103);
+            this.label62.Location = new System.Drawing.Point(593, 60);
             this.label62.Name = "label62";
             this.label62.Size = new System.Drawing.Size(105, 13);
             this.label62.TabIndex = 142;
@@ -1426,7 +1434,7 @@
             // 
             // calcSecBox
             // 
-            this.calcSecBox.Location = new System.Drawing.Point(214, 120);
+            this.calcSecBox.Location = new System.Drawing.Point(316, 78);
             this.calcSecBox.Name = "calcSecBox";
             this.calcSecBox.Size = new System.Drawing.Size(21, 21);
             this.calcSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1437,7 +1445,7 @@
             // 
             this.calcSecOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcSecOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcSecOut.Location = new System.Drawing.Point(112, 119);
+            this.calcSecOut.Location = new System.Drawing.Point(214, 77);
             this.calcSecOut.Name = "calcSecOut";
             this.calcSecOut.Size = new System.Drawing.Size(96, 20);
             this.calcSecOut.TabIndex = 140;
@@ -1447,7 +1455,7 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(109, 102);
+            this.label60.Location = new System.Drawing.Point(211, 60);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(113, 13);
             this.label60.TabIndex = 139;
@@ -1456,9 +1464,9 @@
             // label48
             // 
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label48.Location = new System.Drawing.Point(242, 9);
+            this.label48.Location = new System.Drawing.Point(348, 10);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(2, 135);
+            this.label48.Size = new System.Drawing.Size(2, 90);
             this.label48.TabIndex = 138;
             // 
             // calcBounce
@@ -1466,7 +1474,7 @@
             this.calcBounce.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcBounce.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.calcBounce.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calcBounce.Location = new System.Drawing.Point(250, 120);
+            this.calcBounce.Location = new System.Drawing.Point(596, 31);
             this.calcBounce.Name = "calcBounce";
             this.calcBounce.Size = new System.Drawing.Size(96, 20);
             this.calcBounce.TabIndex = 137;
@@ -1476,7 +1484,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(247, 103);
+            this.label47.Location = new System.Drawing.Point(593, 14);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(50, 13);
             this.label47.TabIndex = 136;
@@ -1486,7 +1494,7 @@
             // 
             this.calcFinal.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcFinal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcFinal.Location = new System.Drawing.Point(250, 77);
+            this.calcFinal.Location = new System.Drawing.Point(357, 77);
             this.calcFinal.Name = "calcFinal";
             this.calcFinal.Size = new System.Drawing.Size(96, 20);
             this.calcFinal.TabIndex = 135;
@@ -1496,7 +1504,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(247, 60);
+            this.label26.Location = new System.Drawing.Point(354, 60);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(75, 13);
             this.label26.TabIndex = 134;
@@ -1506,7 +1514,7 @@
             // 
             this.calcFinalRaw.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcFinalRaw.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcFinalRaw.Location = new System.Drawing.Point(353, 31);
+            this.calcFinalRaw.Location = new System.Drawing.Point(459, 31);
             this.calcFinalRaw.Name = "calcFinalRaw";
             this.calcFinalRaw.Size = new System.Drawing.Size(96, 20);
             this.calcFinalRaw.TabIndex = 133;
@@ -1515,7 +1523,7 @@
             // 
             // calcFinalEleBox
             // 
-            this.calcFinalEleBox.Location = new System.Drawing.Point(454, 76);
+            this.calcFinalEleBox.Location = new System.Drawing.Point(561, 76);
             this.calcFinalEleBox.Name = "calcFinalEleBox";
             this.calcFinalEleBox.Size = new System.Drawing.Size(21, 21);
             this.calcFinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1526,7 +1534,7 @@
             // 
             this.calcEle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcEle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcEle.Location = new System.Drawing.Point(353, 77);
+            this.calcEle.Location = new System.Drawing.Point(460, 77);
             this.calcEle.Name = "calcEle";
             this.calcEle.Size = new System.Drawing.Size(96, 20);
             this.calcEle.TabIndex = 131;
@@ -1535,7 +1543,7 @@
             // 
             // calcExhBox
             // 
-            this.calcExhBox.Location = new System.Drawing.Point(586, 77);
+            this.calcExhBox.Location = new System.Drawing.Point(820, 77);
             this.calcExhBox.Name = "calcExhBox";
             this.calcExhBox.Size = new System.Drawing.Size(21, 21);
             this.calcExhBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1546,7 +1554,7 @@
             // 
             this.calcExh.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcExh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcExh.Location = new System.Drawing.Point(488, 77);
+            this.calcExh.Location = new System.Drawing.Point(722, 77);
             this.calcExh.Name = "calcExh";
             this.calcExh.Size = new System.Drawing.Size(96, 20);
             this.calcExh.TabIndex = 129;
@@ -1555,7 +1563,7 @@
             // 
             // calcKOBox
             // 
-            this.calcKOBox.Location = new System.Drawing.Point(586, 31);
+            this.calcKOBox.Location = new System.Drawing.Point(820, 34);
             this.calcKOBox.Name = "calcKOBox";
             this.calcKOBox.Size = new System.Drawing.Size(21, 21);
             this.calcKOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1566,7 +1574,7 @@
             // 
             this.calcKO.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcKO.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcKO.Location = new System.Drawing.Point(488, 31);
+            this.calcKO.Location = new System.Drawing.Point(722, 34);
             this.calcKO.Name = "calcKO";
             this.calcKO.Size = new System.Drawing.Size(96, 20);
             this.calcKO.TabIndex = 127;
@@ -1576,7 +1584,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(485, 60);
+            this.label25.Location = new System.Drawing.Point(719, 60);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 13);
             this.label25.TabIndex = 126;
@@ -1585,7 +1593,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(485, 14);
+            this.label24.Location = new System.Drawing.Point(719, 17);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 13);
             this.label24.TabIndex = 125;
@@ -1594,7 +1602,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(350, 60);
+            this.label23.Location = new System.Drawing.Point(457, 60);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(103, 13);
             this.label23.TabIndex = 124;
@@ -1603,7 +1611,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(350, 14);
+            this.label22.Location = new System.Drawing.Point(456, 14);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 123;
@@ -1611,7 +1619,7 @@
             // 
             // calcEleBox
             // 
-            this.calcEleBox.Location = new System.Drawing.Point(214, 78);
+            this.calcEleBox.Location = new System.Drawing.Point(316, 36);
             this.calcEleBox.Name = "calcEleBox";
             this.calcEleBox.Size = new System.Drawing.Size(21, 21);
             this.calcEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1675,7 +1683,7 @@
             // 
             this.calcEleOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcEleOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcEleOut.Location = new System.Drawing.Point(112, 77);
+            this.calcEleOut.Location = new System.Drawing.Point(214, 35);
             this.calcEleOut.Name = "calcEleOut";
             this.calcEleOut.Size = new System.Drawing.Size(96, 20);
             this.calcEleOut.TabIndex = 116;
@@ -1685,7 +1693,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(109, 60);
+            this.label19.Location = new System.Drawing.Point(211, 18);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(126, 13);
             this.label19.TabIndex = 115;
@@ -1693,7 +1701,7 @@
             // 
             // CalcAll
             // 
-            this.CalcAll.Location = new System.Drawing.Point(250, 30);
+            this.CalcAll.Location = new System.Drawing.Point(357, 30);
             this.CalcAll.Name = "CalcAll";
             this.CalcAll.Size = new System.Drawing.Size(96, 23);
             this.CalcAll.TabIndex = 114;
@@ -1703,7 +1711,7 @@
             // 
             // CalcButt
             // 
-            this.CalcButt.Location = new System.Drawing.Point(9, 118);
+            this.CalcButt.Location = new System.Drawing.Point(112, 30);
             this.CalcButt.Name = "CalcButt";
             this.CalcButt.Size = new System.Drawing.Size(96, 23);
             this.CalcButt.TabIndex = 113;
@@ -1715,7 +1723,7 @@
             // 
             this.calcRawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcRawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcRawOut.Location = new System.Drawing.Point(111, 35);
+            this.calcRawOut.Location = new System.Drawing.Point(112, 77);
             this.calcRawOut.Name = "calcRawOut";
             this.calcRawOut.Size = new System.Drawing.Size(96, 20);
             this.calcRawOut.TabIndex = 112;
@@ -1725,7 +1733,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(108, 18);
+            this.label2.Location = new System.Drawing.Point(109, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 111;
@@ -1956,7 +1964,7 @@
             this.groupBox7.Controls.Add(this.MotionSort);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.NameSort);
-            this.groupBox7.Location = new System.Drawing.Point(323, 196);
+            this.groupBox7.Location = new System.Drawing.Point(12, 376);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(200, 104);
             this.groupBox7.TabIndex = 132;
@@ -2036,7 +2044,7 @@
             this.groupBox8.Controls.Add(this.modKitchen);
             this.groupBox8.Controls.Add(this.label34);
             this.groupBox8.Controls.Add(this.modArmor);
-            this.groupBox8.Location = new System.Drawing.Point(414, 438);
+            this.groupBox8.Location = new System.Drawing.Point(664, 12);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(365, 162);
             this.groupBox8.TabIndex = 133;
@@ -2051,7 +2059,6 @@
             this.RemoveAllButt.TabIndex = 15;
             this.RemoveAllButt.Text = "Remove All Mods";
             this.RemoveAllButt.UseVisualStyleBackColor = true;
-            this.RemoveAllButt.Click += new System.EventHandler(this.RemoveAllButt_Click);
             // 
             // OtherButt
             // 
@@ -2110,7 +2117,6 @@
             this.RemoveButt.TabIndex = 10;
             this.RemoveButt.Text = "Remove Selected Mod(s)";
             this.RemoveButt.UseVisualStyleBackColor = true;
-            this.RemoveButt.Click += new System.EventHandler(this.RemoveButt_Click);
             // 
             // ArmorButt
             // 
@@ -2181,156 +2187,282 @@
             // 
             // groupBox9
             // 
-            this.groupBox9.Controls.Add(this.dataGridView1);
-            this.groupBox9.Controls.Add(this.monsterList);
-            this.groupBox9.Location = new System.Drawing.Point(529, 12);
+            this.groupBox9.Controls.Add(this.monDragonBox);
+            this.groupBox9.Controls.Add(this.monIceBox);
+            this.groupBox9.Controls.Add(this.monThunderBox);
+            this.groupBox9.Controls.Add(this.monWaterBox);
+            this.groupBox9.Controls.Add(this.monFireBox);
+            this.groupBox9.Controls.Add(this.monQuestMod);
+            this.groupBox9.Controls.Add(this.label71);
+            this.groupBox9.Controls.Add(this.monDragon);
+            this.groupBox9.Controls.Add(this.label67);
+            this.groupBox9.Controls.Add(this.label68);
+            this.groupBox9.Controls.Add(this.monIce);
+            this.groupBox9.Controls.Add(this.monExh);
+            this.groupBox9.Controls.Add(this.label69);
+            this.groupBox9.Controls.Add(this.label70);
+            this.groupBox9.Controls.Add(this.monKO);
+            this.groupBox9.Controls.Add(this.monThunder);
+            this.groupBox9.Controls.Add(this.label64);
+            this.groupBox9.Controls.Add(this.monWater);
+            this.groupBox9.Controls.Add(this.label65);
+            this.groupBox9.Controls.Add(this.label66);
+            this.groupBox9.Controls.Add(this.monFire);
+            this.groupBox9.Controls.Add(this.monShot);
+            this.groupBox9.Controls.Add(this.label52);
+            this.groupBox9.Controls.Add(this.monImpact);
+            this.groupBox9.Controls.Add(this.label51);
+            this.groupBox9.Controls.Add(this.label49);
+            this.groupBox9.Controls.Add(this.monCut);
+            this.groupBox9.Location = new System.Drawing.Point(330, 196);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(680, 290);
+            this.groupBox9.Size = new System.Drawing.Size(388, 173);
             this.groupBox9.TabIndex = 134;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Monster Data:";
             // 
-            // dataGridView1
+            // monDragonBox
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.initCol,
-            this.incrCol,
-            this.maxCol});
-            this.dataGridView1.Location = new System.Drawing.Point(442, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(226, 265);
-            this.dataGridView1.TabIndex = 1;
+            this.monDragonBox.Location = new System.Drawing.Point(356, 116);
+            this.monDragonBox.Name = "monDragonBox";
+            this.monDragonBox.Size = new System.Drawing.Size(21, 21);
+            this.monDragonBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monDragonBox.TabIndex = 149;
+            this.monDragonBox.TabStop = false;
             // 
-            // initCol
+            // monIceBox
             // 
-            this.initCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.initCol.HeaderText = "Initial";
-            this.initCol.Name = "initCol";
-            this.initCol.ReadOnly = true;
-            this.initCol.Width = 56;
+            this.monIceBox.Location = new System.Drawing.Point(356, 90);
+            this.monIceBox.Name = "monIceBox";
+            this.monIceBox.Size = new System.Drawing.Size(21, 21);
+            this.monIceBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monIceBox.TabIndex = 148;
+            this.monIceBox.TabStop = false;
             // 
-            // incrCol
+            // monThunderBox
             // 
-            this.incrCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.incrCol.HeaderText = "Increase";
-            this.incrCol.Name = "incrCol";
-            this.incrCol.ReadOnly = true;
-            this.incrCol.Width = 73;
+            this.monThunderBox.Location = new System.Drawing.Point(356, 64);
+            this.monThunderBox.Name = "monThunderBox";
+            this.monThunderBox.Size = new System.Drawing.Size(21, 21);
+            this.monThunderBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monThunderBox.TabIndex = 147;
+            this.monThunderBox.TabStop = false;
             // 
-            // maxCol
+            // monWaterBox
             // 
-            this.maxCol.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.maxCol.HeaderText = "Max";
-            this.maxCol.Name = "maxCol";
-            this.maxCol.ReadOnly = true;
-            this.maxCol.Width = 52;
+            this.monWaterBox.Location = new System.Drawing.Point(356, 40);
+            this.monWaterBox.Name = "monWaterBox";
+            this.monWaterBox.Size = new System.Drawing.Size(21, 21);
+            this.monWaterBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monWaterBox.TabIndex = 146;
+            this.monWaterBox.TabStop = false;
             // 
-            // monsterList
+            // monFireBox
             // 
-            this.monsterList.AllowUserToAddRows = false;
-            this.monsterList.AllowUserToDeleteRows = false;
-            this.monsterList.AllowUserToResizeColumns = false;
-            this.monsterList.AllowUserToResizeRows = false;
-            this.monsterList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.monsterList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CheckCol,
-            this.nameCol,
-            this.cutCol,
-            this.impactCol,
-            this.shotCol,
-            this.fireCol,
-            this.waterCol,
-            this.thunderCol,
-            this.iceCol,
-            this.dragonCol,
-            this.KOCol,
-            this.exhaustCol});
-            this.monsterList.Location = new System.Drawing.Point(9, 19);
-            this.monsterList.MultiSelect = false;
-            this.monsterList.Name = "monsterList";
-            this.monsterList.RowHeadersVisible = false;
-            this.monsterList.Size = new System.Drawing.Size(432, 265);
-            this.monsterList.TabIndex = 0;
+            this.monFireBox.Location = new System.Drawing.Point(356, 14);
+            this.monFireBox.Name = "monFireBox";
+            this.monFireBox.Size = new System.Drawing.Size(21, 21);
+            this.monFireBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.monFireBox.TabIndex = 145;
+            this.monFireBox.TabStop = false;
             // 
-            // CheckCol
+            // monQuestMod
             // 
-            this.CheckCol.Frozen = true;
-            this.CheckCol.HeaderText = "";
-            this.CheckCol.Name = "CheckCol";
-            this.CheckCol.Width = 20;
+            this.monQuestMod.Location = new System.Drawing.Point(270, 143);
+            this.monQuestMod.Name = "monQuestMod";
+            this.monQuestMod.Size = new System.Drawing.Size(80, 20);
+            this.monQuestMod.TabIndex = 21;
+            this.monQuestMod.Text = "1.0";
+            this.monQuestMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // nameCol
+            // label71
             // 
-            this.nameCol.Frozen = true;
-            this.nameCol.HeaderText = "Name";
-            this.nameCol.Name = "nameCol";
-            this.nameCol.ReadOnly = true;
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(179, 146);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(62, 13);
+            this.label71.TabIndex = 20;
+            this.label71.Text = "Quest Mod:";
             // 
-            // cutCol
+            // monDragon
             // 
-            this.cutCol.HeaderText = "Cut";
-            this.cutCol.Name = "cutCol";
-            this.cutCol.ReadOnly = true;
+            this.monDragon.Location = new System.Drawing.Point(270, 117);
+            this.monDragon.Name = "monDragon";
+            this.monDragon.Size = new System.Drawing.Size(80, 20);
+            this.monDragon.TabIndex = 19;
+            this.monDragon.Text = "0";
+            this.monDragon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // impactCol
+            // label67
             // 
-            this.impactCol.HeaderText = "Impact";
-            this.impactCol.Name = "impactCol";
-            this.impactCol.ReadOnly = true;
+            this.label67.AutoSize = true;
+            this.label67.Location = new System.Drawing.Point(179, 120);
+            this.label67.Name = "label67";
+            this.label67.Size = new System.Drawing.Size(84, 13);
+            this.label67.TabIndex = 18;
+            this.label67.Text = "Dragon Hitzone:";
             // 
-            // shotCol
+            // label68
             // 
-            this.shotCol.HeaderText = "Shot";
-            this.shotCol.Name = "shotCol";
-            this.shotCol.ReadOnly = true;
+            this.label68.AutoSize = true;
+            this.label68.Location = new System.Drawing.Point(179, 94);
+            this.label68.Name = "label68";
+            this.label68.Size = new System.Drawing.Size(64, 13);
+            this.label68.TabIndex = 17;
+            this.label68.Text = "Ice Hitzone:";
             // 
-            // fireCol
+            // monIce
             // 
-            this.fireCol.HeaderText = "Fire";
-            this.fireCol.Name = "fireCol";
-            this.fireCol.ReadOnly = true;
+            this.monIce.Location = new System.Drawing.Point(270, 91);
+            this.monIce.Name = "monIce";
+            this.monIce.Size = new System.Drawing.Size(80, 20);
+            this.monIce.TabIndex = 16;
+            this.monIce.Text = "0";
+            this.monIce.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // waterCol
+            // monExh
             // 
-            this.waterCol.HeaderText = "Water";
-            this.waterCol.Name = "waterCol";
-            this.waterCol.ReadOnly = true;
+            this.monExh.Location = new System.Drawing.Point(94, 118);
+            this.monExh.Name = "monExh";
+            this.monExh.Size = new System.Drawing.Size(80, 20);
+            this.monExh.TabIndex = 15;
+            this.monExh.Text = "0";
+            this.monExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // thunderCol
+            // label69
             // 
-            this.thunderCol.HeaderText = "Thunder";
-            this.thunderCol.Name = "thunderCol";
-            this.thunderCol.ReadOnly = true;
+            this.label69.AutoSize = true;
+            this.label69.Location = new System.Drawing.Point(8, 120);
+            this.label69.Name = "label69";
+            this.label69.Size = new System.Drawing.Size(87, 13);
+            this.label69.TabIndex = 14;
+            this.label69.Text = "Exhaust Hitzone:";
             // 
-            // iceCol
+            // label70
             // 
-            this.iceCol.HeaderText = "Ice";
-            this.iceCol.Name = "iceCol";
-            this.iceCol.ReadOnly = true;
+            this.label70.AutoSize = true;
+            this.label70.Location = new System.Drawing.Point(8, 94);
+            this.label70.Name = "label70";
+            this.label70.Size = new System.Drawing.Size(64, 13);
+            this.label70.TabIndex = 13;
+            this.label70.Text = "KO Hitzone:";
             // 
-            // dragonCol
+            // monKO
             // 
-            this.dragonCol.HeaderText = "Dragon";
-            this.dragonCol.Name = "dragonCol";
-            this.dragonCol.ReadOnly = true;
+            this.monKO.Location = new System.Drawing.Point(94, 92);
+            this.monKO.Name = "monKO";
+            this.monKO.Size = new System.Drawing.Size(80, 20);
+            this.monKO.TabIndex = 12;
+            this.monKO.Text = "0";
+            this.monKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // KOCol
+            // monThunder
             // 
-            this.KOCol.HeaderText = "KO";
-            this.KOCol.Name = "KOCol";
-            this.KOCol.ReadOnly = true;
+            this.monThunder.Location = new System.Drawing.Point(270, 65);
+            this.monThunder.Name = "monThunder";
+            this.monThunder.Size = new System.Drawing.Size(80, 20);
+            this.monThunder.TabIndex = 11;
+            this.monThunder.Text = "0";
+            this.monThunder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // exhaustCol
+            // label64
             // 
-            this.exhaustCol.HeaderText = "Exhaust";
-            this.exhaustCol.Name = "exhaustCol";
-            this.exhaustCol.ReadOnly = true;
+            this.label64.AutoSize = true;
+            this.label64.Location = new System.Drawing.Point(179, 68);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(91, 13);
+            this.label64.TabIndex = 10;
+            this.label64.Text = "Thunder Element:";
+            // 
+            // monWater
+            // 
+            this.monWater.Location = new System.Drawing.Point(270, 39);
+            this.monWater.Name = "monWater";
+            this.monWater.Size = new System.Drawing.Size(80, 20);
+            this.monWater.TabIndex = 9;
+            this.monWater.Text = "0";
+            this.monWater.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label65
+            // 
+            this.label65.AutoSize = true;
+            this.label65.Location = new System.Drawing.Point(179, 42);
+            this.label65.Name = "label65";
+            this.label65.Size = new System.Drawing.Size(78, 13);
+            this.label65.TabIndex = 8;
+            this.label65.Text = "Water Hitzone:";
+            // 
+            // label66
+            // 
+            this.label66.AutoSize = true;
+            this.label66.Location = new System.Drawing.Point(179, 16);
+            this.label66.Name = "label66";
+            this.label66.Size = new System.Drawing.Size(66, 13);
+            this.label66.TabIndex = 7;
+            this.label66.Text = "Fire Hitzone:";
+            // 
+            // monFire
+            // 
+            this.monFire.Location = new System.Drawing.Point(270, 13);
+            this.monFire.Name = "monFire";
+            this.monFire.Size = new System.Drawing.Size(80, 20);
+            this.monFire.TabIndex = 6;
+            this.monFire.Text = "0";
+            this.monFire.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // monShot
+            // 
+            this.monShot.Location = new System.Drawing.Point(94, 66);
+            this.monShot.Name = "monShot";
+            this.monShot.Size = new System.Drawing.Size(80, 20);
+            this.monShot.TabIndex = 5;
+            this.monShot.Text = "0";
+            this.monShot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(8, 68);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(71, 13);
+            this.label52.TabIndex = 4;
+            this.label52.Text = "Shot Hitzone:";
+            // 
+            // monImpact
+            // 
+            this.monImpact.Location = new System.Drawing.Point(94, 40);
+            this.monImpact.Name = "monImpact";
+            this.monImpact.Size = new System.Drawing.Size(80, 20);
+            this.monImpact.TabIndex = 3;
+            this.monImpact.Text = "0";
+            this.monImpact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(8, 42);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(81, 13);
+            this.label51.TabIndex = 2;
+            this.label51.Text = "Impact Hitzone:";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(8, 16);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(65, 13);
+            this.label49.TabIndex = 1;
+            this.label49.Text = "Cut Hitzone:";
+            // 
+            // monCut
+            // 
+            this.monCut.Location = new System.Drawing.Point(94, 14);
+            this.monCut.Name = "monCut";
+            this.monCut.Size = new System.Drawing.Size(80, 20);
+            this.monCut.TabIndex = 0;
+            this.monCut.Text = "0";
+            this.monCut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // groupBox10
             // 
@@ -2340,7 +2472,7 @@
             this.groupBox10.Controls.Add(this.monHitzone);
             this.groupBox10.Controls.Add(this.label78);
             this.groupBox10.Controls.Add(this.monName);
-            this.groupBox10.Location = new System.Drawing.Point(426, 318);
+            this.groupBox10.Location = new System.Drawing.Point(330, 375);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(235, 106);
             this.groupBox10.TabIndex = 135;
@@ -2362,8 +2494,26 @@
             this.monQuest.FormattingEnabled = true;
             this.monQuest.Location = new System.Drawing.Point(89, 69);
             this.monQuest.Name = "monQuest";
-            this.monQuest.Size = new System.Drawing.Size(116, 21);
+            this.monQuest.Size = new System.Drawing.Size(129, 21);
             this.monQuest.TabIndex = 133;
+            // 
+            // label77
+            // 
+            this.label77.AutoSize = true;
+            this.label77.Location = new System.Drawing.Point(6, 48);
+            this.label77.Name = "label77";
+            this.label77.Size = new System.Drawing.Size(77, 13);
+            this.label77.TabIndex = 3;
+            this.label77.Text = "Hitzone Name:";
+            // 
+            // monHitzone
+            // 
+            this.monHitzone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monHitzone.FormattingEnabled = true;
+            this.monHitzone.Location = new System.Drawing.Point(89, 42);
+            this.monHitzone.Name = "monHitzone";
+            this.monHitzone.Size = new System.Drawing.Size(129, 21);
+            this.monHitzone.TabIndex = 2;
             // 
             // label78
             // 
@@ -2380,15 +2530,11 @@
             this.monName.FormattingEnabled = true;
             this.monName.Location = new System.Drawing.Point(89, 14);
             this.monName.Name = "monName";
-            this.monName.Size = new System.Drawing.Size(116, 21);
+            this.monName.Size = new System.Drawing.Size(129, 21);
             this.monName.TabIndex = 0;
             // 
             // modList
             // 
-            this.modList.CheckBoxes = true;
-            this.modList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.modColumn});
-            this.modList.GridLines = true;
             listViewGroup1.Header = "Armor Skills:";
             listViewGroup1.Name = "armorGroup";
             listViewGroup2.Header = "Item/Bistro Skills:";
@@ -2402,41 +2548,18 @@
             listViewGroup2,
             listViewGroup3,
             listViewGroup4});
-            this.modList.Location = new System.Drawing.Point(805, 308);
+            this.modList.Location = new System.Drawing.Point(724, 180);
             this.modList.Name = "modList";
-            this.modList.Size = new System.Drawing.Size(305, 354);
+            this.modList.Size = new System.Drawing.Size(305, 301);
             this.modList.TabIndex = 136;
             this.modList.UseCompatibleStateImageBehavior = false;
-            this.modList.View = System.Windows.Forms.View.Details;
-            // 
-            // modColumn
-            // 
-            this.modColumn.Text = "All Modifiers:";
-            this.modColumn.Width = 301;
-            // 
-            // monHitzone
-            // 
-            this.monHitzone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.monHitzone.FormattingEnabled = true;
-            this.monHitzone.Location = new System.Drawing.Point(89, 42);
-            this.monHitzone.Name = "monHitzone";
-            this.monHitzone.Size = new System.Drawing.Size(116, 21);
-            this.monHitzone.TabIndex = 2;
-            // 
-            // label77
-            // 
-            this.label77.AutoSize = true;
-            this.label77.Location = new System.Drawing.Point(6, 48);
-            this.label77.Name = "label77";
-            this.label77.Size = new System.Drawing.Size(77, 13);
-            this.label77.TabIndex = 3;
-            this.label77.Text = "Hitzone Name:";
+            this.modList.View = System.Windows.Forms.View.List;
             // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1426, 825);
+            this.ClientSize = new System.Drawing.Size(1041, 783);
             this.Controls.Add(this.modList);
             this.Controls.Add(this.groupBox10);
             this.Controls.Add(this.groupBox9);
@@ -2449,7 +2572,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "DmgCalculator";
-            this.Text = "Awesomeosity\'s Damage Calculator - Power, Leadership, Strategy (Beta vers.)";
+            this.Text = "Awesomeosity\'s Damage Calculator (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -2478,8 +2601,12 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.monsterList)).EndInit();
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monDragonBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monIceBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monThunderBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monWaterBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monFireBox)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
@@ -2622,6 +2749,12 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.ComboBox modOther;
         private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.TextBox monCut;
+        private System.Windows.Forms.TextBox monShot;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox monImpact;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.ComboBox moveDamType;
         private System.Windows.Forms.CheckBox paraBoost;
@@ -2647,6 +2780,27 @@
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.TextBox paraSecHitzone;
+        private System.Windows.Forms.TextBox monQuestMod;
+        private System.Windows.Forms.Label label71;
+        private System.Windows.Forms.TextBox monDragon;
+        private System.Windows.Forms.Label label67;
+        private System.Windows.Forms.Label label68;
+        private System.Windows.Forms.TextBox monIce;
+        private System.Windows.Forms.TextBox monExh;
+        private System.Windows.Forms.Label label69;
+        private System.Windows.Forms.Label label70;
+        private System.Windows.Forms.TextBox monKO;
+        private System.Windows.Forms.TextBox monThunder;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox monWater;
+        private System.Windows.Forms.Label label65;
+        private System.Windows.Forms.Label label66;
+        private System.Windows.Forms.TextBox monFire;
+        private System.Windows.Forms.PictureBox monDragonBox;
+        private System.Windows.Forms.PictureBox monIceBox;
+        private System.Windows.Forms.PictureBox monThunderBox;
+        private System.Windows.Forms.PictureBox monWaterBox;
+        private System.Windows.Forms.PictureBox monFireBox;
         private System.Windows.Forms.ComboBox weapSecType;
         private System.Windows.Forms.Label label75;
         private System.Windows.Forms.TextBox weapSecPower;
@@ -2661,6 +2815,8 @@
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.Label label72;
         private System.Windows.Forms.ComboBox monQuest;
+        private System.Windows.Forms.Label label77;
+        private System.Windows.Forms.ComboBox monHitzone;
         private System.Windows.Forms.Label label78;
         private System.Windows.Forms.ComboBox monName;
         private System.Windows.Forms.CheckBox moveMinds;
@@ -2671,26 +2827,6 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox moveEleMod;
         private System.Windows.Forms.ListView modList;
-        private System.Windows.Forms.ColumnHeader modColumn;
-        private System.Windows.Forms.DataGridView monsterList;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CheckCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cutCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impactCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn shotCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fireCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn waterCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thunderCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iceCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dragonCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn KOCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn exhaustCol;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn initCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn incrCol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn maxCol;
-        private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.ComboBox monHitzone;
     }
 }
 
