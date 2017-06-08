@@ -125,6 +125,35 @@ namespace YADC_MHGen_
             public double dragonZone;
             public double KOZone;
             public double exhaustZone;
+
+            /// <summary>
+            /// Constructor for a single hitzone's stats
+            /// </summary>
+            /// <param name="_name">Name of the hitzone.</param>
+            /// <param name="_cutZone">Cutting zone value.</param>
+            /// <param name="_impactZone">Impact zone value.</param>
+            /// <param name="_shotZone">Shot zone value.</param>
+            /// <param name="_fireZone">Fire Zone value.</param>
+            /// <param name="_waterZone">Water zone value.</param>
+            /// <param name="_thunderZone">Thunder zone value.</param>
+            /// <param name="_iceZone">Ice zone value.</param>
+            /// <param name="_dragonZone">Dragon zone value.</param>
+            /// <param name="_KOZone">KO zone value.</param>
+            /// <param name="_exhaustZone">Exhaust zone value.</param>
+            public hitzoneStats(string _name, double _cutZone, double _impactZone, double _shotZone, double _fireZone, double _waterZone, double _thunderZone, double _iceZone, double _dragonZone, double _KOZone, double _exhaustZone)
+            {
+                name = _name;
+                cutZone = _cutZone;
+                impactZone = _impactZone;
+                shotZone = _shotZone;
+                fireZone = _fireZone;
+                waterZone = _waterZone;
+                thunderZone = _thunderZone;
+                iceZone = _iceZone;
+                dragonZone = _dragonZone;
+                KOZone = _KOZone;
+                exhaustZone = _exhaustZone;
+            }
         }
 
         public struct questStat
@@ -133,6 +162,12 @@ namespace YADC_MHGen_
             public double questMod;
             public double exhaustMod;
 
+            /// <summary>
+            /// Quest statistics
+            /// </summary>
+            /// <param name="_name">Name of the quest</param>
+            /// <param name="_questMod">Quest modifier (Defense modifier)</param>
+            /// <param name="_exhaustMod">Exhaust modifier</param>
             public questStat(string _name, double _questMod, double _exhaustMod)
             {
                 name = _name;
@@ -181,6 +216,9 @@ namespace YADC_MHGen_
             public monsterStat(string _name)
             {
                 name = _name;
+                hitzones = new List<hitzoneStats>();
+                quests = new List<questStat>();
+                status = new monsterStatusThresholds();
             }
         }
 
@@ -728,7 +766,7 @@ namespace YADC_MHGen_
         {
             if (weapOverride.Checked)
             {
-                fillMoves(weapType.SelectedText, weapSecType.SelectedText);
+                fillMoves((string)weapType.SelectedItem, (string)weapSecType.SelectedItem);
             }
             else
             {
@@ -852,6 +890,56 @@ namespace YADC_MHGen_
             foreach (ListViewItem item in modList.Items)
             {
                 modList.Items.Remove(item);
+            }
+        }
+
+        private void monName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            monHitzone.Items.Clear();
+
+            foreach(hitzoneStats zones in monsterStats[(string)(((ComboBox)sender).SelectedItem)].hitzones)
+            {
+                monHitzone.Items.Add(zones.name);
+            }
+
+            monQuest.Items.Clear();
+
+            foreach(questStat quests in monsterStats[(string)(((ComboBox)sender).SelectedItem)].quests)
+            {
+                monQuest.Items.Add(quests.name);
+            }
+        }
+
+        private void monHitzone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string zoneName = (string)((ComboBox)sender).SelectedItem;
+            foreach(hitzoneStats hitzone in monsterStats[(string)monName.SelectedItem].hitzones)
+            {
+                if (hitzone.name == zoneName)
+                {
+                    monCut.Text = hitzone.cutZone.ToString();
+                    monImpact.Text = hitzone.impactZone.ToString();
+                    monShot.Text = hitzone.shotZone.ToString();
+                    monKO.Text = hitzone.KOZone.ToString();
+                    monExh.Text = hitzone.exhaustZone.ToString();
+                    monFire.Text = hitzone.fireZone.ToString();
+                    monWater.Text = hitzone.waterZone.ToString();
+                    monThunder.Text = hitzone.thunderZone.ToString();
+                    monIce.Text = hitzone.iceZone.ToString();
+                    monDragon.Text = hitzone.dragonZone.ToString();
+                }
+            }
+        }
+
+        private void monQuest_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string questName = (string)((ComboBox)sender).SelectedItem;
+            foreach (questStat quest in monsterStats[(string)monName.SelectedItem].quests)
+            {
+                if (quest.name == questName)
+                {
+                    monQuestMod.Text = quest.questMod.ToString();
+                }
             }
         }
 
@@ -1143,15 +1231,6 @@ namespace YADC_MHGen_
         private bool isStatus(string element)
         {
             if (element == "Poison" || element == "Para" || element == "Sleep")
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool isNotElement(string element)
-        {
-            if (element == "poison" || element == "sleep" || element == "para" || element == "KOThresh" || element == "exhaust" || element == "blast")
             {
                 return true;
             }
@@ -1698,6 +1777,8 @@ namespace YADC_MHGen_
                     monsterFile.Replace('_', ' ');
                 }
 
+                monName.Items.Add(monsterFile);
+
                 monsterStat thisStat = new monsterStat(monsterFile);
                 monsterStats.Add(monsterFile, thisStat);
 
@@ -1711,17 +1792,221 @@ namespace YADC_MHGen_
                     {
                         if (reader.Name == "hitzone" && reader.NodeType != XmlNodeType.EndElement)
                         {
-                            
+                            string name = reader.GetAttribute("name");
+                            reader.Read(); //cut tag
+                            reader.Read(); //cut double
+
+                            double cut = double.Parse(reader.Value);
+                            reader.Read(); //end cut
+                            reader.Read(); //impact tag
+                            reader.Read(); //impact double
+
+                            double impact = double.Parse(reader.Value);
+                            reader.Read(); //end impact
+                            reader.Read(); //shot tag
+                            reader.Read(); //shot double
+
+                            double shot = double.Parse(reader.Value);
+                            reader.Read(); //end shot
+                            reader.Read(); //KO tag
+                            reader.Read(); //KO double
+
+                            double KO = double.Parse(reader.Value);
+                            reader.Read(); //end KO
+                            reader.Read(); //exhaust tag
+                            reader.Read(); //exhaust double
+
+                            double exhaust = double.Parse(reader.Value);
+                            reader.Read(); //end exhaust
+                            reader.Read(); //fire tag
+                            reader.Read(); //fire double
+
+                            double fire = double.Parse(reader.Value);
+                            reader.Read(); //end fire
+                            reader.Read(); //water tag
+                            reader.Read(); //water double
+
+                            double water = double.Parse(reader.Value);
+                            reader.Read(); //end water
+                            reader.Read(); //thunder tag
+                            reader.Read(); //thunder double
+
+                            double thunder = double.Parse(reader.Value);
+                            reader.Read(); //end thunder
+                            reader.Read(); //ice tag
+                            reader.Read(); //ice double
+
+                            double ice = double.Parse(reader.Value);
+                            reader.Read(); //end ice
+                            reader.Read(); //dragon tag
+                            reader.Read(); //dragon double
+
+                            double dragon = double.Parse(reader.Value);
+                            reader.Read(); //end dragon
+                            reader.Read(); //end hitzone
+
+                            hitzoneStats hitzone = new hitzoneStats(name, cut, impact, shot, fire, water, thunder, ice, dragon, KO, exhaust);
+                            thisStat.hitzones.Add(hitzone);
                         }
 
-                        else if(reader.Name == "quests" && reader.NodeType != XmlNodeType.EndElement)
+                        else if(reader.Name == "quest" && reader.NodeType != XmlNodeType.EndElement)
                         {
+                            reader.Read(); //name tag
+                            reader.Read(); //name string
 
+                            string name = reader.Value;
+                            reader.Read(); //end name
+                            reader.Read(); //quest tag
+                            reader.Read(); //quest double
+
+                            double questMod = double.Parse(reader.Value);
+                            reader.Read(); //end quest
+                            reader.Read(); //exhaust tag
+                            reader.Read(); //exhaust double
+
+                            double exhaustMod = double.Parse(reader.Value);
+                            reader.Read(); //end exhaust
+                            reader.Read(); //end quest
+
+                            questStat status = new questStat();
+                            status.name = name;
+                            status.questMod = questMod;
+                            status.exhaustMod = exhaustMod;
+
+                            thisStat.quests.Add(status);
                         }
 
-                        else if(isNotElement(reader.Value) && reader.NodeType != XmlNodeType.EndElement)
+                        else if(reader.Name == "status" && reader.NodeType != XmlNodeType.EndElement)
                         {
+                            monsterStatusThresholds thresh = new monsterStatusThresholds();
 
+                            reader.Read(); //poison tag
+                            reader.Read(); //init
+                            reader.Read(); //init double
+
+                            double poisonInit = double.Parse(reader.Value);
+                            thresh.poisonInit = poisonInit;
+                            reader.Read(); //end init
+                            reader.Read(); //increase tag
+                            reader.Read(); //increase double
+
+                            double poisonInc = double.Parse(reader.Value);
+                            thresh.poisonInc = poisonInc;
+                            reader.Read(); //end increase
+                            reader.Read(); //max tag
+                            reader.Read(); //max double
+
+                            double poisonMax = double.Parse(reader.Value);
+                            thresh.poisonMax = poisonMax;
+                            reader.Read(); //end max
+                            reader.Read(); //end poison
+
+                            reader.Read(); //sleep tag
+                            reader.Read(); //init
+                            reader.Read(); //init double
+
+                            double sleepInit = double.Parse(reader.Value);
+                            thresh.sleepInit = sleepInit;
+                            reader.Read(); //end init
+                            reader.Read(); //increase tag
+                            reader.Read(); //increase double
+
+                            double sleepInc = double.Parse(reader.Value);
+                            thresh.sleepInc = sleepInc;
+                            reader.Read(); //end increase
+                            reader.Read(); //max tag
+                            reader.Read(); //max double
+
+                            double sleepMax = double.Parse(reader.Value);
+                            thresh.sleepMax = sleepMax;
+                            reader.Read(); //end max
+                            reader.Read(); //end sleep
+
+                            reader.Read(); //para tag
+                            reader.Read(); //init
+                            reader.Read(); //init double
+
+                            double paraInit = double.Parse(reader.Value);
+                            thresh.paraInit = paraInit;
+                            reader.Read(); //end init
+                            reader.Read(); //increase tag
+                            reader.Read(); //increase double
+
+                            double paraInc = double.Parse(reader.Value);
+                            thresh.paraInc = paraInc;
+                            reader.Read(); //end increase
+                            reader.Read(); //max tag
+                            reader.Read(); //max double
+
+                            double paraMax = double.Parse(reader.Value);
+                            thresh.paraMax = paraMax;
+                            reader.Read(); //end max
+                            reader.Read(); //end para
+
+                            reader.Read(); //KO tag
+                            reader.Read(); //init
+                            reader.Read(); //init double
+
+                            double KOInit = double.Parse(reader.Value);
+                            thresh.KOInit = KOInit;
+                            reader.Read(); //end init
+                            reader.Read(); //increase tag
+                            reader.Read(); //increase double
+
+                            double KOInc = double.Parse(reader.Value);
+                            thresh.KOInc = KOInc;
+                            reader.Read(); //end increase
+                            reader.Read(); //max tag
+                            reader.Read(); //max double
+
+                            double KOMax = double.Parse(reader.Value);
+                            thresh.KOMax = KOMax;
+                            reader.Read(); //end max
+                            reader.Read(); //end KO
+
+                            reader.Read(); //exhaust tag
+                            reader.Read(); //init
+                            reader.Read(); //init double
+
+                            double exhaustInit = double.Parse(reader.Value);
+                            thresh.exhaustInit = exhaustInit;
+                            reader.Read(); //end init
+                            reader.Read(); //increase tag
+                            reader.Read(); //increase double
+
+                            double exhaustInc = double.Parse(reader.Value);
+                            thresh.exhaustInc = exhaustInc;
+                            reader.Read(); //end increase
+                            reader.Read(); //max tag
+                            reader.Read(); //max double
+
+                            double exhaustMax = double.Parse(reader.Value);
+                            thresh.exhaustMax = exhaustMax;
+                            reader.Read(); //end max
+                            reader.Read(); //end exhaust
+
+                            reader.Read(); //blast tag
+                            reader.Read(); //init
+                            reader.Read(); //init double
+
+                            double blastInit = double.Parse(reader.Value);
+                            thresh.blastInit = blastInit;
+                            reader.Read(); //end init
+                            reader.Read(); //increase tag
+                            reader.Read(); //increase double
+
+                            double blastInc = double.Parse(reader.Value);
+                            thresh.blastInc = blastInc;
+                            reader.Read(); //end increase
+                            reader.Read(); //max tag
+                            reader.Read(); //max double
+
+                            double blastMax = double.Parse(reader.Value);
+                            thresh.blastMax = blastMax;
+                            reader.Read(); //end max
+                            reader.Read(); //end blast
+
+                            thisStat.status = thresh;
                         }
                     }
                 }

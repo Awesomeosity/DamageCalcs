@@ -126,18 +126,18 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label105 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.label105 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.textBox40 = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label63 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.paraMonStat = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.calcFinalSecBox = new System.Windows.Forms.PictureBox();
             this.calcFinalSec = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
@@ -223,9 +223,7 @@
             this.monImpact = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
             this.monShot = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
             this.monFire = new System.Windows.Forms.TextBox();
-            this.label84 = new System.Windows.Forms.Label();
             this.label66 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.monWater = new System.Windows.Forms.TextBox();
@@ -239,8 +237,6 @@
             this.label68 = new System.Windows.Forms.Label();
             this.label67 = new System.Windows.Forms.Label();
             this.monDragon = new System.Windows.Forms.TextBox();
-            this.label71 = new System.Windows.Forms.Label();
-            this.monQuestMod = new System.Windows.Forms.TextBox();
             this.monFireBox = new System.Windows.Forms.PictureBox();
             this.monWaterBox = new System.Windows.Forms.PictureBox();
             this.monThunderBox = new System.Windows.Forms.PictureBox();
@@ -255,6 +251,10 @@
             this.monHitzone = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
             this.monName = new System.Windows.Forms.ComboBox();
+            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.monQuestMod = new System.Windows.Forms.TextBox();
+            this.label71 = new System.Windows.Forms.Label();
+            this.label84 = new System.Windows.Forms.Label();
             this.label000 = new System.Windows.Forms.Label();
             this.label107 = new System.Windows.Forms.Label();
             this.label106 = new System.Windows.Forms.Label();
@@ -1293,23 +1293,16 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
             // 
-            // label105
+            // button3
             // 
-            this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(110, 132);
-            this.label105.Name = "label105";
-            this.label105.Size = new System.Drawing.Size(72, 13);
-            this.label105.TabIndex = 176;
-            this.label105.Text = "Exhaust Mod:";
-            // 
-            // textBox40
-            // 
-            this.textBox40.Location = new System.Drawing.Point(113, 148);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(96, 20);
-            this.textBox40.TabIndex = 176;
-            this.textBox40.Text = "1.0";
-            this.textBox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(215, 147);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(107, 23);
+            this.button3.TabIndex = 141;
+            this.button3.Text = "Status Calculations";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             // 
             // label12
             // 
@@ -1320,6 +1313,15 @@
             this.label12.TabIndex = 112;
             this.label12.Text = "2nd. Ele. Hitzone:";
             // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(110, 132);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(72, 13);
+            this.label105.TabIndex = 176;
+            this.label105.Text = "Exhaust Mod:";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -1329,6 +1331,15 @@
             this.label13.TabIndex = 104;
             this.label13.Text = "Hitzone Value:";
             // 
+            // textBox40
+            // 
+            this.textBox40.Location = new System.Drawing.Point(113, 148);
+            this.textBox40.Name = "textBox40";
+            this.textBox40.Size = new System.Drawing.Size(96, 20);
+            this.textBox40.TabIndex = 176;
+            this.textBox40.Text = "1.0";
+            this.textBox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label28
             // 
             this.label28.AutoSize = true;
@@ -1337,24 +1348,6 @@
             this.label28.Size = new System.Drawing.Size(117, 13);
             this.label28.TabIndex = 110;
             this.label28.Text = "Exhaust Hitzone Value:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(108, 15);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(94, 13);
-            this.label29.TabIndex = 108;
-            this.label29.Text = "KO Hitzone Value:";
-            // 
-            // label63
-            // 
-            this.label63.AutoSize = true;
-            this.label63.Location = new System.Drawing.Point(6, 55);
-            this.label63.Name = "label63";
-            this.label63.Size = new System.Drawing.Size(97, 13);
-            this.label63.TabIndex = 106;
-            this.label63.Text = "Ele. Hitzone Value:";
             // 
             // label10
             // 
@@ -1388,6 +1381,24 @@
             this.label14.Size = new System.Drawing.Size(62, 13);
             this.label14.TabIndex = 83;
             this.label14.Text = "Quest Mod:";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Location = new System.Drawing.Point(6, 55);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(97, 13);
+            this.label63.TabIndex = 106;
+            this.label63.Text = "Ele. Hitzone Value:";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(108, 15);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(94, 13);
+            this.label29.TabIndex = 108;
+            this.label29.Text = "KO Hitzone Value:";
             // 
             // groupBox5
             // 
@@ -1431,16 +1442,6 @@
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(215, 147);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 23);
-            this.button3.TabIndex = 141;
-            this.button3.Text = "Status Calculations";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // calcFinalSecBox
             // 
@@ -2352,15 +2353,6 @@
             this.monShot.Text = "0";
             this.monShot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox19
-            // 
-            this.textBox19.Location = new System.Drawing.Point(274, 165);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(80, 20);
-            this.textBox19.TabIndex = 175;
-            this.textBox19.Text = "1.0";
-            this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // monFire
             // 
             this.monFire.Location = new System.Drawing.Point(268, 13);
@@ -2369,15 +2361,6 @@
             this.monFire.TabIndex = 6;
             this.monFire.Text = "0";
             this.monFire.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(184, 168);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(72, 13);
-            this.label84.TabIndex = 174;
-            this.label84.Text = "Exhaust Mod:";
             // 
             // label66
             // 
@@ -2496,24 +2479,6 @@
             this.monDragon.Text = "0";
             this.monDragon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label71
-            // 
-            this.label71.AutoSize = true;
-            this.label71.Location = new System.Drawing.Point(10, 167);
-            this.label71.Name = "label71";
-            this.label71.Size = new System.Drawing.Size(62, 13);
-            this.label71.TabIndex = 20;
-            this.label71.Text = "Quest Mod:";
-            // 
-            // monQuestMod
-            // 
-            this.monQuestMod.Location = new System.Drawing.Point(98, 163);
-            this.monQuestMod.Name = "monQuestMod";
-            this.monQuestMod.Size = new System.Drawing.Size(80, 20);
-            this.monQuestMod.TabIndex = 21;
-            this.monQuestMod.Text = "1.0";
-            this.monQuestMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
             // monFireBox
             // 
             this.monFireBox.Location = new System.Drawing.Point(354, 14);
@@ -2569,20 +2534,22 @@
             "Hitzone 3",
             "Hitzone 4",
             "Hitzone 5"});
-            this.comboBox1.Location = new System.Drawing.Point(234, 222);
+            this.comboBox1.Location = new System.Drawing.Point(298, 219);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(105, 21);
             this.comboBox1.TabIndex = 177;
+            this.comboBox1.Visible = false;
             // 
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(234, 193);
+            this.button1.Location = new System.Drawing.Point(298, 190);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 176;
             this.button1.Text = "Add Data to:";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // groupBox10
             // 
@@ -2594,7 +2561,7 @@
             this.groupBox10.Controls.Add(this.monName);
             this.groupBox10.Location = new System.Drawing.Point(6, 185);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(222, 97);
+            this.groupBox10.Size = new System.Drawing.Size(286, 97);
             this.groupBox10.TabIndex = 135;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Monster Search";
@@ -2611,11 +2578,13 @@
             // monQuest
             // 
             this.monQuest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.monQuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monQuest.FormattingEnabled = true;
             this.monQuest.Location = new System.Drawing.Point(88, 69);
             this.monQuest.Name = "monQuest";
-            this.monQuest.Size = new System.Drawing.Size(129, 21);
+            this.monQuest.Size = new System.Drawing.Size(180, 20);
             this.monQuest.TabIndex = 133;
+            this.monQuest.SelectedIndexChanged += new System.EventHandler(this.monQuest_SelectedIndexChanged);
             // 
             // label77
             // 
@@ -2634,6 +2603,7 @@
             this.monHitzone.Name = "monHitzone";
             this.monHitzone.Size = new System.Drawing.Size(129, 21);
             this.monHitzone.TabIndex = 2;
+            this.monHitzone.SelectedIndexChanged += new System.EventHandler(this.monHitzone_SelectedIndexChanged);
             // 
             // label78
             // 
@@ -2652,6 +2622,47 @@
             this.monName.Name = "monName";
             this.monName.Size = new System.Drawing.Size(129, 21);
             this.monName.TabIndex = 0;
+            this.monName.SelectedIndexChanged += new System.EventHandler(this.monName_SelectedIndexChanged);
+            // 
+            // textBox19
+            // 
+            this.textBox19.Enabled = false;
+            this.textBox19.Location = new System.Drawing.Point(274, 165);
+            this.textBox19.Name = "textBox19";
+            this.textBox19.Size = new System.Drawing.Size(80, 20);
+            this.textBox19.TabIndex = 175;
+            this.textBox19.Text = "1.0";
+            this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox19.Visible = false;
+            // 
+            // monQuestMod
+            // 
+            this.monQuestMod.Location = new System.Drawing.Point(98, 163);
+            this.monQuestMod.Name = "monQuestMod";
+            this.monQuestMod.Size = new System.Drawing.Size(80, 20);
+            this.monQuestMod.TabIndex = 21;
+            this.monQuestMod.Text = "1.0";
+            this.monQuestMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label71
+            // 
+            this.label71.AutoSize = true;
+            this.label71.Location = new System.Drawing.Point(10, 167);
+            this.label71.Name = "label71";
+            this.label71.Size = new System.Drawing.Size(62, 13);
+            this.label71.TabIndex = 20;
+            this.label71.Text = "Quest Mod:";
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Enabled = false;
+            this.label84.Location = new System.Drawing.Point(184, 168);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(72, 13);
+            this.label84.TabIndex = 174;
+            this.label84.Text = "Exhaust Mod:";
+            this.label84.Visible = false;
             // 
             // label000
             // 
