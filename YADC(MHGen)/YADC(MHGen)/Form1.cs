@@ -243,12 +243,12 @@ namespace YADC_MHGen_
             public double exhaustPower;
             public bool criticalBoost;
             public bool mindsEye;
-            public bool fixedDamage;
+            public string damageType;
             public string eleCrit;
             public bool statusCrit;
 
             public string secElement;
-            public float secPower;
+            public double secPower;
 
             public double hitzone;
             public double eleHitzone;
@@ -280,6 +280,8 @@ namespace YADC_MHGen_
         Dictionary<string, monsterStat> monsterStats = new Dictionary<string, monsterStat>();
 
         importedStats weaponAndMods = new importedStats(); //Will be used later. Required to be global for the modifier methods.
+
+        string secondType;
 
         /// <summary>
         /// Called when initializing the form.
@@ -779,62 +781,74 @@ namespace YADC_MHGen_
             int index = ((ComboBox)sender).SelectedIndex;
             if (index == 0)
             {
+                secondType = "None";
                 weapSecBox.Image = null;
                 weapOverride.Checked = false;
                 weapOverride.Enabled = false;
             }
-            else if (index == 10 || index == 11 || index == 12 || index == 13 || index == 14 || index == 15 || index == 16 || index == 17 || index == 18 || index == 19 || index == 20 || index == 21)
-            {
-                weapSecBox.Image = null;
-            }
+            //else if ()
+            //{
+            //    weapSecBox.Image = null;
+            //}
 
-            else if (index == 1 || index == 27 || index == 28 || index == 29 || index == 30)
+            else if (index == 1 || index == 27 || index == 28 || index == 29 || index == 30 || index == 10 || index == 11 || index == 12 || index == 13 || index == 14 || index == 15 || index == 16 || index == 17 || index == 18 || index == 19 || index == 20 || index == 21)
             {
+                secondType = "Fire";
                 weapSecBox.Load(str2image["Fire"]);
             }
 
             else if (index == 2 || index == 31 || index == 32 || index == 33 || index == 34)
             {
+                secondType = "Water";
                 weapSecBox.Load(str2image["Water"]);
             }
 
             else if (index == 3 || index == 39 || index == 40 || index == 41 || index == 42)
             {
+                secondType = "Ice";
                 weapSecBox.Load(str2image["Ice"]);
             }
 
             else if (index == 4 || index == 35 || index == 36 || index == 37 || index == 38)
             {
+                secondType = "Thunder";
                 weapSecBox.Load(str2image["Thunder"]);
             }
 
             else if (index == 5 || index == 22 || index == 43 || index == 44)
             {
+                secondType = "Dragon";
                 weapSecBox.Load(str2image["Dragon"]);
             }
 
             else if (index == 6 || index == 23 || index == 45 || index == 46 || index == 54)
             {
+                secondType = "Poison";
                 weapSecBox.Load(str2image["Poison"]);
             }
 
             else if (index == 7 || index == 24 || index == 47 || index == 48 || index == 55)
             {
+                secondType = "Para";
                 weapSecBox.Load(str2image["Para"]);
             }
 
             else if (index == 8 || index == 49 || index == 50 || index == 56)
             {
+                secondType = "Sleep";
                 weapSecBox.Load(str2image["Sleep"]);
             }
 
             else if (index == 9 || index == 51 || index == 52 || index == 58)
             {
+                secondType = "Blast";
                 weapSecBox.Load(str2image["Blast"]);
             }
 
             else if (index == 25 || index == 57)
             {
+                weapOverride.Checked = false;
+                weapOverride.Enabled = false;
                 weapSecBox.Load("./Images/KO.png");
             }
 
@@ -843,7 +857,7 @@ namespace YADC_MHGen_
                 weapSecBox.Image = weapAltBox.Image;
             }
 
-            if (index != 0)
+            if (index != 0 || index != 25 || index != 57)
             {
                 weapOverride.Enabled = true;
             }
@@ -984,6 +998,12 @@ namespace YADC_MHGen_
             weapOverride.Checked = false;
             weapOverride.Enabled = false;
             paraSecEle.Enabled = false;
+
+            weapAlt.SelectedIndex = 0;
+            weapSharpness.SelectedIndex = 0;
+            weapSecType.SelectedIndex = 0;
+            weapOne.SelectedIndex = 0;
+            weapTwo.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -2204,7 +2224,7 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Blast" || weaponAndMods.secElement == "Blast")
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                    weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
                 }
             }
             else if (skillVal == 2)
@@ -3559,6 +3579,208 @@ namespace YADC_MHGen_
             return true;
         }
 
+        /// <summary>
+        /// Using the importedStats struct, fill in the calculation fields with all information from the database section.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void paraUpdate_Click(object sender, EventArgs e)
+        {
+            importSetUp();
+            importModifiers();
+            export();
+        }
+
+        private void importSetUp()
+        {
+            weaponAndMods = new importedStats();
+            weaponAndMods.sharpness = (string)weapSharpness.SelectedItem;
+            weaponAndMods.totalAttackPower = double.Parse(weapAttack.Text);
+            weaponAndMods.affinity = double.Parse(weapAffinity.Text);
+            weaponAndMods.rawSharpMod = sharpnessValues[weaponAndMods.sharpness].Item1;
+            weaponAndMods.eleSharpMod = sharpnessValues[weaponAndMods.sharpness].Item2;
+
+            if (weapOverride.Checked)
+            {
+                weaponAndMods.altDamageType = secondType;
+                weaponAndMods.eleAttackPower = double.Parse(weapSecPower.Text);
+                weaponAndMods.secElement = "None";
+                weaponAndMods.secPower = 0;
+            }
+            else
+            {
+                weaponAndMods.altDamageType = weapAlt.Text;
+                weaponAndMods.eleAttackPower = double.Parse(weapAltPower.Text);
+                weaponAndMods.secElement = secondType;
+                weaponAndMods.secPower = double.Parse(weapSecPower.Text);
+            }
+
+            weaponAndMods.avgMV = double.Parse(moveAvg.Text);
+            weaponAndMods.hitCount = int.Parse(moveHitCount.Text);
+            weaponAndMods.totalMV = double.Parse(moveTotal.Text);
+            weaponAndMods.KOPower = double.Parse(moveKO.Text);
+            weaponAndMods.exhaustPower = double.Parse(moveExh.Text);
+            weaponAndMods.criticalBoost = false;
+            weaponAndMods.mindsEye = moveMinds.Checked;
+            weaponAndMods.damageType = moveDamType.Text;
+            weaponAndMods.eleCrit = "None";
+            weaponAndMods.statusCrit = false;
+
+            weaponAndMods.rawSharpMod *= double.Parse(moveSharp.Text);
+            weaponAndMods.eleSharpMod *= double.Parse(moveEleMod.Text);
+
+            if (weaponAndMods.damageType == "Cut")
+            {
+                weaponAndMods.hitzone = double.Parse(monCut.Text);
+            }
+            else if (weaponAndMods.damageType == "Impact")
+            {
+                weaponAndMods.hitzone = double.Parse(monImpact.Text);
+            }
+            else if (weaponAndMods.damageType == "Shot")
+            {
+                weaponAndMods.hitzone = double.Parse(monShot.Text);
+            }
+            else if (weaponAndMods.damageType == "Fixed")
+            {
+                weaponAndMods.hitzone = 0;
+            }
+
+            if (weaponAndMods.altDamageType == "Fire")
+            {
+                weaponAndMods.eleHitzone = double.Parse(monFire.Text);
+            }
+            else if (weaponAndMods.altDamageType == "Water")
+            {
+                weaponAndMods.eleHitzone = double.Parse(monWater.Text);
+            }
+            else if (weaponAndMods.altDamageType == "Thunder")
+            {
+                weaponAndMods.eleHitzone = double.Parse(monThunder.Text);
+            }
+            else if (weaponAndMods.altDamageType == "Ice")
+            {
+                weaponAndMods.eleHitzone = double.Parse(monIce.Text);
+            }
+            else if (weaponAndMods.altDamageType == "Dragon")
+            {
+                weaponAndMods.eleHitzone = double.Parse(monDragon.Text);
+            }
+
+            if (weaponAndMods.secElement == "Fire")
+            {
+                weaponAndMods.secHitzone = double.Parse(monFire.Text);
+            }
+            else if (weaponAndMods.secElement == "Water")
+            {
+                weaponAndMods.secHitzone = double.Parse(monWater.Text);
+            }
+            else if (weaponAndMods.secElement == "Thunder")
+            {
+                weaponAndMods.secHitzone = double.Parse(monThunder.Text);
+            }
+            else if (weaponAndMods.secElement == "Ice")
+            {
+                weaponAndMods.secHitzone = double.Parse(monIce.Text);
+            }
+            else if (weaponAndMods.secElement == "Dragon")
+            {
+                weaponAndMods.secHitzone = double.Parse(monDragon.Text);
+            }
+
+            weaponAndMods.questMod = double.Parse(monQuestMod.Text);
+            weaponAndMods.KOHitzone = double.Parse(monKO.Text);
+            weaponAndMods.exhaustHitzone = double.Parse(monExh.Text);
+
+            weaponAndMods.rawMod = 1;
+            weaponAndMods.eleMod = 1;
+            weaponAndMods.expMod = 1;
+            weaponAndMods.staMod = 1;
+            weaponAndMods.CB = false;
+            weaponAndMods.DemonRiot = false;
+        }
+
+        private void importModifiers()
+        {
+            foreach(ListViewItem item in modList.Groups[0].Items)
+            {
+                armorModifiers[item.Name](0);
+            }
+            foreach (ListViewItem item in modList.Groups[1].Items)
+            {
+                kitchenItemModifiers[item.Name](0);
+            }
+            foreach (ListViewItem item in modList.Groups[2].Items)
+            {
+                weaponModifiers[item.Name](0);
+            }
+            foreach (ListViewItem item in modList.Groups[3].Items)
+            {
+                otherModifiers[item.Name](0);
+            }
+            
+            if(weaponAndMods.damageType == "Fixed")
+            {
+                if(weaponAndMods.expMod > 1.3 && !weaponAndMods.CB)
+                {
+                    weaponAndMods.expMod = 1.3;
+                }
+                weaponAndMods.totalAttackPower = 100;
+                weaponAndMods.totalAttackPower *= weaponAndMods.expMod;
+            }
+            else
+            {
+                weaponAndMods.totalAttackPower *= weaponAndMods.rawMod;
+            }
+            
+            if(isElement(weaponAndMods.altDamageType))
+            {
+                if(weaponAndMods.eleMod > 1.2 && !weaponAndMods.DemonRiot)
+                {
+                    weaponAndMods.eleMod = 1.2;
+                }
+                weaponAndMods.eleAttackPower *= weaponAndMods.eleMod;
+            }
+            else if(isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
+            {
+                if(weaponAndMods.staMod > 1.25 && !weaponAndMods.DemonRiot)
+                {
+                    weaponAndMods.staMod = 1.25;
+                }
+                weaponAndMods.eleAttackPower *= weaponAndMods.staMod;
+            }
+            
+        }
+
+        private void export()
+        {
+            paraSharpness.SelectedItem = weaponAndMods.sharpness;
+            paraRaw.Text = weaponAndMods.totalAttackPower.ToString();
+            paraRawSharp.Text = weaponAndMods.rawSharpMod.ToString();
+            paraKO.Text = weaponAndMods.KOPower.ToString();
+            paraAltType.SelectedItem = weaponAndMods.altDamageType;
+            paraEle.Text = weaponAndMods.eleAttackPower.ToString();
+            paraEleSharp.Text = weaponAndMods.eleSharpMod.ToString();
+            paraExh.Text = weaponAndMods.exhaustPower.ToString();
+            paraMV.Text = weaponAndMods.avgMV.ToString();
+            paraHitCount.Text = weaponAndMods.hitCount.ToString();
+            paraTotal.Text = weaponAndMods.totalMV.ToString();
+            paraEleCrit.SelectedItem = weaponAndMods.eleCrit;
+            paraAffinity.Text = weaponAndMods.affinity.ToString();
+            paraSecEle.SelectedItem = weaponAndMods.secElement;
+            paraSecPower.Text = weaponAndMods.secPower.ToString();
+            paraFixed.Checked = (weaponAndMods.damageType == "Fixed");
+            paraBoost.Checked = weaponAndMods.criticalBoost;
+            paraMinds.Checked = weaponAndMods.mindsEye;
+            paraStatusCrit.Checked = weaponAndMods.statusCrit;
+
+            paraRawHitzone.Text = weaponAndMods.hitzone.ToString();
+            paraEleHitzone.Text = weaponAndMods.eleHitzone.ToString();
+            paraSecHitzone.Text = weaponAndMods.secHitzone.ToString();
+            paraKOZone.Text = weaponAndMods.KOHitzone.ToString();
+            paraExhZone.Text = weaponAndMods.exhaustHitzone.ToString();
+            paraQuest.Text = weaponAndMods.questMod.ToString();
+        }
 #endif
     }
 }

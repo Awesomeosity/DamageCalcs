@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup17 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup18 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup19 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup20 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -1100,6 +1100,7 @@
             this.paraUpdate.TabIndex = 0;
             this.paraUpdate.Text = "Update Parameters";
             this.paraUpdate.UseVisualStyleBackColor = true;
+            this.paraUpdate.Click += new System.EventHandler(this.paraUpdate_Click);
             // 
             // label53
             // 
@@ -1321,6 +1322,7 @@
             this.label105.Size = new System.Drawing.Size(72, 13);
             this.label105.TabIndex = 176;
             this.label105.Text = "Exhaust Mod:";
+            this.label105.Visible = false;
             // 
             // label13
             // 
@@ -1339,6 +1341,7 @@
             this.textBox40.TabIndex = 176;
             this.textBox40.Text = "1.0";
             this.textBox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox40.Visible = false;
             // 
             // label28
             // 
@@ -2132,19 +2135,19 @@
             // 
             // modList
             // 
-            listViewGroup5.Header = "Armor Skills:";
-            listViewGroup5.Name = "armorGroup";
-            listViewGroup6.Header = "Item/Bistro Skills:";
-            listViewGroup6.Name = "bistroGroup";
-            listViewGroup7.Header = "Weapon Modifiers:";
-            listViewGroup7.Name = "weaponGroup";
-            listViewGroup8.Header = "Other Modifiers:";
-            listViewGroup8.Name = "otherGroup";
+            listViewGroup17.Header = "Armor Skills:";
+            listViewGroup17.Name = "armorGroup";
+            listViewGroup18.Header = "Item/Bistro Skills:";
+            listViewGroup18.Name = "bistroGroup";
+            listViewGroup19.Header = "Weapon Modifiers:";
+            listViewGroup19.Name = "weaponGroup";
+            listViewGroup20.Header = "Other Modifiers:";
+            listViewGroup20.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup17,
+            listViewGroup18,
+            listViewGroup19,
+            listViewGroup20});
             this.modList.Location = new System.Drawing.Point(363, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(222, 137);
