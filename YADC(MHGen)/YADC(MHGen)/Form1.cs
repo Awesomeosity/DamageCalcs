@@ -112,13 +112,76 @@ namespace YADC_MHGen_
             }
         }
 
+        public struct hitzoneStats
+        {
+            public string name;
+            public double cutZone;
+            public double impactZone;
+            public double shotZone;
+            public double fireZone;
+            public double waterZone;
+            public double thunderZone;
+            public double iceZone;
+            public double dragonZone;
+            public double KOZone;
+            public double exhaustZone;
+        }
+
+        public struct questStat
+        {
+            public string name;
+            public double questMod;
+            public double exhaustMod;
+
+            public questStat(string _name, double _questMod, double _exhaustMod)
+            {
+                name = _name;
+                questMod = _questMod;
+                exhaustMod = _exhaustMod;
+            }
+        }
+
+        public struct monsterStatusThresholds
+        {
+            public double poisonInit;
+            public double poisonInc;
+            public double poisonMax;
+
+            public double sleepInit;
+            public double sleepInc;
+            public double sleepMax;
+
+            public double paraInit;
+            public double paraInc;
+            public double paraMax;
+
+            public double KOInit;
+            public double KOInc;
+            public double KOMax;
+
+            public double exhaustInit;
+            public double exhaustInc;
+            public double exhaustMax;
+
+            public double blastInit;
+            public double blastInc;
+            public double blastMax;
+        }
         /// <summary>
         /// TODO
         /// Stores the stats of a single hitzone.
         /// </summary>
-        public struct monsterStat
+        public class monsterStat
         {
+            public string name;
+            public List<hitzoneStats> hitzones;
+            public List<questStat> quests;
+            public monsterStatusThresholds status;
 
+            public monsterStat(string _name)
+            {
+                name = _name;
+            }
         }
 
         /// <summary>
@@ -176,6 +239,7 @@ namespace YADC_MHGen_
         Dictionary<string, Func<int, bool>> kitchenItemModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to kitchen modifiers.
         Dictionary<string, Func<int, bool>> weaponModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to weapon-specific modifiers.
         Dictionary<string, Func<int, bool>> otherModifiers = new Dictionary<string, Func<int, bool>>(); //Will store other things.
+        Dictionary<string, monsterStat> monsterStats = new Dictionary<string, monsterStat>();
 
         importedStats weaponAndMods = new importedStats(); //Will be used later. Required to be global for the modifier methods.
 
@@ -190,7 +254,7 @@ namespace YADC_MHGen_
             prep();
         }
 
-        
+
 
         //EVENT FUNCTIONS
         /// <summary>
@@ -797,11 +861,11 @@ namespace YADC_MHGen_
         /// </summary>
         private void prep()
         {
-            //monFireBox.Load(str2image["Fire"]);
-            //monWaterBox.Load(str2image["Water"]);
-            //monThunderBox.Load(str2image["Thunder"]);
-            //monIceBox.Load(str2image["Ice"]);
-            //monDragonBox.Load(str2image["Dragon"]);
+            monFireBox.Load(str2image["Fire"]);
+            monWaterBox.Load(str2image["Water"]);
+            monThunderBox.Load(str2image["Thunder"]);
+            monIceBox.Load(str2image["Ice"]);
+            monDragonBox.Load(str2image["Dragon"]);
             paraBoost.Checked = false; //Force checkboxes to be unchecked on initialization.
             moveMinds.Checked = false;
             paraFixed.Checked = false;
@@ -862,10 +926,19 @@ namespace YADC_MHGen_
         private Tuple<double, double, double> calculateDamage()
         {
             double total = double.Parse(paraRaw.Text);
-            double motion = double.Parse(paraTotal.Text) * 0.01;
+            double motion = double.Parse(paraMV.Text) * 0.01 * double.Parse(paraHitCount.Text);
             double affinity = double.Parse(paraAffinity.Text) * 0.01;
-            double element = double.Parse(paraEle.Text);
-            double DBElement = double.Parse(paraSecPower.Text);
+            double element = 0;
+            double DBElement = 0;
+            if (paraSecPower.Text != "0")
+            {
+                element = double.Parse(paraEle.Text) * double.Parse(paraHitCount.Text) / 2;
+                DBElement = double.Parse(paraSecPower.Text) * double.Parse(paraHitCount.Text) / 2;
+            }
+            else
+            {
+                element = double.Parse(paraEle.Text) * double.Parse(paraHitCount.Text);
+            }
 
             double rawSharp = double.Parse(paraRawSharp.Text);
             double eleSharp = double.Parse(paraEleSharp.Text);
@@ -1076,6 +1149,15 @@ namespace YADC_MHGen_
             return false;
         }
 
+        private bool isNotElement(string element)
+        {
+            if (element == "poison" || element == "sleep" || element == "para" || element == "KOThresh" || element == "exhaust" || element == "blast")
+            {
+                return true;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Fills the global Dictionaries with data.
         /// </summary>
@@ -1229,7 +1311,7 @@ namespace YADC_MHGen_
             armorModifiers.Add("Water Atk Down", x => WaterAtk(3));
 #endif
 
-            foreach(KeyValuePair<string, Func<int, bool>> pair in armorModifiers)
+            foreach (KeyValuePair<string, Func<int, bool>> pair in armorModifiers)
             {
                 modArmor.Items.Add(pair.Key);
             }
@@ -1379,6 +1461,7 @@ namespace YADC_MHGen_
             readMotion();
 
             //Read monster database
+            readMonsters();
         }
 
         /// <summary>
@@ -1597,6 +1680,48 @@ namespace YADC_MHGen_
 
                                 statistics.Add(new stats(level, attack, secType, sharpness, aff, eleType, eleDamage, secDamage, sharpness1, sharpness2));
                             }
+                        }
+                    }
+                }
+            }
+        }
+
+        private void readMonsters()
+        {
+            string[] files = System.IO.Directory.GetFiles("./Monsters/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
+            foreach (string file in files)
+            {
+                string monsterFile = file.Remove(file.Length - 4); //Strip trailing '.xml'
+                monsterFile = monsterFile.Remove(0, 14);
+                if (monsterFile.Contains('_'))
+                {
+                    monsterFile.Replace('_', ' ');
+                }
+
+                monsterStat thisStat = new monsterStat(monsterFile);
+                monsterStats.Add(monsterFile, thisStat);
+
+                XmlReaderSettings settings = new XmlReaderSettings();
+                settings.IgnoreComments = true;
+                settings.IgnoreWhitespace = true;
+                using (XmlReader reader = XmlReader.Create(file, settings))
+                {
+                    reader.MoveToContent();
+                    while (reader.Read())
+                    {
+                        if (reader.Name == "hitzone" && reader.NodeType != XmlNodeType.EndElement)
+                        {
+                            
+                        }
+
+                        else if(reader.Name == "quests" && reader.NodeType != XmlNodeType.EndElement)
+                        {
+
+                        }
+
+                        else if(isNotElement(reader.Value) && reader.NodeType != XmlNodeType.EndElement)
+                        {
+
                         }
                     }
                 }
@@ -2856,9 +2981,9 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 4)
             {
-                if ((double)(monsterList.SelectedRows[0].Cells[3].Value) * 0.72 > (double)(monsterList.SelectedRows[0].Cells[2].Value))
+                if (double.Parse(monImpact.Text) * 0.72 > double.Parse(monCut.Text))
                 {
-                    weaponAndMods.hitzone = (double)(monsterList.SelectedRows[0].Cells[3].Value) * 0.72;
+                    weaponAndMods.hitzone = double.Parse(monImpact.Text) * 0.72;
                 }
             }
             else
@@ -2879,7 +3004,7 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.rawMod *= 1.15;
             }
-            else if(skillVal ==3)
+            else if (skillVal == 3)
             {
                 weaponAndMods.rawMod *= 1.2;
             }
@@ -2959,13 +3084,13 @@ namespace YADC_MHGen_
 
         private bool CB(int skillVal)
         {
-            if(skillVal == 1)
+            if (skillVal == 1)
             {
                 weaponAndMods.rawMod *= 1.15;
                 weaponAndMods.KOPower *= 1.35;
                 weaponAndMods.exhaustPower *= 1.35;
             }
-            else if(skillVal == 2)
+            else if (skillVal == 2)
             {
                 weaponAndMods.rawMod *= 1.2;
                 weaponAndMods.KOPower *= 1.35;
@@ -2984,7 +3109,7 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.totalAttackPower += 5;
             }
-            else if(skillVal == 2)
+            else if (skillVal == 2)
             {
                 weaponAndMods.affinity += 10;
             }
