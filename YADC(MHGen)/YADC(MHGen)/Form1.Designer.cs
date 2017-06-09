@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup17 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup18 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup19 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup20 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup21 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup22 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup23 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup24 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -2135,19 +2135,19 @@
             // 
             // modList
             // 
-            listViewGroup17.Header = "Armor Skills:";
-            listViewGroup17.Name = "armorGroup";
-            listViewGroup18.Header = "Item/Bistro Skills:";
-            listViewGroup18.Name = "bistroGroup";
-            listViewGroup19.Header = "Weapon Modifiers:";
-            listViewGroup19.Name = "weaponGroup";
-            listViewGroup20.Header = "Other Modifiers:";
-            listViewGroup20.Name = "otherGroup";
+            listViewGroup21.Header = "Armor Skills:";
+            listViewGroup21.Name = "armorGroup";
+            listViewGroup22.Header = "Item/Bistro Skills:";
+            listViewGroup22.Name = "bistroGroup";
+            listViewGroup23.Header = "Weapon Modifiers:";
+            listViewGroup23.Name = "weaponGroup";
+            listViewGroup24.Header = "Other Modifiers:";
+            listViewGroup24.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup17,
-            listViewGroup18,
-            listViewGroup19,
-            listViewGroup20});
+            listViewGroup21,
+            listViewGroup22,
+            listViewGroup23,
+            listViewGroup24});
             this.modList.Location = new System.Drawing.Point(363, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(222, 137);
@@ -2713,7 +2713,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "DmgCalculator";
-            this.Text = "Awesomeosity\'s Damage Calculator (Beta vers.)";
+            this.Text = "Awesomeosity\'s Damage Calculator -  Pre-Launch Survivability (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
