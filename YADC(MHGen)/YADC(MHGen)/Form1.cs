@@ -1792,7 +1792,7 @@ namespace YADC_MHGen_
                 monsterFile = monsterFile.Remove(0, 14);
                 if (monsterFile.Contains('_'))
                 {
-                    monsterFile.Replace('_', ' ');
+                    monsterFile = monsterFile.Replace('_', ' ');
                 }
 
                 monName.Items.Add(monsterFile);
@@ -2588,7 +2588,7 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private bool HotBlooded(int skillVal)
+        private bool HotBlooded()
         {
             weaponAndMods.totalAttackPower += 15;
             return true;
