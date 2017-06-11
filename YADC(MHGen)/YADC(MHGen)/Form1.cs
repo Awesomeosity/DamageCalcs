@@ -1362,9 +1362,7 @@ namespace YADC_MHGen_
             armorModifiers.Add("TrueShot Up", x => Haphazard());
             armorModifiers.Add("Heavy/Heavy Up", x => HeavyUp());
             armorModifiers.Add("Hellblade Soul", x => Hellblade());
-            armorModifiers.Add("Tropic Hunter (Hot Drink)", x => HotBlooded(1));
-            armorModifiers.Add("Tropic Hunter (Hot Area)", x => HotBlooded(2));
-            armorModifiers.Add("Tropic Hunter (Both Effects)", x => HotBlooded(3));
+            armorModifiers.Add("Tropic Hunter ", x => HotBlooded());
 
             armorModifiers.Add("Ice Atk +1", x => IceAtk(1));
             armorModifiers.Add("Ice Atk +2", x => IceAtk(2));
@@ -2592,22 +2590,7 @@ namespace YADC_MHGen_
 
         private bool HotBlooded(int skillVal)
         {
-            if (skillVal == 1)
-            {
-                weaponAndMods.totalAttackPower += 5;
-            }
-            else if (skillVal == 2)
-            {
-                weaponAndMods.totalAttackPower += 15;
-            }
-            else if (skillVal == 3)
-            {
-                weaponAndMods.totalAttackPower += 20;
-            }
-            else
-            {
-                return false;
-            }
+            weaponAndMods.totalAttackPower += 15;
             return true;
         }
 
