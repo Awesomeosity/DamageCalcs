@@ -263,6 +263,8 @@ namespace YADC_MHGen_
             public double staMod; //Stores the status multiplier. Has a cap of 1.25x, surpassed when using Demon Riot on a Status Phial SA.
             public bool CB; //Shows whether or not the explosive multiplier should be increased because Impact Phials are being used. 
             public bool DemonRiot; //Shows whether or not Demon Riot is being used.
+
+            public int addElement; //Stores the additive portion of element after Atk +1 or +2
         }
 
         Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
@@ -772,7 +774,7 @@ namespace YADC_MHGen_
             }
             else
             {
-                fillMoves((string)((ComboBox)sender).SelectedItem, "None");
+                fillMoves((string)((ComboBox)sender).SelectedItem, "All");
             }
         }
 
@@ -1217,7 +1219,7 @@ namespace YADC_MHGen_
 
             foreach (moveStat moves in type2Moves[selectedItem]) //Fills out the moves for the move search box.
             {
-                if (moves.onlyFor == v)
+                if (moves.onlyFor == v || moves.onlyFor == "All")
                 {
                     NameSort.Items.Add(moves.name);
                     tempListMotion.Add(moves);
@@ -1744,8 +1746,7 @@ namespace YADC_MHGen_
                                 reader.Read(); //affinity tag
                                 reader.Read(); //affinity int
 
-                                string affinity = reader.Value; //Extract affinity
-                                double aff = double.Parse(affinity.Remove(affinity.Length - 1)); //Remove percentage sign
+                                double aff = double.Parse(reader.Value);
                                 reader.Read(); //end affinity tag
                                 reader.Read(); //eleType tag
                                 reader.Read(); //eleType string
@@ -2396,8 +2397,8 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Dragon" || weaponAndMods.secElement == "Dragon")
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
-                    weaponAndMods.eleAttackPower += 4;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
+                    weaponAndMods.addElement += 4;
                 }
             }
             else if (skillVal == 2)
@@ -2498,7 +2499,7 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Fire" || weaponAndMods.secElement == "Fire")
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
                     weaponAndMods.eleAttackPower += 4;
                 }
             }
@@ -2600,7 +2601,7 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Ice" || weaponAndMods.secElement == "Ice")
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
                     weaponAndMods.eleAttackPower += 4;
                 }
             }
@@ -2757,7 +2758,7 @@ namespace YADC_MHGen_
                 if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
                 {
                     weaponAndMods.eleAttackPower += 1;
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                    weaponAndMods.staMod = weaponAndMods.staMod * 1.1;
                 }
             }
             else if (skillVal == 2)
@@ -2765,14 +2766,14 @@ namespace YADC_MHGen_
                 if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
                 {
                     weaponAndMods.eleAttackPower += 1;
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                    weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
                 }
             }
             else if (skillVal == 3)
             {
                 if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 0.9;
+                    weaponAndMods.staMod = weaponAndMods.staMod * 0.9;
                 }
             }
             else
@@ -2811,7 +2812,7 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Thunder" || weaponAndMods.secElement == "Thunder")
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
                     weaponAndMods.eleAttackPower += 4;
                 }
             }
@@ -2864,7 +2865,7 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Water" || weaponAndMods.secElement == "Water")
                 {
-                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.04;
+                    weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
                     weaponAndMods.eleAttackPower += 4;
                 }
             }
@@ -3681,6 +3682,7 @@ namespace YADC_MHGen_
             weaponAndMods.staMod = 1;
             weaponAndMods.CB = false;
             weaponAndMods.DemonRiot = false;
+            weaponAndMods.addElement = 0;
         }
 
         private void importModifiers()
@@ -3723,6 +3725,7 @@ namespace YADC_MHGen_
                     weaponAndMods.eleMod = 1.2;
                 }
                 weaponAndMods.eleAttackPower *= weaponAndMods.eleMod;
+                weaponAndMods.eleAttackPower += weaponAndMods.addElement;
             }
             else if(isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
             {
@@ -3731,6 +3734,7 @@ namespace YADC_MHGen_
                     weaponAndMods.staMod = 1.25;
                 }
                 weaponAndMods.eleAttackPower *= weaponAndMods.staMod;
+                weaponAndMods.eleAttackPower += weaponAndMods.addElement;
             }
             
         }
