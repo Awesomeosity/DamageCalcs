@@ -895,17 +895,23 @@ namespace YADC_MHGen_
 
         private void RemoveButt_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in modList.SelectedItems)
+            if(modList.SelectedItems.Count != 0)
             {
-                modList.Items.Remove(item);
+                foreach (ListViewItem item in modList.SelectedItems)
+                {
+                    modList.Items.Remove(item);
+                }
             }
         }
 
         private void RemoveAllButt_Click(object sender, EventArgs e)
         {
-            foreach (ListViewItem item in modList.Items)
+            if(modList.Items.Count != 0)
             {
-                modList.Items.Remove(item);
+                foreach (ListViewItem item in modList.Items)
+                {
+                    modList.Items.Remove(item);
+                }
             }
         }
 
@@ -1036,7 +1042,8 @@ namespace YADC_MHGen_
         private Tuple<double, double, double> calculateDamage()
         {
             double total = double.Parse(paraRaw.Text);
-            double motion = double.Parse(paraMV.Text) * 0.01 * double.Parse(paraHitCount.Text);
+            double hitCount = double.Parse(paraHitCount.Text);
+            double motion = double.Parse(paraMV.Text) * 0.01 * hitCount;
             double affinity = double.Parse(paraAffinity.Text) * 0.01;
             double element = 0;
             double DBElement = 0;
@@ -1139,7 +1146,7 @@ namespace YADC_MHGen_
                 }
                 else
                 {
-                    DBTotal = DBElement * eleSharp;
+                    DBTotal = DBElement * eleSharp; //For Blast
                 }
             }
 
@@ -3737,6 +3744,15 @@ namespace YADC_MHGen_
                 weaponAndMods.eleAttackPower += weaponAndMods.addElement;
             }
             
+            if(weaponAndMods.affinity > 100)
+            {
+                weaponAndMods.affinity = 100;
+            }
+
+            else if (weaponAndMods.affinity < -100)
+            {
+                weaponAndMods.affinity = -100;
+            }
         }
 
         private void export()
