@@ -793,61 +793,61 @@ namespace YADC_MHGen_
             //    weapSecBox.Image = null;
             //}
 
-            else if (index == 1 || index == 27 || index == 28 || index == 29 || index == 30 || index == 10 || index == 11 || index == 12 || index == 13 || index == 14 || index == 15 || index == 16 || index == 17 || index == 18 || index == 19 || index == 20 || index == 21)
+            else if (index == 1)
             {
                 secondType = "Fire";
                 weapSecBox.Load(str2image["Fire"]);
             }
 
-            else if (index == 2 || index == 31 || index == 32 || index == 33 || index == 34)
+            else if (index == 2)
             {
                 secondType = "Water";
                 weapSecBox.Load(str2image["Water"]);
             }
 
-            else if (index == 3 || index == 39 || index == 40 || index == 41 || index == 42)
+            else if (index == 3)
             {
                 secondType = "Ice";
                 weapSecBox.Load(str2image["Ice"]);
             }
 
-            else if (index == 4 || index == 35 || index == 36 || index == 37 || index == 38)
+            else if (index == 4)
             {
                 secondType = "Thunder";
                 weapSecBox.Load(str2image["Thunder"]);
             }
 
-            else if (index == 5 || index == 22 || index == 43 || index == 44)
+            else if (index == 5)
             {
                 secondType = "Dragon";
                 weapSecBox.Load(str2image["Dragon"]);
             }
 
-            else if (index == 6 || index == 23 || index == 45 || index == 46 || index == 54)
+            else if (index == 6 || index == 11 || index == 14)
             {
                 secondType = "Poison";
                 weapSecBox.Load(str2image["Poison"]);
             }
 
-            else if (index == 7 || index == 24 || index == 47 || index == 48 || index == 55)
+            else if (index == 7 || index == 12 || index == 15)
             {
                 secondType = "Para";
                 weapSecBox.Load(str2image["Para"]);
             }
 
-            else if (index == 8 || index == 49 || index == 50 || index == 56)
+            else if (index == 8 || index == 16)
             {
                 secondType = "Sleep";
                 weapSecBox.Load(str2image["Sleep"]);
             }
 
-            else if (index == 9 || index == 51 || index == 52 || index == 58)
+            else if (index == 9 || index == 18)
             {
                 secondType = "Blast";
                 weapSecBox.Load(str2image["Blast"]);
             }
 
-            else if (index == 25 || index == 57)
+            else if (index == 13 || index == 18)
             {
                 weapOverride.Checked = false;
                 weapOverride.Enabled = false;
@@ -859,7 +859,7 @@ namespace YADC_MHGen_
                 weapSecBox.Image = weapAltBox.Image;
             }
 
-            if (index != 0 || index != 25 || index != 57)
+            if (index != 0 || index != 13)
             {
                 weapOverride.Enabled = true;
             }
