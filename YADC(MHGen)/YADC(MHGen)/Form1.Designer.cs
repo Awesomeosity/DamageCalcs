@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -455,50 +455,10 @@
             "DB - Para",
             "DB - Sleep",
             "DB - Blast",
-            "GL - Normal 1",
-            "GL - Normal 2",
-            "GL - Normal 3",
-            "GL - Normal 4",
-            "GL - Long 1",
-            "GL - Long 2",
-            "GL - Long 3",
-            "GL - Long 4",
-            "GL - Wide 1",
-            "GL - Wide 2",
-            "GL - Wide 3",
-            "GL - Wide 4",
             "SA - Dragon Phial",
             "SA - Poison Phial",
             "SA - Para Phial",
             "CB - Impact Phial",
-            "CB - Element Phial",
-            "BG - Flaming 1",
-            "BG - Flaming 2",
-            "BG - P. Flam. 1",
-            "BG - P. Flam. 2",
-            "BG - Water 1",
-            "BG - Water 2",
-            "BG - P. Water 1",
-            "BG - P. Water 2",
-            "BG - Thunder 1",
-            "BG - Thunder 2",
-            "BG - P. Thun. 1",
-            "BG - P. Thun. 2",
-            "BG - Freeze 1",
-            "BG - Freeze 2",
-            "BG - P. Freez. 1",
-            "BG - P. Freez. 2",
-            "BG - Dragon 1",
-            "BG - Dragon 2",
-            "BG - Poison 1",
-            "BG - Poison 2",
-            "BG - Para. 1",
-            "BG - Para. 2",
-            "BG - Sleep 1",
-            "BG - Sleep 2",
-            "BG - Blast 1",
-            "BG - Blast 2",
-            "Bow - C.Range C.",
             "Bow - Poison C.",
             "Bow - Para C.",
             "Bow - Sleep C.",
@@ -2135,19 +2095,19 @@
             // 
             // modList
             // 
-            listViewGroup1.Header = "Armor Skills:";
-            listViewGroup1.Name = "armorGroup";
-            listViewGroup2.Header = "Item/Bistro Skills:";
-            listViewGroup2.Name = "bistroGroup";
-            listViewGroup3.Header = "Weapon Modifiers:";
-            listViewGroup3.Name = "weaponGroup";
-            listViewGroup4.Header = "Other Modifiers:";
-            listViewGroup4.Name = "otherGroup";
+            listViewGroup9.Header = "Armor Skills:";
+            listViewGroup9.Name = "armorGroup";
+            listViewGroup10.Header = "Item/Bistro Skills:";
+            listViewGroup10.Name = "bistroGroup";
+            listViewGroup11.Header = "Weapon Modifiers:";
+            listViewGroup11.Name = "weaponGroup";
+            listViewGroup12.Header = "Other Modifiers:";
+            listViewGroup12.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup9,
+            listViewGroup10,
+            listViewGroup11,
+            listViewGroup12});
             this.modList.Location = new System.Drawing.Point(363, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(222, 137);

@@ -283,7 +283,7 @@ namespace YADC_MHGen_
 
         importedStats weaponAndMods = new importedStats(); //Will be used later. Required to be global for the modifier methods.
 
-        string secondType;
+        string secondType; //Stores the second type of the weapon.
 
         /// <summary>
         /// Called when initializing the form.
@@ -1071,7 +1071,7 @@ namespace YADC_MHGen_
 
             if (paraFixed.Checked) //If fixed damage is in play
             {
-                return new Tuple<double, double, double>(total, element, DBElement);
+                return new Tuple<double, double, double>(motion / 0.01, element, DBElement);
             }
 
             else //If it is in play
@@ -1490,7 +1490,7 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Lance - Enraged Guard (Orange)", x => Lance(2));
             weaponModifiers.Add("Lance - Enraged Guard (Red)", x => Lance(3));
             weaponModifiers.Add("Lance - Impact/Cut Hitzone", x => Lance(4));
-            weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
+            //weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
             weaponModifiers.Add("GL - Orange Heat", x => GL(2));
             weaponModifiers.Add("GL - Red Heat", x => GL(3));
             weaponModifiers.Add("SA - Power Phial", x => SA(1));
@@ -2412,8 +2412,8 @@ namespace YADC_MHGen_
             {
                 if (weaponAndMods.altDamageType == "Dragon" || weaponAndMods.secElement == "Dragon")
                 {
-                    weaponAndMods.eleAttackPower += 6;
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                    weaponAndMods.addElement += 6;
                 }
             }
             else if (skillVal == 3)
@@ -2440,8 +2440,8 @@ namespace YADC_MHGen_
         {
             if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
             {
-                weaponAndMods.eleAttackPower += 1;
                 weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
+                weaponAndMods.addElement += 1;
             }
             return true;
         }
@@ -2507,15 +2507,15 @@ namespace YADC_MHGen_
                 if (weaponAndMods.altDamageType == "Fire" || weaponAndMods.secElement == "Fire")
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
-                    weaponAndMods.eleAttackPower += 4;
+                    weaponAndMods.addElement += 4;
                 }
             }
             else if (skillVal == 2)
             {
                 if (weaponAndMods.altDamageType == "Fire" || weaponAndMods.secElement == "Fire")
                 {
-                    weaponAndMods.eleAttackPower += 6;
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                    weaponAndMods.addElement += 6;
                 }
             }
             else if (skillVal == 3)
@@ -2609,15 +2609,15 @@ namespace YADC_MHGen_
                 if (weaponAndMods.altDamageType == "Ice" || weaponAndMods.secElement == "Ice")
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
-                    weaponAndMods.eleAttackPower += 4;
+                    weaponAndMods.addElement += 4;
                 }
             }
             else if (skillVal == 2)
             {
                 if (weaponAndMods.altDamageType == "Ice" || weaponAndMods.secElement == "Ice")
                 {
-                    weaponAndMods.eleAttackPower += 6;
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                    weaponAndMods.addElement += 6;
                 }
             }
             else if (skillVal == 3)
@@ -2764,16 +2764,16 @@ namespace YADC_MHGen_
             {
                 if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
                 {
-                    weaponAndMods.eleAttackPower += 1;
                     weaponAndMods.staMod = weaponAndMods.staMod * 1.1;
+                    weaponAndMods.addElement += 1;
                 }
             }
             else if (skillVal == 2)
             {
                 if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
                 {
-                    weaponAndMods.eleAttackPower += 1;
                     weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
+                    weaponAndMods.addElement += 1;
                 }
             }
             else if (skillVal == 3)
@@ -2820,15 +2820,15 @@ namespace YADC_MHGen_
                 if (weaponAndMods.altDamageType == "Thunder" || weaponAndMods.secElement == "Thunder")
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
-                    weaponAndMods.eleAttackPower += 4;
+                    weaponAndMods.addElement += 4;
                 }
             }
             else if (skillVal == 2)
             {
                 if (weaponAndMods.altDamageType == "Thunder" || weaponAndMods.secElement == "Thunder")
                 {
-                    weaponAndMods.eleAttackPower += 6;
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                    weaponAndMods.addElement += 6;
                 }
             }
             else if (skillVal == 3)
@@ -2873,15 +2873,15 @@ namespace YADC_MHGen_
                 if (weaponAndMods.altDamageType == "Water" || weaponAndMods.secElement == "Water")
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.05;
-                    weaponAndMods.eleAttackPower += 4;
+                    weaponAndMods.addElement += 4;
                 }
             }
             else if (skillVal == 2)
             {
                 if (weaponAndMods.altDamageType == "Water" || weaponAndMods.secElement == "Water")
                 {
-                    weaponAndMods.eleAttackPower += 6;
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                    weaponAndMods.addElement += 6;
                 }
             }
             else if (skillVal == 3)
