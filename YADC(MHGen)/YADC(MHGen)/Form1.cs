@@ -65,7 +65,6 @@ namespace YADC_MHGen_
             public string name;
             public int id;
 
-            public string onlyFor;
             public string damageType;
             public double totalValue;
             public double perHitValue;
@@ -83,7 +82,6 @@ namespace YADC_MHGen_
             /// </summary>
             /// <param name="_name">Custom name. Doesn't really matter</param>
             /// <param name="_id">Corresponds to how many button presses you need to get to the move.</param>
-            /// <param name="only">Restricts this move to a certain subtype of weapon (Wide Full Burst GL for example)</param>
             /// <param name="_damageType">Cut, Impact, Shot, or Fixed.</param>
             /// <param name="_motionValue">Total MV of the move.</param>
             /// <param name="_perHitValue">Average MV of the move.</param>
@@ -98,7 +96,6 @@ namespace YADC_MHGen_
             {
                 name = _name;
                 id = _id;
-                onlyFor = only;
                 damageType = _damageType;
                 totalValue = _motionValue;
                 perHitValue = _perHitValue;
@@ -1603,11 +1600,6 @@ namespace YADC_MHGen_
                             string name = reader.Value;
 
                             reader.Read(); //end name
-                            reader.Read(); //onlyfor tag
-                            reader.Read(); //onlyfor string
-                            string only = reader.Value;
-
-                            reader.Read(); //end onlyfor
                             reader.Read(); //type tag
                             reader.Read(); //type string
                             string damageType = reader.Value;
@@ -1671,7 +1663,7 @@ namespace YADC_MHGen_
                             {
                                 aerialAttack = true;
                             }
-                            moves.Add(new moveStat(name, id, only, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
+                            moves.Add(new moveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
 
                         }
                     }
