@@ -92,7 +92,7 @@ namespace YADC_MHGen_
             /// <param name="_mindsEye">Whether this move has natural Mind's Eye or not.</param>
             /// <param name="_draw">Is this move a draw attack?</param>
             /// <param name="_aerial">Is this move an aerial attack?</param>
-            public moveStat(string _name, int _id, string only, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
+            public moveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
             {
                 name = _name;
                 id = _id;
@@ -888,7 +888,7 @@ namespace YADC_MHGen_
 
         private void RemoveButt_Click(object sender, EventArgs e)
         {
-            if(modList.SelectedItems.Count != 0)
+            if (modList.SelectedItems.Count != 0)
             {
                 foreach (ListViewItem item in modList.SelectedItems)
                 {
@@ -899,7 +899,7 @@ namespace YADC_MHGen_
 
         private void RemoveAllButt_Click(object sender, EventArgs e)
         {
-            if(modList.Items.Count != 0)
+            if (modList.Items.Count != 0)
             {
                 foreach (ListViewItem item in modList.Items)
                 {
@@ -912,14 +912,14 @@ namespace YADC_MHGen_
         {
             monHitzone.Items.Clear();
 
-            foreach(hitzoneStats zones in monsterStats[(string)(((ComboBox)sender).SelectedItem)].hitzones)
+            foreach (hitzoneStats zones in monsterStats[(string)(((ComboBox)sender).SelectedItem)].hitzones)
             {
                 monHitzone.Items.Add(zones.name);
             }
 
             monQuest.Items.Clear();
 
-            foreach(questStat quests in monsterStats[(string)(((ComboBox)sender).SelectedItem)].quests)
+            foreach (questStat quests in monsterStats[(string)(((ComboBox)sender).SelectedItem)].quests)
             {
                 monQuest.Items.Add(quests.name);
             }
@@ -928,7 +928,7 @@ namespace YADC_MHGen_
         private void monHitzone_SelectedIndexChanged(object sender, EventArgs e)
         {
             string zoneName = (string)((ComboBox)sender).SelectedItem;
-            foreach(hitzoneStats hitzone in monsterStats[(string)monName.SelectedItem].hitzones)
+            foreach (hitzoneStats hitzone in monsterStats[(string)monName.SelectedItem].hitzones)
             {
                 if (hitzone.name == zoneName)
                 {
@@ -1219,12 +1219,9 @@ namespace YADC_MHGen_
 
             foreach (moveStat moves in type2Moves[selectedItem]) //Fills out the moves for the move search box.
             {
-                if (moves.onlyFor == v || moves.onlyFor == "All")
-                {
-                    NameSort.Items.Add(moves.name);
-                    tempListMotion.Add(moves);
-                    tempListCombo.Add(moves);
-                }
+                NameSort.Items.Add(moves.name);
+                tempListMotion.Add(moves);
+                tempListCombo.Add(moves);
             }
 
             quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
@@ -1866,7 +1863,7 @@ namespace YADC_MHGen_
                             thisStat.hitzones.Add(hitzone);
                         }
 
-                        else if(reader.Name == "quest" && reader.NodeType != XmlNodeType.EndElement)
+                        else if (reader.Name == "quest" && reader.NodeType != XmlNodeType.EndElement)
                         {
                             reader.Read(); //name tag
                             reader.Read(); //name string
@@ -1893,7 +1890,7 @@ namespace YADC_MHGen_
                             thisStat.quests.Add(status);
                         }
 
-                        else if(reader.Name == "status" && reader.NodeType != XmlNodeType.EndElement)
+                        else if (reader.Name == "status" && reader.NodeType != XmlNodeType.EndElement)
                         {
                             monsterStatusThresholds thresh = new monsterStatusThresholds();
 
@@ -3273,7 +3270,7 @@ namespace YADC_MHGen_
                     weaponAndMods.hitzone = double.Parse(monImpact.Text) * 0.72;
                 }
             }
-            else if(skillVal == 5)
+            else if (skillVal == 5)
             {
                 weaponAndMods.eleMod *= 0.5;
                 weaponAndMods.staMod *= 0.5;
@@ -3447,11 +3444,11 @@ namespace YADC_MHGen_
 
         private bool LBG(int skillVal)
         {
-            if(skillVal == 1)
+            if (skillVal == 1)
             {
                 weaponAndMods.rawMod *= 1.3;
             }
-            else if(skillVal == 2)
+            else if (skillVal == 2)
             {
                 weaponAndMods.totalAttackPower *= 1.05;
             }
@@ -3713,7 +3710,7 @@ namespace YADC_MHGen_
 
         private void importModifiers()
         {
-            foreach(ListViewItem item in modList.Groups[0].Items)
+            foreach (ListViewItem item in modList.Groups[0].Items)
             {
                 armorModifiers[item.Name](0);
             }
@@ -3729,10 +3726,10 @@ namespace YADC_MHGen_
             {
                 otherModifiers[item.Name](0);
             }
-            
-            if(weaponAndMods.damageType == "Fixed")
+
+            if (weaponAndMods.damageType == "Fixed")
             {
-                if(weaponAndMods.expMod > 1.3 && !weaponAndMods.CB)
+                if (weaponAndMods.expMod > 1.3 && !weaponAndMods.CB)
                 {
                     weaponAndMods.expMod = 1.3;
                 }
@@ -3744,27 +3741,27 @@ namespace YADC_MHGen_
                 weaponAndMods.totalAttackPower += weaponAndMods.addRaw;
                 weaponAndMods.totalAttackPower *= weaponAndMods.rawMod;
             }
-            
-            if(isElement(weaponAndMods.altDamageType))
+
+            if (isElement(weaponAndMods.altDamageType))
             {
-                if(weaponAndMods.eleMod > 1.2 && !weaponAndMods.DemonRiot)
+                if (weaponAndMods.eleMod > 1.2 && !weaponAndMods.DemonRiot)
                 {
                     weaponAndMods.eleMod = 1.2;
                 }
                 weaponAndMods.eleAttackPower *= weaponAndMods.eleMod;
                 weaponAndMods.eleAttackPower += weaponAndMods.addElement;
             }
-            else if(isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
+            else if (isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
             {
-                if(weaponAndMods.staMod > 1.25 && !weaponAndMods.DemonRiot)
+                if (weaponAndMods.staMod > 1.25 && !weaponAndMods.DemonRiot)
                 {
                     weaponAndMods.staMod = 1.25;
                 }
                 weaponAndMods.eleAttackPower *= weaponAndMods.staMod;
                 weaponAndMods.eleAttackPower += weaponAndMods.addElement;
             }
-            
-            if(weaponAndMods.affinity > 100)
+
+            if (weaponAndMods.affinity > 100)
             {
                 weaponAndMods.affinity = 100;
             }
