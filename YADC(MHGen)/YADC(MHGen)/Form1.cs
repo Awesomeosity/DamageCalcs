@@ -264,6 +264,7 @@ namespace YADC_MHGen_
             public bool CB; //Shows whether or not the explosive multiplier should be increased because Impact Phials are being used. 
             public bool DemonRiot; //Shows whether or not Demon Riot is being used.
 
+            public int addRaw; //Stores the additive portion of raw
             public int addElement; //Stores the additive portion of element after Atk +1 or +2
         }
 
@@ -823,43 +824,38 @@ namespace YADC_MHGen_
                 weapSecBox.Load(str2image["Dragon"]);
             }
 
-            else if (index == 6 || index == 11 || index == 14)
+            else if (index == 6 || index == 11)
             {
                 secondType = "Poison";
                 weapSecBox.Load(str2image["Poison"]);
             }
 
-            else if (index == 7 || index == 12 || index == 15)
+            else if (index == 7 || index == 12)
             {
                 secondType = "Para";
                 weapSecBox.Load(str2image["Para"]);
             }
 
-            else if (index == 8 || index == 16)
+            else if (index == 8)
             {
                 secondType = "Sleep";
                 weapSecBox.Load(str2image["Sleep"]);
             }
 
-            else if (index == 9 || index == 18)
+            else if (index == 9)
             {
                 secondType = "Blast";
                 weapSecBox.Load(str2image["Blast"]);
             }
 
-            else if (index == 13 || index == 18)
+            else if (index == 13)
             {
                 weapOverride.Checked = false;
                 weapOverride.Enabled = false;
                 weapSecBox.Load("./Images/KO.png");
             }
 
-            else if (index == 17)
-            {
-                weapSecBox.Image = weapAltBox.Image;
-            }
-
-            if (index != 0 || index != 13)
+            if (index != 0)
             {
                 weapOverride.Enabled = true;
             }
@@ -1490,6 +1486,7 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Lance - Enraged Guard (Orange)", x => Lance(2));
             weaponModifiers.Add("Lance - Enraged Guard (Red)", x => Lance(3));
             weaponModifiers.Add("Lance - Impact/Cut Hitzone", x => Lance(4));
+            weaponModifiers.Add("Lance - Charge Elemental Mod (x0.5)", x => Lance(5));
             //weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
             weaponModifiers.Add("GL - Orange Heat", x => GL(2));
             weaponModifiers.Add("GL - Red Heat", x => GL(3));
@@ -1516,8 +1513,10 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Gunner - Critical Distance (1.5x)", x => Gunner(2));
             weaponModifiers.Add("Gunner - Long Range (0.8x)", x => Gunner(3));
             weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)", x => Gunner(4));
-            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", x => LBG());
-            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", x => HBG());
+            weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", x => LBG(1));
+            weaponModifiers.Add("LBG - Long Barrel (1.05x)", x => LBG(2));
+            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", x => HBG(1));
+            weaponModifiers.Add("HBG - Power Barrel (1.05x)", x => HBG(2));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", x => Bow(1));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)", x => Bow(2));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)", x => Bow(3));
@@ -2174,27 +2173,27 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 10;
+                weaponAndMods.addRaw += 10;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 15;
+                weaponAndMods.addRaw += 15;
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.totalAttackPower += 20;
+                weaponAndMods.addRaw += 20;
             }
             else if (skillVal == 4)
             {
-                weaponAndMods.totalAttackPower -= 5;
+                weaponAndMods.addRaw -= 5;
             }
             else if (skillVal == 5)
             {
-                weaponAndMods.totalAttackPower -= 10;
+                weaponAndMods.addRaw -= 10;
             }
             else if (skillVal == 6)
             {
-                weaponAndMods.totalAttackPower -= 15;
+                weaponAndMods.addRaw -= 15;
             }
             else
             {
@@ -2207,15 +2206,15 @@ namespace YADC_MHGen_
         {
             if (weaponAndMods.sharpness == "Green")
             {
-                weaponAndMods.totalAttackPower += 15;
+                weaponAndMods.addRaw += 15;
             }
             else if (weaponAndMods.sharpness == "Yellow")
             {
-                weaponAndMods.totalAttackPower += 25;
+                weaponAndMods.addRaw += 25;
             }
             else if (weaponAndMods.sharpness == "Orange" || weaponAndMods.sharpness == "Red")
             {
-                weaponAndMods.totalAttackPower += 30;
+                weaponAndMods.addRaw += 30;
             }
             else
             {
@@ -2305,15 +2304,15 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 5;
+                weaponAndMods.addRaw += 5;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 15;
+                weaponAndMods.addRaw += 15;
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.totalAttackPower += 20;
+                weaponAndMods.addRaw += 20;
             }
             else
             {
@@ -2324,7 +2323,7 @@ namespace YADC_MHGen_
 
         private bool Crisis()
         {
-            weaponAndMods.totalAttackPower += 20;
+            weaponAndMods.addRaw += 20;
             return true;
         }
 
@@ -2393,7 +2392,7 @@ namespace YADC_MHGen_
 
         private bool Deadeye()
         {
-            weaponAndMods.totalAttackPower += 20;
+            weaponAndMods.addRaw += 20;
             weaponAndMods.affinity += 15;
             return true;
         }
@@ -2432,7 +2431,7 @@ namespace YADC_MHGen_
 
         private bool Dreadking()
         {
-            weaponAndMods.totalAttackPower += 20;
+            weaponAndMods.addRaw += 20;
             return true;
         }
 
@@ -2540,7 +2539,7 @@ namespace YADC_MHGen_
 
         private bool Furor()
         {
-            weaponAndMods.totalAttackPower += 20;
+            weaponAndMods.addRaw += 20;
             return true;
         }
 
@@ -2598,7 +2597,7 @@ namespace YADC_MHGen_
 
         private bool HotBlooded()
         {
-            weaponAndMods.totalAttackPower += 15;
+            weaponAndMods.addRaw += 15;
             return true;
         }
 
@@ -2695,7 +2694,7 @@ namespace YADC_MHGen_
             {
                 if (moveDraw.Checked)
                 {
-                    weaponAndMods.totalAttackPower += 5;
+                    weaponAndMods.addRaw += 5;
                     weaponAndMods.KOPower += 30;
                     weaponAndMods.exhaustPower += 20;
                 }
@@ -2704,7 +2703,7 @@ namespace YADC_MHGen_
             {
                 if (moveDraw.Checked)
                 {
-                    weaponAndMods.totalAttackPower += 5;
+                    weaponAndMods.addRaw += 5;
                 }
             }
             else
@@ -2723,7 +2722,7 @@ namespace YADC_MHGen_
 
         private bool Redhelm()
         {
-            weaponAndMods.totalAttackPower += 20;
+            weaponAndMods.addRaw += 20;
             return true;
         }
 
@@ -2737,12 +2736,12 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 10;
+                weaponAndMods.addRaw += 10;
                 weaponAndMods.affinity += 10;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 20;
+                weaponAndMods.addRaw += 20;
                 weaponAndMods.affinity += 15;
             }
             else
@@ -2853,7 +2852,7 @@ namespace YADC_MHGen_
 
         private bool Unscathed()
         {
-            weaponAndMods.totalAttackPower += 20;
+            weaponAndMods.addRaw += 20;
             return true;
         }
 
@@ -2928,7 +2927,7 @@ namespace YADC_MHGen_
 
         private bool FBooster()
         {
-            weaponAndMods.totalAttackPower += 3;
+            weaponAndMods.addRaw += 3;
             return true;
         }
 
@@ -2995,19 +2994,19 @@ namespace YADC_MHGen_
 
         private bool CoolCat()
         {
-            weaponAndMods.totalAttackPower += 15;
+            weaponAndMods.addRaw += 15;
             return true;
         }
 
         private bool Powercharm()
         {
-            weaponAndMods.totalAttackPower += 6;
+            weaponAndMods.addRaw += 6;
             return true;
         }
 
         private bool PowerTalon()
         {
-            weaponAndMods.totalAttackPower += 9;
+            weaponAndMods.addRaw += 9;
             return true;
         }
 
@@ -3015,11 +3014,11 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 5;
+                weaponAndMods.addRaw += 5;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 7;
+                weaponAndMods.addRaw += 7;
             }
             else
             {
@@ -3032,15 +3031,15 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 3;
+                weaponAndMods.addRaw += 3;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 5;
+                weaponAndMods.addRaw += 5;
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.totalAttackPower += 7;
+                weaponAndMods.addRaw += 7;
             }
             else
             {
@@ -3053,11 +3052,11 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 10;
+                weaponAndMods.addRaw += 10;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 25;
+                weaponAndMods.addRaw += 25;
             }
             else
             {
@@ -3068,7 +3067,7 @@ namespace YADC_MHGen_
 
         private bool Nitroshroom()
         {
-            weaponAndMods.totalAttackPower += 10;
+            weaponAndMods.addRaw += 10;
             return true;
         }
 
@@ -3076,11 +3075,11 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 10;
+                weaponAndMods.addRaw += 10;
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.totalAttackPower += 10;
+                weaponAndMods.addRaw += 10;
                 if (weapSharpness.Text != "(No Sharpness)")
                 {
                     weaponAndMods.rawSharpMod *= 1.1;
@@ -3088,7 +3087,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 3)
             {
-                weaponAndMods.totalAttackPower += 7;
+                weaponAndMods.addRaw += 7;
                 if (weapSharpness.Text != "(No Sharpness)")
                 {
                     weaponAndMods.rawSharpMod *= 1.1;
@@ -3282,6 +3281,11 @@ namespace YADC_MHGen_
                     weaponAndMods.hitzone = double.Parse(monImpact.Text) * 0.72;
                 }
             }
+            else if(skillVal == 5)
+            {
+                weaponAndMods.eleMod *= 0.5;
+                weaponAndMods.staMod *= 0.5;
+            }
             else
             {
                 return false;
@@ -3403,7 +3407,7 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1)
             {
-                weaponAndMods.totalAttackPower += 5;
+                weaponAndMods.addRaw += 5;
             }
             else if (skillVal == 2)
             {
@@ -3449,15 +3453,37 @@ namespace YADC_MHGen_
             return true;
         }
 
-        private bool LBG()
+        private bool LBG(int skillVal)
         {
-            weaponAndMods.rawMod *= 1.3;
+            if(skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.3;
+            }
+            else if(skillVal == 2)
+            {
+                weaponAndMods.totalAttackPower *= 1.05;
+            }
+            else
+            {
+                return false;
+            }
             return true;
         }
 
-        private bool HBG()
+        private bool HBG(int skillVal)
         {
-            weaponAndMods.rawMod *= 1.48;
+            if (skillVal == 1)
+            {
+                weaponAndMods.rawMod *= 1.48;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.totalAttackPower *= 1.05;
+            }
+            else
+            {
+                return false;
+            }
             return true;
         }
 
@@ -3689,6 +3715,7 @@ namespace YADC_MHGen_
             weaponAndMods.staMod = 1;
             weaponAndMods.CB = false;
             weaponAndMods.DemonRiot = false;
+            weaponAndMods.addRaw = 0;
             weaponAndMods.addElement = 0;
         }
 
@@ -3722,6 +3749,7 @@ namespace YADC_MHGen_
             }
             else
             {
+                weaponAndMods.totalAttackPower += weaponAndMods.addRaw;
                 weaponAndMods.totalAttackPower *= weaponAndMods.rawMod;
             }
             

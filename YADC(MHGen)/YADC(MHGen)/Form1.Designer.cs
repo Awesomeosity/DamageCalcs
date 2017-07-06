@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup9 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup10 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup11 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup12 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -458,12 +458,7 @@
             "SA - Dragon Phial",
             "SA - Poison Phial",
             "SA - Para Phial",
-            "CB - Impact Phial",
-            "Bow - Poison C.",
-            "Bow - Para C.",
-            "Bow - Sleep C.",
-            "Bow - Exhaust C.",
-            "Bow - Blast C."});
+            "SA - Exhaust Phial"});
             this.weapSecType.Location = new System.Drawing.Point(254, 37);
             this.weapSecType.Name = "weapSecType";
             this.weapSecType.Size = new System.Drawing.Size(111, 21);
@@ -2095,19 +2090,19 @@
             // 
             // modList
             // 
-            listViewGroup9.Header = "Armor Skills:";
-            listViewGroup9.Name = "armorGroup";
-            listViewGroup10.Header = "Item/Bistro Skills:";
-            listViewGroup10.Name = "bistroGroup";
-            listViewGroup11.Header = "Weapon Modifiers:";
-            listViewGroup11.Name = "weaponGroup";
-            listViewGroup12.Header = "Other Modifiers:";
-            listViewGroup12.Name = "otherGroup";
+            listViewGroup1.Header = "Armor Skills:";
+            listViewGroup1.Name = "armorGroup";
+            listViewGroup2.Header = "Item/Bistro Skills:";
+            listViewGroup2.Name = "bistroGroup";
+            listViewGroup3.Header = "Weapon Modifiers:";
+            listViewGroup3.Name = "weaponGroup";
+            listViewGroup4.Header = "Other Modifiers:";
+            listViewGroup4.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup9,
-            listViewGroup10,
-            listViewGroup11,
-            listViewGroup12});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
             this.modList.Location = new System.Drawing.Point(363, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(222, 137);
