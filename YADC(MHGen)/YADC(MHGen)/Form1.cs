@@ -1226,8 +1226,8 @@ namespace YADC_MHGen_
                 tempListCombo.Add(moves);
             }
 
-            quickSortVar1(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
-            quickSortVar2(tempListCombo, 1, tempListCombo.Count - 1);
+            quickSort(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
+            insertSort(tempListCombo);
 
             foreach (moveStat moves in tempListMotion)
             {
@@ -1482,7 +1482,6 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Lance - Enraged Guard (Orange)", x => Lance(2));
             weaponModifiers.Add("Lance - Enraged Guard (Red)", x => Lance(3));
             weaponModifiers.Add("Lance - Impact/Cut Hitzone", x => Lance(4));
-            weaponModifiers.Add("Lance - Charge Elemental Mod (x0.5)", x => Lance(5));
             //weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
             weaponModifiers.Add("GL - Orange Heat", x => GL(2));
             weaponModifiers.Add("GL - Red Heat", x => GL(3));
@@ -2040,17 +2039,17 @@ namespace YADC_MHGen_
         /// <param name="statList"></param>
         /// <param name="loIndex"></param>
         /// <param name="hiIndex"></param>
-        private void quickSortVar1(List<moveStat> statList, int loIndex, int hiIndex)
+        private void quickSort(List<moveStat> statList, int loIndex, int hiIndex)
         {
             if (loIndex < hiIndex)
             {
-                int p = partitionVar1(statList, loIndex, hiIndex);
-                quickSortVar1(statList, loIndex, p - 1);
-                quickSortVar1(statList, loIndex, p - 1);
+                int p = partition(statList, loIndex, hiIndex);
+                quickSort(statList, loIndex, p - 1);
+                quickSort(statList, loIndex, p - 1);
             }
         }
 
-        private int partitionVar1(List<moveStat> statList, int loIndex, int hiIndex)
+        private int partition(List<moveStat> statList, int loIndex, int hiIndex)
         {
             double pivot = statList[hiIndex].totalValue;
             int i = loIndex - 1;
@@ -2077,48 +2076,27 @@ namespace YADC_MHGen_
         }
 
         /// <summary>
-        /// Implementation of QuickSort, used for sorting by ID.
+        /// Implementation of Insert Sort, used for sorting by ID.
+        /// Adapted from the pseudocode on Wikipedia.
         /// </summary>
         /// <param name="statList"></param>
-        /// <param name="loIndex"></param>
-        /// <param name="hiIndex"></param>
-        private void quickSortVar2(List<moveStat> statList, int loIndex, int hiIndex)
+        private void insertSort(List<moveStat> statList)
         {
-            if (loIndex < hiIndex)
+            for(int i = 1; i != statList.Count; i++)
             {
-                int p = partitionVar2(statList, loIndex, hiIndex);
-                quickSortVar2(statList, loIndex, p - 1);
-                quickSortVar2(statList, loIndex, p - 1);
-            }
-        }
+                int x = statList[i].id;
+                moveStat x1 = statList[i];
 
-        private int partitionVar2(List<moveStat> statList, int loIndex, int hiIndex)
-        {
-            int pivot = statList[hiIndex].id;
-            int i = loIndex - 1;
-
-            for (int j = loIndex; j != hiIndex; j++)
-            {
-                if (statList[j].id <= pivot)
+                int j = i - 1;
+                while(j >= 0 && statList[j].id > x)
                 {
-                    i++;
-                    if (i != j)
-                    {
-                        moveStat tempStat = statList[i];
-                        statList[i] = statList[j];
-                        statList[j] = tempStat;
-                    }
+                    statList[j + 1] = statList[j];
+                    j = j - 1;
                 }
+
+                statList[j + 1] = x1;
             }
-
-            moveStat temp = statList[i + 1];
-            statList[i + 1] = statList[hiIndex];
-            statList[hiIndex] = temp;
-
-            return i + 1;
         }
-
-
 
 #if true
         //Beginning of Armor Skill methods.
