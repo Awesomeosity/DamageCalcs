@@ -70,6 +70,7 @@ namespace YADC_MHGen_
             public double perHitValue;
             public int hitCount;
             public double sharpnessMod;
+            public double eleMod;
             public double KODamage;
             public double ExhDamage;
 
@@ -92,7 +93,7 @@ namespace YADC_MHGen_
             /// <param name="_mindsEye">Whether this move has natural Mind's Eye or not.</param>
             /// <param name="_draw">Is this move a draw attack?</param>
             /// <param name="_aerial">Is this move an aerial attack?</param>
-            public moveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
+            public moveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _eleMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
             {
                 name = _name;
                 id = _id;
@@ -101,6 +102,7 @@ namespace YADC_MHGen_
                 perHitValue = _perHitValue;
                 hitCount = _hitCount;
                 sharpnessMod = _sharpnessMod;
+                eleMod = _eleMod;
                 KODamage = _KODamage;
                 ExhDamage = _ExhDamage;
                 mindsEye = _mindsEye;
@@ -1622,6 +1624,11 @@ namespace YADC_MHGen_
                             double sharpnessMod = double.Parse(reader.Value);
 
                             reader.Read(); //end sharpness
+                            reader.Read(); //eleMod tag
+                            reader.Read(); //eleMod value
+                            double eleMod = double.Parse(reader.Value);
+
+                            reader.Read(); //end eleMod
                             reader.Read(); //KO tag
                             reader.Read(); //KO int
                             int KODamage = int.Parse(reader.Value);
@@ -1660,7 +1667,7 @@ namespace YADC_MHGen_
                             {
                                 aerialAttack = true;
                             }
-                            moves.Add(new moveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
+                            moves.Add(new moveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, eleMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
 
                         }
                     }
