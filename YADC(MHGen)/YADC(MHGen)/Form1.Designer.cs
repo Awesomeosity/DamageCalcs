@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -306,7 +306,7 @@
             // 
             // paraMV
             // 
-            this.paraMV.Location = new System.Drawing.Point(213, 110);
+            this.paraMV.Location = new System.Drawing.Point(418, 110);
             this.paraMV.MaxLength = 4;
             this.paraMV.Name = "paraMV";
             this.paraMV.Size = new System.Drawing.Size(95, 20);
@@ -1009,7 +1009,7 @@
             // 
             // paraTotal
             // 
-            this.paraTotal.Location = new System.Drawing.Point(418, 110);
+            this.paraTotal.Location = new System.Drawing.Point(213, 110);
             this.paraTotal.MaxLength = 4;
             this.paraTotal.Name = "paraTotal";
             this.paraTotal.Size = new System.Drawing.Size(96, 20);
@@ -1021,7 +1021,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(415, 94);
+            this.label56.Location = new System.Drawing.Point(210, 94);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(53, 13);
             this.label56.TabIndex = 137;
@@ -1103,7 +1103,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(210, 94);
+            this.label1.Location = new System.Drawing.Point(415, 94);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 111;
@@ -1210,18 +1210,18 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(415, 16);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(58, 13);
+            this.label15.Size = new System.Drawing.Size(82, 13);
             this.label15.TabIndex = 121;
-            this.label15.Text = "KO Power:";
+            this.label15.Text = "KO Power / Hit:";
             // 
             // label27
             // 
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(415, 54);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(81, 13);
+            this.label27.Size = new System.Drawing.Size(105, 13);
             this.label27.TabIndex = 123;
-            this.label27.Text = "Exhaust Power:";
+            this.label27.Text = "Exhaust Power / Hit:";
             // 
             // groupBox4
             // 
@@ -1879,9 +1879,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(6, 97);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(91, 13);
+            this.label18.Size = new System.Drawing.Size(82, 13);
             this.label18.TabIndex = 7;
-            this.label18.Text = "Exhaust Damage:";
+            this.label18.Text = "Exh, Pow. / Hit:";
             // 
             // moveExh
             // 
@@ -1899,9 +1899,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(6, 70);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(68, 13);
+            this.label17.Size = new System.Drawing.Size(82, 13);
             this.label17.TabIndex = 5;
-            this.label17.Text = "KO Damage:";
+            this.label17.Text = "KO Power / Hit:";
             // 
             // moveKO
             // 
@@ -2090,19 +2090,19 @@
             // 
             // modList
             // 
-            listViewGroup1.Header = "Armor Skills:";
-            listViewGroup1.Name = "armorGroup";
-            listViewGroup2.Header = "Item/Bistro Skills:";
-            listViewGroup2.Name = "bistroGroup";
-            listViewGroup3.Header = "Weapon Modifiers:";
-            listViewGroup3.Name = "weaponGroup";
-            listViewGroup4.Header = "Other Modifiers:";
-            listViewGroup4.Name = "otherGroup";
+            listViewGroup5.Header = "Armor Skills:";
+            listViewGroup5.Name = "armorGroup";
+            listViewGroup6.Header = "Item/Bistro Skills:";
+            listViewGroup6.Name = "bistroGroup";
+            listViewGroup7.Header = "Weapon Modifiers:";
+            listViewGroup7.Name = "weaponGroup";
+            listViewGroup8.Header = "Other Modifiers:";
+            listViewGroup8.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8});
             this.modList.Location = new System.Drawing.Point(363, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(222, 137);

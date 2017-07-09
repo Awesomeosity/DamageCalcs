@@ -1158,8 +1158,8 @@ namespace YADC_MHGen_
         {
             double rawZone = double.Parse(paraRawHitzone.Text) * 0.01;
             double eleZone = double.Parse(paraEleHitzone.Text) * 0.01;
-            double KODam = double.Parse(paraKO.Text);
-            double ExhDam = double.Parse(paraExh.Text);
+            double KODam = double.Parse(paraKO.Text) * double.Parse(paraHitCount.Text);
+            double ExhDam = double.Parse(paraExh.Text) * double.Parse(paraHitCount.Text);
             double KOZone = double.Parse(paraKOZone.Text) * 0.01;
             double ExhaustZone = double.Parse(paraExhZone.Text) * 0.01;
             double questMod = double.Parse(paraQuest.Text);
@@ -1463,7 +1463,6 @@ namespace YADC_MHGen_
             weaponModifiers.Add("LS - Spirit Gauge (White)", x => LS(3));
             weaponModifiers.Add("LS - Spirit Gauge (Yellow)", x => LS(4));
             weaponModifiers.Add("LS - Spirit Gauge (Red)", x => LS(5));
-            weaponModifiers.Add("SnS - Sword Sharpness", x => SnS(1));
             weaponModifiers.Add("SnS - Affinity Oil", x => SnS(2));
             weaponModifiers.Add("SnS - Stamina Oil", x => SnS(3));
             weaponModifiers.Add("SnS - Mind's Eye Oil", x => SnS(4));
