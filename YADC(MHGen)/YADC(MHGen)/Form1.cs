@@ -1509,8 +1509,10 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Gunner - Ex. Long Range (0.5x)", x => Gunner(4));
             weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", x => LBG(1));
             weaponModifiers.Add("LBG - Long Barrel (1.05x)", x => LBG(2));
+            weaponModifiers.Add("LBG - Power Reload", x => LBG(3));
             weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", x => HBG(1));
             weaponModifiers.Add("HBG - Power Barrel (1.05x)", x => HBG(2));
+            weaponModifiers.Add("HBG - Power Reload", x => HBG(3));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", x => Bow(1));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (+Poison)", x => Bow(2));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (+Para/Sleep)", x => Bow(3));
@@ -3436,6 +3438,10 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.totalAttackPower *= 1.05;
             }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 1.06;
+            }
             else
             {
                 return false;
@@ -3452,6 +3458,10 @@ namespace YADC_MHGen_
             else if (skillVal == 2)
             {
                 weaponAndMods.totalAttackPower *= 1.05;
+            }
+            else if (skillVal == 3)
+            {
+                weaponAndMods.rawMod *= 1.06;
             }
             else
             {
