@@ -3685,19 +3685,19 @@ namespace YADC_MHGen_
         {
             foreach (ListViewItem item in modList.Groups[0].Items)
             {
-                armorModifiers[item.Name](0);
+                armorModifiers[item.Text](0);
             }
             foreach (ListViewItem item in modList.Groups[1].Items)
             {
-                kitchenItemModifiers[item.Name](0);
+                kitchenItemModifiers[item.Text](0);
             }
             foreach (ListViewItem item in modList.Groups[2].Items)
             {
-                weaponModifiers[item.Name](0);
+                weaponModifiers[item.Text](0);
             }
             foreach (ListViewItem item in modList.Groups[3].Items)
             {
-                otherModifiers[item.Name](0);
+                otherModifiers[item.Text](0);
             }
 
             if (weaponAndMods.damageType == "Fixed")
