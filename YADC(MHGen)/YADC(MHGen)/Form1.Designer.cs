@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -373,6 +373,8 @@
             // 
             // weapAlt
             // 
+            this.weapAlt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapAlt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapAlt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapAlt.FormattingEnabled = true;
             this.weapAlt.Items.AddRange(new object[] {
@@ -396,6 +398,8 @@
             // 
             // paraAltType
             // 
+            this.paraAltType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.paraAltType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.paraAltType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paraAltType.FormattingEnabled = true;
             this.paraAltType.Items.AddRange(new object[] {
@@ -419,6 +423,8 @@
             // 
             // paraSecEle
             // 
+            this.paraSecEle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.paraSecEle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.paraSecEle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paraSecEle.FormattingEnabled = true;
             this.paraSecEle.Items.AddRange(new object[] {
@@ -442,6 +448,8 @@
             // 
             // weapSecType
             // 
+            this.weapSecType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapSecType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapSecType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapSecType.FormattingEnabled = true;
             this.weapSecType.Items.AddRange(new object[] {
@@ -678,6 +686,8 @@
             // 
             // weapTwo
             // 
+            this.weapTwo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapTwo.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapTwo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapTwo.FormattingEnabled = true;
             this.weapTwo.Items.AddRange(new object[] {
@@ -695,6 +705,8 @@
             // 
             // weapOne
             // 
+            this.weapOne.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapOne.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapOne.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapOne.FormattingEnabled = true;
             this.weapOne.Items.AddRange(new object[] {
@@ -712,6 +724,8 @@
             // 
             // weapSharpness
             // 
+            this.weapSharpness.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapSharpness.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapSharpness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapSharpness.FormattingEnabled = true;
             this.weapSharpness.Items.AddRange(new object[] {
@@ -851,6 +865,8 @@
             // 
             // weapFinal
             // 
+            this.weapFinal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapFinal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapFinal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapFinal.FormattingEnabled = true;
             this.weapFinal.Location = new System.Drawing.Point(7, 110);
@@ -861,6 +877,8 @@
             // 
             // weapLevel
             // 
+            this.weapLevel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapLevel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapLevel.FormattingEnabled = true;
             this.weapLevel.Location = new System.Drawing.Point(7, 150);
@@ -889,6 +907,8 @@
             // 
             // weapName
             // 
+            this.weapName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapName.FormattingEnabled = true;
             this.weapName.Location = new System.Drawing.Point(7, 70);
@@ -917,6 +937,8 @@
             // 
             // weapType
             // 
+            this.weapType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.weapType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weapType.FormattingEnabled = true;
             this.weapType.Location = new System.Drawing.Point(7, 30);
@@ -1068,6 +1090,8 @@
             // 
             // paraEleCrit
             // 
+            this.paraEleCrit.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.paraEleCrit.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.paraEleCrit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paraEleCrit.FormattingEnabled = true;
             this.paraEleCrit.Items.AddRange(new object[] {
@@ -1171,6 +1195,8 @@
             // 
             // paraSharpness
             // 
+            this.paraSharpness.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.paraSharpness.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.paraSharpness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paraSharpness.FormattingEnabled = true;
             this.paraSharpness.Items.AddRange(new object[] {
@@ -1318,6 +1344,8 @@
             // 
             // paraMonStat
             // 
+            this.paraMonStat.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.paraMonStat.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.paraMonStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.paraMonStat.FormattingEnabled = true;
             this.paraMonStat.Items.AddRange(new object[] {
@@ -1835,6 +1863,8 @@
             // 
             // moveDamType
             // 
+            this.moveDamType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.moveDamType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.moveDamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.moveDamType.FormattingEnabled = true;
             this.moveDamType.Items.AddRange(new object[] {
@@ -1980,6 +2010,8 @@
             // 
             // ComboSort
             // 
+            this.ComboSort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ComboSort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ComboSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboSort.FormattingEnabled = true;
             this.ComboSort.Location = new System.Drawing.Point(65, 72);
@@ -1999,6 +2031,8 @@
             // 
             // MotionSort
             // 
+            this.MotionSort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.MotionSort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.MotionSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MotionSort.FormattingEnabled = true;
             this.MotionSort.Location = new System.Drawing.Point(65, 45);
@@ -2018,6 +2052,8 @@
             // 
             // NameSort
             // 
+            this.NameSort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NameSort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.NameSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NameSort.FormattingEnabled = true;
             this.NameSort.Location = new System.Drawing.Point(65, 17);
@@ -2045,7 +2081,7 @@
             this.groupBox8.Controls.Add(this.modArmor);
             this.groupBox8.Location = new System.Drawing.Point(330, 306);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(597, 157);
+            this.groupBox8.Size = new System.Drawing.Size(597, 168);
             this.groupBox8.TabIndex = 133;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Active Modifiers:";
@@ -2062,7 +2098,7 @@
             // 
             // OtherButt
             // 
-            this.OtherButt.Location = new System.Drawing.Point(293, 97);
+            this.OtherButt.Location = new System.Drawing.Point(273, 96);
             this.OtherButt.Name = "OtherButt";
             this.OtherButt.Size = new System.Drawing.Size(63, 23);
             this.OtherButt.TabIndex = 13;
@@ -2081,39 +2117,41 @@
             // 
             // modOther
             // 
+            this.modOther.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.modOther.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.modOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modOther.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modOther.FormattingEnabled = true;
             this.modOther.Location = new System.Drawing.Point(105, 98);
             this.modOther.Name = "modOther";
-            this.modOther.Size = new System.Drawing.Size(182, 20);
+            this.modOther.Size = new System.Drawing.Size(162, 20);
             this.modOther.TabIndex = 11;
             // 
             // modList
             // 
-            listViewGroup5.Header = "Armor Skills:";
-            listViewGroup5.Name = "armorGroup";
-            listViewGroup6.Header = "Item/Bistro Skills:";
-            listViewGroup6.Name = "bistroGroup";
-            listViewGroup7.Header = "Weapon Modifiers:";
-            listViewGroup7.Name = "weaponGroup";
-            listViewGroup8.Header = "Other Modifiers:";
-            listViewGroup8.Name = "otherGroup";
+            listViewGroup1.Header = "Armor Skills:";
+            listViewGroup1.Name = "armorGroup";
+            listViewGroup2.Header = "Item/Bistro Skills:";
+            listViewGroup2.Name = "bistroGroup";
+            listViewGroup3.Header = "Weapon Modifiers:";
+            listViewGroup3.Name = "weaponGroup";
+            listViewGroup4.Header = "Other Modifiers:";
+            listViewGroup4.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
-            this.modList.Location = new System.Drawing.Point(363, 12);
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
+            this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
-            this.modList.Size = new System.Drawing.Size(222, 137);
+            this.modList.Size = new System.Drawing.Size(249, 150);
             this.modList.TabIndex = 136;
             this.modList.UseCompatibleStateImageBehavior = false;
             this.modList.View = System.Windows.Forms.View.List;
             // 
             // WeaponButt
             // 
-            this.WeaponButt.Location = new System.Drawing.Point(293, 68);
+            this.WeaponButt.Location = new System.Drawing.Point(273, 67);
             this.WeaponButt.Name = "WeaponButt";
             this.WeaponButt.Size = new System.Drawing.Size(63, 23);
             this.WeaponButt.TabIndex = 9;
@@ -2123,7 +2161,7 @@
             // 
             // KitchenButt
             // 
-            this.KitchenButt.Location = new System.Drawing.Point(293, 40);
+            this.KitchenButt.Location = new System.Drawing.Point(273, 39);
             this.KitchenButt.Name = "KitchenButt";
             this.KitchenButt.Size = new System.Drawing.Size(63, 23);
             this.KitchenButt.TabIndex = 8;
@@ -2133,7 +2171,7 @@
             // 
             // RemoveButt
             // 
-            this.RemoveButt.Location = new System.Drawing.Point(196, 129);
+            this.RemoveButt.Location = new System.Drawing.Point(178, 129);
             this.RemoveButt.Name = "RemoveButt";
             this.RemoveButt.Size = new System.Drawing.Size(135, 23);
             this.RemoveButt.TabIndex = 10;
@@ -2143,7 +2181,7 @@
             // 
             // ArmorButt
             // 
-            this.ArmorButt.Location = new System.Drawing.Point(293, 12);
+            this.ArmorButt.Location = new System.Drawing.Point(273, 11);
             this.ArmorButt.Name = "ArmorButt";
             this.ArmorButt.Size = new System.Drawing.Size(63, 23);
             this.ArmorButt.TabIndex = 7;
@@ -2162,12 +2200,14 @@
             // 
             // modWeapon
             // 
+            this.modWeapon.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.modWeapon.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.modWeapon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modWeapon.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modWeapon.FormattingEnabled = true;
             this.modWeapon.Location = new System.Drawing.Point(105, 70);
             this.modWeapon.Name = "modWeapon";
-            this.modWeapon.Size = new System.Drawing.Size(182, 20);
+            this.modWeapon.Size = new System.Drawing.Size(162, 20);
             this.modWeapon.TabIndex = 5;
             // 
             // label39
@@ -2181,12 +2221,14 @@
             // 
             // modKitchen
             // 
+            this.modKitchen.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.modKitchen.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.modKitchen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modKitchen.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modKitchen.FormattingEnabled = true;
             this.modKitchen.Location = new System.Drawing.Point(105, 42);
             this.modKitchen.Name = "modKitchen";
-            this.modKitchen.Size = new System.Drawing.Size(182, 20);
+            this.modKitchen.Size = new System.Drawing.Size(162, 20);
             this.modKitchen.TabIndex = 3;
             // 
             // label34
@@ -2200,12 +2242,14 @@
             // 
             // modArmor
             // 
+            this.modArmor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.modArmor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.modArmor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modArmor.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.modArmor.FormattingEnabled = true;
             this.modArmor.Location = new System.Drawing.Point(105, 14);
             this.modArmor.Name = "modArmor";
-            this.modArmor.Size = new System.Drawing.Size(182, 20);
+            this.modArmor.Size = new System.Drawing.Size(162, 20);
             this.modArmor.TabIndex = 1;
             // 
             // groupBox9
@@ -2537,6 +2581,8 @@
             // 
             // monQuest
             // 
+            this.monQuest.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.monQuest.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.monQuest.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monQuest.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.monQuest.FormattingEnabled = true;
@@ -2557,6 +2603,8 @@
             // 
             // monHitzone
             // 
+            this.monHitzone.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.monHitzone.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.monHitzone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monHitzone.FormattingEnabled = true;
             this.monHitzone.Location = new System.Drawing.Point(88, 42);
@@ -2576,6 +2624,8 @@
             // 
             // monName
             // 
+            this.monName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.monName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.monName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monName.FormattingEnabled = true;
             this.monName.Location = new System.Drawing.Point(88, 14);

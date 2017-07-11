@@ -291,6 +291,7 @@ namespace YADC_MHGen_
         public DmgCalculator()
         {
             InitializeComponent(); //Required.
+            Application.EnableVisualStyles();
             FillOut(); //Fills out dictionaries.
             readFiles(); //Read the xml files and fills out the database.
             prep();
@@ -891,7 +892,7 @@ namespace YADC_MHGen_
             if (!alreadyThere)
             {
                 ListViewItem item = new ListViewItem(modKitchen.Text);
-                item.Group = modList.Groups[0];
+                item.Group = modList.Groups[1];
                 modList.Items.Add(item);
             }
         }
@@ -910,7 +911,7 @@ namespace YADC_MHGen_
             if (!alreadyThere)
             {
                 ListViewItem item = new ListViewItem(modWeapon.Text);
-                item.Group = modList.Groups[0];
+                item.Group = modList.Groups[2];
                 modList.Items.Add(item);
             }
         }
@@ -929,7 +930,7 @@ namespace YADC_MHGen_
             if (!alreadyThere)
             {
                 ListViewItem item = new ListViewItem(modOther.Text);
-                item.Group = modList.Groups[0];
+                item.Group = modList.Groups[4];
                 modList.Items.Add(item);
             }
         }
