@@ -1075,11 +1075,11 @@ namespace YADC_MHGen_
                 }
                 else if (PositiveSel.Checked)
                 {
-                    subAffinity = 100;
+                    subAffinity = 1;
                 }
                 else if (NegativeSel.Checked)
                 {
-                    subAffinity = -100;
+                    subAffinity = -1;
                 }
 
                 if (AverageSel.Checked || PositiveSel.Checked)

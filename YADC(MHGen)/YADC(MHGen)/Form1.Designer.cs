@@ -2058,6 +2058,7 @@
             this.RemoveAllButt.TabIndex = 15;
             this.RemoveAllButt.Text = "Remove All Mods";
             this.RemoveAllButt.UseVisualStyleBackColor = true;
+            this.RemoveAllButt.Click += new System.EventHandler(this.RemoveAllButt_Click);
             // 
             // OtherButt
             // 
@@ -2138,6 +2139,7 @@
             this.RemoveButt.TabIndex = 10;
             this.RemoveButt.Text = "Remove Selected Mod(s)";
             this.RemoveButt.UseVisualStyleBackColor = true;
+            this.RemoveButt.Click += new System.EventHandler(this.RemoveButt_Click);
             // 
             // ArmorButt
             // 
