@@ -860,30 +860,78 @@ namespace YADC_MHGen_
 
         private void ArmorButt_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem(modArmor.Text);
-            item.Group = modList.Groups[0];
-            modList.Items.Add(item);
+            bool alreadyThere = false;
+            foreach(ListViewItem item in modList.Items)
+            {
+                if(modArmor.Text == item.Text)
+                {
+                    alreadyThere = true;
+                    break;
+                }
+            }
+            if (!alreadyThere)
+            {
+                ListViewItem item = new ListViewItem(modArmor.Text);
+                item.Group = modList.Groups[0];
+                modList.Items.Add(item);
+            }
         }
 
         private void KitchenButt_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem(modKitchen.Text);
-            item.Group = modList.Groups[1];
-            modList.Items.Add(item);
+            bool alreadyThere = false;
+            foreach (ListViewItem item in modList.Items)
+            {
+                if (modKitchen.Text == item.Text)
+                {
+                    alreadyThere = true;
+                    break;
+                }
+            }
+            if (!alreadyThere)
+            {
+                ListViewItem item = new ListViewItem(modKitchen.Text);
+                item.Group = modList.Groups[0];
+                modList.Items.Add(item);
+            }
         }
 
         private void WeaponButt_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem(modWeapon.Text);
-            item.Group = modList.Groups[2];
-            modList.Items.Add(item);
+            bool alreadyThere = false;
+            foreach (ListViewItem item in modList.Items)
+            {
+                if (modWeapon.Text == item.Text)
+                {
+                    alreadyThere = true;
+                    break;
+                }
+            }
+            if (!alreadyThere)
+            {
+                ListViewItem item = new ListViewItem(modWeapon.Text);
+                item.Group = modList.Groups[0];
+                modList.Items.Add(item);
+            }
         }
 
         private void OtherButt_Click(object sender, EventArgs e)
         {
-            ListViewItem item = new ListViewItem(modOther.Text);
-            item.Group = modList.Groups[3];
-            modList.Items.Add(item);
+            bool alreadyThere = false;
+            foreach (ListViewItem item in modList.Items)
+            {
+                if (modOther.Text == item.Text)
+                {
+                    alreadyThere = true;
+                    break;
+                }
+            }
+            if (!alreadyThere)
+            {
+                ListViewItem item = new ListViewItem(modOther.Text);
+                item.Group = modList.Groups[0];
+                modList.Items.Add(item);
+            }
         }
 
         private void RemoveButt_Click(object sender, EventArgs e)
