@@ -477,9 +477,7 @@ namespace YADC_MHGen_
                 weapFinal.Items.Add(names2FinalNames[names]); //Fill in weapon names at final forms.
             }
 
-            fillMoves((string)((ComboBox)sender).SelectedItem, "None");
-
-
+            fillMoves((string)((ComboBox)sender).SelectedItem);
         }
 
 
@@ -770,11 +768,11 @@ namespace YADC_MHGen_
         {
             if (weapOverride.Checked)
             {
-                fillMoves((string)weapType.SelectedItem, (string)weapSecType.SelectedItem);
+                fillMoves((string)weapType.SelectedItem);
             }
             else
             {
-                fillMoves((string)((ComboBox)sender).SelectedItem, "All");
+                fillMoves((string)((ComboBox)sender).SelectedItem);
             }
         }
 
@@ -1210,7 +1208,7 @@ namespace YADC_MHGen_
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
 
-        private void fillMoves(string selectedItem, string v)
+        private void fillMoves(string selectedItem)
         {
             NameSort.Items.Clear();
             MotionSort.Items.Clear();
@@ -1226,8 +1224,8 @@ namespace YADC_MHGen_
                 tempListCombo.Add(moves);
             }
 
-            quickSort(tempListMotion, 1, tempListMotion.Count - 1); //Usage of quickSort.
-            insertSort(tempListCombo);
+            insertSort1(tempListMotion); //Usage of quickSort.
+            insertSort2(tempListCombo);
 
             foreach (moveStat moves in tempListMotion)
             {
@@ -1577,7 +1575,7 @@ namespace YADC_MHGen_
                 type = type.Remove(0, 18);
                 if (type.Contains('_'))
                 {
-                    type.Replace('_', ' ');
+                    type = type.Replace('_', ' ');
                 }
 
                 List<moveStat> moves = new List<moveStat>();
@@ -1689,7 +1687,7 @@ namespace YADC_MHGen_
                 type = type.Remove(0, 13); //Strip preceeding './Weapons/' and order numbers
                 if (type.Contains('_'))
                 {
-                    type.Replace('_', ' ');
+                    type = type.Replace('_', ' ');
                 }
 
                 weapType.Items.Add(type);
@@ -2035,45 +2033,26 @@ namespace YADC_MHGen_
         }
 
         /// <summary>
-        /// Implementation of QuickSort. Used for sorting by MotionValue.
+        /// Implementation of Insert Sort, used for sorting by ID.
+        /// Adapted from the pseudocode on Wikipedia.
         /// </summary>
         /// <param name="statList"></param>
-        /// <param name="loIndex"></param>
-        /// <param name="hiIndex"></param>
-        private void quickSort(List<moveStat> statList, int loIndex, int hiIndex)
+        private void insertSort1(List<moveStat> statList)
         {
-            if (loIndex < hiIndex)
+            for (int i = 1; i != statList.Count; i++)
             {
-                int p = partition(statList, loIndex, hiIndex);
-                quickSort(statList, loIndex, p - 1);
-                quickSort(statList, loIndex, p - 1);
-            }
-        }
+                double x = statList[i].totalValue;
+                moveStat x1 = statList[i];
 
-        private int partition(List<moveStat> statList, int loIndex, int hiIndex)
-        {
-            double pivot = statList[hiIndex].totalValue;
-            int i = loIndex - 1;
-
-            for (int j = loIndex; j != hiIndex; j++)
-            {
-                if (statList[j].totalValue <= pivot)
+                int j = i - 1;
+                while (j >= 0 && statList[j].totalValue > x)
                 {
-                    i++;
-                    if (i != j)
-                    {
-                        moveStat tempStat = statList[i];
-                        statList[i] = statList[j];
-                        statList[j] = tempStat;
-                    }
+                    statList[j + 1] = statList[j];
+                    j = j - 1;
                 }
+
+                statList[j + 1] = x1;
             }
-
-            moveStat temp = statList[i + 1];
-            statList[i + 1] = statList[hiIndex];
-            statList[hiIndex] = temp;
-
-            return i + 1;
         }
 
         /// <summary>
@@ -2081,7 +2060,7 @@ namespace YADC_MHGen_
         /// Adapted from the pseudocode on Wikipedia.
         /// </summary>
         /// <param name="statList"></param>
-        private void insertSort(List<moveStat> statList)
+        private void insertSort2(List<moveStat> statList)
         {
             for(int i = 1; i != statList.Count; i++)
             {

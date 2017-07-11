@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -962,7 +962,7 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.paraExh);
             this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Location = new System.Drawing.Point(12, 495);
+            this.groupBox3.Location = new System.Drawing.Point(9, 517);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(530, 177);
             this.groupBox3.TabIndex = 128;
@@ -1242,7 +1242,7 @@
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Controls.Add(this.paraKOZone);
             this.groupBox4.Controls.Add(this.paraRawHitzone);
-            this.groupBox4.Location = new System.Drawing.Point(541, 495);
+            this.groupBox4.Location = new System.Drawing.Point(538, 517);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(328, 177);
             this.groupBox4.TabIndex = 129;
@@ -1394,7 +1394,7 @@
             this.groupBox5.Controls.Add(this.CalcButt);
             this.groupBox5.Controls.Add(this.calcRawOut);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(12, 678);
+            this.groupBox5.Location = new System.Drawing.Point(9, 700);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(915, 116);
             this.groupBox5.TabIndex = 130;
@@ -1962,9 +1962,9 @@
             this.groupBox7.Controls.Add(this.MotionSort);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.NameSort);
-            this.groupBox7.Location = new System.Drawing.Point(323, 196);
+            this.groupBox7.Location = new System.Drawing.Point(12, 370);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(194, 104);
+            this.groupBox7.Size = new System.Drawing.Size(312, 104);
             this.groupBox7.TabIndex = 132;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Move Search";
@@ -1984,7 +1984,7 @@
             this.ComboSort.FormattingEnabled = true;
             this.ComboSort.Location = new System.Drawing.Point(65, 72);
             this.ComboSort.Name = "ComboSort";
-            this.ComboSort.Size = new System.Drawing.Size(121, 21);
+            this.ComboSort.Size = new System.Drawing.Size(237, 21);
             this.ComboSort.TabIndex = 133;
             this.ComboSort.SelectedIndexChanged += new System.EventHandler(this.ComboSort_SelectedIndexChanged);
             // 
@@ -2003,7 +2003,7 @@
             this.MotionSort.FormattingEnabled = true;
             this.MotionSort.Location = new System.Drawing.Point(65, 45);
             this.MotionSort.Name = "MotionSort";
-            this.MotionSort.Size = new System.Drawing.Size(121, 21);
+            this.MotionSort.Size = new System.Drawing.Size(237, 21);
             this.MotionSort.TabIndex = 2;
             this.MotionSort.SelectedIndexChanged += new System.EventHandler(this.MotionSort_SelectedIndexChanged);
             // 
@@ -2022,7 +2022,7 @@
             this.NameSort.FormattingEnabled = true;
             this.NameSort.Location = new System.Drawing.Point(65, 17);
             this.NameSort.Name = "NameSort";
-            this.NameSort.Size = new System.Drawing.Size(121, 21);
+            this.NameSort.Size = new System.Drawing.Size(237, 21);
             this.NameSort.TabIndex = 0;
             this.NameSort.SelectedIndexChanged += new System.EventHandler(this.NameSort_SelectedIndexChanged);
             // 
@@ -2090,19 +2090,19 @@
             // 
             // modList
             // 
-            listViewGroup5.Header = "Armor Skills:";
-            listViewGroup5.Name = "armorGroup";
-            listViewGroup6.Header = "Item/Bistro Skills:";
-            listViewGroup6.Name = "bistroGroup";
-            listViewGroup7.Header = "Weapon Modifiers:";
-            listViewGroup7.Name = "weaponGroup";
-            listViewGroup8.Header = "Other Modifiers:";
-            listViewGroup8.Name = "otherGroup";
+            listViewGroup1.Header = "Armor Skills:";
+            listViewGroup1.Name = "armorGroup";
+            listViewGroup2.Header = "Item/Bistro Skills:";
+            listViewGroup2.Name = "bistroGroup";
+            listViewGroup3.Header = "Weapon Modifiers:";
+            listViewGroup3.Name = "weaponGroup";
+            listViewGroup4.Header = "Other Modifiers:";
+            listViewGroup4.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
             this.modList.Location = new System.Drawing.Point(363, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(222, 137);
@@ -2626,7 +2626,7 @@
             // 
             this.label000.AutoSize = true;
             this.label000.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label000.Location = new System.Drawing.Point(12, 478);
+            this.label000.Location = new System.Drawing.Point(9, 500);
             this.label000.Name = "label000";
             this.label000.Size = new System.Drawing.Size(80, 13);
             this.label000.TabIndex = 139;
@@ -2636,7 +2636,7 @@
             // 
             this.label107.AutoSize = true;
             this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label107.Location = new System.Drawing.Point(12, 461);
+            this.label107.Location = new System.Drawing.Point(9, 483);
             this.label107.Name = "label107";
             this.label107.Size = new System.Drawing.Size(65, 13);
             this.label107.TabIndex = 140;
@@ -2645,7 +2645,7 @@
             // label106
             // 
             this.label106.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label106.Location = new System.Drawing.Point(12, 476);
+            this.label106.Location = new System.Drawing.Point(9, 498);
             this.label106.Name = "label106";
             this.label106.Size = new System.Drawing.Size(910, 2);
             this.label106.TabIndex = 138;
@@ -2654,7 +2654,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(940, 801);
+            this.ClientSize = new System.Drawing.Size(940, 828);
             this.Controls.Add(this.label107);
             this.Controls.Add(this.label000);
             this.Controls.Add(this.label106);
