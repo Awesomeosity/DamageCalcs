@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -255,9 +255,13 @@
             this.monQuestMod = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
-            this.label000 = new System.Windows.Forms.Label();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label106 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.calcRawWeap = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -285,6 +289,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.monIceBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monDragonBox)).BeginInit();
             this.groupBox10.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorPreventer
@@ -621,7 +628,7 @@
             this.groupBox1.Controls.Add(this.label37);
             this.groupBox1.Controls.Add(this.label36);
             this.groupBox1.Controls.Add(this.label35);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(371, 178);
             this.groupBox1.TabIndex = 126;
@@ -856,7 +863,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.weapType);
-            this.groupBox2.Location = new System.Drawing.Point(382, 12);
+            this.groupBox2.Location = new System.Drawing.Point(383, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(134, 178);
             this.groupBox2.TabIndex = 127;
@@ -984,7 +991,7 @@
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.paraExh);
             this.groupBox3.Controls.Add(this.label27);
-            this.groupBox3.Location = new System.Drawing.Point(9, 517);
+            this.groupBox3.Location = new System.Drawing.Point(6, 6);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(530, 177);
             this.groupBox3.TabIndex = 128;
@@ -1268,7 +1275,7 @@
             this.groupBox4.Controls.Add(this.label29);
             this.groupBox4.Controls.Add(this.paraKOZone);
             this.groupBox4.Controls.Add(this.paraRawHitzone);
-            this.groupBox4.Location = new System.Drawing.Point(538, 517);
+            this.groupBox4.Location = new System.Drawing.Point(535, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(328, 177);
             this.groupBox4.TabIndex = 129;
@@ -1388,6 +1395,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.calcRawWeap);
+            this.groupBox5.Controls.Add(this.label61);
             this.groupBox5.Controls.Add(this.calcFinalSecBox);
             this.groupBox5.Controls.Add(this.calcFinalSec);
             this.groupBox5.Controls.Add(this.label62);
@@ -1422,9 +1431,9 @@
             this.groupBox5.Controls.Add(this.CalcButt);
             this.groupBox5.Controls.Add(this.calcRawOut);
             this.groupBox5.Controls.Add(this.label2);
-            this.groupBox5.Location = new System.Drawing.Point(9, 700);
+            this.groupBox5.Location = new System.Drawing.Point(6, 189);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(915, 116);
+            this.groupBox5.Size = new System.Drawing.Size(915, 168);
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
@@ -1490,9 +1499,9 @@
             // label48
             // 
             this.label48.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label48.Location = new System.Drawing.Point(383, 10);
+            this.label48.Location = new System.Drawing.Point(373, 10);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(2, 100);
+            this.label48.Size = new System.Drawing.Size(2, 154);
             this.label48.TabIndex = 138;
             // 
             // calcBounce
@@ -1749,7 +1758,7 @@
             // 
             this.calcRawOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcRawOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcRawOut.Location = new System.Drawing.Point(117, 79);
+            this.calcRawOut.Location = new System.Drawing.Point(117, 126);
             this.calcRawOut.Name = "calcRawOut";
             this.calcRawOut.Size = new System.Drawing.Size(96, 20);
             this.calcRawOut.TabIndex = 112;
@@ -1759,7 +1768,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(114, 62);
+            this.label2.Location = new System.Drawing.Point(114, 109);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(75, 13);
             this.label2.TabIndex = 111;
@@ -1788,7 +1797,7 @@
             this.groupBox6.Controls.Add(this.moveSharp);
             this.groupBox6.Controls.Add(this.moveTotal);
             this.groupBox6.Controls.Add(this.label11);
-            this.groupBox6.Location = new System.Drawing.Point(12, 196);
+            this.groupBox6.Location = new System.Drawing.Point(6, 190);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(312, 174);
             this.groupBox6.TabIndex = 131;
@@ -1992,7 +2001,7 @@
             this.groupBox7.Controls.Add(this.MotionSort);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.NameSort);
-            this.groupBox7.Location = new System.Drawing.Point(12, 370);
+            this.groupBox7.Location = new System.Drawing.Point(6, 364);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(312, 104);
             this.groupBox7.TabIndex = 132;
@@ -2079,7 +2088,7 @@
             this.groupBox8.Controls.Add(this.modKitchen);
             this.groupBox8.Controls.Add(this.label34);
             this.groupBox8.Controls.Add(this.modArmor);
-            this.groupBox8.Location = new System.Drawing.Point(330, 306);
+            this.groupBox8.Location = new System.Drawing.Point(328, 300);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(597, 168);
             this.groupBox8.TabIndex = 133;
@@ -2129,19 +2138,19 @@
             // 
             // modList
             // 
-            listViewGroup1.Header = "Armor Skills:";
-            listViewGroup1.Name = "armorGroup";
-            listViewGroup2.Header = "Item/Bistro Skills:";
-            listViewGroup2.Name = "bistroGroup";
-            listViewGroup3.Header = "Weapon Modifiers:";
-            listViewGroup3.Name = "weaponGroup";
-            listViewGroup4.Header = "Other Modifiers:";
-            listViewGroup4.Name = "otherGroup";
+            listViewGroup5.Header = "Armor Skills:";
+            listViewGroup5.Name = "armorGroup";
+            listViewGroup6.Header = "Item/Bistro Skills:";
+            listViewGroup6.Name = "bistroGroup";
+            listViewGroup7.Header = "Weapon Modifiers:";
+            listViewGroup7.Name = "weaponGroup";
+            listViewGroup8.Header = "Other Modifiers:";
+            listViewGroup8.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8});
             this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(249, 150);
@@ -2262,7 +2271,7 @@
             this.groupBox9.Controls.Add(this.monQuestMod);
             this.groupBox9.Controls.Add(this.label71);
             this.groupBox9.Controls.Add(this.label84);
-            this.groupBox9.Location = new System.Drawing.Point(522, 12);
+            this.groupBox9.Location = new System.Drawing.Point(523, 6);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(405, 291);
             this.groupBox9.TabIndex = 134;
@@ -2588,7 +2597,7 @@
             this.monQuest.FormattingEnabled = true;
             this.monQuest.Location = new System.Drawing.Point(88, 69);
             this.monQuest.Name = "monQuest";
-            this.monQuest.Size = new System.Drawing.Size(180, 20);
+            this.monQuest.Size = new System.Drawing.Size(192, 20);
             this.monQuest.TabIndex = 133;
             this.monQuest.SelectedIndexChanged += new System.EventHandler(this.monQuest_SelectedIndexChanged);
             // 
@@ -2674,52 +2683,92 @@
             this.label84.Text = "Exhaust Mod:";
             this.label84.Visible = false;
             // 
-            // label000
+            // tabControl1
             // 
-            this.label000.AutoSize = true;
-            this.label000.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label000.Location = new System.Drawing.Point(9, 500);
-            this.label000.Name = "label000";
-            this.label000.Size = new System.Drawing.Size(80, 13);
-            this.label000.TabIndex = 139;
-            this.label000.Text = "Calculations:";
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 26);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(944, 501);
+            this.tabControl1.TabIndex = 141;
             // 
-            // label107
+            // tabPage1
             // 
-            this.label107.AutoSize = true;
-            this.label107.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label107.Location = new System.Drawing.Point(9, 483);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(65, 13);
-            this.label107.TabIndex = 140;
-            this.label107.Text = "Database:";
+            this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBox9);
+            this.tabPage1.Controls.Add(this.groupBox6);
+            this.tabPage1.Controls.Add(this.groupBox8);
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(936, 475);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Database";
             // 
-            // label106
+            // tabPage2
             // 
-            this.label106.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label106.Location = new System.Drawing.Point(9, 498);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(910, 2);
-            this.label106.TabIndex = 138;
+            this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Controls.Add(this.groupBox5);
+            this.tabPage2.Controls.Add(this.groupBox3);
+            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(936, 475);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Calculation";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
+            this.menuStrip1.TabIndex = 142;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // calcRawWeap
+            // 
+            this.calcRawWeap.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcRawWeap.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcRawWeap.Location = new System.Drawing.Point(117, 79);
+            this.calcRawWeap.Name = "calcRawWeap";
+            this.calcRawWeap.Size = new System.Drawing.Size(96, 20);
+            this.calcRawWeap.TabIndex = 146;
+            this.calcRawWeap.Text = "0";
+            this.calcRawWeap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(114, 62);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(119, 13);
+            this.label61.TabIndex = 145;
+            this.label61.Text = "Raw Weapon Damage:";
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(7, 364);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(914, 96);
+            this.richTextBox1.TabIndex = 131;
+            this.richTextBox1.Text = "";
             // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(940, 828);
-            this.Controls.Add(this.label107);
-            this.Controls.Add(this.label000);
-            this.Controls.Add(this.label106);
-            this.Controls.Add(this.groupBox9);
-            this.Controls.Add(this.groupBox8);
-            this.Controls.Add(this.groupBox7);
-            this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.ClientSize = new System.Drawing.Size(983, 548);
+            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "DmgCalculator";
             this.Text = "Awesomeosity\'s Damage Calculator -  Pre-Launch Survivability (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
@@ -2760,6 +2809,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.monDragonBox)).EndInit();
             this.groupBox10.ResumeLayout(false);
             this.groupBox10.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2985,11 +3037,15 @@
         private System.Windows.Forms.TextBox paraEleHitzone;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label107;
-        private System.Windows.Forms.Label label000;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label label106;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label calcRawWeap;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

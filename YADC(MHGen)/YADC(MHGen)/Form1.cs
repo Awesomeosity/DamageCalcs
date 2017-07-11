@@ -337,11 +337,12 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void CalcButt_Click(object sender, System.EventArgs e)
         {
-            Tuple<double, double, double> rawEleOut = calculateDamage(); //Helper function.
+            Tuple<double, double, double, double> rawEleOut = calculateDamage(); //Helper function.
 
-            calcRawOut.Text = rawEleOut.Item1.ToString(); //Used the Tuple output from the function to fill in the labels.
-            calcEleOut.Text = rawEleOut.Item2.ToString();
-            calcSecOut.Text = rawEleOut.Item3.ToString();
+            calcRawWeap.Text = rawEleOut.Item1.ToString();
+            calcRawOut.Text = rawEleOut.Item2.ToString(); //Used the Tuple output from the function to fill in the labels.
+            calcEleOut.Text = rawEleOut.Item3.ToString();
+            calcSecOut.Text = rawEleOut.Item4.ToString();
         }
 
         /*CalcAll Functions*/
@@ -352,12 +353,13 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
-            Tuple<double, double, double> rawEleTuple = calculateDamage(); //Use helper function.
-            Tuple<double, double, double, double, double, string, double> finalTuple = calculateMoreDamage(rawEleTuple.Item1, rawEleTuple.Item2, rawEleTuple.Item3); //Another one.
+            Tuple<double, double, double, double> rawEleTuple = calculateDamage(); //Use helper function.
+            Tuple<double, double, double, double, double, string, double> finalTuple = calculateMoreDamage(rawEleTuple.Item2, rawEleTuple.Item3, rawEleTuple.Item4); //Another one.
 
-            calcRawOut.Text = rawEleTuple.Item1.ToString(); //Do as the CalcButt function does
-            calcEleOut.Text = rawEleTuple.Item2.ToString();
-            calcSecOut.Text = rawEleTuple.Item3.ToString();
+            calcRawWeap.Text = rawEleTuple.Item1.ToString();
+            calcRawOut.Text = rawEleTuple.Item2.ToString(); //Do as the CalcButt function does
+            calcEleOut.Text = rawEleTuple.Item3.ToString();
+            calcSecOut.Text = rawEleTuple.Item4.ToString();
 
             calcFinalRaw.Text = finalTuple.Item2.ToString(); //But with use of the outputted tuple from the moreDamage function.
             calcEle.Text = finalTuple.Item3.ToString();
@@ -1081,7 +1083,7 @@ namespace YADC_MHGen_
         /// This function calculates damage before considering the monster parameters.
         /// </summary>
         /// <returns>A Tuple storing the Raw and Elemental damage outputs.</returns>
-        private Tuple<double, double, double> calculateDamage()
+        private Tuple<double, double, double, double> calculateDamage()
         {
             double total = double.Parse(paraRaw.Text);
             double hitCount = double.Parse(paraHitCount.Text);
@@ -1102,6 +1104,7 @@ namespace YADC_MHGen_
             double rawSharp = double.Parse(paraRawSharp.Text);
             double eleSharp = double.Parse(paraEleSharp.Text);
 
+            double rawWeap = 0;
             double rawTotal = 0;
             double eleTotal = 0;
             double DBTotal = 0;
@@ -1113,7 +1116,7 @@ namespace YADC_MHGen_
 
             if (paraFixed.Checked) //If fixed damage is in play
             {
-                return new Tuple<double, double, double>(motion / 0.01, element, DBElement);
+                return new Tuple<double, double, double, double>(motion / 0.01, motion / 0.01, element, DBElement);
             }
 
             else //If it is in play
@@ -1161,7 +1164,8 @@ namespace YADC_MHGen_
                     }
                 }
 
-                rawTotal = total * (1 + subAffinity * critBoost) * rawSharp * motion;
+                rawWeap = total * (1 + subAffinity * critBoost) * rawSharp;
+                rawTotal = rawWeap * motion;
 
                 string ele = (string)paraAltType.SelectedItem;
                 string secEle = (string)paraSecEle.SelectedItem;
@@ -1192,7 +1196,7 @@ namespace YADC_MHGen_
                 }
             }
 
-            return new Tuple<double, double, double>(rawTotal, eleTotal, DBTotal);
+            return new Tuple<double, double, double, double>(rawWeap, rawTotal, eleTotal, DBTotal);
         }
 
         /// <summary>
@@ -1235,11 +1239,13 @@ namespace YADC_MHGen_
                 rawDamage *= questMod;
             }
 
+            totaldamage = rawDamage;
+
             string element = (string)paraAltType.SelectedItem;
             if (isElement(element))
             {
                 elementalDamage = elementalDamage * eleZone * questMod;
-                totaldamage = rawDamage + elementalDamage;
+                totaldamage += elementalDamage;
             }
 
             if (paraSecEle.Text != "(None)") //For DB's Second Element
@@ -1557,7 +1563,7 @@ namespace YADC_MHGen_
             weaponModifiers.Add("LBG - Raw Multiplier (1.3x)", x => LBG(1));
             weaponModifiers.Add("LBG - Long Barrel (1.05x)", x => LBG(2));
             weaponModifiers.Add("LBG - Power Reload", x => LBG(3));
-            weaponModifiers.Add("HBG - Raw Multiplier (1.5x)", x => HBG(1));
+            weaponModifiers.Add("HBG - Raw Multiplier (1.48x)", x => HBG(1));
             weaponModifiers.Add("HBG - Power Barrel (1.05x)", x => HBG(2));
             weaponModifiers.Add("HBG - Power Reload", x => HBG(3));
             weaponModifiers.Add("Bow - Charge Lvl. 1 (Non-Status)", x => Bow(1));
@@ -3823,6 +3829,7 @@ namespace YADC_MHGen_
             paraExhZone.Text = weaponAndMods.exhaustHitzone.ToString();
             paraQuest.Text = weaponAndMods.questMod.ToString();
         }
+
 #endif
     }
 }
