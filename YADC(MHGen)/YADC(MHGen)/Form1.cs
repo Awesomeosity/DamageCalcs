@@ -2563,7 +2563,7 @@ namespace YADC_MHGen_
         {
             if (moveDraw.Checked)
             {
-                weaponAndMods.affinity = 100;
+                weaponAndMods.affinity += 100;
             }
             return true;
         }
