@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -326,6 +326,12 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.eleShotType = new System.Windows.Forms.ComboBox();
+            this.label79 = new System.Windows.Forms.Label();
+            this.label80 = new System.Windows.Forms.Label();
+            this.label83 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -363,6 +369,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staParaBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).BeginInit();
+            this.groupBox12.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorPreventer
@@ -2034,11 +2041,11 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(158, 43);
+            this.label30.Location = new System.Drawing.Point(158, 38);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(72, 13);
+            this.label30.Size = new System.Drawing.Size(72, 26);
             this.label30.TabIndex = 151;
-            this.label30.Text = "Element Mod:";
+            this.label30.Text = "Element Mod:\r\n(RF Mod:)";
             // 
             // moveEleMod
             // 
@@ -2185,11 +2192,11 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(6, 43);
+            this.label16.Location = new System.Drawing.Point(6, 38);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(84, 13);
+            this.label16.Size = new System.Drawing.Size(84, 26);
             this.label16.TabIndex = 3;
-            this.label16.Text = "Sharpness Mod:";
+            this.label16.Text = "Sharpness Mod:\r\n(RF Mod:)";
             // 
             // moveSharp
             // 
@@ -2317,9 +2324,9 @@
             this.groupBox8.Controls.Add(this.modKitchen);
             this.groupBox8.Controls.Add(this.label34);
             this.groupBox8.Controls.Add(this.modArmor);
-            this.groupBox8.Location = new System.Drawing.Point(328, 300);
+            this.groupBox8.Location = new System.Drawing.Point(324, 300);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(597, 168);
+            this.groupBox8.Size = new System.Drawing.Size(606, 168);
             this.groupBox8.TabIndex = 133;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Active Modifiers:";
@@ -2367,22 +2374,22 @@
             // 
             // modList
             // 
-            listViewGroup5.Header = "Armor Skills:";
-            listViewGroup5.Name = "armorGroup";
-            listViewGroup6.Header = "Item/Bistro Skills:";
-            listViewGroup6.Name = "bistroGroup";
-            listViewGroup7.Header = "Weapon Modifiers:";
-            listViewGroup7.Name = "weaponGroup";
-            listViewGroup8.Header = "Other Modifiers:";
-            listViewGroup8.Name = "otherGroup";
+            listViewGroup1.Header = "Armor Skills:";
+            listViewGroup1.Name = "armorGroup";
+            listViewGroup2.Header = "Item/Bistro Skills:";
+            listViewGroup2.Name = "bistroGroup";
+            listViewGroup3.Header = "Weapon Modifiers:";
+            listViewGroup3.Name = "weaponGroup";
+            listViewGroup4.Header = "Other Modifiers:";
+            listViewGroup4.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
             this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
-            this.modList.Size = new System.Drawing.Size(249, 150);
+            this.modList.Size = new System.Drawing.Size(258, 150);
             this.modList.TabIndex = 136;
             this.modList.UseCompatibleStateImageBehavior = false;
             this.modList.View = System.Windows.Forms.View.List;
@@ -2798,7 +2805,7 @@
             "Hitzone 5"});
             this.comboBox1.Location = new System.Drawing.Point(298, 219);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(105, 21);
+            this.comboBox1.Size = new System.Drawing.Size(101, 21);
             this.comboBox1.TabIndex = 177;
             this.comboBox1.Visible = false;
             // 
@@ -2950,6 +2957,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage1.Controls.Add(this.groupBox12);
             this.tabPage1.Controls.Add(this.groupBox1);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.groupBox6);
@@ -3568,6 +3576,203 @@
             this.menuStrip1.TabIndex = 142;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.label83);
+            this.groupBox12.Controls.Add(this.comboBox2);
+            this.groupBox12.Controls.Add(this.label80);
+            this.groupBox12.Controls.Add(this.label79);
+            this.groupBox12.Controls.Add(this.eleShotType);
+            this.groupBox12.Location = new System.Drawing.Point(324, 190);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(193, 107);
+            this.groupBox12.TabIndex = 135;
+            this.groupBox12.TabStop = false;
+            this.groupBox12.Text = "Element Ammo and Fixed Attacks";
+            // 
+            // eleShotType
+            // 
+            this.eleShotType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.eleShotType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.eleShotType.Enabled = false;
+            this.eleShotType.FormattingEnabled = true;
+            this.eleShotType.Items.AddRange(new object[] {
+            "(Not used)",
+            "Flaming S Lvl. 1",
+            "RF Flaming Lvl. 1 (x3)",
+            "RF Flaming Lvl. 1 (x3, One Hit)",
+            "RF Flaming Lvl. 1 (x4)",
+            "RF Flaming Lvl. 1 (x4, One Hit)",
+            "Flaming S Lvl. 2",
+            "RF Flaming Lvl. 2",
+            "RF Flaming Lvl. 2 (One Hit)",
+            "P.Flaming S Lvl. 1",
+            "P.Flaming S Lvl. 1(One Hit)",
+            "P.Flaming S Lvl. 2",
+            "P.Flaming S Lvl. 2(One Hit)",
+            "RF P.Flaming Lvl. 2 ",
+            "RF P.Flaming Lvl. 2 One Hit",
+            "Water S Lvl. 1",
+            "RF Water Lvl. 1",
+            "RF Water Lvl. 1 One Hit",
+            "Water S Lvl. 2",
+            "RF Water Lvl. 2",
+            "RF Water Lvl. 2 One Hit",
+            "P.Water S Lvl. 1",
+            "P.Water S Lvl. 1 One Hit",
+            "P.Water S Lvl. 2",
+            "P.Water S Lvl. 2 One Hit",
+            "RF P. Water Lvl. 2",
+            "RF P. Water Lvl. 2 One Hit",
+            "Thunder S Lvl. 1",
+            "RF Thunder Lvl. 1",
+            "RF Thunder Lvl. 1 One Hit",
+            "Thunder S Lvl. 2",
+            "P.Thunder S Lvl. 1",
+            "P.Thunder S Lvl. 1 One Hit",
+            "P.Thunder S Lvl. 2",
+            "P.Thunder S Lvl. 2 One Hit",
+            "RF P.Thunder Lvl. 2",
+            "RF P.Thunder Lvl. 2 One Hit",
+            "Freeze S Lvl. 1",
+            "RF Freeze Lvl. 1",
+            "RF Freeze Lvl. 1 One Hit",
+            "Freeze S Lvl. 2",
+            "P.Freeze S Lvl. 1",
+            "P.Freeze S Lvl. 1 One Hit",
+            "RF P.Freeze Lvl. 1",
+            "RF P.Freeze Lvl. 1 One Hit",
+            "P.Freeze S Lvl. 2",
+            "P.Freeze S Lvl. 2 One Hit",
+            "RF P.Freeze Lvl. 2",
+            "RF P.Freeze Lvl. 2 One Hit",
+            "Dragon S Lvl. 1",
+            "Dragon S Lvl. 1 One Hit",
+            "RF Dragon Lvl. 1",
+            "RF Dragon Lvl. 1  One Hit",
+            "Dragon S Lvl. 2",
+            "Dragon S Lvl. 2 One Hit",
+            "RF Dragon Lvl. 2 ",
+            "RF Dragon Lvl. 2  One Hit",
+            "Poison S Lvl. 1",
+            "Poison S Lvl. 2",
+            "Sleep S Lvl. 1",
+            "Sleep S Lvl. 2",
+            "Para S Lvl. 1",
+            "Para S Lvl. 2",
+            "Blast S Lvl. 1",
+            "Blast S Lvl. 2"});
+            this.eleShotType.Location = new System.Drawing.Point(66, 13);
+            this.eleShotType.Name = "eleShotType";
+            this.eleShotType.Size = new System.Drawing.Size(121, 21);
+            this.eleShotType.TabIndex = 0;
+            this.eleShotType.SelectedIndexChanged += new System.EventHandler(this.eleShotType_SelectedIndexChanged);
+            // 
+            // label79
+            // 
+            this.label79.AutoSize = true;
+            this.label79.Location = new System.Drawing.Point(6, 18);
+            this.label79.Name = "label79";
+            this.label79.Size = new System.Drawing.Size(59, 13);
+            this.label79.TabIndex = 1;
+            this.label79.Text = "Shot Type:";
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(6, 37);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(179, 39);
+            this.label80.TabIndex = 2;
+            this.label80.Text = "*Only useable when using Bowguns.\r\nTake note that non-piercing element\r\nshots do " +
+    "not have critical distance.";
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(6, 84);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(35, 13);
+            this.label83.TabIndex = 4;
+            this.label83.Text = "Fixed:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBox2.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.comboBox2.Enabled = false;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "(Not used)",
+            "Flaming S Lvl. 1",
+            "RF Flaming Lvl. 1 (x3)",
+            "RF Flaming Lvl. 1 (x3, One Hit)",
+            "RF Flaming Lvl. 1 (x4)",
+            "RF Flaming Lvl. 1 (x4, One Hit)",
+            "Flaming S Lvl. 2",
+            "RF Flaming Lvl. 2",
+            "RF Flaming Lvl. 2 (One Hit)",
+            "P.Flaming S Lvl. 1",
+            "P.Flaming S Lvl. 1(One Hit)",
+            "P.Flaming S Lvl. 2",
+            "P.Flaming S Lvl. 2(One Hit)",
+            "RF P.Flaming Lvl. 2 ",
+            "RF P.Flaming Lvl. 2 One Hit",
+            "Water S Lvl. 1",
+            "RF Water Lvl. 1",
+            "RF Water Lvl. 1 One Hit",
+            "Water S Lvl. 2",
+            "RF Water Lvl. 2",
+            "RF Water Lvl. 2 One Hit",
+            "P.Water S Lvl. 1",
+            "P.Water S Lvl. 1 One Hit",
+            "P.Water S Lvl. 2",
+            "P.Water S Lvl. 2 One Hit",
+            "RF P. Water Lvl. 2",
+            "RF P. Water Lvl. 2 One Hit",
+            "Thunder S Lvl. 1",
+            "RF Thunder Lvl. 1",
+            "RF Thunder Lvl. 1 One Hit",
+            "Thunder S Lvl. 2",
+            "P.Thunder S Lvl. 1",
+            "P.Thunder S Lvl. 1 One Hit",
+            "P.Thunder S Lvl. 2",
+            "P.Thunder S Lvl. 2 One Hit",
+            "RF P.Thunder Lvl. 2",
+            "RF P.Thunder Lvl. 2 One Hit",
+            "Freeze S Lvl. 1",
+            "RF Freeze Lvl. 1",
+            "RF Freeze Lvl. 1 One Hit",
+            "Freeze S Lvl. 2",
+            "P.Freeze S Lvl. 1",
+            "P.Freeze S Lvl. 1 One Hit",
+            "RF P.Freeze Lvl. 1",
+            "RF P.Freeze Lvl. 1 One Hit",
+            "P.Freeze S Lvl. 2",
+            "P.Freeze S Lvl. 2 One Hit",
+            "RF P.Freeze Lvl. 2",
+            "RF P.Freeze Lvl. 2 One Hit",
+            "Dragon S Lvl. 1",
+            "Dragon S Lvl. 1 One Hit",
+            "RF Dragon Lvl. 1",
+            "RF Dragon Lvl. 1  One Hit",
+            "Dragon S Lvl. 2",
+            "Dragon S Lvl. 2 One Hit",
+            "RF Dragon Lvl. 2 ",
+            "RF Dragon Lvl. 2  One Hit",
+            "Poison S Lvl. 1",
+            "Poison S Lvl. 2",
+            "Sleep S Lvl. 1",
+            "Sleep S Lvl. 2",
+            "Para S Lvl. 1",
+            "Para S Lvl. 2",
+            "Blast S Lvl. 1",
+            "Blast S Lvl. 2"});
+            this.comboBox2.Location = new System.Drawing.Point(66, 79);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 3;
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3628,6 +3833,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.staParaBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).EndInit();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3926,6 +4133,12 @@
         private System.Windows.Forms.Button staCalcButt;
         private System.Windows.Forms.RichTextBox staText;
         private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.GroupBox groupBox12;
+        private System.Windows.Forms.Label label80;
+        private System.Windows.Forms.Label label79;
+        private System.Windows.Forms.ComboBox eleShotType;
+        private System.Windows.Forms.Label label83;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 

@@ -400,7 +400,7 @@ namespace YADC_MHGen_
                 string status = "";
 
                 Tuple<int, int, int> statusTuple = calculateSta(false);
-                if(statusTuple.Item1 != 0 && statusTuple.Item2 != 0 && statusTuple.Item3 != 0)
+                if (statusTuple.Item1 != 0 && statusTuple.Item2 != 0 && statusTuple.Item3 != 0)
                 {
                     string[] formatArray = new string[] { statusTuple.Item1.ToString(), staType.Text, statusTuple.Item2.ToString(), statusTuple.Item3.ToString() };
                     status += String.Format("It will take {0} hits to inflict {1} status on this monster at the initial threshold, {2} more hits per tolerance level, and {3} hits at maximum tolerance. \n", formatArray);
@@ -426,7 +426,7 @@ namespace YADC_MHGen_
                     status += String.Format("It will take {0} hits to inflict Exhaust damage on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatExh);
                 }
 
-                if(status == "")
+                if (status == "")
                 {
                     status = "It is impossible to deal any sort of status damage with the current parameters.";
                 }
@@ -542,6 +542,16 @@ namespace YADC_MHGen_
             }
 
             fillMoves((string)((ComboBox)sender).SelectedItem);
+
+            if (((ComboBox)sender).Text == "Light Bowgun" || ((ComboBox)sender).Text == "Heavy Bowgun")
+            {
+                eleShotType.Enabled = true;
+            }
+            else
+            {
+                eleShotType.SelectedIndex = 0;
+                eleShotType.Enabled = false;
+            }
         }
 
 
@@ -1172,6 +1182,8 @@ namespace YADC_MHGen_
             staKOBox.Load("./Images/KO.png");
             staExhBox.Load("./Images/Exhaust.png");
             staBlastBox.Load("./Images/Blast.png");
+
+            eleShotType.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -4092,8 +4104,8 @@ namespace YADC_MHGen_
             staEleSharp.Text = weaponAndMods.eleSharpMod.ToString();
             staKOPow.Text = weaponAndMods.KOPower.ToString();
             staExhaust.Text = weaponAndMods.exhaustPower.ToString();
-            
-            if(weaponAndMods.statusCrit == true)
+
+            if (weaponAndMods.statusCrit == true)
             {
                 staCritCheck.Checked = true;
                 staAffinity.Text = weaponAndMods.affinity.ToString();
@@ -4127,6 +4139,380 @@ namespace YADC_MHGen_
             staBlastInit.Text = thresholds.blastInit.ToString();
             staBlastInc.Text = thresholds.blastInc.ToString();
             staBlastMax.Text = thresholds.blastMax.ToString();
+        }
+
+        private void eleShotType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            setElementShot(); //Sets the Selected Index of the alt type of the weapon.
+            findPower(); //Sets the elemental power of the weapon.
+            findRFMod(); //Sets the element, raw, hit count, and element/raw mods.
+        }
+
+        private void findRFMod()
+        {
+            int index = eleShotType.SelectedIndex;
+            if(index == 1 || index == 6 || index == 15 || index == 18 || index == 27 || index == 30 || index == 37 || index == 40) //Single non-RF shots from Element
+            {
+                moveTotal.Text = "7";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "7";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if(index == 2 || index == 7 || index == 16 || index == 19 || index == 28 || index == 38) //RF Shots x3 (0.7x mod)
+            {
+                moveTotal.Text = "21";
+                moveSharp.Text = "0.7";
+                moveAvg.Text = "7";
+                moveHitCount.Text = "3";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 3 || index == 8 || index == 17 || index == 20 || index == 29 || index == 39) //RF Shots x3 (0.7x mod) One Hit
+            {
+                moveTotal.Text = "7";
+                moveSharp.Text = "0.7";
+                moveAvg.Text = "7";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if(index == 4) //RF Shots x4 (0.6x Mod)
+            {
+                moveTotal.Text = "28";
+                moveSharp.Text = "0.6";
+                moveAvg.Text = "7";
+                moveHitCount.Text = "4";
+                moveEleMod.Text = "0.6";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 5) //RF Shots x4 (0.6x Mod) One Hit
+            {
+                moveTotal.Text = "7";
+                moveSharp.Text = "0.6";
+                moveAvg.Text = "7";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.6";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 9 || index == 21 || index == 31 || index == 41) //Single non-RF shots from Element Pierce 1
+            {
+                moveTotal.Text = "6";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "2";
+                moveHitCount.Text = "3";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 10 || index == 22 || index == 32 || index == 42) //Single non-RF shots from Element Pierce 1, One Hit
+            {
+                moveTotal.Text = "2";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "2";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 43) //RF Pierce Element Shots x3 (0.7x mod)
+            {
+                moveTotal.Text = "18";
+                moveSharp.Text = "0.7";
+                moveAvg.Text = "2";
+                moveHitCount.Text = "9";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 44) //RF Pierce Element Shots x3 (0.7x mod) One Hit
+            {
+                moveTotal.Text = "2";
+                moveSharp.Text = "0.7";
+                moveAvg.Text = "2";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 11 || index == 23 || index == 33 || index == 45) //Single non-RF shots from Element Pierce 2
+            {
+                moveTotal.Text = "15";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "3";
+                moveHitCount.Text = "5";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 12 || index == 24 || index == 34 || index == 46) //Single non-RF shots from Element Pierce 2, One Hit
+            {
+                moveTotal.Text = "3";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "3";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 13 || index == 25 || index == 35 || index == 47) //RF Pierce Element 2 Shots x3 (0.7x mod)
+            {
+                moveTotal.Text = "45";
+                moveSharp.Text = "0.7";
+                moveAvg.Text = "3";
+                moveHitCount.Text = "15";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 14 || index == 26 || index == 36 || index == 48) //RF Pierce Element 2 Shots x3 (0.7x mod) One Hit
+            {
+                moveTotal.Text = "3";
+                moveSharp.Text = "0.7";
+                moveAvg.Text = "3";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if(index == 49 || index == 53) //Single shot Dragon
+            {
+                moveTotal.Text = "5";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "1";
+                moveHitCount.Text = "5";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 50 || index == 54) //Single shot Dragon One Hit
+            {
+                moveTotal.Text = "1";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "1";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 51 || index == 55) //RF Shots x2 Dragon (0.6x Mod)
+            {
+                moveTotal.Text = "10";
+                moveSharp.Text = "0.6";
+                moveAvg.Text = "1";
+                moveHitCount.Text = "10";
+                moveEleMod.Text = "0.6";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 52 || index == 56) //RF Shots x2 Dragon (0.6x Mod) One Hit
+            {
+                moveTotal.Text = "1";
+                moveSharp.Text = "0.6";
+                moveAvg.Text = "1";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.6";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 57 || index == 59 || index == 61 || index == 63) //Status Shots Lvl 1
+            {
+                moveTotal.Text = "10";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "10";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 58 || index == 60 || index == 62 || index == 64) //Status Shots Lvl. 2
+            {
+                moveTotal.Text = "15";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "15";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else
+            {
+                moveTotal.Text = "0";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "0";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+        }
+
+        private void findPower()
+        {
+            int index = eleShotType.SelectedIndex;
+            if (index == 1 || index == 2 || index == 3 || index == 4 || index == 5 ||
+                index == 15 || index == 16 || index == 17 ||
+                index == 27 || index == 28 || index == 29 ||
+                index == 37 || index == 38 || index == 39) //All Level 1 Element Shots
+            {
+                weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.45).ToString();
+            }
+            else if (index == 6 || index == 7 || index == 8 || index == 18 || index == 19 || index == 20 || index == 30 || index == 40) //All Level 2 Element Shots
+            {
+                weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.58).ToString();
+            }
+            else if (index == 9 || index == 10 || index == 21 || index == 22 || index == 31 ||
+                index == 32 || index == 41 || index == 42 || index == 43 || index == 44) //All Level 1 Piercing Element Shots
+            {
+                weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.20).ToString();
+            }
+            else if (index == 11 || index == 12 || index == 13 || index == 14 || index == 23 || index == 24 || index == 25 || index == 26 ||
+                index == 33 || index == 34 || index == 35 || index == 36 || index == 45 || index == 46 || index == 47 || index == 48) //All Level 2 Piercing Element Shots
+            {
+                weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.23).ToString();
+            }
+            else if (index == 49 || index == 50 || index == 51 || index == 52) //All Dragon Level 1 Shots
+            {
+                weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.40).ToString();
+            }
+            else if (index == 53 || index == 54 || index == 55 || index == 56) //All Dragon Level 2 Shots
+            {
+                weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.48).ToString();
+            }
+            else if (index == 57 || index == 59 || index == 61 || index == 63) //Status Shots Lvl. 1
+            {
+                weapAltPower.Text = "25";
+            }
+            else if (index == 58 || index == 60 || index == 62 || index == 64) //Status Shots Lvl. 2
+            {
+                weapAltPower.Text = "50";
+            }
+            else
+            {
+                weapAltPower.Text = "0";
+            }
+        }
+
+        /// <summary>
+        /// Sets various stats based on the Elemental shot selected.
+        /// </summary>
+        private void setElementShot()
+        {
+            if (findElement() == "Fire")
+            {
+                weapAlt.SelectedIndex = 1;
+                moveMinds.Checked = true;
+            }
+            else if(findElement() == "Water")
+            {
+                weapAlt.SelectedIndex = 2;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Thunder")
+            {
+                weapAlt.SelectedIndex = 3;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Ice")
+            {
+                weapAlt.SelectedIndex = 4;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Dragon")
+            {
+                weapAlt.SelectedIndex = 5;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Poison")
+            {
+                weapAlt.SelectedIndex = 6;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Para")
+            {
+                weapAlt.SelectedIndex = 7;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Sleep")
+            {
+                weapAlt.SelectedIndex = 8;
+                moveMinds.Checked = true;
+            }
+            else if (findElement() == "Blast")
+            {
+                weapAlt.SelectedIndex = 9;
+                moveMinds.Checked = true;
+            }
+            else
+            {
+                weapAlt.SelectedIndex = 0;
+                moveMinds.Checked = false;
+            }
+        }
+
+        private string findElement()
+        {
+            int index = eleShotType.SelectedIndex;
+            if(index == 1 || index == 2 || index == 3 || index == 4 ||
+                index == 5 || index == 6 || index == 7 || index == 8 ||
+                index == 9 || index == 10 || index == 11 || index == 12 ||
+                index == 13 || index == 14)
+            {
+                return "Fire";
+            }
+            else if(index == 15 || index == 16 || index == 17 || index == 18 ||
+                index == 19 || index == 20 || index == 21 || index == 22 ||
+                index == 23 || index == 24 || index == 25 || index == 26)
+            {
+                return "Water";
+            }
+            else if (index == 27 || index == 28 || index == 29 || index == 30 ||
+                index == 31 || index == 32 || index == 33 || index == 34 ||
+                index == 35 || index == 36)
+            {
+                return "Thunder";
+            }
+            else if (index == 37 || index == 38 || index == 39 || index == 40 ||
+                index == 41 || index == 42 || index == 43 || index == 44 ||
+                index == 45 || index == 46 || index == 47 || index == 48)
+            {
+                return "Ice";
+            }
+            else if (index == 49 || index == 50 || index == 51 || index == 52 ||
+                index == 53 || index == 54 || index == 55 || index == 56)
+            {
+                return "Dragon";
+            }
+            else if (index == 57 || index == 58)
+            {
+                return "Poison";
+            }
+            else if (index == 59 || index == 60)
+            {
+                return "Sleep";
+            }
+            else if (index == 61 || index == 62)
+            {
+                return "Para";
+            }
+            else if (index == 63 || index == 64)
+            {
+                return "Blast";
+            }
+            else if (index == 0)
+            {
+                return "(None)";
+            }
+            else
+            {
+                return "Error";
+            }
         }
 
 #endif
