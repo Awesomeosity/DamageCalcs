@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -270,6 +270,7 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label59 = new System.Windows.Forms.Label();
             this.staCalcButt = new System.Windows.Forms.Button();
             this.staText = new System.Windows.Forms.RichTextBox();
             this.label86 = new System.Windows.Forms.Label();
@@ -325,7 +326,6 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.label59 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -408,6 +408,8 @@
             this.moveAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.MotionTip.SetToolTip(this.moveAvg, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
         "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
+            this.moveAvg.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveAvg.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // paraAffinity
             // 
@@ -420,7 +422,7 @@
             this.paraAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AffinityTip.SetToolTip(this.paraAffinity, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
         "more or less damage.");
-            this.paraAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.AffinityField_Validating);
             this.paraAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // staAffinity
@@ -435,6 +437,7 @@
             this.staAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AffinityTip.SetToolTip(this.staAffinity, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
         "more or less damage.");
+            this.staAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.AffinityField_Validating);
             // 
             // paraEle
             // 
@@ -461,6 +464,8 @@
             this.paraSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EleTip.SetToolTip(this.paraSecPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
         "umber shown on the \r\nStatus screen may not be the number used in calculations.");
+            this.paraSecPower.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraSecPower.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // staSecPower
             // 
@@ -639,6 +644,8 @@
             this.paraRawHitzone.Text = "0";
             this.paraRawHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.HitTip.SetToolTip(this.paraRawHitzone, "The Hitzone Value of a monster\'s body part.\r\nHigher values = higher damage.");
+            this.paraRawHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraRawHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // paraSecHitzone
             // 
@@ -651,6 +658,8 @@
             this.paraSecHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EleHitTip.SetToolTip(this.paraSecHitzone, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
         "ental Hitzones.");
+            this.paraSecHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraSecHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // paraEleHitzone
             // 
@@ -663,6 +672,8 @@
             this.paraEleHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EleHitTip.SetToolTip(this.paraEleHitzone, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
         "ental Hitzones.");
+            this.paraEleHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraEleHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // paraQuest
             // 
@@ -727,6 +738,8 @@
             this.paraHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ExhaustTip.SetToolTip(this.paraHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             this.paraHitCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.paraHitCount.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraHitCount.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // moveHitCount
             // 
@@ -738,6 +751,8 @@
             this.moveHitCount.Text = "1";
             this.moveHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ExhaustTip.SetToolTip(this.moveHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            this.moveHitCount.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveHitCount.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // staExhaust
             // 
@@ -761,6 +776,8 @@
             this.paraKOZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.KOZoneTip.SetToolTip(this.paraKOZone, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
         "e head will take KO damage\r\nand very rarely is it not 100.");
+            this.paraKOZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraKOZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // staKOZone
             // 
@@ -785,6 +802,8 @@
             this.paraExhZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ExhaustZoneTip.SetToolTip(this.paraExhZone, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
         "y few zones are\r\nbelow 100.");
+            this.paraExhZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraExhZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // staExhaustZone
             // 
@@ -857,6 +876,8 @@
             this.weapSecPower.TabIndex = 143;
             this.weapSecPower.Text = "0";
             this.weapSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.weapSecPower.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.weapSecPower.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // weapSecBox
             // 
@@ -950,7 +971,7 @@
             this.weapAffinity.TabIndex = 135;
             this.weapAffinity.Text = "0";
             this.weapAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.weapAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.weapAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.AffinityField_Validating);
             this.weapAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // weapAltPower
@@ -1240,6 +1261,8 @@
             this.paraTotal.Text = "0";
             this.paraTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.paraTotal.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.paraTotal.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraTotal.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label56
             // 
@@ -1512,6 +1535,8 @@
             this.paraExhMod.Text = "1.0";
             this.paraExhMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.paraExhMod.Visible = false;
+            this.paraExhMod.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.paraExhMod.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label28
             // 
@@ -2023,6 +2048,8 @@
             this.moveEleMod.TabIndex = 150;
             this.moveEleMod.Text = "1.0";
             this.moveEleMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.moveEleMod.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.moveEleMod.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // moveMinds
             // 
@@ -2340,19 +2367,19 @@
             // 
             // modList
             // 
-            listViewGroup1.Header = "Armor Skills:";
-            listViewGroup1.Name = "armorGroup";
-            listViewGroup2.Header = "Item/Bistro Skills:";
-            listViewGroup2.Name = "bistroGroup";
-            listViewGroup3.Header = "Weapon Modifiers:";
-            listViewGroup3.Name = "weaponGroup";
-            listViewGroup4.Header = "Other Modifiers:";
-            listViewGroup4.Name = "otherGroup";
+            listViewGroup5.Header = "Armor Skills:";
+            listViewGroup5.Name = "armorGroup";
+            listViewGroup6.Header = "Item/Bistro Skills:";
+            listViewGroup6.Name = "bistroGroup";
+            listViewGroup7.Header = "Weapon Modifiers:";
+            listViewGroup7.Name = "weaponGroup";
+            listViewGroup8.Header = "Other Modifiers:";
+            listViewGroup8.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8});
             this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(249, 150);
@@ -2531,6 +2558,8 @@
             this.monCut.TabIndex = 0;
             this.monCut.Text = "0";
             this.monCut.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monCut.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monCut.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label51
             // 
@@ -2549,6 +2578,8 @@
             this.monImpact.TabIndex = 3;
             this.monImpact.Text = "0";
             this.monImpact.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monImpact.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monImpact.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label52
             // 
@@ -2567,6 +2598,8 @@
             this.monShot.TabIndex = 5;
             this.monShot.Text = "0";
             this.monShot.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monShot.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monShot.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // monFire
             // 
@@ -2576,6 +2609,8 @@
             this.monFire.TabIndex = 6;
             this.monFire.Text = "0";
             this.monFire.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monFire.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monFire.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label66
             // 
@@ -2603,6 +2638,8 @@
             this.monWater.TabIndex = 9;
             this.monWater.Text = "0";
             this.monWater.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monWater.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monWater.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label64
             // 
@@ -2621,6 +2658,8 @@
             this.monThunder.TabIndex = 11;
             this.monThunder.Text = "0";
             this.monThunder.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monThunder.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monThunder.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // monKO
             // 
@@ -2630,6 +2669,8 @@
             this.monKO.TabIndex = 12;
             this.monKO.Text = "0";
             this.monKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monKO.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monKO.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label70
             // 
@@ -2657,6 +2698,8 @@
             this.monExh.TabIndex = 15;
             this.monExh.Text = "0";
             this.monExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monExh.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monExh.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // monIce
             // 
@@ -2666,6 +2709,8 @@
             this.monIce.TabIndex = 16;
             this.monIce.Text = "0";
             this.monIce.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monIce.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monIce.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label68
             // 
@@ -2693,6 +2738,8 @@
             this.monDragon.TabIndex = 19;
             this.monDragon.Text = "0";
             this.monDragon.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monDragon.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monDragon.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // monFireBox
             // 
@@ -2855,6 +2902,8 @@
             this.monExhField.Text = "1.0";
             this.monExhField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.monExhField.Visible = false;
+            this.monExhField.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monExhField.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // monQuestMod
             // 
@@ -2864,6 +2913,8 @@
             this.monQuestMod.TabIndex = 21;
             this.monQuestMod.Text = "1.0";
             this.monQuestMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monQuestMod.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monQuestMod.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
             // label71
             // 
@@ -3008,6 +3059,15 @@
             this.tabPage3.Size = new System.Drawing.Size(936, 475);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Status";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(410, 307);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(519, 52);
+            this.label59.TabIndex = 211;
+            this.label59.Text = resources.GetString("label59.Text");
             // 
             // staCalcButt
             // 
@@ -3507,15 +3567,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(983, 24);
             this.menuStrip1.TabIndex = 142;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // label59
-            // 
-            this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(410, 307);
-            this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(519, 52);
-            this.label59.TabIndex = 211;
-            this.label59.Text = resources.GetString("label59.Text");
             // 
             // DmgCalculator
             // 

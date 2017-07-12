@@ -328,6 +328,26 @@ namespace YADC_MHGen_
             ErrorPreventer.SetError((TextBox)sender, "");
         }
 
+        private void AffinityField_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
+            {
+                e.Cancel = true;
+                ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
+
+                this.ErrorPreventer.SetError((TextBox)sender, errorMsg);
+            }
+            else if (double.Parse(((TextBox)sender).Text) > 100)
+            {
+                ((TextBox)sender).Text = 100.ToString();
+            }
+            else if (double.Parse(((TextBox)sender).Text) < -100)
+            {
+                ((TextBox)sender).Text = "-100";
+            }
+        }
+
         /*CalcButt Functions*/
         /// <summary>
         /// Executed when the calculate output button is clicked.
