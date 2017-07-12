@@ -380,8 +380,11 @@ namespace YADC_MHGen_
                 string status = "";
 
                 Tuple<int, int, int> statusTuple = calculateSta(false);
-                string[] formatArray = new string[] { statusTuple.Item1.ToString(), staType.Text, statusTuple.Item2.ToString(), statusTuple.Item3.ToString() };
-                status += String.Format("It will take {0} hits to inflict {1} status on this monster at the initial threshold, {2} more hits per tolerance level, and {3} hits at maximum tolerance. \n", formatArray);
+                if(statusTuple.Item1 != 0 && statusTuple.Item2 != 0 && statusTuple.Item3 != 0)
+                {
+                    string[] formatArray = new string[] { statusTuple.Item1.ToString(), staType.Text, statusTuple.Item2.ToString(), statusTuple.Item3.ToString() };
+                    status += String.Format("It will take {0} hits to inflict {1} status on this monster at the initial threshold, {2} more hits per tolerance level, and {3} hits at maximum tolerance. \n", formatArray);
+                }
 
                 if (staSecEle.SelectedIndex != 0)
                 {
@@ -391,11 +394,22 @@ namespace YADC_MHGen_
                 }
 
                 Tuple<int, int, int, int, int, int> KOTuple = calculateKO();
-                string[] formatKO = new string[] { KOTuple.Item1.ToString(), KOTuple.Item2.ToString(), KOTuple.Item3.ToString() };
-                status += String.Format("It will take {0} hits to inflict KO status on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatKO);
+                if (KOTuple.Item1 != 0 && KOTuple.Item2 != 0 && KOTuple.Item3 != 0)
+                {
+                    string[] formatKO = new string[] { KOTuple.Item1.ToString(), KOTuple.Item2.ToString(), KOTuple.Item3.ToString() };
+                    status += String.Format("It will take {0} hits to inflict KO status on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatKO);
+                }
 
-                string[] formatExh = new string[] { KOTuple.Item4.ToString(), KOTuple.Item5.ToString(), KOTuple.Item6.ToString() };
-                status += String.Format("It will take {0} hits to inflict Exhaust damage on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatExh);
+                if (KOTuple.Item4 != 0 && KOTuple.Item5 != 0 && KOTuple.Item6 != 0)
+                {
+                    string[] formatExh = new string[] { KOTuple.Item4.ToString(), KOTuple.Item5.ToString(), KOTuple.Item6.ToString() };
+                    status += String.Format("It will take {0} hits to inflict Exhaust damage on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatExh);
+                }
+
+                if(status == "")
+                {
+                    status = "It is impossible to deal any sort of status damage with the current parameters.";
+                }
 
                 staText.Text = status;
             }
@@ -1350,8 +1364,8 @@ namespace YADC_MHGen_
             double KO = double.Parse(staKOPow.Text);
             double Exhaust = double.Parse(staExhaust.Text);
 
-            KO *= double.Parse(staKOZone.Text);
-            Exhaust *= double.Parse(staExhaustZone.Text);
+            KO *= double.Parse(staKOZone.Text) / 100;
+            Exhaust *= double.Parse(staExhaustZone.Text) / 100;
 
             double KOInit = double.Parse(staKOInit.Text);
             double KOInc = double.Parse(staKOInc.Text);
@@ -4074,7 +4088,25 @@ namespace YADC_MHGen_
             staExhaustZone.Text = weaponAndMods.exhaustHitzone.ToString();
             staExhMod.Text = weaponAndMods.exhaustMod.ToString();
 
-            monsterStatusThresholds
+            monsterStatusThresholds thresholds = monsterStats[monName.Text].status;
+            staPoiInit.Text = thresholds.poisonInit.ToString();
+            staPoiInc.Text = thresholds.poisonInc.ToString();
+            staPoiMax.Text = thresholds.poisonMax.ToString();
+            staSleepInit.Text = thresholds.sleepInit.ToString();
+            staSleepInc.Text = thresholds.sleepInc.ToString();
+            staSleepMax.Text = thresholds.sleepMax.ToString();
+            staParaInit.Text = thresholds.paraInit.ToString();
+            staParaInc.Text = thresholds.paraInc.ToString();
+            staParaMax.Text = thresholds.paraMax.ToString();
+            staKOInit.Text = thresholds.KOInit.ToString();
+            staKOInc.Text = thresholds.KOInc.ToString();
+            staKOMax.Text = thresholds.KOMax.ToString();
+            staExhaustInit.Text = thresholds.exhaustInit.ToString();
+            staExhInc.Text = thresholds.exhaustInc.ToString();
+            staExhMax.Text = thresholds.exhaustMax.ToString();
+            staBlastInit.Text = thresholds.blastInit.ToString();
+            staBlastInc.Text = thresholds.blastInc.ToString();
+            staBlastMax.Text = thresholds.blastMax.ToString();
         }
 
 #endif
