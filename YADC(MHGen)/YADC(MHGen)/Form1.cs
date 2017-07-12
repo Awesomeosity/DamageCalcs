@@ -4341,6 +4341,166 @@ namespace YADC_MHGen_
                 moveKO.Text = "0";
                 moveExh.Text = "0";
             }
+            else if (index == 65) //Crag S Lvl. 1
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 66) //RF Crag S Lvl. 1 x2
+            {
+                moveTotal.Text = "50";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "2";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 67) //RF Crag S Lvl. 1 x2 One Hit
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 68) // RF Crag S Lvl. 1 x3
+            {
+                moveTotal.Text = "75";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "3";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 69) //RF Crag S Lvl. 1 x3 One Hit
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 70) //Crag S Lvl. 2
+            {
+                moveTotal.Text = "30";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "30";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "30";
+                moveExh.Text = "10";
+            }
+            else if (index == 71) //Crag S Lvl 3
+            {
+                moveTotal.Text = "40";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "40";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "40";
+                moveExh.Text = "10";
+            }
+            else if (index == 72) //Triblast S
+            {
+                moveTotal.Text = "75";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "3";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 73) //Triblast S One Hit
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "25";
+                moveExh.Text = "10";
+            }
+            else if (index == 74) //Clust S Lvl. 1
+            {
+                moveTotal.Text = "75";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "3";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 75) //Clust S One Hit
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 76) //RF Clust S Lvl. 1
+            {
+                moveTotal.Text = "150";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "6";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 77) //RF Clust S Lvl. 1 One Hit
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "0.7";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 78) //Clust S Lvl. 2
+            {
+                moveTotal.Text = "100";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "4";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 79) //Clust S Lvl. 3
+            {
+                moveTotal.Text = "125";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "5";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
+            else if (index == 80) //Wyvern S
+            {
+                moveTotal.Text = "25";
+                moveSharp.Text = "1.0";
+                moveAvg.Text = "25";
+                moveHitCount.Text = "1";
+                moveEleMod.Text = "1.0";
+                moveKO.Text = "0";
+                moveExh.Text = "0";
+            }
             else
             {
                 moveTotal.Text = "0";
@@ -4356,10 +4516,10 @@ namespace YADC_MHGen_
         private void findPower()
         {
             int index = eleShotType.SelectedIndex;
-            if (index == 1 || index == 2 || index == 3 || index == 4 || index == 5 ||
-                index == 15 || index == 16 || index == 17 ||
-                index == 27 || index == 28 || index == 29 ||
-                index == 37 || index == 38 || index == 39) //All Level 1 Element Shots
+            if ((index >= 1 && index <= 5) ||
+                (index >= 15 && index <= 17) ||
+                (index >= 27 && index <= 29 ) ||
+                (index >= 37 && index <= 39)) //All Level 1 Element Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.45).ToString();
             }
@@ -4372,16 +4532,16 @@ namespace YADC_MHGen_
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.20).ToString();
             }
-            else if (index == 11 || index == 12 || index == 13 || index == 14 || index == 23 || index == 24 || index == 25 || index == 26 ||
-                index == 33 || index == 34 || index == 35 || index == 36 || index == 45 || index == 46 || index == 47 || index == 48) //All Level 2 Piercing Element Shots
+            else if ((index >= 11 && index == 14) || (index >= 23 && index <= 26) ||
+                (index >= 33 && index <= 26) || (index >= 45 && index <= 48)) //All Level 2 Piercing Element Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.23).ToString();
             }
-            else if (index == 49 || index == 50 || index == 51 || index == 52) //All Dragon Level 1 Shots
+            else if (index >= 49 && index <= 52) //All Dragon Level 1 Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.40).ToString();
             }
-            else if (index == 53 || index == 54 || index == 55 || index == 56) //All Dragon Level 2 Shots
+            else if (index >= 53 && index <= 56) //All Dragon Level 2 Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.48).ToString();
             }
@@ -4392,6 +4552,36 @@ namespace YADC_MHGen_
             else if (index == 58 || index == 60 || index == 62 || index == 64) //Status Shots Lvl. 2
             {
                 weapAltPower.Text = "50";
+            }
+            else if (index >= 65 && index <= 69) //Crag S Lvl 1
+            {
+                weapAltPower.Text = "30";
+                moveDamType.SelectedIndex = 3;
+            }
+            else if (index == 70) //Crag S Lvl 2
+            {
+                weapAltPower.Text = "45";
+                moveDamType.SelectedIndex = 3;
+            }
+            else if (index == 71) //Crag S Lvl 3
+            {
+                weapAltPower.Text = "60";
+                moveDamType.SelectedIndex = 3;
+            }
+            else if (index == 72 || index == 73) //Triblast S
+            {
+                weapAltPower.Text = "25";
+                moveDamType.SelectedIndex = 3;
+            }
+            else if (index >= 74 && index <= 81) //Clust S
+            {
+                weapAltPower.Text = "2";
+                moveDamType.SelectedIndex = 3;
+            }
+            else if (index == 82 || index == 83) //Wyvern S (Explosion)
+            {
+                weapAltPower.Text = "35";
+                moveDamType.SelectedIndex = 3;
             }
             else
             {
@@ -4404,6 +4594,8 @@ namespace YADC_MHGen_
         /// </summary>
         private void setElementShot()
         {
+            moveDamType.SelectedIndex = 2;
+
             if (findElement() == "Fire")
             {
                 weapAlt.SelectedIndex = 1;
@@ -4459,33 +4651,23 @@ namespace YADC_MHGen_
         private string findElement()
         {
             int index = eleShotType.SelectedIndex;
-            if(index == 1 || index == 2 || index == 3 || index == 4 ||
-                index == 5 || index == 6 || index == 7 || index == 8 ||
-                index == 9 || index == 10 || index == 11 || index == 12 ||
-                index == 13 || index == 14)
+            if((index >= 1 && index <= 14) || (index >= 65 && index <= 83))
             {
                 return "Fire";
             }
-            else if(index == 15 || index == 16 || index == 17 || index == 18 ||
-                index == 19 || index == 20 || index == 21 || index == 22 ||
-                index == 23 || index == 24 || index == 25 || index == 26)
+            else if(index >= 15 && index <= 26)
             {
                 return "Water";
             }
-            else if (index == 27 || index == 28 || index == 29 || index == 30 ||
-                index == 31 || index == 32 || index == 33 || index == 34 ||
-                index == 35 || index == 36)
+            else if (index >= 27 && index <= 36)
             {
                 return "Thunder";
             }
-            else if (index == 37 || index == 38 || index == 39 || index == 40 ||
-                index == 41 || index == 42 || index == 43 || index == 44 ||
-                index == 45 || index == 46 || index == 47 || index == 48)
+            else if (index >= 37 && index <= 48)
             {
                 return "Ice";
             }
-            else if (index == 49 || index == 50 || index == 51 || index == 52 ||
-                index == 53 || index == 54 || index == 55 || index == 56)
+            else if (index >= 49 && index <= 56)
             {
                 return "Dragon";
             }
