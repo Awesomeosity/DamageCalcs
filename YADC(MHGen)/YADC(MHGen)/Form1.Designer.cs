@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -42,9 +42,12 @@
             this.moveAvg = new System.Windows.Forms.TextBox();
             this.AffinityTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraAffinity = new System.Windows.Forms.TextBox();
+            this.staAffinity = new System.Windows.Forms.TextBox();
             this.EleTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraEle = new System.Windows.Forms.TextBox();
             this.paraSecPower = new System.Windows.Forms.TextBox();
+            this.staSecPower = new System.Windows.Forms.TextBox();
+            this.staPower = new System.Windows.Forms.TextBox();
             this.SharpnessTip = new System.Windows.Forms.ToolTip(this.components);
             this.HiddenTip = new System.Windows.Forms.ToolTip(this.components);
             this.AltTip = new System.Windows.Forms.ToolTip(this.components);
@@ -52,6 +55,8 @@
             this.paraAltType = new System.Windows.Forms.ComboBox();
             this.paraSecEle = new System.Windows.Forms.ComboBox();
             this.weapSecType = new System.Windows.Forms.ComboBox();
+            this.staSecEle = new System.Windows.Forms.ComboBox();
+            this.staType = new System.Windows.Forms.ComboBox();
             this.HitTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRawHitzone = new System.Windows.Forms.TextBox();
             this.EleHitTip = new System.Windows.Forms.ToolTip(this.components);
@@ -61,14 +66,18 @@
             this.paraQuest = new System.Windows.Forms.TextBox();
             this.KOTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraKO = new System.Windows.Forms.TextBox();
+            this.staKOPow = new System.Windows.Forms.TextBox();
             this.ExhaustTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraExh = new System.Windows.Forms.TextBox();
             this.paraHitCount = new System.Windows.Forms.TextBox();
             this.moveHitCount = new System.Windows.Forms.TextBox();
+            this.staExhaust = new System.Windows.Forms.TextBox();
             this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraKOZone = new System.Windows.Forms.TextBox();
+            this.staKOZone = new System.Windows.Forms.TextBox();
             this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraExhZone = new System.Windows.Forms.TextBox();
+            this.staExhaustZone = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.weapOverride = new System.Windows.Forms.CheckBox();
             this.label75 = new System.Windows.Forms.Label();
@@ -126,11 +135,10 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox40 = new System.Windows.Forms.TextBox();
+            this.paraExhMod = new System.Windows.Forms.TextBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.paraMonStat = new System.Windows.Forms.ComboBox();
@@ -138,6 +146,8 @@
             this.label63 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.calcRawWeap = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
             this.calcFinalSecBox = new System.Windows.Forms.PictureBox();
             this.calcFinalSec = new System.Windows.Forms.Label();
             this.label62 = new System.Windows.Forms.Label();
@@ -251,17 +261,71 @@
             this.monHitzone = new System.Windows.Forms.ComboBox();
             this.label78 = new System.Windows.Forms.Label();
             this.monName = new System.Windows.Forms.ComboBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.monExhField = new System.Windows.Forms.TextBox();
             this.monQuestMod = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
             this.label84 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.calcRawWeap = new System.Windows.Forms.Label();
-            this.label61 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.staCalcButt = new System.Windows.Forms.Button();
+            this.staText = new System.Windows.Forms.RichTextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.label81 = new System.Windows.Forms.Label();
+            this.staExhMod = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.label85 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
+            this.staEleSharp = new System.Windows.Forms.TextBox();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label108 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
+            this.label110 = new System.Windows.Forms.Label();
+            this.label111 = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
+            this.staCritCheck = new System.Windows.Forms.CheckBox();
+            this.staImport = new System.Windows.Forms.Button();
+            this.staBlastBox = new System.Windows.Forms.PictureBox();
+            this.staPoiBox = new System.Windows.Forms.PictureBox();
+            this.staSleepBox = new System.Windows.Forms.PictureBox();
+            this.staParaBox = new System.Windows.Forms.PictureBox();
+            this.staKOBox = new System.Windows.Forms.PictureBox();
+            this.staExhBox = new System.Windows.Forms.PictureBox();
+            this.staBlastMax = new System.Windows.Forms.TextBox();
+            this.staBlastInc = new System.Windows.Forms.TextBox();
+            this.staBlastInit = new System.Windows.Forms.TextBox();
+            this.staExhMax = new System.Windows.Forms.TextBox();
+            this.staExhInc = new System.Windows.Forms.TextBox();
+            this.staExhaustInit = new System.Windows.Forms.TextBox();
+            this.staKOMax = new System.Windows.Forms.TextBox();
+            this.staKOInc = new System.Windows.Forms.TextBox();
+            this.staKOInit = new System.Windows.Forms.TextBox();
+            this.staParaMax = new System.Windows.Forms.TextBox();
+            this.staParaInc = new System.Windows.Forms.TextBox();
+            this.staParaInit = new System.Windows.Forms.TextBox();
+            this.staSleepMax = new System.Windows.Forms.TextBox();
+            this.staSleepInc = new System.Windows.Forms.TextBox();
+            this.staSleepInit = new System.Windows.Forms.TextBox();
+            this.label99 = new System.Windows.Forms.Label();
+            this.label98 = new System.Windows.Forms.Label();
+            this.label97 = new System.Windows.Forms.Label();
+            this.staPoiMax = new System.Windows.Forms.TextBox();
+            this.staPoiInc = new System.Windows.Forms.TextBox();
+            this.staPoiInit = new System.Windows.Forms.TextBox();
+            this.label96 = new System.Windows.Forms.Label();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
+            this.label93 = new System.Windows.Forms.Label();
+            this.label92 = new System.Windows.Forms.Label();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label90 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label88 = new System.Windows.Forms.Label();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.label59 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -292,6 +356,13 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.staBlastBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staPoiBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staSleepBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staParaBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ErrorPreventer
@@ -352,6 +423,19 @@
             this.paraAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
+            // staAffinity
+            // 
+            this.staAffinity.Enabled = false;
+            this.staAffinity.Location = new System.Drawing.Point(113, 161);
+            this.staAffinity.MaxLength = 4;
+            this.staAffinity.Name = "staAffinity";
+            this.staAffinity.Size = new System.Drawing.Size(96, 20);
+            this.staAffinity.TabIndex = 185;
+            this.staAffinity.Text = "0";
+            this.staAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.AffinityTip.SetToolTip(this.staAffinity, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
+        "more or less damage.");
+            // 
             // paraEle
             // 
             this.paraEle.Location = new System.Drawing.Point(213, 71);
@@ -376,6 +460,31 @@
             this.paraSecPower.Text = "0";
             this.paraSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.EleTip.SetToolTip(this.paraSecPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
+            // 
+            // staSecPower
+            // 
+            this.staSecPower.Enabled = false;
+            this.staSecPower.Location = new System.Drawing.Point(216, 70);
+            this.staSecPower.MaxLength = 4;
+            this.staSecPower.Name = "staSecPower";
+            this.staSecPower.Size = new System.Drawing.Size(96, 20);
+            this.staSecPower.TabIndex = 199;
+            this.staSecPower.Text = "0";
+            this.staSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.staSecPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
+        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
+            // 
+            // staPower
+            // 
+            this.staPower.Location = new System.Drawing.Point(216, 24);
+            this.staPower.MaxLength = 4;
+            this.staPower.Name = "staPower";
+            this.staPower.Size = new System.Drawing.Size(96, 20);
+            this.staPower.TabIndex = 187;
+            this.staPower.Text = "0";
+            this.staPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.EleTip.SetToolTip(this.staPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
         "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             // 
             // weapAlt
@@ -482,6 +591,44 @@
         "ludes KO and Exhaust.");
             this.weapSecType.SelectedIndexChanged += new System.EventHandler(this.weapSecType_SelectedIndexChanged);
             // 
+            // staSecEle
+            // 
+            this.staSecEle.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.staSecEle.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.staSecEle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.staSecEle.FormattingEnabled = true;
+            this.staSecEle.Items.AddRange(new object[] {
+            "(None)",
+            "Poison",
+            "Para",
+            "Sleep",
+            "Blast"});
+            this.staSecEle.Location = new System.Drawing.Point(113, 70);
+            this.staSecEle.Name = "staSecEle";
+            this.staSecEle.Size = new System.Drawing.Size(97, 21);
+            this.staSecEle.TabIndex = 197;
+            this.AltTip.SetToolTip(this.staSecEle, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+        "ludes KO and Exhaust.");
+            this.staSecEle.SelectedIndexChanged += new System.EventHandler(this.staSecEle_SelectedIndexChanged);
+            // 
+            // staType
+            // 
+            this.staType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.staType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.staType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.staType.FormattingEnabled = true;
+            this.staType.Items.AddRange(new object[] {
+            "Poison",
+            "Para",
+            "Sleep",
+            "Blast"});
+            this.staType.Location = new System.Drawing.Point(113, 23);
+            this.staType.Name = "staType";
+            this.staType.Size = new System.Drawing.Size(97, 21);
+            this.staType.TabIndex = 189;
+            this.AltTip.SetToolTip(this.staType, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
+        "ludes KO and Exhaust.");
+            // 
             // paraRawHitzone
             // 
             this.paraRawHitzone.Location = new System.Drawing.Point(9, 32);
@@ -519,7 +666,7 @@
             // 
             // paraQuest
             // 
-            this.paraQuest.Location = new System.Drawing.Point(113, 110);
+            this.paraQuest.Location = new System.Drawing.Point(111, 110);
             this.paraQuest.MaxLength = 4;
             this.paraQuest.Name = "paraQuest";
             this.paraQuest.Size = new System.Drawing.Size(96, 20);
@@ -543,6 +690,18 @@
         "the head or not.");
             this.paraKO.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraKO.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // staKOPow
+            // 
+            this.staKOPow.Location = new System.Drawing.Point(216, 115);
+            this.staKOPow.MaxLength = 4;
+            this.staKOPow.Name = "staKOPow";
+            this.staKOPow.Size = new System.Drawing.Size(96, 20);
+            this.staKOPow.TabIndex = 190;
+            this.staKOPow.Text = "0";
+            this.staKOPow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOTip.SetToolTip(this.staKOPow, "The amount of KO damage you would do with an attack\r\nregardless if you would hit " +
+        "the head or not.");
             // 
             // paraExh
             // 
@@ -580,6 +739,17 @@
             this.moveHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ExhaustTip.SetToolTip(this.moveHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             // 
+            // staExhaust
+            // 
+            this.staExhaust.Location = new System.Drawing.Point(216, 161);
+            this.staExhaust.MaxLength = 4;
+            this.staExhaust.Name = "staExhaust";
+            this.staExhaust.Size = new System.Drawing.Size(96, 20);
+            this.staExhaust.TabIndex = 192;
+            this.staExhaust.Text = "0";
+            this.staExhaust.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustTip.SetToolTip(this.staExhaust, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
+            // 
             // paraKOZone
             // 
             this.paraKOZone.Location = new System.Drawing.Point(111, 31);
@@ -592,6 +762,18 @@
             this.KOZoneTip.SetToolTip(this.paraKOZone, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
         "e head will take KO damage\r\nand very rarely is it not 100.");
             // 
+            // staKOZone
+            // 
+            this.staKOZone.Location = new System.Drawing.Point(326, 23);
+            this.staKOZone.MaxLength = 4;
+            this.staKOZone.Name = "staKOZone";
+            this.staKOZone.Size = new System.Drawing.Size(96, 20);
+            this.staKOZone.TabIndex = 202;
+            this.staKOZone.Text = "0";
+            this.staKOZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.KOZoneTip.SetToolTip(this.staKOZone, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
+        "e head will take KO damage\r\nand very rarely is it not 100.");
+            // 
             // paraExhZone
             // 
             this.paraExhZone.Location = new System.Drawing.Point(111, 70);
@@ -602,6 +784,18 @@
             this.paraExhZone.Text = "0";
             this.paraExhZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ExhaustZoneTip.SetToolTip(this.paraExhZone, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
+        "y few zones are\r\nbelow 100.");
+            // 
+            // staExhaustZone
+            // 
+            this.staExhaustZone.Location = new System.Drawing.Point(326, 69);
+            this.staExhaustZone.MaxLength = 4;
+            this.staExhaustZone.Name = "staExhaustZone";
+            this.staExhaustZone.Size = new System.Drawing.Size(96, 20);
+            this.staExhaustZone.TabIndex = 204;
+            this.staExhaustZone.Text = "0";
+            this.staExhaustZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ExhaustZoneTip.SetToolTip(this.staExhaustZone, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
         "y few zones are\r\nbelow 100.");
             // 
             // groupBox1
@@ -1258,12 +1452,11 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.button3);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label105);
             this.groupBox4.Controls.Add(this.paraSecHitzone);
             this.groupBox4.Controls.Add(this.label13);
-            this.groupBox4.Controls.Add(this.textBox40);
+            this.groupBox4.Controls.Add(this.paraExhMod);
             this.groupBox4.Controls.Add(this.label28);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.paraMonStat);
@@ -1277,21 +1470,10 @@
             this.groupBox4.Controls.Add(this.paraRawHitzone);
             this.groupBox4.Location = new System.Drawing.Point(535, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(328, 177);
+            this.groupBox4.Size = new System.Drawing.Size(355, 177);
             this.groupBox4.TabIndex = 129;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
-            // 
-            // button3
-            // 
-            this.button3.Enabled = false;
-            this.button3.Location = new System.Drawing.Point(215, 147);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 23);
-            this.button3.TabIndex = 141;
-            this.button3.Text = "Status Calculations";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
             // 
             // label12
             // 
@@ -1305,7 +1487,7 @@
             // label105
             // 
             this.label105.AutoSize = true;
-            this.label105.Location = new System.Drawing.Point(110, 132);
+            this.label105.Location = new System.Drawing.Point(108, 133);
             this.label105.Name = "label105";
             this.label105.Size = new System.Drawing.Size(72, 13);
             this.label105.TabIndex = 176;
@@ -1321,24 +1503,24 @@
             this.label13.TabIndex = 104;
             this.label13.Text = "Hitzone Value:";
             // 
-            // textBox40
+            // paraExhMod
             // 
-            this.textBox40.Location = new System.Drawing.Point(113, 148);
-            this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new System.Drawing.Size(96, 20);
-            this.textBox40.TabIndex = 176;
-            this.textBox40.Text = "1.0";
-            this.textBox40.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox40.Visible = false;
+            this.paraExhMod.Location = new System.Drawing.Point(111, 149);
+            this.paraExhMod.Name = "paraExhMod";
+            this.paraExhMod.Size = new System.Drawing.Size(96, 20);
+            this.paraExhMod.TabIndex = 176;
+            this.paraExhMod.Text = "1.0";
+            this.paraExhMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.paraExhMod.Visible = false;
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(108, 54);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(117, 13);
+            this.label28.Size = new System.Drawing.Size(78, 13);
             this.label28.TabIndex = 110;
-            this.label28.Text = "Exhaust Hitzone Value:";
+            this.label28.Text = "Exhaust Value:";
             // 
             // label10
             // 
@@ -1369,7 +1551,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(110, 94);
+            this.label14.Location = new System.Drawing.Point(108, 94);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 13);
             this.label14.TabIndex = 83;
@@ -1433,10 +1615,30 @@
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Location = new System.Drawing.Point(6, 189);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(915, 168);
+            this.groupBox5.Size = new System.Drawing.Size(754, 168);
             this.groupBox5.TabIndex = 130;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Calculate";
+            // 
+            // calcRawWeap
+            // 
+            this.calcRawWeap.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.calcRawWeap.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.calcRawWeap.Location = new System.Drawing.Point(117, 79);
+            this.calcRawWeap.Name = "calcRawWeap";
+            this.calcRawWeap.Size = new System.Drawing.Size(96, 20);
+            this.calcRawWeap.TabIndex = 146;
+            this.calcRawWeap.Text = "0";
+            this.calcRawWeap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(114, 62);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(119, 13);
+            this.label61.TabIndex = 145;
+            this.label61.Text = "Raw Weapon Damage:";
             // 
             // calcFinalSecBox
             // 
@@ -1509,7 +1711,7 @@
             this.calcBounce.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcBounce.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.calcBounce.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.calcBounce.Location = new System.Drawing.Point(625, 79);
+            this.calcBounce.Location = new System.Drawing.Point(381, 120);
             this.calcBounce.Name = "calcBounce";
             this.calcBounce.Size = new System.Drawing.Size(96, 20);
             this.calcBounce.TabIndex = 137;
@@ -1519,7 +1721,7 @@
             // label47
             // 
             this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(622, 62);
+            this.label47.Location = new System.Drawing.Point(378, 103);
             this.label47.Name = "label47";
             this.label47.Size = new System.Drawing.Size(50, 13);
             this.label47.TabIndex = 136;
@@ -1529,7 +1731,7 @@
             // 
             this.calcFinal.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcFinal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcFinal.Location = new System.Drawing.Point(391, 79);
+            this.calcFinal.Location = new System.Drawing.Point(381, 77);
             this.calcFinal.Name = "calcFinal";
             this.calcFinal.Size = new System.Drawing.Size(96, 20);
             this.calcFinal.TabIndex = 135;
@@ -1539,7 +1741,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(388, 62);
+            this.label26.Location = new System.Drawing.Point(378, 60);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(75, 13);
             this.label26.TabIndex = 134;
@@ -1549,7 +1751,7 @@
             // 
             this.calcFinalRaw.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcFinalRaw.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcFinalRaw.Location = new System.Drawing.Point(493, 37);
+            this.calcFinalRaw.Location = new System.Drawing.Point(491, 36);
             this.calcFinalRaw.Name = "calcFinalRaw";
             this.calcFinalRaw.Size = new System.Drawing.Size(96, 20);
             this.calcFinalRaw.TabIndex = 133;
@@ -1558,7 +1760,7 @@
             // 
             // calcFinalEleBox
             // 
-            this.calcFinalEleBox.Location = new System.Drawing.Point(595, 79);
+            this.calcFinalEleBox.Location = new System.Drawing.Point(592, 76);
             this.calcFinalEleBox.Name = "calcFinalEleBox";
             this.calcFinalEleBox.Size = new System.Drawing.Size(21, 21);
             this.calcFinalEleBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1569,7 +1771,7 @@
             // 
             this.calcEle.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcEle.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcEle.Location = new System.Drawing.Point(494, 80);
+            this.calcEle.Location = new System.Drawing.Point(491, 77);
             this.calcEle.Name = "calcEle";
             this.calcEle.Size = new System.Drawing.Size(96, 20);
             this.calcEle.TabIndex = 131;
@@ -1578,7 +1780,7 @@
             // 
             // calcExhBox
             // 
-            this.calcExhBox.Location = new System.Drawing.Point(850, 80);
+            this.calcExhBox.Location = new System.Drawing.Point(721, 120);
             this.calcExhBox.Name = "calcExhBox";
             this.calcExhBox.Size = new System.Drawing.Size(21, 21);
             this.calcExhBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1589,7 +1791,7 @@
             // 
             this.calcExh.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcExh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcExh.Location = new System.Drawing.Point(752, 80);
+            this.calcExh.Location = new System.Drawing.Point(623, 120);
             this.calcExh.Name = "calcExh";
             this.calcExh.Size = new System.Drawing.Size(96, 20);
             this.calcExh.TabIndex = 129;
@@ -1598,7 +1800,7 @@
             // 
             // calcKOBox
             // 
-            this.calcKOBox.Location = new System.Drawing.Point(850, 37);
+            this.calcKOBox.Location = new System.Drawing.Point(721, 77);
             this.calcKOBox.Name = "calcKOBox";
             this.calcKOBox.Size = new System.Drawing.Size(21, 21);
             this.calcKOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1609,7 +1811,7 @@
             // 
             this.calcKO.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcKO.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcKO.Location = new System.Drawing.Point(752, 37);
+            this.calcKO.Location = new System.Drawing.Point(623, 77);
             this.calcKO.Name = "calcKO";
             this.calcKO.Size = new System.Drawing.Size(96, 20);
             this.calcKO.TabIndex = 127;
@@ -1619,7 +1821,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(749, 63);
+            this.label25.Location = new System.Drawing.Point(620, 103);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(91, 13);
             this.label25.TabIndex = 126;
@@ -1628,7 +1830,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(749, 20);
+            this.label24.Location = new System.Drawing.Point(620, 60);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(68, 13);
             this.label24.TabIndex = 125;
@@ -1637,7 +1839,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(491, 63);
+            this.label23.Location = new System.Drawing.Point(488, 60);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(103, 13);
             this.label23.TabIndex = 124;
@@ -1646,7 +1848,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(490, 20);
+            this.label22.Location = new System.Drawing.Point(488, 19);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(75, 13);
             this.label22.TabIndex = 123;
@@ -1736,7 +1938,7 @@
             // 
             // CalcAll
             // 
-            this.CalcAll.Location = new System.Drawing.Point(391, 36);
+            this.CalcAll.Location = new System.Drawing.Point(381, 34);
             this.CalcAll.Name = "CalcAll";
             this.CalcAll.Size = new System.Drawing.Size(96, 23);
             this.CalcAll.TabIndex = 114;
@@ -2138,19 +2340,19 @@
             // 
             // modList
             // 
-            listViewGroup5.Header = "Armor Skills:";
-            listViewGroup5.Name = "armorGroup";
-            listViewGroup6.Header = "Item/Bistro Skills:";
-            listViewGroup6.Name = "bistroGroup";
-            listViewGroup7.Header = "Weapon Modifiers:";
-            listViewGroup7.Name = "weaponGroup";
-            listViewGroup8.Header = "Other Modifiers:";
-            listViewGroup8.Name = "otherGroup";
+            listViewGroup1.Header = "Armor Skills:";
+            listViewGroup1.Name = "armorGroup";
+            listViewGroup2.Header = "Item/Bistro Skills:";
+            listViewGroup2.Name = "bistroGroup";
+            listViewGroup3.Header = "Weapon Modifiers:";
+            listViewGroup3.Name = "weaponGroup";
+            listViewGroup4.Header = "Other Modifiers:";
+            listViewGroup4.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
             this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(249, 150);
@@ -2267,7 +2469,7 @@
             this.groupBox9.Controls.Add(this.comboBox1);
             this.groupBox9.Controls.Add(this.button1);
             this.groupBox9.Controls.Add(this.groupBox10);
-            this.groupBox9.Controls.Add(this.textBox19);
+            this.groupBox9.Controls.Add(this.monExhField);
             this.groupBox9.Controls.Add(this.monQuestMod);
             this.groupBox9.Controls.Add(this.label71);
             this.groupBox9.Controls.Add(this.label84);
@@ -2643,16 +2845,16 @@
             this.monName.TabIndex = 0;
             this.monName.SelectedIndexChanged += new System.EventHandler(this.monName_SelectedIndexChanged);
             // 
-            // textBox19
+            // monExhField
             // 
-            this.textBox19.Enabled = false;
-            this.textBox19.Location = new System.Drawing.Point(274, 165);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(80, 20);
-            this.textBox19.TabIndex = 175;
-            this.textBox19.Text = "1.0";
-            this.textBox19.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.textBox19.Visible = false;
+            this.monExhField.Enabled = false;
+            this.monExhField.Location = new System.Drawing.Point(274, 165);
+            this.monExhField.Name = "monExhField";
+            this.monExhField.Size = new System.Drawing.Size(80, 20);
+            this.monExhField.TabIndex = 175;
+            this.monExhField.Text = "1.0";
+            this.monExhField.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monExhField.Visible = false;
             // 
             // monQuestMod
             // 
@@ -2687,6 +2889,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 26);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2723,34 +2926,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Calculation";
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
-            this.menuStrip1.TabIndex = 142;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // calcRawWeap
-            // 
-            this.calcRawWeap.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.calcRawWeap.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcRawWeap.Location = new System.Drawing.Point(117, 79);
-            this.calcRawWeap.Name = "calcRawWeap";
-            this.calcRawWeap.Size = new System.Drawing.Size(96, 20);
-            this.calcRawWeap.TabIndex = 146;
-            this.calcRawWeap.Text = "0";
-            this.calcRawWeap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label61
-            // 
-            this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(114, 62);
-            this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(119, 13);
-            this.label61.TabIndex = 145;
-            this.label61.Text = "Raw Weapon Damage:";
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(7, 364);
@@ -2759,6 +2934,588 @@
             this.richTextBox1.Size = new System.Drawing.Size(914, 96);
             this.richTextBox1.TabIndex = 131;
             this.richTextBox1.Text = "";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage3.Controls.Add(this.label59);
+            this.tabPage3.Controls.Add(this.staCalcButt);
+            this.tabPage3.Controls.Add(this.staText);
+            this.tabPage3.Controls.Add(this.label86);
+            this.tabPage3.Controls.Add(this.label81);
+            this.tabPage3.Controls.Add(this.staExhMod);
+            this.tabPage3.Controls.Add(this.label82);
+            this.tabPage3.Controls.Add(this.staExhaustZone);
+            this.tabPage3.Controls.Add(this.label85);
+            this.tabPage3.Controls.Add(this.staKOZone);
+            this.tabPage3.Controls.Add(this.label104);
+            this.tabPage3.Controls.Add(this.staSecPower);
+            this.tabPage3.Controls.Add(this.label106);
+            this.tabPage3.Controls.Add(this.staSecEle);
+            this.tabPage3.Controls.Add(this.staEleSharp);
+            this.tabPage3.Controls.Add(this.label107);
+            this.tabPage3.Controls.Add(this.label108);
+            this.tabPage3.Controls.Add(this.staPower);
+            this.tabPage3.Controls.Add(this.label109);
+            this.tabPage3.Controls.Add(this.staType);
+            this.tabPage3.Controls.Add(this.staKOPow);
+            this.tabPage3.Controls.Add(this.label110);
+            this.tabPage3.Controls.Add(this.staExhaust);
+            this.tabPage3.Controls.Add(this.label111);
+            this.tabPage3.Controls.Add(this.label103);
+            this.tabPage3.Controls.Add(this.staAffinity);
+            this.tabPage3.Controls.Add(this.staCritCheck);
+            this.tabPage3.Controls.Add(this.staImport);
+            this.tabPage3.Controls.Add(this.staBlastBox);
+            this.tabPage3.Controls.Add(this.staPoiBox);
+            this.tabPage3.Controls.Add(this.staSleepBox);
+            this.tabPage3.Controls.Add(this.staParaBox);
+            this.tabPage3.Controls.Add(this.staKOBox);
+            this.tabPage3.Controls.Add(this.staExhBox);
+            this.tabPage3.Controls.Add(this.staBlastMax);
+            this.tabPage3.Controls.Add(this.staBlastInc);
+            this.tabPage3.Controls.Add(this.staBlastInit);
+            this.tabPage3.Controls.Add(this.staExhMax);
+            this.tabPage3.Controls.Add(this.staExhInc);
+            this.tabPage3.Controls.Add(this.staExhaustInit);
+            this.tabPage3.Controls.Add(this.staKOMax);
+            this.tabPage3.Controls.Add(this.staKOInc);
+            this.tabPage3.Controls.Add(this.staKOInit);
+            this.tabPage3.Controls.Add(this.staParaMax);
+            this.tabPage3.Controls.Add(this.staParaInc);
+            this.tabPage3.Controls.Add(this.staParaInit);
+            this.tabPage3.Controls.Add(this.staSleepMax);
+            this.tabPage3.Controls.Add(this.staSleepInc);
+            this.tabPage3.Controls.Add(this.staSleepInit);
+            this.tabPage3.Controls.Add(this.label99);
+            this.tabPage3.Controls.Add(this.label98);
+            this.tabPage3.Controls.Add(this.label97);
+            this.tabPage3.Controls.Add(this.staPoiMax);
+            this.tabPage3.Controls.Add(this.staPoiInc);
+            this.tabPage3.Controls.Add(this.staPoiInit);
+            this.tabPage3.Controls.Add(this.label96);
+            this.tabPage3.Controls.Add(this.label95);
+            this.tabPage3.Controls.Add(this.label94);
+            this.tabPage3.Controls.Add(this.label93);
+            this.tabPage3.Controls.Add(this.label92);
+            this.tabPage3.Controls.Add(this.label91);
+            this.tabPage3.Controls.Add(this.label90);
+            this.tabPage3.Controls.Add(this.label89);
+            this.tabPage3.Controls.Add(this.label88);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(936, 475);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Status";
+            // 
+            // staCalcButt
+            // 
+            this.staCalcButt.Location = new System.Drawing.Point(236, 281);
+            this.staCalcButt.Name = "staCalcButt";
+            this.staCalcButt.Size = new System.Drawing.Size(107, 23);
+            this.staCalcButt.TabIndex = 210;
+            this.staCalcButt.Text = "Calculate Statuses:";
+            this.staCalcButt.UseVisualStyleBackColor = true;
+            this.staCalcButt.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // staText
+            // 
+            this.staText.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.staText.Location = new System.Drawing.Point(349, 188);
+            this.staText.Name = "staText";
+            this.staText.ReadOnly = true;
+            this.staText.Size = new System.Drawing.Size(581, 116);
+            this.staText.TabIndex = 209;
+            this.staText.Text = "";
+            // 
+            // label86
+            // 
+            this.label86.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label86.Location = new System.Drawing.Point(318, 1);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(2, 180);
+            this.label86.TabIndex = 208;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(323, 145);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(72, 13);
+            this.label81.TabIndex = 206;
+            this.label81.Text = "Exhaust Mod:";
+            this.label81.Visible = false;
+            // 
+            // staExhMod
+            // 
+            this.staExhMod.Location = new System.Drawing.Point(326, 161);
+            this.staExhMod.Name = "staExhMod";
+            this.staExhMod.Size = new System.Drawing.Size(96, 20);
+            this.staExhMod.TabIndex = 207;
+            this.staExhMod.Text = "1.0";
+            this.staExhMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.staExhMod.Visible = false;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(323, 53);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(78, 13);
+            this.label82.TabIndex = 205;
+            this.label82.Text = "Exhaust Value:";
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(323, 7);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(94, 13);
+            this.label85.TabIndex = 203;
+            this.label85.Text = "KO Hitzone Value:";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(213, 54);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(83, 13);
+            this.label104.TabIndex = 198;
+            this.label104.Text = "2nd Sta. Power:";
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(110, 54);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(85, 13);
+            this.label106.TabIndex = 196;
+            this.label106.Text = "DB - 2nd Status:";
+            // 
+            // staEleSharp
+            // 
+            this.staEleSharp.Location = new System.Drawing.Point(113, 116);
+            this.staEleSharp.MaxLength = 4;
+            this.staEleSharp.Name = "staEleSharp";
+            this.staEleSharp.Size = new System.Drawing.Size(96, 20);
+            this.staEleSharp.TabIndex = 195;
+            this.staEleSharp.Text = "1.0";
+            this.staEleSharp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(213, 8);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(95, 13);
+            this.label107.TabIndex = 186;
+            this.label107.Text = "Ele. Attack Power:";
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(110, 100);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(98, 13);
+            this.label108.TabIndex = 194;
+            this.label108.Text = "Status Sharp. Mod:";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(110, 7);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(67, 13);
+            this.label109.TabIndex = 188;
+            this.label109.Text = "Status Type:";
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(213, 99);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(82, 13);
+            this.label110.TabIndex = 191;
+            this.label110.Text = "KO Power / Hit:";
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(213, 144);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(105, 13);
+            this.label111.TabIndex = 193;
+            this.label111.Text = "Exhaust Power / Hit:";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(110, 145);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(58, 13);
+            this.label103.TabIndex = 184;
+            this.label103.Text = "Affinity (%):";
+            // 
+            // staCritCheck
+            // 
+            this.staCritCheck.AutoSize = true;
+            this.staCritCheck.Location = new System.Drawing.Point(27, 161);
+            this.staCritCheck.Name = "staCritCheck";
+            this.staCritCheck.Size = new System.Drawing.Size(80, 17);
+            this.staCritCheck.TabIndex = 183;
+            this.staCritCheck.Text = "Status Crit?";
+            this.staCritCheck.UseVisualStyleBackColor = true;
+            this.staCritCheck.CheckedChanged += new System.EventHandler(this.staCritCheck_CheckedChanged);
+            // 
+            // staImport
+            // 
+            this.staImport.Location = new System.Drawing.Point(6, 6);
+            this.staImport.Name = "staImport";
+            this.staImport.Size = new System.Drawing.Size(100, 67);
+            this.staImport.TabIndex = 182;
+            this.staImport.Text = "Import Parameters:";
+            this.staImport.UseVisualStyleBackColor = true;
+            this.staImport.Click += new System.EventHandler(this.staImport_Click);
+            // 
+            // staBlastBox
+            // 
+            this.staBlastBox.Location = new System.Drawing.Point(575, 159);
+            this.staBlastBox.Name = "staBlastBox";
+            this.staBlastBox.Size = new System.Drawing.Size(20, 20);
+            this.staBlastBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.staBlastBox.TabIndex = 173;
+            this.staBlastBox.TabStop = false;
+            // 
+            // staPoiBox
+            // 
+            this.staPoiBox.Location = new System.Drawing.Point(575, 29);
+            this.staPoiBox.Name = "staPoiBox";
+            this.staPoiBox.Size = new System.Drawing.Size(20, 20);
+            this.staPoiBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.staPoiBox.TabIndex = 168;
+            this.staPoiBox.TabStop = false;
+            // 
+            // staSleepBox
+            // 
+            this.staSleepBox.Location = new System.Drawing.Point(575, 55);
+            this.staSleepBox.Name = "staSleepBox";
+            this.staSleepBox.Size = new System.Drawing.Size(20, 20);
+            this.staSleepBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.staSleepBox.TabIndex = 169;
+            this.staSleepBox.TabStop = false;
+            // 
+            // staParaBox
+            // 
+            this.staParaBox.Location = new System.Drawing.Point(575, 81);
+            this.staParaBox.Name = "staParaBox";
+            this.staParaBox.Size = new System.Drawing.Size(20, 20);
+            this.staParaBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.staParaBox.TabIndex = 170;
+            this.staParaBox.TabStop = false;
+            // 
+            // staKOBox
+            // 
+            this.staKOBox.Location = new System.Drawing.Point(575, 107);
+            this.staKOBox.Name = "staKOBox";
+            this.staKOBox.Size = new System.Drawing.Size(20, 20);
+            this.staKOBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.staKOBox.TabIndex = 171;
+            this.staKOBox.TabStop = false;
+            // 
+            // staExhBox
+            // 
+            this.staExhBox.Location = new System.Drawing.Point(575, 133);
+            this.staExhBox.Name = "staExhBox";
+            this.staExhBox.Size = new System.Drawing.Size(20, 20);
+            this.staExhBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.staExhBox.TabIndex = 172;
+            this.staExhBox.TabStop = false;
+            // 
+            // staBlastMax
+            // 
+            this.staBlastMax.Location = new System.Drawing.Point(829, 159);
+            this.staBlastMax.Name = "staBlastMax";
+            this.staBlastMax.Size = new System.Drawing.Size(100, 20);
+            this.staBlastMax.TabIndex = 167;
+            this.staBlastMax.Text = "0";
+            this.staBlastMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staBlastInc
+            // 
+            this.staBlastInc.Location = new System.Drawing.Point(719, 159);
+            this.staBlastInc.Name = "staBlastInc";
+            this.staBlastInc.Size = new System.Drawing.Size(100, 20);
+            this.staBlastInc.TabIndex = 166;
+            this.staBlastInc.Text = "0";
+            this.staBlastInc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staBlastInit
+            // 
+            this.staBlastInit.Location = new System.Drawing.Point(609, 159);
+            this.staBlastInit.Name = "staBlastInit";
+            this.staBlastInit.Size = new System.Drawing.Size(100, 20);
+            this.staBlastInit.TabIndex = 165;
+            this.staBlastInit.Text = "0";
+            this.staBlastInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staExhMax
+            // 
+            this.staExhMax.Location = new System.Drawing.Point(829, 133);
+            this.staExhMax.Name = "staExhMax";
+            this.staExhMax.Size = new System.Drawing.Size(100, 20);
+            this.staExhMax.TabIndex = 164;
+            this.staExhMax.Text = "0";
+            this.staExhMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staExhInc
+            // 
+            this.staExhInc.Location = new System.Drawing.Point(719, 133);
+            this.staExhInc.Name = "staExhInc";
+            this.staExhInc.Size = new System.Drawing.Size(100, 20);
+            this.staExhInc.TabIndex = 163;
+            this.staExhInc.Text = "0";
+            this.staExhInc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staExhaustInit
+            // 
+            this.staExhaustInit.Location = new System.Drawing.Point(609, 133);
+            this.staExhaustInit.Name = "staExhaustInit";
+            this.staExhaustInit.Size = new System.Drawing.Size(100, 20);
+            this.staExhaustInit.TabIndex = 162;
+            this.staExhaustInit.Text = "0";
+            this.staExhaustInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staKOMax
+            // 
+            this.staKOMax.Location = new System.Drawing.Point(829, 107);
+            this.staKOMax.Name = "staKOMax";
+            this.staKOMax.Size = new System.Drawing.Size(100, 20);
+            this.staKOMax.TabIndex = 161;
+            this.staKOMax.Text = "0";
+            this.staKOMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staKOInc
+            // 
+            this.staKOInc.Location = new System.Drawing.Point(719, 107);
+            this.staKOInc.Name = "staKOInc";
+            this.staKOInc.Size = new System.Drawing.Size(100, 20);
+            this.staKOInc.TabIndex = 160;
+            this.staKOInc.Text = "0";
+            this.staKOInc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staKOInit
+            // 
+            this.staKOInit.Location = new System.Drawing.Point(609, 107);
+            this.staKOInit.Name = "staKOInit";
+            this.staKOInit.Size = new System.Drawing.Size(100, 20);
+            this.staKOInit.TabIndex = 159;
+            this.staKOInit.Text = "0";
+            this.staKOInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staParaMax
+            // 
+            this.staParaMax.Location = new System.Drawing.Point(829, 81);
+            this.staParaMax.Name = "staParaMax";
+            this.staParaMax.Size = new System.Drawing.Size(100, 20);
+            this.staParaMax.TabIndex = 158;
+            this.staParaMax.Text = "0";
+            this.staParaMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staParaInc
+            // 
+            this.staParaInc.Location = new System.Drawing.Point(719, 81);
+            this.staParaInc.Name = "staParaInc";
+            this.staParaInc.Size = new System.Drawing.Size(100, 20);
+            this.staParaInc.TabIndex = 157;
+            this.staParaInc.Text = "0";
+            this.staParaInc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staParaInit
+            // 
+            this.staParaInit.Location = new System.Drawing.Point(609, 81);
+            this.staParaInit.Name = "staParaInit";
+            this.staParaInit.Size = new System.Drawing.Size(100, 20);
+            this.staParaInit.TabIndex = 156;
+            this.staParaInit.Text = "0";
+            this.staParaInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staSleepMax
+            // 
+            this.staSleepMax.Location = new System.Drawing.Point(829, 55);
+            this.staSleepMax.Name = "staSleepMax";
+            this.staSleepMax.Size = new System.Drawing.Size(100, 20);
+            this.staSleepMax.TabIndex = 155;
+            this.staSleepMax.Text = "0";
+            this.staSleepMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staSleepInc
+            // 
+            this.staSleepInc.Location = new System.Drawing.Point(719, 55);
+            this.staSleepInc.Name = "staSleepInc";
+            this.staSleepInc.Size = new System.Drawing.Size(100, 20);
+            this.staSleepInc.TabIndex = 154;
+            this.staSleepInc.Text = "0";
+            this.staSleepInc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staSleepInit
+            // 
+            this.staSleepInit.Location = new System.Drawing.Point(609, 55);
+            this.staSleepInit.Name = "staSleepInit";
+            this.staSleepInit.Size = new System.Drawing.Size(100, 20);
+            this.staSleepInit.TabIndex = 153;
+            this.staSleepInit.Text = "0";
+            this.staSleepInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(539, 162);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(33, 13);
+            this.label99.TabIndex = 152;
+            this.label99.Text = "Blast:";
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(525, 133);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(48, 13);
+            this.label98.TabIndex = 151;
+            this.label98.Text = "Exhaust:";
+            // 
+            // label97
+            // 
+            this.label97.AutoSize = true;
+            this.label97.Location = new System.Drawing.Point(547, 110);
+            this.label97.Name = "label97";
+            this.label97.Size = new System.Drawing.Size(25, 13);
+            this.label97.TabIndex = 150;
+            this.label97.Text = "KO:";
+            // 
+            // staPoiMax
+            // 
+            this.staPoiMax.Location = new System.Drawing.Point(829, 29);
+            this.staPoiMax.Name = "staPoiMax";
+            this.staPoiMax.Size = new System.Drawing.Size(100, 20);
+            this.staPoiMax.TabIndex = 149;
+            this.staPoiMax.Text = "0";
+            this.staPoiMax.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staPoiInc
+            // 
+            this.staPoiInc.Location = new System.Drawing.Point(719, 29);
+            this.staPoiInc.Name = "staPoiInc";
+            this.staPoiInc.Size = new System.Drawing.Size(100, 20);
+            this.staPoiInc.TabIndex = 148;
+            this.staPoiInc.Text = "0";
+            this.staPoiInc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // staPoiInit
+            // 
+            this.staPoiInit.Location = new System.Drawing.Point(609, 29);
+            this.staPoiInit.Name = "staPoiInit";
+            this.staPoiInit.Size = new System.Drawing.Size(100, 20);
+            this.staPoiInit.TabIndex = 147;
+            this.staPoiInit.Text = "0";
+            this.staPoiInit.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label96
+            // 
+            this.label96.AutoSize = true;
+            this.label96.Location = new System.Drawing.Point(541, 84);
+            this.label96.Name = "label96";
+            this.label96.Size = new System.Drawing.Size(32, 13);
+            this.label96.TabIndex = 146;
+            this.label96.Text = "Para:";
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(535, 58);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(37, 13);
+            this.label95.TabIndex = 145;
+            this.label95.Text = "Sleep:";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(530, 32);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(42, 13);
+            this.label94.TabIndex = 144;
+            this.label94.Text = "Poison:";
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(826, 9);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(104, 13);
+            this.label93.TabIndex = 143;
+            this.label93.Text = "Maximum Threshold:";
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(716, 9);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(101, 13);
+            this.label92.TabIndex = 142;
+            this.label92.Text = "Threshold Increase:";
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(606, 9);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(84, 13);
+            this.label91.TabIndex = 141;
+            this.label91.Text = "Initial Threshold:";
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(529, 9);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(67, 13);
+            this.label90.TabIndex = 140;
+            this.label90.Text = "Status Table";
+            // 
+            // label89
+            // 
+            this.label89.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label89.Location = new System.Drawing.Point(533, 24);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(400, 2);
+            this.label89.TabIndex = 139;
+            // 
+            // label88
+            // 
+            this.label88.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label88.Location = new System.Drawing.Point(602, 5);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(2, 180);
+            this.label88.TabIndex = 138;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
+            this.menuStrip1.TabIndex = 142;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(410, 307);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(519, 52);
+            this.label59.TabIndex = 211;
+            this.label59.Text = resources.GetString("label59.Text");
             // 
             // DmgCalculator
             // 
@@ -2812,6 +3569,14 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.staBlastBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staPoiBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staSleepBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staParaBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3021,10 +3786,10 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.TextBox moveEleMod;
         private System.Windows.Forms.ListView modList;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox monExhField;
         private System.Windows.Forms.Label label84;
         private System.Windows.Forms.Label label105;
-        private System.Windows.Forms.TextBox textBox40;
+        private System.Windows.Forms.TextBox paraExhMod;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label28;
@@ -3038,7 +3803,6 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
@@ -3046,6 +3810,71 @@
         private System.Windows.Forms.Label calcRawWeap;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label88;
+        private System.Windows.Forms.Label label93;
+        private System.Windows.Forms.Label label92;
+        private System.Windows.Forms.Label label91;
+        private System.Windows.Forms.Label label90;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.TextBox staBlastMax;
+        private System.Windows.Forms.TextBox staBlastInc;
+        private System.Windows.Forms.TextBox staBlastInit;
+        private System.Windows.Forms.TextBox staExhMax;
+        private System.Windows.Forms.TextBox staExhInc;
+        private System.Windows.Forms.TextBox staExhaustInit;
+        private System.Windows.Forms.TextBox staKOMax;
+        private System.Windows.Forms.TextBox staKOInc;
+        private System.Windows.Forms.TextBox staKOInit;
+        private System.Windows.Forms.TextBox staParaMax;
+        private System.Windows.Forms.TextBox staParaInc;
+        private System.Windows.Forms.TextBox staParaInit;
+        private System.Windows.Forms.TextBox staSleepMax;
+        private System.Windows.Forms.TextBox staSleepInc;
+        private System.Windows.Forms.TextBox staSleepInit;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.Label label97;
+        private System.Windows.Forms.TextBox staPoiMax;
+        private System.Windows.Forms.TextBox staPoiInc;
+        private System.Windows.Forms.TextBox staPoiInit;
+        private System.Windows.Forms.Label label96;
+        private System.Windows.Forms.Label label95;
+        private System.Windows.Forms.Label label94;
+        private System.Windows.Forms.PictureBox staBlastBox;
+        private System.Windows.Forms.PictureBox staPoiBox;
+        private System.Windows.Forms.PictureBox staSleepBox;
+        private System.Windows.Forms.PictureBox staParaBox;
+        private System.Windows.Forms.PictureBox staKOBox;
+        private System.Windows.Forms.PictureBox staExhBox;
+        private System.Windows.Forms.Button staImport;
+        private System.Windows.Forms.CheckBox staCritCheck;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.TextBox staAffinity;
+        private System.Windows.Forms.Label label86;
+        private System.Windows.Forms.Label label81;
+        private System.Windows.Forms.TextBox staExhMod;
+        private System.Windows.Forms.Label label82;
+        private System.Windows.Forms.TextBox staExhaustZone;
+        private System.Windows.Forms.Label label85;
+        private System.Windows.Forms.TextBox staKOZone;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.TextBox staSecPower;
+        private System.Windows.Forms.Label label106;
+        private System.Windows.Forms.ComboBox staSecEle;
+        private System.Windows.Forms.TextBox staEleSharp;
+        private System.Windows.Forms.Label label107;
+        private System.Windows.Forms.Label label108;
+        private System.Windows.Forms.TextBox staPower;
+        private System.Windows.Forms.Label label109;
+        private System.Windows.Forms.ComboBox staType;
+        private System.Windows.Forms.TextBox staKOPow;
+        private System.Windows.Forms.Label label110;
+        private System.Windows.Forms.TextBox staExhaust;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.Button staCalcButt;
+        private System.Windows.Forms.RichTextBox staText;
+        private System.Windows.Forms.Label label59;
     }
 }
 

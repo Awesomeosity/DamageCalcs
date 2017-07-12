@@ -255,6 +255,7 @@ namespace YADC_MHGen_
             public double questMod;
             public double KOHitzone;
             public double exhaustHitzone;
+            public double exhaustMod;
 
             public double rawMod; //Stores the multiplier of the raw damage.
             public double eleMod; //Stores the elemental multiplier. Has a cap of 1.2x, surpassed when used Demon Riot on an Element Phial SA.
@@ -294,10 +295,8 @@ namespace YADC_MHGen_
             Application.EnableVisualStyles();
             FillOut(); //Fills out dictionaries.
             readFiles(); //Read the xml files and fills out the database.
-            prep();
+            prep(); //Prepares the forms.
         }
-
-
 
         //EVENT FUNCTIONS
         /// <summary>
@@ -372,6 +371,34 @@ namespace YADC_MHGen_
             calcFinal.Text = finalTuple.Item1.ToString();
 
             calcBounce.Text = finalTuple.Item6;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (staSecEle.SelectedIndex == 0)
+            {
+                string status = "";
+
+                Tuple<int, int, int> statusTuple = calculateSta(false);
+                string[] formatArray = new string[] { statusTuple.Item1.ToString(), staType.Text, statusTuple.Item2.ToString(), statusTuple.Item3.ToString() };
+                status += String.Format("It will take {0} hits to inflict {1} status on this monster at the initial threshold, {2} more hits per tolerance level, and {3} hits at maximum tolerance. \n", formatArray);
+
+                if (staSecEle.SelectedIndex != 0)
+                {
+                    Tuple<int, int, int> DBTuple = calculateSta(true);
+                    string[] formatDB = new string[] { DBTuple.Item1.ToString(), staSecEle.Text, DBTuple.Item2.ToString(), DBTuple.Item3.ToString() };
+                    status += String.Format("It will take {0} hits to inflict {1} status on this monster at the initial threshold, {2} more hits per tolerance level, and {3} hits at maximum tolerance. \n", formatDB);
+                }
+
+                Tuple<int, int, int, int, int, int> KOTuple = calculateKO();
+                string[] formatKO = new string[] { KOTuple.Item1.ToString(), KOTuple.Item2.ToString(), KOTuple.Item3.ToString() };
+                status += String.Format("It will take {0} hits to inflict KO status on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatKO);
+
+                string[] formatExh = new string[] { KOTuple.Item4.ToString(), KOTuple.Item5.ToString(), KOTuple.Item6.ToString() };
+                status += String.Format("It will take {0} hits to inflict Exhaust damage on this monster at the initial threshold, {1} more hits per tolerance level, and {2} hits at maximum tolerance. \n", formatExh);
+
+                staText.Text = status;
+            }
         }
 
         /// <summary>
@@ -864,9 +891,9 @@ namespace YADC_MHGen_
         private void ArmorButt_Click(object sender, EventArgs e)
         {
             bool alreadyThere = false;
-            foreach(ListViewItem item in modList.Items)
+            foreach (ListViewItem item in modList.Items)
             {
-                if(modArmor.Text == item.Text)
+                if (modArmor.Text == item.Text)
                 {
                     alreadyThere = true;
                     break;
@@ -959,6 +986,25 @@ namespace YADC_MHGen_
             }
         }
 
+        /// <summary>
+        /// Using the importedStats struct, fill in the calculation fields with all information from the database section.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void paraUpdate_Click(object sender, EventArgs e)
+        {
+            importSetUp();
+            importModifiers();
+            export();
+        }
+
+        private void staImport_Click(object sender, EventArgs e)
+        {
+            importSetUp();
+            importModifiers();
+            statusExport();
+        }
+
         private void monName_SelectedIndexChanged(object sender, EventArgs e)
         {
             monHitzone.Items.Clear();
@@ -1005,7 +1051,34 @@ namespace YADC_MHGen_
                 if (quest.name == questName)
                 {
                     monQuestMod.Text = quest.questMod.ToString();
+                    monExhField.Text = quest.exhaustMod.ToString();
                 }
+            }
+        }
+
+        private void staSecEle_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (staSecEle.SelectedIndex != 0)
+            {
+                staSecPower.Enabled = true;
+            }
+            else
+            {
+                staSecPower.Text = 0.ToString();
+                staSecPower.Enabled = false;
+            }
+        }
+
+        private void staCritCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (staCritCheck.Checked == true)
+            {
+                staAffinity.Enabled = true;
+            }
+            else
+            {
+                staAffinity.Text = 0.ToString();
+                staAffinity.Enabled = false;
             }
         }
 
@@ -1056,6 +1129,15 @@ namespace YADC_MHGen_
             weapSecType.SelectedIndex = 0;
             weapOne.SelectedIndex = 0;
             weapTwo.SelectedIndex = 0;
+
+            staType.SelectedIndex = 0;
+            staSecEle.SelectedIndex = 0;
+            staPoiBox.Load("./Images/Poison.png");
+            staSleepBox.Load("./Images/Sleep.png");
+            staParaBox.Load("./Images/Para.png");
+            staKOBox.Load("./Images/KO.png");
+            staExhBox.Load("./Images/Exhaust.png");
+            staBlastBox.Load("./Images/Blast.png");
         }
 
         /// <summary>
@@ -1261,6 +1343,133 @@ namespace YADC_MHGen_
             totaldamage = Math.Floor(totaldamage);
 
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
+        }
+
+        private Tuple<int, int, int, int, int, int> calculateKO()
+        {
+            double KO = double.Parse(staKOPow.Text);
+            double Exhaust = double.Parse(staExhaust.Text);
+
+            KO *= double.Parse(staKOZone.Text);
+            Exhaust *= double.Parse(staExhaustZone.Text);
+
+            double KOInit = double.Parse(staKOInit.Text);
+            double KOInc = double.Parse(staKOInc.Text);
+            double KOMax = double.Parse(staKOMax.Text);
+
+            double ExhInit = double.Parse(staExhaustInit.Text);
+            double ExhInc = double.Parse(staExhInc.Text);
+            double ExhMax = double.Parse(staExhMax.Text);
+
+            int KOHitsInit = 0;
+            int KOHitsInc = 0;
+            int KOHitsMax = 0;
+
+            int ExhHitsInit = 0;
+            int ExhHitsInc = 0;
+            int ExhHitsMax = 0;
+
+            if (KO != 0)
+            {
+                KOHitsInit = (int)Math.Ceiling(KOInit / KO);
+                KOHitsInc = (int)Math.Ceiling(KOInc / KO);
+                KOHitsMax = (int)Math.Ceiling(KOMax / KO);
+            }
+
+            if (Exhaust != 0)
+            {
+                ExhHitsInit = (int)Math.Ceiling(ExhInit / Exhaust);
+                ExhHitsInc = (int)Math.Ceiling(ExhInc / Exhaust);
+                ExhHitsMax = (int)Math.Ceiling(ExhMax / Exhaust);
+            }
+
+            return new Tuple<int, int, int, int, int, int>(KOHitsInit, KOHitsInc, KOHitsMax, ExhHitsInit, ExhHitsInc, ExhHitsMax);
+        }
+
+        private Tuple<int, int, int> calculateSta(bool usingDB)
+        {
+            double power = 0;
+            double init = 0;
+            double inc = 0;
+            double max = 0;
+
+            if (!usingDB)
+            {
+                power = double.Parse(staPower.Text);
+
+                if (staType.SelectedIndex == 0)
+                {
+                    init = double.Parse(staPoiInit.Text);
+                    inc = double.Parse(staPoiInc.Text);
+                    max = double.Parse(staPoiMax.Text);
+                }
+                else if (staType.SelectedIndex == 1)
+                {
+                    init = double.Parse(staSleepInit.Text);
+                    inc = double.Parse(staSleepInc.Text);
+                    max = double.Parse(staSleepMax.Text);
+                }
+                else if (staType.SelectedIndex == 2)
+                {
+                    init = double.Parse(staParaInit.Text);
+                    inc = double.Parse(staParaInc.Text);
+                    max = double.Parse(staParaMax.Text);
+                }
+                else if (staType.SelectedIndex == 3)
+                {
+                    init = double.Parse(staBlastInit.Text);
+                    inc = double.Parse(staBlastInc.Text);
+                    max = double.Parse(staBlastMax.Text);
+                }
+            }
+            else
+            {
+                power = double.Parse(staSecPower.Text);
+
+                if (staSecEle.SelectedIndex == 0)
+                {
+                    init = double.Parse(staPoiInit.Text);
+                    inc = double.Parse(staPoiInc.Text);
+                    max = double.Parse(staPoiMax.Text);
+                }
+                else if (staSecEle.SelectedIndex == 1)
+                {
+                    init = double.Parse(staSleepInit.Text);
+                    inc = double.Parse(staSleepInc.Text);
+                    max = double.Parse(staSleepMax.Text);
+                }
+                else if (staSecEle.SelectedIndex == 2)
+                {
+                    init = double.Parse(staParaInit.Text);
+                    inc = double.Parse(staParaInc.Text);
+                    max = double.Parse(staParaMax.Text);
+                }
+                else if (staSecEle.SelectedIndex == 3)
+                {
+                    init = double.Parse(staBlastInit.Text);
+                    inc = double.Parse(staBlastInc.Text);
+                    max = double.Parse(staBlastMax.Text);
+                }
+            }
+
+            power *= double.Parse(staEleSharp.Text);
+
+            if (staCritCheck.Checked)
+            {
+                double affinity = double.Parse(staAffinity.Text);
+                power *= (1 + affinity * 1.2);
+            }
+
+            if (power == 0)
+            {
+                return new Tuple<int, int, int>(0, 0, 0);
+            }
+
+            int statusInit = (int)Math.Ceiling(init / power);
+            int statusInc = (int)Math.Ceiling(inc / power);
+            int statusMax = (int)Math.Ceiling(max / power);
+
+            return new Tuple<int, int, int>(statusInit, statusInc, statusMax);
         }
 
         private void fillMoves(string selectedItem)
@@ -2117,13 +2326,13 @@ namespace YADC_MHGen_
         /// <param name="statList"></param>
         private void insertSort2(List<moveStat> statList)
         {
-            for(int i = 1; i != statList.Count; i++)
+            for (int i = 1; i != statList.Count; i++)
             {
                 int x = statList[i].id;
                 moveStat x1 = statList[i];
 
                 int j = i - 1;
-                while(j >= 0 && statList[j].id > x)
+                while (j >= 0 && statList[j].id > x)
                 {
                     statList[j + 1] = statList[j];
                     j = j - 1;
@@ -3613,17 +3822,7 @@ namespace YADC_MHGen_
             return true;
         }
 
-        /// <summary>
-        /// Using the importedStats struct, fill in the calculation fields with all information from the database section.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void paraUpdate_Click(object sender, EventArgs e)
-        {
-            importSetUp();
-            importModifiers();
-            export();
-        }
+
 
         private void importSetUp()
         {
@@ -3723,6 +3922,7 @@ namespace YADC_MHGen_
             }
 
             weaponAndMods.questMod = double.Parse(monQuestMod.Text);
+            weaponAndMods.exhaustMod = double.Parse(monExhField.Text);
             weaponAndMods.KOHitzone = double.Parse(monKO.Text);
             weaponAndMods.exhaustHitzone = double.Parse(monExh.Text);
 
@@ -3827,7 +4027,54 @@ namespace YADC_MHGen_
             paraSecHitzone.Text = weaponAndMods.secHitzone.ToString();
             paraKOZone.Text = weaponAndMods.KOHitzone.ToString();
             paraExhZone.Text = weaponAndMods.exhaustHitzone.ToString();
+            paraExhMod.Text = weaponAndMods.exhaustMod.ToString();
             paraQuest.Text = weaponAndMods.questMod.ToString();
+        }
+
+        private void statusExport()
+        {
+            if (isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
+            {
+                staType.SelectedItem = weaponAndMods.altDamageType;
+                staPower.Text = weaponAndMods.eleAttackPower.ToString();
+            }
+            else
+            {
+                staType.SelectedIndex = 0;
+                staPower.Text = 0.ToString();
+            }
+
+            if (isStatus(weaponAndMods.secElement) || weaponAndMods.secElement == "Blast")
+            {
+                staSecEle.SelectedItem = weaponAndMods.secElement;
+                staSecPower.Text = weaponAndMods.secPower.ToString();
+            }
+            else
+            {
+                staSecEle.SelectedIndex = 0;
+                staSecPower.Text = 0.ToString();
+            }
+
+            staEleSharp.Text = weaponAndMods.eleSharpMod.ToString();
+            staKOPow.Text = weaponAndMods.KOPower.ToString();
+            staExhaust.Text = weaponAndMods.exhaustPower.ToString();
+            
+            if(weaponAndMods.statusCrit == true)
+            {
+                staCritCheck.Checked = true;
+                staAffinity.Text = weaponAndMods.affinity.ToString();
+            }
+            else
+            {
+                staCritCheck.Checked = false;
+                staAffinity.Text = 0.ToString();
+            }
+
+            staKOZone.Text = weaponAndMods.KOHitzone.ToString();
+            staExhaustZone.Text = weaponAndMods.exhaustHitzone.ToString();
+            staExhMod.Text = weaponAndMods.exhaustMod.ToString();
+
+            monsterStatusThresholds
         }
 
 #endif
