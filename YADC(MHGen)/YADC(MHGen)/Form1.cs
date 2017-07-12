@@ -993,7 +993,7 @@ namespace YADC_MHGen_
             if (!alreadyThere)
             {
                 ListViewItem item = new ListViewItem(modOther.Text);
-                item.Group = modList.Groups[4];
+                item.Group = modList.Groups[3];
                 modList.Items.Add(item);
             }
         }
