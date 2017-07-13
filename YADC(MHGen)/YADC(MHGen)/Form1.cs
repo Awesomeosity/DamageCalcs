@@ -549,7 +549,7 @@ namespace YADC_MHGen_
                 GLAmmoBox.Enabled = false;
                 eleShotType.Enabled = true;
             }
-            else if(((ComboBox)sender).Text == "Gunlance")
+            else if (((ComboBox)sender).Text == "Gunlance")
             {
                 eleShotType.SelectedIndex = 0;
                 eleShotType.Enabled = false;
@@ -1671,7 +1671,6 @@ namespace YADC_MHGen_
             armorModifiers.Add("Fire Atk +1", x => FireAtk(1));
             armorModifiers.Add("Fire Atk +2", x => FireAtk(2));
             armorModifiers.Add("Fire Atk Down", x => FireAtk(3));
-            armorModifiers.Add("Antivirus", x => FrenzyRes());
             armorModifiers.Add("Resentment", x => Furor());
 
             armorModifiers.Add("Latent Power +1", x => GlovesOff(1));
@@ -1860,7 +1859,8 @@ namespace YADC_MHGen_
 
             //Other modifiers
 #if true
-            otherModifiers.Add("Frenzy", x => Frenzy());
+            otherModifiers.Add("Frenzy", x => Frenzy(1));
+            otherModifiers.Add("Frenzy (+Antivirus)", x => Frenzy(2));
 #endif
 
             foreach (KeyValuePair<string, Func<int, bool>> pair in otherModifiers)
@@ -2803,12 +2803,6 @@ namespace YADC_MHGen_
             {
                 return false;
             }
-            return true;
-        }
-
-        private bool FrenzyRes()
-        {
-            weaponAndMods.affinity += 15;
             return true;
         }
 
@@ -3873,9 +3867,16 @@ namespace YADC_MHGen_
 #endif
         //Other modifiers
 #if true
-        private bool Frenzy()
+        private bool Frenzy(int skillVal)
         {
-            weaponAndMods.affinity += 15;
+            if (skillVal == 1)
+            {
+                weaponAndMods.affinity += 15;
+            }
+            else if (skillVal == 2)
+            {
+                weaponAndMods.affinity += 15;
+            }
             return true;
         }
 
@@ -4131,25 +4132,50 @@ namespace YADC_MHGen_
             staExhaustZone.Text = weaponAndMods.exhaustHitzone.ToString();
             staExhMod.Text = weaponAndMods.exhaustMod.ToString();
 
-            monsterStatusThresholds thresholds = monsterStats[monName.Text].status;
-            staPoiInit.Text = thresholds.poisonInit.ToString();
-            staPoiInc.Text = thresholds.poisonInc.ToString();
-            staPoiMax.Text = thresholds.poisonMax.ToString();
-            staSleepInit.Text = thresholds.sleepInit.ToString();
-            staSleepInc.Text = thresholds.sleepInc.ToString();
-            staSleepMax.Text = thresholds.sleepMax.ToString();
-            staParaInit.Text = thresholds.paraInit.ToString();
-            staParaInc.Text = thresholds.paraInc.ToString();
-            staParaMax.Text = thresholds.paraMax.ToString();
-            staKOInit.Text = thresholds.KOInit.ToString();
-            staKOInc.Text = thresholds.KOInc.ToString();
-            staKOMax.Text = thresholds.KOMax.ToString();
-            staExhaustInit.Text = thresholds.exhaustInit.ToString();
-            staExhInc.Text = thresholds.exhaustInc.ToString();
-            staExhMax.Text = thresholds.exhaustMax.ToString();
-            staBlastInit.Text = thresholds.blastInit.ToString();
-            staBlastInc.Text = thresholds.blastInc.ToString();
-            staBlastMax.Text = thresholds.blastMax.ToString();
+            if (monName.Text != "")
+            {
+                monsterStatusThresholds thresholds = monsterStats[monName.Text].status;
+                staPoiInit.Text = thresholds.poisonInit.ToString();
+                staPoiInc.Text = thresholds.poisonInc.ToString();
+                staPoiMax.Text = thresholds.poisonMax.ToString();
+                staSleepInit.Text = thresholds.sleepInit.ToString();
+                staSleepInc.Text = thresholds.sleepInc.ToString();
+                staSleepMax.Text = thresholds.sleepMax.ToString();
+                staParaInit.Text = thresholds.paraInit.ToString();
+                staParaInc.Text = thresholds.paraInc.ToString();
+                staParaMax.Text = thresholds.paraMax.ToString();
+                staKOInit.Text = thresholds.KOInit.ToString();
+                staKOInc.Text = thresholds.KOInc.ToString();
+                staKOMax.Text = thresholds.KOMax.ToString();
+                staExhaustInit.Text = thresholds.exhaustInit.ToString();
+                staExhInc.Text = thresholds.exhaustInc.ToString();
+                staExhMax.Text = thresholds.exhaustMax.ToString();
+                staBlastInit.Text = thresholds.blastInit.ToString();
+                staBlastInc.Text = thresholds.blastInc.ToString();
+                staBlastMax.Text = thresholds.blastMax.ToString();
+            }
+            else
+            {
+                staPoiInit.Text = "0";
+                staPoiInc.Text = "0";
+                staPoiMax.Text = "0";
+                staSleepInit.Text = "0";
+                staSleepInc.Text = "0";
+                staSleepMax.Text = "0";
+                staParaInit.Text = "0";
+                staParaInc.Text = "0";
+                staParaMax.Text = "0";
+                staKOInit.Text = "0";
+                staKOInc.Text = "0";
+                staKOMax.Text = "0";
+                staExhaustInit.Text = "0";
+                staExhInc.Text = "0";
+                staExhMax.Text = "0";
+                staBlastInit.Text = "0";
+                staBlastInc.Text = "0";
+                staBlastMax.Text = "0";
+            }
+
         }
 
         private void eleShotType_SelectedIndexChanged(object sender, EventArgs e)
@@ -4164,7 +4190,7 @@ namespace YADC_MHGen_
             moveDraw.Checked = false;
             moveAerial.Checked = false;
             int index = eleShotType.SelectedIndex;
-            if(index == 1 || index == 6 || index == 15 || index == 18 || index == 27 || index == 30 || index == 37 || index == 40) //Single non-RF shots from Element
+            if (index == 1 || index == 6 || index == 15 || index == 18 || index == 27 || index == 30 || index == 37 || index == 40) //Single non-RF shots from Element
             {
                 moveTotal.Text = "7";
                 moveSharp.Text = "1.0";
@@ -4174,7 +4200,7 @@ namespace YADC_MHGen_
                 moveKO.Text = "0";
                 moveExh.Text = "0";
             }
-            else if(index == 2 || index == 7 || index == 16 || index == 19 || index == 28 || index == 38) //RF Shots x3 (0.7x mod)
+            else if (index == 2 || index == 7 || index == 16 || index == 19 || index == 28 || index == 38) //RF Shots x3 (0.7x mod)
             {
                 moveTotal.Text = "21";
                 moveSharp.Text = "0.7";
@@ -4194,7 +4220,7 @@ namespace YADC_MHGen_
                 moveKO.Text = "0";
                 moveExh.Text = "0";
             }
-            else if(index == 4) //RF Shots x4 (0.6x Mod)
+            else if (index == 4) //RF Shots x4 (0.6x Mod)
             {
                 moveTotal.Text = "28";
                 moveSharp.Text = "0.6";
@@ -4294,7 +4320,7 @@ namespace YADC_MHGen_
                 moveKO.Text = "0";
                 moveExh.Text = "0";
             }
-            else if(index == 49 || index == 53) //Single shot Dragon
+            else if (index == 49 || index == 53) //Single shot Dragon
             {
                 moveTotal.Text = "5";
                 moveSharp.Text = "1.0";
@@ -4531,7 +4557,7 @@ namespace YADC_MHGen_
             int index = eleShotType.SelectedIndex;
             if ((index >= 1 && index <= 5) ||
                 (index >= 15 && index <= 17) ||
-                (index >= 27 && index <= 29 ) ||
+                (index >= 27 && index <= 29) ||
                 (index >= 37 && index <= 39)) //All Level 1 Element Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.45).ToString();
@@ -4599,6 +4625,7 @@ namespace YADC_MHGen_
             else
             {
                 weapAltPower.Text = "0";
+                moveDamType.SelectedIndex = 0;
             }
         }
 
@@ -4614,7 +4641,7 @@ namespace YADC_MHGen_
                 weapAlt.SelectedIndex = 1;
                 moveMinds.Checked = true;
             }
-            else if(findElement() == "Water")
+            else if (findElement() == "Water")
             {
                 weapAlt.SelectedIndex = 2;
                 moveMinds.Checked = true;
@@ -4664,11 +4691,11 @@ namespace YADC_MHGen_
         private string findElement()
         {
             int index = eleShotType.SelectedIndex;
-            if((index >= 1 && index <= 14) || (index >= 65 && index <= 83))
+            if ((index >= 1 && index <= 14) || (index >= 65 && index <= 83))
             {
                 return "Fire";
             }
-            else if(index >= 15 && index <= 26)
+            else if (index >= 15 && index <= 26)
             {
                 return "Water";
             }
@@ -4720,18 +4747,18 @@ namespace YADC_MHGen_
         {
             int index = GLAmmoBox.SelectedIndex;
 
-            moveDamType.SelectedIndex = 3;
+
             moveSharp.Text = "1.0";
             moveKO.Text = "0";
             moveExh.Text = "0";
             moveMinds.Checked = true;
-            if(index >= 1 && index <= 4) //Normal 1
+            if (index >= 1 && index <= 4) //Normal 1
             {
                 moveAvg.Text = "8";
                 weapAltPower.Text = "4";
                 weapAlt.SelectedIndex = 1;
             }
-            else if(index >= 5 && index <= 8) //Normal 2
+            else if (index >= 5 && index <= 8) //Normal 2
             {
                 moveAvg.Text = "11";
                 weapAltPower.Text = "5";
@@ -4803,13 +4830,18 @@ namespace YADC_MHGen_
                 weapAltPower.Text = "0";
                 weapAlt.SelectedIndex = 0;
             }
+
+            if (index != 0)
+            {
+
+            }
         }
 
         private void GLMoveType()
         {
             int index = GLAmmoBox.SelectedIndex;
             double shotMod = 1.0; //Controls the increased damage of the shot and its associated fire.
-            if(index == 1 || index == 5 || index == 9 || index == 13 ||
+            if (index == 1 || index == 5 || index == 9 || index == 13 ||
                 index == 17 || index == 21 || index == 25 || index == 29 ||
                 index == 33 || index == 37 || index == 41 || index == 45) //Single shot
             {
@@ -4822,22 +4854,22 @@ namespace YADC_MHGen_
                 moveHitCount.Text = "1";
                 shotMod = 1.2;
             }
-            else if(index == 34 || index == 38 || index == 42 || index == 46) //Wide Charged shot
+            else if (index == 34 || index == 38 || index == 42 || index == 46) //Wide Charged shot
             {
                 moveHitCount.Text = "1";
                 shotMod = 1.45;
             }
-            else if(index == 3 || index == 7 || index == 11 || index == 15) //Normal Full Burst
+            else if (index == 3 || index == 7 || index == 11 || index == 15) //Normal Full Burst
             {
                 moveHitCount.Text = "5";
                 shotMod = 1.1;
             }
-            else if(index == 19 || index == 23 || index == 27 || index == 31) //Long Full Burst
+            else if (index == 19 || index == 23 || index == 27 || index == 31) //Long Full Burst
             {
                 moveHitCount.Text = "3";
                 shotMod = 1.0;
             }
-            else if(index == 35 || index == 39 || index == 43 || index == 47) //Wide Full Burst
+            else if (index == 35 || index == 39 || index == 43 || index == 47) //Wide Full Burst
             {
                 moveHitCount.Text = "2";
                 shotMod = 0.85;
