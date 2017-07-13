@@ -1454,25 +1454,25 @@ namespace YADC_MHGen_
             {
                 power = double.Parse(staPower.Text);
 
-                if (staType.SelectedIndex == 0)
+                if (staType.SelectedItem == "Poison")
                 {
                     init = double.Parse(staPoiInit.Text);
                     inc = double.Parse(staPoiInc.Text);
                     max = double.Parse(staPoiMax.Text);
                 }
-                else if (staType.SelectedIndex == 1)
+                else if (staType.SelectedItem == "Sleep")
                 {
                     init = double.Parse(staSleepInit.Text);
                     inc = double.Parse(staSleepInc.Text);
                     max = double.Parse(staSleepMax.Text);
                 }
-                else if (staType.SelectedIndex == 2)
+                else if (staType.SelectedItem == "Para")
                 {
                     init = double.Parse(staParaInit.Text);
                     inc = double.Parse(staParaInc.Text);
                     max = double.Parse(staParaMax.Text);
                 }
-                else if (staType.SelectedIndex == 3)
+                else if (staType.SelectedItem == "Blast")
                 {
                     init = double.Parse(staBlastInit.Text);
                     inc = double.Parse(staBlastInc.Text);
@@ -1694,8 +1694,8 @@ namespace YADC_MHGen_
             armorModifiers.Add("Pellet/Spread Up (Pellet S)", x => PelletUp(1));
             armorModifiers.Add("Pellet/Spread Up (Spread)", x => PelletUp(2));
             armorModifiers.Add("Pierce/Pierce Up", x => PierceUp());
-            armorModifiers.Add("Adrenaline +2", x => Potential(2));
-            armorModifiers.Add("Worrywart", x => Potential(3));
+            armorModifiers.Add("Adrenaline +2", x => Potential(1));
+            armorModifiers.Add("Worrywart", x => Potential(2));
             armorModifiers.Add("Punishing Draw (Cut)", x => PunishDraw(1));
             armorModifiers.Add("Punishing Draw (Impact)", x => PunishDraw(2));
 
@@ -3875,7 +3875,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 2)
             {
-                weaponAndMods.affinity += 15;
+                weaponAndMods.affinity += 30;
             }
             return true;
         }

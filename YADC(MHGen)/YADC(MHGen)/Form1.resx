@@ -123,6 +123,12 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
+  <data name="label59.Text" xml:space="preserve">
+    <value>*Note that statuses on Blademaster weapons and Bows with innate statuses, such as the Teo Bow, 
+have a 1/3rd chance of applying their status.
+Bowguns that use Status-inflicting shots or Bows that are using Status Coatings inflict them 100% of the time. 
+KO and Exhaust are exempt from this rule.</value>
+  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>267, 56</value>
   </metadata>
@@ -208,10 +214,4 @@ may not be the final raw used in calculations.</value>
   <metadata name="ExhaustZoneTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>129, 56</value>
   </metadata>
-  <data name="label59.Text" xml:space="preserve">
-    <value>*Note that statuses on Blademaster weapons and Bows with innate statuses, such as the Teo Bow, 
-have a 1/3rd chance of applying their status.
-Bowguns that use Status-inflicting shots or Bows that are using Status Coatings inflict them 100% of the time. 
-KO and Exhaust are exempt from this rule.</value>
-  </data>
 </root>

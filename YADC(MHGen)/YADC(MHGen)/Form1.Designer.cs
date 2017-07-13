@@ -279,11 +279,11 @@
             this.groupBox13 = new System.Windows.Forms.GroupBox();
             this.button2 = new System.Windows.Forms.Button();
             this.label101 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.BowShot = new System.Windows.Forms.ComboBox();
             this.label100 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.BowCharge = new System.Windows.Forms.ComboBox();
             this.label87 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.BowCoating = new System.Windows.Forms.ComboBox();
             this.label59 = new System.Windows.Forms.Label();
             this.staCalcButt = new System.Windows.Forms.Button();
             this.staText = new System.Windows.Forms.RichTextBox();
@@ -639,6 +639,7 @@
             this.staType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.staType.FormattingEnabled = true;
             this.staType.Items.AddRange(new object[] {
+            "(None)",
             "Poison",
             "Para",
             "Sleep",
@@ -3276,11 +3277,11 @@
             // 
             this.groupBox13.Controls.Add(this.button2);
             this.groupBox13.Controls.Add(this.label101);
-            this.groupBox13.Controls.Add(this.comboBox4);
+            this.groupBox13.Controls.Add(this.BowShot);
             this.groupBox13.Controls.Add(this.label100);
-            this.groupBox13.Controls.Add(this.comboBox3);
+            this.groupBox13.Controls.Add(this.BowCharge);
             this.groupBox13.Controls.Add(this.label87);
-            this.groupBox13.Controls.Add(this.comboBox2);
+            this.groupBox13.Controls.Add(this.BowCoating);
             this.groupBox13.Location = new System.Drawing.Point(7, 188);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(223, 149);
@@ -3306,13 +3307,29 @@
             this.label101.TabIndex = 5;
             this.label101.Text = "Shot Type:";
             // 
-            // comboBox4
+            // BowShot
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(80, 73);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(137, 21);
-            this.comboBox4.TabIndex = 4;
+            this.BowShot.FormattingEnabled = true;
+            this.BowShot.Items.AddRange(new object[] {
+            "Rapid Lvl. 1",
+            "Rapid Lvl. 2",
+            "Rapid Lvl. 3",
+            "Rapid Lvl. 4",
+            "Rapid Lvl. 5",
+            "Pierce Lvl. 1",
+            "Pierce Lvl. 2",
+            "Pierce Lvl. 3",
+            "Pierce Lvl. 4",
+            "Pierce Lvl. 5",
+            "Spread Lvl. 1",
+            "Spread Lvl. 2",
+            "Spread Lvl. 3",
+            "Spread Lvl. 4",
+            "Spread Lvl. 5"});
+            this.BowShot.Location = new System.Drawing.Point(80, 73);
+            this.BowShot.Name = "BowShot";
+            this.BowShot.Size = new System.Drawing.Size(137, 21);
+            this.BowShot.TabIndex = 4;
             // 
             // label100
             // 
@@ -3323,13 +3340,18 @@
             this.label100.TabIndex = 3;
             this.label100.Text = "Charge Level:";
             // 
-            // comboBox3
+            // BowCharge
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(80, 46);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(137, 21);
-            this.comboBox3.TabIndex = 2;
+            this.BowCharge.FormattingEnabled = true;
+            this.BowCharge.Items.AddRange(new object[] {
+            "Level 1",
+            "Level 2",
+            "Level 3",
+            "Level 4"});
+            this.BowCharge.Location = new System.Drawing.Point(80, 46);
+            this.BowCharge.Name = "BowCharge";
+            this.BowCharge.Size = new System.Drawing.Size(137, 21);
+            this.BowCharge.TabIndex = 2;
             // 
             // label87
             // 
@@ -3340,13 +3362,20 @@
             this.label87.TabIndex = 1;
             this.label87.Text = "Bow Coating:";
             // 
-            // comboBox2
+            // BowCoating
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(80, 19);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(137, 21);
-            this.comboBox2.TabIndex = 0;
+            this.BowCoating.FormattingEnabled = true;
+            this.BowCoating.Items.AddRange(new object[] {
+            "(No Coating)",
+            "Poison",
+            "Para",
+            "Sleep",
+            "Exhaust",
+            "Blast"});
+            this.BowCoating.Location = new System.Drawing.Point(80, 19);
+            this.BowCoating.Name = "BowCoating";
+            this.BowCoating.Size = new System.Drawing.Size(137, 21);
+            this.BowCoating.TabIndex = 0;
             // 
             // label59
             // 
@@ -4227,11 +4256,11 @@
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label101;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox BowShot;
         private System.Windows.Forms.Label label100;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox BowCharge;
         private System.Windows.Forms.Label label87;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox BowCoating;
     }
 }
 
