@@ -545,12 +545,22 @@ namespace YADC_MHGen_
 
             if (((ComboBox)sender).Text == "Light Bowgun" || ((ComboBox)sender).Text == "Heavy Bowgun")
             {
+                GLAmmoBox.SelectedIndex = 0;
+                GLAmmoBox.Enabled = false;
                 eleShotType.Enabled = true;
+            }
+            else if(((ComboBox)sender).Text == "Gunlance")
+            {
+                eleShotType.SelectedIndex = 0;
+                eleShotType.Enabled = false;
+                GLAmmoBox.Enabled = true;
             }
             else
             {
                 eleShotType.SelectedIndex = 0;
                 eleShotType.Enabled = false;
+                GLAmmoBox.SelectedIndex = 0;
+                GLAmmoBox.Enabled = false;
             }
         }
 
@@ -1184,6 +1194,7 @@ namespace YADC_MHGen_
             staBlastBox.Load("./Images/Blast.png");
 
             eleShotType.SelectedIndex = 0;
+            GLAmmoBox.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -1244,7 +1255,7 @@ namespace YADC_MHGen_
 
             if (paraFixed.Checked) //If fixed damage is in play
             {
-                return new Tuple<double, double, double, double>(motion / 0.01, motion / 0.01, element, DBElement);
+                return new Tuple<double, double, double, double>(motion / 0.01 * total, motion / 0.01 * total, element, DBElement); //The * Total is done for explosive mods.
             }
 
             else //If it is in play
@@ -1789,7 +1800,7 @@ namespace YADC_MHGen_
             weaponModifiers.Add("Lance - Enraged Guard (Orange)", x => Lance(2));
             weaponModifiers.Add("Lance - Enraged Guard (Red)", x => Lance(3));
             weaponModifiers.Add("Lance - Impact/Cut Hitzone", x => Lance(4));
-            //weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
+            weaponModifiers.Add("GL - Dragon Breath", x => GL(1));
             weaponModifiers.Add("GL - Orange Heat", x => GL(2));
             weaponModifiers.Add("GL - Red Heat", x => GL(3));
             weaponModifiers.Add("SA - Power Phial", x => SA(1));
@@ -4150,6 +4161,8 @@ namespace YADC_MHGen_
 
         private void findRFMod()
         {
+            moveDraw.Checked = false;
+            moveAerial.Checked = false;
             int index = eleShotType.SelectedIndex;
             if(index == 1 || index == 6 || index == 15 || index == 18 || index == 27 || index == 30 || index == 37 || index == 40) //Single non-RF shots from Element
             {
@@ -4532,7 +4545,7 @@ namespace YADC_MHGen_
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.20).ToString();
             }
-            else if ((index >= 11 && index == 14) || (index >= 23 && index <= 26) ||
+            else if ((index >= 11 && index <= 14) || (index >= 23 && index <= 26) ||
                 (index >= 33 && index <= 26) || (index >= 45 && index <= 48)) //All Level 2 Piercing Element Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.23).ToString();
@@ -4695,6 +4708,158 @@ namespace YADC_MHGen_
             {
                 return "Error";
             }
+        }
+
+        private void GLAmmoBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            GLAmmoType();
+            GLMoveType();
+        }
+
+        private void GLAmmoType()
+        {
+            int index = GLAmmoBox.SelectedIndex;
+
+            moveDamType.SelectedIndex = 3;
+            moveSharp.Text = "1.0";
+            moveKO.Text = "0";
+            moveExh.Text = "0";
+            moveMinds.Checked = true;
+            if(index >= 1 && index <= 4) //Normal 1
+            {
+                moveAvg.Text = "8";
+                weapAltPower.Text = "4";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if(index >= 5 && index <= 8) //Normal 2
+            {
+                moveAvg.Text = "11";
+                weapAltPower.Text = "5";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 9 && index <= 12) //Normal 3
+            {
+                moveAvg.Text = "14";
+                weapAltPower.Text = "6";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 13 && index <= 16) //Normal 4
+            {
+                moveAvg.Text = "16";
+                weapAltPower.Text = "7";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 17 && index <= 20) //Long 1
+            {
+                moveAvg.Text = "12";
+                weapAltPower.Text = "9";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 21 && index <= 24) //Long 2
+            {
+                moveAvg.Text = "16";
+                weapAltPower.Text = "11";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 25 && index <= 28) //Long 3
+            {
+                moveAvg.Text = "22";
+                weapAltPower.Text = "14";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 29 && index <= 32) //Long 4
+            {
+                moveAvg.Text = "25";
+                weapAltPower.Text = "16";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 33 && index <= 36) //Wide 1
+            {
+                moveAvg.Text = "16";
+                weapAltPower.Text = "6";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 37 && index <= 40) //Wide 2
+            {
+                moveAvg.Text = "24";
+                weapAltPower.Text = "8";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 41 && index <= 44) //Wide 3
+            {
+                moveAvg.Text = "32";
+                weapAltPower.Text = "10";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index >= 45 && index <= 48) //Wide 4
+            {
+                moveAvg.Text = "35";
+                weapAltPower.Text = "11";
+                weapAlt.SelectedIndex = 1;
+            }
+            else if (index == 0)
+            {
+                moveAvg.Text = "0";
+                weapAltPower.Text = "0";
+                weapAlt.SelectedIndex = 0;
+            }
+        }
+
+        private void GLMoveType()
+        {
+            int index = GLAmmoBox.SelectedIndex;
+            double shotMod = 1.0; //Controls the increased damage of the shot and its associated fire.
+            if(index == 1 || index == 5 || index == 9 || index == 13 ||
+                index == 17 || index == 21 || index == 25 || index == 29 ||
+                index == 33 || index == 37 || index == 41 || index == 45) //Single shot
+            {
+                moveHitCount.Text = "1";
+                shotMod = 1.0;
+            }
+            else if (index == 2 || index == 6 || index == 10 || index == 14 ||
+                index == 18 || index == 22 || index == 26 || index == 30) //Normal/Long Charged shot
+            {
+                moveHitCount.Text = "1";
+                shotMod = 1.2;
+            }
+            else if(index == 34 || index == 38 || index == 42 || index == 46) //Wide Charged shot
+            {
+                moveHitCount.Text = "1";
+                shotMod = 1.45;
+            }
+            else if(index == 3 || index == 7 || index == 11 || index == 15) //Normal Full Burst
+            {
+                moveHitCount.Text = "5";
+                shotMod = 1.1;
+            }
+            else if(index == 19 || index == 23 || index == 27 || index == 31) //Long Full Burst
+            {
+                moveHitCount.Text = "3";
+                shotMod = 1.0;
+            }
+            else if(index == 35 || index == 39 || index == 43 || index == 47) //Wide Full Burst
+            {
+                moveHitCount.Text = "2";
+                shotMod = 0.85;
+            }
+            else if (index == 4 || index == 8 || index == 12 || index == 16) //Normal Full Burst One Shot
+            {
+                moveHitCount.Text = "1";
+                shotMod = 1.1;
+            }
+            else if (index == 20 || index == 24 || index == 28 || index == 32) //Long Full Burst One Shot
+            {
+                moveHitCount.Text = "1";
+                shotMod = 1.0;
+            }
+            else if (index == 36 || index == 40 || index == 44 || index == 48) //Wide Full Burst One Shot
+            {
+                moveHitCount.Text = "1";
+                shotMod = 0.85;
+            }
+            moveAvg.Text = (double.Parse(moveAvg.Text) * shotMod).ToString();
+            moveEleMod.Text = shotMod.ToString();
+            moveTotal.Text = (double.Parse(moveAvg.Text) * double.Parse(moveHitCount.Text)).ToString();
         }
 
 #endif
