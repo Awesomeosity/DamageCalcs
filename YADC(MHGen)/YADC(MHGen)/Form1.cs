@@ -160,6 +160,7 @@ namespace YADC_MHGen_
             public string name;
             public double questMod;
             public double exhaustMod;
+            public double health;
 
             /// <summary>
             /// Quest statistics
@@ -167,11 +168,12 @@ namespace YADC_MHGen_
             /// <param name="_name">Name of the quest</param>
             /// <param name="_questMod">Quest modifier (Defense modifier)</param>
             /// <param name="_exhaustMod">Exhaust modifier</param>
-            public questStat(string _name, double _questMod, double _exhaustMod)
+            public questStat(string _name, double _questMod, double _exhaustMod, double _health)
             {
                 name = _name;
                 questMod = _questMod;
                 exhaustMod = _exhaustMod;
+                health = _health;
             }
         }
 
@@ -266,6 +268,8 @@ namespace YADC_MHGen_
 
             public int addRaw; //Stores the additive portion of raw
             public int addElement; //Stores the additive portion of element after Atk +1 or +2
+
+            public double health; //Stores the monster's health.
         }
 
         Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
@@ -391,6 +395,35 @@ namespace YADC_MHGen_
             calcFinal.Text = finalTuple.Item1.ToString();
 
             calcBounce.Text = finalTuple.Item6;
+
+            healthCalc();
+        }
+
+        private void healthCalc()
+        {
+            double finalDamage = double.Parse(calcFinal.Text);
+            if(finalDamage == 0)
+            {
+                healthText.Text = "No damage was dealt in this situation.";
+                return;
+            }
+
+            double health = double.Parse(paraHealth.Text);
+            if(health == 0)
+            {
+                healthText.Text = "It is impossible to determine how many hits the monster can take before dying, as the health listed is 0.";
+                return;
+            }
+
+            double lowHealth = Math.Ceiling(health * 0.8);
+            double highHealth = Math.Ceiling(health * 1.2);
+
+            string minHits = Math.Ceiling(lowHealth / finalDamage).ToString();
+            string avgHits = (health / finalDamage).ToString();
+            string maxHits = Math.Ceiling(highHealth / finalDamage).ToString();
+
+            string[] formatArray = new string[] { finalDamage.ToString(), avgHits, health.ToString(), minHits,  maxHits };
+            healthText.Text = String.Format("With a hit that deals {0} damage, it will, on average, take {1} hit(s) to kill a monster with {2} health. At minimum health, it will take {3} hits, and at maximum health, it will take {4} hits.", formatArray);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -1106,6 +1139,7 @@ namespace YADC_MHGen_
                 {
                     monQuestMod.Text = quest.questMod.ToString();
                     monExhField.Text = quest.exhaustMod.ToString();
+                    monHealth.Text = quest.health.ToString();
                 }
             }
         }
@@ -1192,6 +1226,10 @@ namespace YADC_MHGen_
             staKOBox.Load("./Images/KO.png");
             staExhBox.Load("./Images/Exhaust.png");
             staBlastBox.Load("./Images/Blast.png");
+            BowConvert.Enabled = false;
+            BowCoating.SelectedIndex = 0;
+            BowCharge.SelectedIndex = 0;
+            BowShot.SelectedIndex = 0;
 
             eleShotType.SelectedIndex = 0;
             GLAmmoBox.SelectedIndex = 0;
@@ -1354,6 +1392,8 @@ namespace YADC_MHGen_
             double ExhaustZone = double.Parse(paraExhZone.Text) * 0.01;
             double questMod = double.Parse(paraQuest.Text);
 
+
+            rawDamage /= double.Parse(paraHitCount.Text);
             rawDamage *= monsterStatus[(string)paraMonStat.SelectedItem];
             double totaldamage = rawDamage;
             double KODamage = KODam * KOZone;
@@ -1396,8 +1436,13 @@ namespace YADC_MHGen_
                     totaldamage += DBElement;
                 }
             }
-
             totaldamage = Math.Floor(totaldamage);
+            totaldamage *= double.Parse(paraHitCount.Text); //Accounts for slight overestimation of damage regarding multiple hits.
+            totaldamage = Math.Floor(totaldamage);
+
+            rawDamage = Math.Floor(rawDamage);
+            rawDamage *= double.Parse(paraHitCount.Text);
+            rawDamage = Math.Floor(rawDamage);
 
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
@@ -1454,25 +1499,25 @@ namespace YADC_MHGen_
             {
                 power = double.Parse(staPower.Text);
 
-                if (staType.SelectedItem == "Poison")
+                if ((string)staType.SelectedItem == "Poison")
                 {
                     init = double.Parse(staPoiInit.Text);
                     inc = double.Parse(staPoiInc.Text);
                     max = double.Parse(staPoiMax.Text);
                 }
-                else if (staType.SelectedItem == "Sleep")
+                else if ((string)staType.SelectedItem == "Sleep")
                 {
                     init = double.Parse(staSleepInit.Text);
                     inc = double.Parse(staSleepInc.Text);
                     max = double.Parse(staSleepMax.Text);
                 }
-                else if (staType.SelectedItem == "Para")
+                else if ((string)staType.SelectedItem == "Para")
                 {
                     init = double.Parse(staParaInit.Text);
                     inc = double.Parse(staParaInc.Text);
                     max = double.Parse(staParaMax.Text);
                 }
-                else if (staType.SelectedItem == "Blast")
+                else if ((string)staType.SelectedItem == "Blast")
                 {
                     init = double.Parse(staBlastInit.Text);
                     inc = double.Parse(staBlastInc.Text);
@@ -2206,12 +2251,18 @@ namespace YADC_MHGen_
 
                             double exhaustMod = double.Parse(reader.Value);
                             reader.Read(); //end exhaust
+                            reader.Read(); //health tag
+                            reader.Read(); //health double
+
+                            double health = double.Parse(reader.Value);
+                            reader.Read(); //end health
                             reader.Read(); //end quest
 
                             questStat status = new questStat();
                             status.name = name;
                             status.questMod = questMod;
                             status.exhaustMod = exhaustMod;
+                            status.health = health;
 
                             thisStat.quests.Add(status);
                         }
@@ -3920,6 +3971,8 @@ namespace YADC_MHGen_
             weaponAndMods.rawSharpMod *= double.Parse(moveSharp.Text);
             weaponAndMods.eleSharpMod *= double.Parse(moveEleMod.Text);
 
+            weaponAndMods.health = double.Parse(monHealth.Text);
+
             if (weaponAndMods.damageType == "Cut")
             {
                 weaponAndMods.hitzone = double.Parse(monCut.Text);
@@ -4079,6 +4132,7 @@ namespace YADC_MHGen_
             paraBoost.Checked = weaponAndMods.criticalBoost;
             paraMinds.Checked = weaponAndMods.mindsEye;
             paraStatusCrit.Checked = weaponAndMods.statusCrit;
+            
 
             paraRawHitzone.Text = weaponAndMods.hitzone.ToString();
             paraEleHitzone.Text = weaponAndMods.eleHitzone.ToString();
@@ -4087,6 +4141,7 @@ namespace YADC_MHGen_
             paraExhZone.Text = weaponAndMods.exhaustHitzone.ToString();
             paraExhMod.Text = weaponAndMods.exhaustMod.ToString();
             paraQuest.Text = weaponAndMods.questMod.ToString();
+            paraHealth.Text = weaponAndMods.health.ToString();
         }
 
         private void statusExport()
@@ -4831,10 +4886,6 @@ namespace YADC_MHGen_
                 weapAlt.SelectedIndex = 0;
             }
 
-            if (index != 0)
-            {
-
-            }
         }
 
         private void GLMoveType()
@@ -4892,6 +4943,199 @@ namespace YADC_MHGen_
             moveAvg.Text = (double.Parse(moveAvg.Text) * shotMod).ToString();
             moveEleMod.Text = shotMod.ToString();
             moveTotal.Text = (double.Parse(moveAvg.Text) * double.Parse(moveHitCount.Text)).ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bowStatusConvert();
+        }
+
+        private void bowStatusConvert()
+        {
+            string bowStatus = "";
+            double statMod = 1.0;
+            double statDamage = 0;
+            int hitCount = 0; //For Exhaust/KO
+
+            staSecEle.SelectedIndex = 0;
+            staSecPower.Text = "0";
+
+            if (BowCoating.Text == "Poison")
+            {
+                bowStatus = "Poison";
+                staType.SelectedIndex = 1;
+            }
+            else if (BowCoating.Text == "Sleep")
+            {
+                bowStatus = "Sleep";
+                staType.SelectedIndex = 2;
+            }
+            else if (BowCoating.Text == "Para")
+            {
+                bowStatus = "Para";
+                staType.SelectedIndex = 3;
+            }
+            else if (BowCoating.Text == "Exhaust")
+            {
+                bowStatus = "Exhaust";
+
+                staType.SelectedIndex = 0;
+                staPower.Text = "0";
+                staEleSharp.Text = "1.0";
+            }
+            else if (BowCoating.Text == "Blast")
+            {
+                bowStatus = "Blast";
+                staType.SelectedIndex = 4;
+            }
+            
+            if(BowCharge.SelectedIndex == 0)
+            {
+                statMod = 0.5;
+            }
+            else if(BowCharge.SelectedIndex == 1)
+            {
+                statMod = 1.0;
+            }
+            else if(BowCharge.SelectedIndex == 2)
+            {
+                if(bowStatus == "Poison")
+                {
+                    statMod = 1.5;
+                }
+                else
+                {
+                    statMod = 1.3;
+                }
+            }
+            else if(BowCharge.SelectedIndex == 3)
+            {
+                if (bowStatus == "Poison")
+                {
+                    statMod = 1.5;
+                }
+                else
+                {
+                    statMod = 1.3;
+                }
+            }
+
+            if(BowShot.SelectedIndex == 0) //Rapid
+            {
+                statDamage = 12;
+                hitCount = 1;
+            }
+            else if(BowShot.SelectedIndex == 1)
+            {
+                statDamage = 16;
+                hitCount = 2;
+            }
+            else if (BowShot.SelectedIndex == 2)
+            {
+                statDamage = 19;
+                hitCount = 3;
+            }
+            else if (BowShot.SelectedIndex == 3)
+            {
+                statDamage = 21;
+                hitCount = 4;
+            }
+            else if (BowShot.SelectedIndex == 4)
+            {
+                statDamage = 22;
+                hitCount = 4;
+            }
+            else if (BowShot.SelectedIndex == 5) //Pierce
+            {
+                statDamage = 15;
+                hitCount = 3;
+            }
+            else if (BowShot.SelectedIndex == 6)
+            {
+                statDamage = 16;
+                hitCount = 4;
+            }
+            else if (BowShot.SelectedIndex >= 7 && BowShot.SelectedIndex <= 9)
+            {
+                statDamage = 20;
+                hitCount = 5;
+            }
+            else if (BowShot.SelectedIndex == 10) //Spread
+            {
+                statDamage = 13;
+                hitCount = 3;
+            }
+            else if (BowShot.SelectedIndex == 11)
+            {
+                statDamage = 16;
+                hitCount = 3;
+            }
+            else if (BowShot.SelectedIndex == 12)
+            {
+                statDamage = 23;
+                hitCount = 5;
+            }
+            else if (BowShot.SelectedIndex == 13)
+            {
+                statDamage = 24;
+                hitCount = 5;
+            }
+            else if (BowShot.SelectedIndex == 14)
+            {
+                statDamage = 26;
+                hitCount = 5;
+            }
+            else if (BowShot.SelectedIndex == 15) //Heavy
+            {
+                statDamage = 11;
+                hitCount = 1;
+            }
+            else if (BowShot.SelectedIndex == 16)
+            {
+                statDamage = 14;
+                hitCount = 1;
+            }
+            else if (BowShot.SelectedIndex == 17)
+            {
+                statDamage = 17;
+                hitCount = 1;
+            }
+            else if (BowShot.SelectedIndex == 18)
+            {
+                statDamage = 19;
+                hitCount = 1;
+            }
+            else if (BowShot.SelectedIndex == 19)
+            {
+                statDamage = 20;
+                hitCount = 1;
+            }
+
+            if(bowStatus != "Exhaust")
+            {
+                staPower.Text = statDamage.ToString();
+                staEleSharp.Text = statMod.ToString();
+                staKOPow.Text = "0";
+                staExhaust.Text = "0";
+            }
+            else
+            {
+                staKOPow.Text = (hitCount * 4).ToString();
+                staExhaust.Text = (hitCount * 8).ToString();
+            }
+
+        }
+
+        private void BowCoating_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(BowCoating.SelectedIndex == 0)
+            {
+                BowConvert.Enabled = false;
+            }
+            else
+            {
+                BowConvert.Enabled = true;
+            }
         }
 
 #endif

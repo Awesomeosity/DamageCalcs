@@ -226,6 +226,8 @@
             this.label34 = new System.Windows.Forms.Label();
             this.modArmor = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.monHealth = new System.Windows.Forms.TextBox();
+            this.label102 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.label49 = new System.Windows.Forms.Label();
             this.monCut = new System.Windows.Forms.TextBox();
@@ -274,10 +276,10 @@
             this.label79 = new System.Windows.Forms.Label();
             this.eleShotType = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.healthText = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BowConvert = new System.Windows.Forms.Button();
             this.label101 = new System.Windows.Forms.Label();
             this.BowShot = new System.Windows.Forms.ComboBox();
             this.label100 = new System.Windows.Forms.Label();
@@ -340,6 +342,9 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.label112 = new System.Windows.Forms.Label();
+            this.paraHealth = new System.Windows.Forms.TextBox();
+            this.label113 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -666,7 +671,7 @@
             // 
             // paraSecHitzone
             // 
-            this.paraSecHitzone.Location = new System.Drawing.Point(9, 110);
+            this.paraSecHitzone.Location = new System.Drawing.Point(213, 32);
             this.paraSecHitzone.MaxLength = 4;
             this.paraSecHitzone.Name = "paraSecHitzone";
             this.paraSecHitzone.Size = new System.Drawing.Size(96, 20);
@@ -694,10 +699,10 @@
             // 
             // paraQuest
             // 
-            this.paraQuest.Location = new System.Drawing.Point(111, 110);
+            this.paraQuest.Location = new System.Drawing.Point(213, 150);
             this.paraQuest.MaxLength = 4;
             this.paraQuest.Name = "paraQuest";
-            this.paraQuest.Size = new System.Drawing.Size(96, 20);
+            this.paraQuest.Size = new System.Drawing.Size(87, 20);
             this.paraQuest.TabIndex = 82;
             this.paraQuest.Text = "1.0";
             this.paraQuest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -1492,6 +1497,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.label112);
+            this.groupBox4.Controls.Add(this.paraHealth);
             this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label105);
             this.groupBox4.Controls.Add(this.paraSecHitzone);
@@ -1510,7 +1517,7 @@
             this.groupBox4.Controls.Add(this.paraRawHitzone);
             this.groupBox4.Location = new System.Drawing.Point(535, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(355, 177);
+            this.groupBox4.Size = new System.Drawing.Size(386, 177);
             this.groupBox4.TabIndex = 129;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
@@ -1518,7 +1525,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(6, 94);
+            this.label12.Location = new System.Drawing.Point(210, 16);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(91, 13);
             this.label12.TabIndex = 112;
@@ -1593,7 +1600,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(108, 94);
+            this.label14.Location = new System.Drawing.Point(210, 134);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(62, 13);
             this.label14.TabIndex = 83;
@@ -2509,6 +2516,8 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.monHealth);
+            this.groupBox9.Controls.Add(this.label102);
             this.groupBox9.Controls.Add(this.groupBox11);
             this.groupBox9.Controls.Add(this.comboBox1);
             this.groupBox9.Controls.Add(this.button1);
@@ -2523,6 +2532,26 @@
             this.groupBox9.TabIndex = 134;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Monster Data:";
+            // 
+            // monHealth
+            // 
+            this.monHealth.Location = new System.Drawing.Point(342, 199);
+            this.monHealth.Name = "monHealth";
+            this.monHealth.Size = new System.Drawing.Size(57, 20);
+            this.monHealth.TabIndex = 183;
+            this.monHealth.Text = "0";
+            this.monHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.monHealth.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
+            this.monHealth.Validated += new System.EventHandler(this.GenericField_Validated);
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(295, 202);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(41, 13);
+            this.label102.TabIndex = 182;
+            this.label102.Text = "Health:";
             // 
             // groupBox11
             // 
@@ -2813,7 +2842,7 @@
             "Hitzone 3",
             "Hitzone 4",
             "Hitzone 5"});
-            this.comboBox1.Location = new System.Drawing.Point(298, 219);
+            this.comboBox1.Location = new System.Drawing.Point(298, 254);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(101, 21);
             this.comboBox1.TabIndex = 177;
@@ -2822,7 +2851,7 @@
             // button1
             // 
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(298, 190);
+            this.button1.Location = new System.Drawing.Point(298, 225);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 176;
@@ -3178,7 +3207,8 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage2.Controls.Add(this.richTextBox1);
+            this.tabPage2.Controls.Add(this.label113);
+            this.tabPage2.Controls.Add(this.healthText);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Controls.Add(this.groupBox4);
@@ -3189,14 +3219,14 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Calculation";
             // 
-            // richTextBox1
+            // healthText
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(7, 364);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(914, 96);
-            this.richTextBox1.TabIndex = 131;
-            this.richTextBox1.Text = "";
+            this.healthText.Location = new System.Drawing.Point(7, 364);
+            this.healthText.Name = "healthText";
+            this.healthText.ReadOnly = true;
+            this.healthText.Size = new System.Drawing.Size(914, 51);
+            this.healthText.TabIndex = 131;
+            this.healthText.Text = "";
             // 
             // tabPage3
             // 
@@ -3275,7 +3305,7 @@
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.button2);
+            this.groupBox13.Controls.Add(this.BowConvert);
             this.groupBox13.Controls.Add(this.label101);
             this.groupBox13.Controls.Add(this.BowShot);
             this.groupBox13.Controls.Add(this.label100);
@@ -3289,14 +3319,15 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Bow Status Coatings";
             // 
-            // button2
+            // BowConvert
             // 
-            this.button2.Location = new System.Drawing.Point(68, 100);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 38);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Convert!";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BowConvert.Location = new System.Drawing.Point(68, 100);
+            this.BowConvert.Name = "BowConvert";
+            this.BowConvert.Size = new System.Drawing.Size(93, 38);
+            this.BowConvert.TabIndex = 6;
+            this.BowConvert.Text = "Convert!";
+            this.BowConvert.UseVisualStyleBackColor = true;
+            this.BowConvert.Click += new System.EventHandler(this.button2_Click);
             // 
             // label101
             // 
@@ -3325,7 +3356,12 @@
             "Spread Lvl. 2",
             "Spread Lvl. 3",
             "Spread Lvl. 4",
-            "Spread Lvl. 5"});
+            "Spread Lvl. 5",
+            "Heavy Lvl. 1",
+            "Heavy Lvl. 2",
+            "Heavy Lvl. 3",
+            "Heavy Lvl. 4",
+            "Heavy Lvl. 5"});
             this.BowShot.Location = new System.Drawing.Point(80, 73);
             this.BowShot.Name = "BowShot";
             this.BowShot.Size = new System.Drawing.Size(137, 21);
@@ -3376,6 +3412,7 @@
             this.BowCoating.Name = "BowCoating";
             this.BowCoating.Size = new System.Drawing.Size(137, 21);
             this.BowCoating.TabIndex = 0;
+            this.BowCoating.SelectedIndexChanged += new System.EventHandler(this.BowCoating_SelectedIndexChanged);
             // 
             // label59
             // 
@@ -3885,6 +3922,36 @@
             this.menuStrip1.TabIndex = 142;
             this.menuStrip1.Text = "menuStrip1";
             // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(303, 133);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(41, 13);
+            this.label112.TabIndex = 178;
+            this.label112.Text = "Health:";
+            // 
+            // paraHealth
+            // 
+            this.paraHealth.Location = new System.Drawing.Point(306, 149);
+            this.paraHealth.MaxLength = 4;
+            this.paraHealth.Name = "paraHealth";
+            this.paraHealth.Size = new System.Drawing.Size(74, 20);
+            this.paraHealth.TabIndex = 177;
+            this.paraHealth.Text = "0";
+            this.paraHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.QuestTip.SetToolTip(this.paraHealth, "The Quest Modifier for the monster\'s Defense.");
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(7, 422);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(422, 13);
+            this.label113.TabIndex = 132;
+            this.label113.Text = "*Note: Monster health can vary between 0.8x the listed health and 1.2x the listed" +
+    " health.";
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3939,6 +4006,7 @@
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.groupBox13.ResumeLayout(false);
@@ -4181,7 +4249,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label calcRawWeap;
         private System.Windows.Forms.Label label61;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox healthText;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.Label label88;
         private System.Windows.Forms.Label label93;
@@ -4254,13 +4322,18 @@
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.ComboBox GLAmmoBox;
         private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BowConvert;
         private System.Windows.Forms.Label label101;
         private System.Windows.Forms.ComboBox BowShot;
         private System.Windows.Forms.Label label100;
         private System.Windows.Forms.ComboBox BowCharge;
         private System.Windows.Forms.Label label87;
         private System.Windows.Forms.ComboBox BowCoating;
+        private System.Windows.Forms.TextBox monHealth;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.TextBox paraHealth;
+        private System.Windows.Forms.Label label113;
     }
 }
 
