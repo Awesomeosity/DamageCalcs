@@ -29,53 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
-            this.TotalTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
-            this.MotionTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraMV = new System.Windows.Forms.TextBox();
             this.moveAvg = new System.Windows.Forms.TextBox();
-            this.AffinityTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraAffinity = new System.Windows.Forms.TextBox();
             this.staAffinity = new System.Windows.Forms.TextBox();
-            this.EleTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraEle = new System.Windows.Forms.TextBox();
             this.paraSecPower = new System.Windows.Forms.TextBox();
             this.staSecPower = new System.Windows.Forms.TextBox();
             this.staPower = new System.Windows.Forms.TextBox();
-            this.SharpnessTip = new System.Windows.Forms.ToolTip(this.components);
-            this.HiddenTip = new System.Windows.Forms.ToolTip(this.components);
-            this.AltTip = new System.Windows.Forms.ToolTip(this.components);
             this.weapAlt = new System.Windows.Forms.ComboBox();
             this.paraAltType = new System.Windows.Forms.ComboBox();
             this.paraSecEle = new System.Windows.Forms.ComboBox();
             this.weapSecType = new System.Windows.Forms.ComboBox();
             this.staSecEle = new System.Windows.Forms.ComboBox();
             this.staType = new System.Windows.Forms.ComboBox();
-            this.HitTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraRawHitzone = new System.Windows.Forms.TextBox();
-            this.EleHitTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraSecHitzone = new System.Windows.Forms.TextBox();
             this.paraEleHitzone = new System.Windows.Forms.TextBox();
-            this.QuestTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraQuest = new System.Windows.Forms.TextBox();
-            this.KOTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraKO = new System.Windows.Forms.TextBox();
             this.staKOPow = new System.Windows.Forms.TextBox();
-            this.ExhaustTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraExh = new System.Windows.Forms.TextBox();
             this.paraHitCount = new System.Windows.Forms.TextBox();
             this.moveHitCount = new System.Windows.Forms.TextBox();
             this.staExhaust = new System.Windows.Forms.TextBox();
-            this.KOZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraKOZone = new System.Windows.Forms.TextBox();
             this.staKOZone = new System.Windows.Forms.TextBox();
-            this.ExhaustZoneTip = new System.Windows.Forms.ToolTip(this.components);
             this.paraExhZone = new System.Windows.Forms.TextBox();
             this.staExhaustZone = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -341,10 +327,10 @@
             this.label90 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.label112 = new System.Windows.Forms.Label();
             this.paraHealth = new System.Windows.Forms.TextBox();
             this.label113 = new System.Windows.Forms.Label();
+            this.ProTip = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -399,7 +385,6 @@
             this.paraRaw.TabIndex = 108;
             this.paraRaw.Text = "0";
             this.paraRaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.TotalTip.SetToolTip(this.paraRaw, resources.GetString("paraRaw.ToolTip"));
             this.paraRaw.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraRaw.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -412,8 +397,6 @@
             this.paraMV.TabIndex = 110;
             this.paraMV.Text = "0";
             this.paraMV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.MotionTip.SetToolTip(this.paraMV, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
-        "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
             this.paraMV.TextChanged += new System.EventHandler(this.MVField_TextChanged);
             this.paraMV.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraMV.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -427,8 +410,6 @@
             this.moveAvg.TabIndex = 144;
             this.moveAvg.Text = "0";
             this.moveAvg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.MotionTip.SetToolTip(this.moveAvg, "The Motion Value (MV) of your attack. This shows\r\nhow much of your attack power i" +
-        "s used as damage.\r\nMost, if not all, MVs are whole numbers.");
             this.moveAvg.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.moveAvg.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -441,8 +422,6 @@
             this.paraAffinity.TabIndex = 113;
             this.paraAffinity.Text = "0";
             this.paraAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AffinityTip.SetToolTip(this.paraAffinity, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
-        "more or less damage.");
             this.paraAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.AffinityField_Validating);
             this.paraAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -456,8 +435,6 @@
             this.staAffinity.TabIndex = 185;
             this.staAffinity.Text = "0";
             this.staAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AffinityTip.SetToolTip(this.staAffinity, "Your Affinity after any Affinity modifiers. Basically\r\nthe chance to hit for 25% " +
-        "more or less damage.");
             this.staAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.AffinityField_Validating);
             // 
             // paraEle
@@ -469,8 +446,6 @@
             this.paraEle.TabIndex = 115;
             this.paraEle.Text = "0";
             this.paraEle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.paraEle, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
-        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             this.paraEle.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraEle.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -483,8 +458,6 @@
             this.paraSecPower.TabIndex = 142;
             this.paraSecPower.Text = "0";
             this.paraSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.paraSecPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
-        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             this.paraSecPower.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraSecPower.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -498,8 +471,6 @@
             this.staSecPower.TabIndex = 199;
             this.staSecPower.Text = "0";
             this.staSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.staSecPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
-        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             // 
             // staPower
             // 
@@ -510,8 +481,6 @@
             this.staPower.TabIndex = 187;
             this.staPower.Text = "0";
             this.staPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleTip.SetToolTip(this.staPower, "Your Elemental or Status damage after any modifiers.\r\nLike your Raw damage, the n" +
-        "umber shown on the \r\nStatus screen may not be the number used in calculations.");
             // 
             // weapAlt
             // 
@@ -534,8 +503,6 @@
             this.weapAlt.Name = "weapAlt";
             this.weapAlt.Size = new System.Drawing.Size(74, 21);
             this.weapAlt.TabIndex = 140;
-            this.AltTip.SetToolTip(this.weapAlt, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
             this.weapAlt.SelectedIndexChanged += new System.EventHandler(this.WeaponAltField_SelectedIndexChanged);
             // 
             // paraAltType
@@ -559,8 +526,6 @@
             this.paraAltType.Name = "paraAltType";
             this.paraAltType.Size = new System.Drawing.Size(97, 21);
             this.paraAltType.TabIndex = 119;
-            this.AltTip.SetToolTip(this.paraAltType, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
             this.paraAltType.SelectedIndexChanged += new System.EventHandler(this.AltDamageField_SelectedIndexChanged);
             // 
             // paraSecEle
@@ -584,8 +549,6 @@
             this.paraSecEle.Name = "paraSecEle";
             this.paraSecEle.Size = new System.Drawing.Size(96, 21);
             this.paraSecEle.TabIndex = 140;
-            this.AltTip.SetToolTip(this.paraSecEle, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
             this.paraSecEle.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // weapSecType
@@ -613,8 +576,6 @@
             this.weapSecType.Name = "weapSecType";
             this.weapSecType.Size = new System.Drawing.Size(111, 21);
             this.weapSecType.TabIndex = 145;
-            this.AltTip.SetToolTip(this.weapSecType, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
             this.weapSecType.SelectedIndexChanged += new System.EventHandler(this.weapSecType_SelectedIndexChanged);
             // 
             // staSecEle
@@ -633,8 +594,6 @@
             this.staSecEle.Name = "staSecEle";
             this.staSecEle.Size = new System.Drawing.Size(97, 21);
             this.staSecEle.TabIndex = 197;
-            this.AltTip.SetToolTip(this.staSecEle, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
             this.staSecEle.SelectedIndexChanged += new System.EventHandler(this.staSecEle_SelectedIndexChanged);
             // 
             // staType
@@ -653,8 +612,6 @@
             this.staType.Name = "staType";
             this.staType.Size = new System.Drawing.Size(97, 21);
             this.staType.TabIndex = 189;
-            this.AltTip.SetToolTip(this.staType, "The type of secondary damage that your weapon\r\nwill deal. Note that this list exc" +
-        "ludes KO and Exhaust.");
             // 
             // paraRawHitzone
             // 
@@ -665,7 +622,6 @@
             this.paraRawHitzone.TabIndex = 103;
             this.paraRawHitzone.Text = "0";
             this.paraRawHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.HitTip.SetToolTip(this.paraRawHitzone, "The Hitzone Value of a monster\'s body part.\r\nHigher values = higher damage.");
             this.paraRawHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraRawHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -678,8 +634,6 @@
             this.paraSecHitzone.TabIndex = 111;
             this.paraSecHitzone.Text = "0";
             this.paraSecHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleHitTip.SetToolTip(this.paraSecHitzone, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
-        "ental Hitzones.");
             this.paraSecHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraSecHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -692,8 +646,6 @@
             this.paraEleHitzone.TabIndex = 105;
             this.paraEleHitzone.Text = "0";
             this.paraEleHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.EleHitTip.SetToolTip(this.paraEleHitzone, "The Elemental Hitzone value of a monster\'s body part.\r\nStatus damage ignores Elem" +
-        "ental Hitzones.");
             this.paraEleHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraEleHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -706,7 +658,6 @@
             this.paraQuest.TabIndex = 82;
             this.paraQuest.Text = "1.0";
             this.paraQuest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.QuestTip.SetToolTip(this.paraQuest, "The Quest Modifier for the monster\'s Defense.");
             this.paraQuest.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraQuest.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -719,8 +670,6 @@
             this.paraKO.TabIndex = 120;
             this.paraKO.Text = "0";
             this.paraKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOTip.SetToolTip(this.paraKO, "The amount of KO damage you would do with an attack\r\nregardless if you would hit " +
-        "the head or not.");
             this.paraKO.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraKO.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -733,8 +682,6 @@
             this.staKOPow.TabIndex = 190;
             this.staKOPow.Text = "0";
             this.staKOPow.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOTip.SetToolTip(this.staKOPow, "The amount of KO damage you would do with an attack\r\nregardless if you would hit " +
-        "the head or not.");
             // 
             // paraExh
             // 
@@ -745,7 +692,6 @@
             this.paraExh.TabIndex = 122;
             this.paraExh.Text = "0";
             this.paraExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.paraExh, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             this.paraExh.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraExh.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -758,7 +704,6 @@
             this.paraHitCount.TabIndex = 143;
             this.paraHitCount.Text = "1";
             this.paraHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.paraHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             this.paraHitCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             this.paraHitCount.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraHitCount.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -772,7 +717,6 @@
             this.moveHitCount.TabIndex = 149;
             this.moveHitCount.Text = "1";
             this.moveHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.moveHitCount, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             this.moveHitCount.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.moveHitCount.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -785,7 +729,6 @@
             this.staExhaust.TabIndex = 192;
             this.staExhaust.Text = "0";
             this.staExhaust.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustTip.SetToolTip(this.staExhaust, "The amount of Exhaust damage that you would deal\r\nwith an attack.");
             // 
             // paraKOZone
             // 
@@ -796,8 +739,6 @@
             this.paraKOZone.TabIndex = 107;
             this.paraKOZone.Text = "0";
             this.paraKOZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOZoneTip.SetToolTip(this.paraKOZone, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
-        "e head will take KO damage\r\nand very rarely is it not 100.");
             this.paraKOZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraKOZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -810,8 +751,6 @@
             this.staKOZone.TabIndex = 202;
             this.staKOZone.Text = "0";
             this.staKOZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.KOZoneTip.SetToolTip(this.staKOZone, "The amount of KO damage that a monster\'s body part\r\nwill take. Generally, only th" +
-        "e head will take KO damage\r\nand very rarely is it not 100.");
             // 
             // paraExhZone
             // 
@@ -822,8 +761,6 @@
             this.paraExhZone.TabIndex = 109;
             this.paraExhZone.Text = "0";
             this.paraExhZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustZoneTip.SetToolTip(this.paraExhZone, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
-        "y few zones are\r\nbelow 100.");
             this.paraExhZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraExhZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -836,8 +773,6 @@
             this.staExhaustZone.TabIndex = 204;
             this.staExhaustZone.Text = "0";
             this.staExhaustZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ExhaustZoneTip.SetToolTip(this.staExhaustZone, "The amount of Exhaust damage that a monster\'s\r\nbodypart will take. Generally, ver" +
-        "y few zones are\r\nbelow 100.");
             // 
             // groupBox1
             // 
@@ -1539,7 +1474,6 @@
             this.label105.Size = new System.Drawing.Size(72, 13);
             this.label105.TabIndex = 176;
             this.label105.Text = "Exhaust Mod:";
-            this.label105.Visible = false;
             // 
             // label13
             // 
@@ -1558,7 +1492,6 @@
             this.paraExhMod.TabIndex = 176;
             this.paraExhMod.Text = "1.0";
             this.paraExhMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.paraExhMod.Visible = false;
             this.paraExhMod.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraExhMod.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -1679,15 +1612,17 @@
             this.calcRawWeap.TabIndex = 146;
             this.calcRawWeap.Text = "0";
             this.calcRawWeap.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcRawWeap, "The sum total weapon damage after all modifiers, \r\nincluding Sharpness and Affini" +
+        "ty, but before Motion\r\nValues.");
             // 
             // label61
             // 
             this.label61.AutoSize = true;
             this.label61.Location = new System.Drawing.Point(114, 62);
             this.label61.Name = "label61";
-            this.label61.Size = new System.Drawing.Size(119, 13);
+            this.label61.Size = new System.Drawing.Size(111, 13);
             this.label61.TabIndex = 145;
-            this.label61.Text = "Raw Weapon Damage:";
+            this.label61.Text = "Raw Weapon Output:";
             // 
             // calcFinalSecBox
             // 
@@ -1714,13 +1649,13 @@
             this.label62.AutoSize = true;
             this.label62.Location = new System.Drawing.Point(620, 20);
             this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(105, 13);
+            this.label62.Size = new System.Drawing.Size(113, 13);
             this.label62.TabIndex = 142;
-            this.label62.Text = "DB - 2nd Ele. Output";
+            this.label62.Text = "DB - 2nd Ele. Damage";
             // 
             // calcSecBox
             // 
-            this.calcSecBox.Location = new System.Drawing.Point(335, 36);
+            this.calcSecBox.Location = new System.Drawing.Point(335, 127);
             this.calcSecBox.Name = "calcSecBox";
             this.calcSecBox.Size = new System.Drawing.Size(21, 21);
             this.calcSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1731,21 +1666,23 @@
             // 
             this.calcSecOut.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.calcSecOut.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.calcSecOut.Location = new System.Drawing.Point(233, 35);
+            this.calcSecOut.Location = new System.Drawing.Point(233, 126);
             this.calcSecOut.Name = "calcSecOut";
             this.calcSecOut.Size = new System.Drawing.Size(96, 20);
             this.calcSecOut.TabIndex = 140;
             this.calcSecOut.Text = "0";
             this.calcSecOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcSecOut, "The elemental/status output value dealt by the\r\n2nd Blade in a dual-element Dual " +
+        "Blade.");
             // 
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(230, 18);
+            this.label60.Location = new System.Drawing.Point(230, 109);
             this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(113, 13);
+            this.label60.Size = new System.Drawing.Size(108, 13);
             this.label60.TabIndex = 139;
-            this.label60.Text = "DB - 2nd Ele. Damage";
+            this.label60.Text = "DB - 2nd Ele. Output:";
             // 
             // label48
             // 
@@ -1766,6 +1703,7 @@
             this.calcBounce.TabIndex = 137;
             this.calcBounce.Text = "No";
             this.calcBounce.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcBounce, "Whether the attack will bounce or not.\r\nOnly applies to Blademasters.");
             // 
             // label47
             // 
@@ -1786,6 +1724,8 @@
             this.calcFinal.TabIndex = 135;
             this.calcFinal.Text = "0";
             this.calcFinal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcFinal, "The final damage dealt to the monster after considering\r\nall modifiers, both Hunt" +
+        "er-sourced and monster-sourced.");
             // 
             // label26
             // 
@@ -1806,6 +1746,7 @@
             this.calcFinalRaw.TabIndex = 133;
             this.calcFinalRaw.Text = "0";
             this.calcFinalRaw.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcFinalRaw, "The total raw damage that the monster has taken\r\nfrom this attack.");
             // 
             // calcFinalEleBox
             // 
@@ -1975,15 +1916,17 @@
             this.calcEleOut.TabIndex = 116;
             this.calcEleOut.Text = "0";
             this.calcEleOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcEleOut, "The total elemental or status output, considering\r\nHunter-specific modifiers, suc" +
+        "h as Sharpness.");
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(230, 62);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(126, 13);
+            this.label19.Size = new System.Drawing.Size(118, 13);
             this.label19.TabIndex = 115;
-            this.label19.Text = "Element/Status Damage:";
+            this.label19.Text = "Element/Status Output:";
             // 
             // CalcAll
             // 
@@ -2015,15 +1958,16 @@
             this.calcRawOut.TabIndex = 112;
             this.calcRawOut.Text = "0";
             this.calcRawOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcRawOut, "The total Raw Damage that you are outputting, \r\nconsidering Motion Values.");
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(114, 109);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 111;
-            this.label2.Text = "Raw Damage:";
+            this.label2.Text = "Raw Output:";
             // 
             // groupBox6
             // 
@@ -2391,19 +2335,19 @@
             // 
             // modList
             // 
-            listViewGroup5.Header = "Armor Skills:";
-            listViewGroup5.Name = "armorGroup";
-            listViewGroup6.Header = "Item/Bistro Skills:";
-            listViewGroup6.Name = "bistroGroup";
-            listViewGroup7.Header = "Weapon Modifiers:";
-            listViewGroup7.Name = "weaponGroup";
-            listViewGroup8.Header = "Other Modifiers:";
-            listViewGroup8.Name = "otherGroup";
+            listViewGroup1.Header = "Armor Skills:";
+            listViewGroup1.Name = "armorGroup";
+            listViewGroup2.Header = "Item/Bistro Skills:";
+            listViewGroup2.Name = "bistroGroup";
+            listViewGroup3.Header = "Weapon Modifiers:";
+            listViewGroup3.Name = "weaponGroup";
+            listViewGroup4.Header = "Other Modifiers:";
+            listViewGroup4.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6,
-            listViewGroup7,
-            listViewGroup8});
+            listViewGroup1,
+            listViewGroup2,
+            listViewGroup3,
+            listViewGroup4});
             this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
             this.modList.Size = new System.Drawing.Size(258, 150);
@@ -3914,14 +3858,6 @@
             this.label88.Size = new System.Drawing.Size(2, 180);
             this.label88.TabIndex = 138;
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
-            this.menuStrip1.TabIndex = 142;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
             // label112
             // 
             this.label112.AutoSize = true;
@@ -3940,7 +3876,6 @@
             this.paraHealth.TabIndex = 177;
             this.paraHealth.Text = "0";
             this.paraHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.QuestTip.SetToolTip(this.paraHealth, "The Quest Modifier for the monster\'s Defense.");
             // 
             // label113
             // 
@@ -3959,8 +3894,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(983, 548);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
             this.Name = "DmgCalculator";
             this.Text = "Awesomeosity\'s Damage Calculator -  Pre-Launch Survivability (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
@@ -4018,26 +3951,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.ErrorProvider ErrorPreventer;
-        private System.Windows.Forms.ToolTip TotalTip;
-        private System.Windows.Forms.ToolTip MotionTip;
-        private System.Windows.Forms.ToolTip AffinityTip;
-        private System.Windows.Forms.ToolTip EleTip;
-        private System.Windows.Forms.ToolTip SharpnessTip;
-        private System.Windows.Forms.ToolTip HiddenTip;
-        private System.Windows.Forms.ToolTip AltTip;
-        private System.Windows.Forms.ToolTip QuestTip;
-        private System.Windows.Forms.ToolTip EleHitTip;
-        private System.Windows.Forms.ToolTip HitTip;
-        private System.Windows.Forms.ToolTip ExhaustTip;
-        private System.Windows.Forms.ToolTip KOTip;
-        private System.Windows.Forms.ToolTip KOZoneTip;
-        private System.Windows.Forms.ToolTip ExhaustZoneTip;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox weapFinal;
@@ -4246,7 +4164,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Label calcRawWeap;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.RichTextBox healthText;
@@ -4334,6 +4251,7 @@
         private System.Windows.Forms.Label label112;
         private System.Windows.Forms.TextBox paraHealth;
         private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.ToolTip ProTip;
     }
 }
 

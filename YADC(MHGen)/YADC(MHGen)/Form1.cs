@@ -402,14 +402,14 @@ namespace YADC_MHGen_
         private void healthCalc()
         {
             double finalDamage = double.Parse(calcFinal.Text);
-            if(finalDamage == 0)
+            if (finalDamage == 0)
             {
                 healthText.Text = "No damage was dealt in this situation.";
                 return;
             }
 
             double health = double.Parse(paraHealth.Text);
-            if(health == 0)
+            if (health == 0)
             {
                 healthText.Text = "It is impossible to determine how many hits the monster can take before dying, as the health listed is 0.";
                 return;
@@ -422,7 +422,7 @@ namespace YADC_MHGen_
             string avgHits = (health / finalDamage).ToString();
             string maxHits = Math.Ceiling(highHealth / finalDamage).ToString();
 
-            string[] formatArray = new string[] { finalDamage.ToString(), avgHits, health.ToString(), minHits,  maxHits };
+            string[] formatArray = new string[] { finalDamage.ToString(), avgHits, health.ToString(), minHits, maxHits };
             healthText.Text = String.Format("With a hit that deals {0} damage, it will, on average, take {1} hit(s) to kill a monster with {2} health. At minimum health, it will take {3} hits, and at maximum health, it will take {4} hits.", formatArray);
         }
 
@@ -1270,12 +1270,12 @@ namespace YADC_MHGen_
             double DBElement = 0;
             if (paraSecPower.Text != "0")
             {
-                element = double.Parse(paraEle.Text) * double.Parse(paraHitCount.Text) / 2;
-                DBElement = double.Parse(paraSecPower.Text) * double.Parse(paraHitCount.Text) / 2;
+                element = double.Parse(paraEle.Text) * hitCount / 2;
+                DBElement = double.Parse(paraSecPower.Text) * hitCount / 2;
             }
             else
             {
-                element = double.Parse(paraEle.Text) * double.Parse(paraHitCount.Text);
+                element = double.Parse(paraEle.Text) * hitCount;
             }
 
             double rawSharp = double.Parse(paraRawSharp.Text);
@@ -1386,16 +1386,20 @@ namespace YADC_MHGen_
         {
             double rawZone = double.Parse(paraRawHitzone.Text) * 0.01;
             double eleZone = double.Parse(paraEleHitzone.Text) * 0.01;
-            double KODam = double.Parse(paraKO.Text) * double.Parse(paraHitCount.Text);
-            double ExhDam = double.Parse(paraExh.Text) * double.Parse(paraHitCount.Text);
+            double hitCount = double.Parse(paraHitCount.Text);
+            double KODam = double.Parse(paraKO.Text);
+            double ExhDam = double.Parse(paraExh.Text);
             double KOZone = double.Parse(paraKOZone.Text) * 0.01;
             double ExhaustZone = double.Parse(paraExhZone.Text) * 0.01;
             double questMod = double.Parse(paraQuest.Text);
 
 
-            rawDamage /= double.Parse(paraHitCount.Text);
+            rawDamage /= hitCount; //Correct these from multiple hit attacks
             rawDamage *= monsterStatus[(string)paraMonStat.SelectedItem];
-            double totaldamage = rawDamage;
+            elementalDamage /= hitCount;
+            DBElement /= hitCount;
+
+            double totaldamage = 0;
             double KODamage = KODam * KOZone;
             double ExhDamage = ExhDam * ExhaustZone;
             string BounceBool = "No";
@@ -1418,31 +1422,63 @@ namespace YADC_MHGen_
                 rawDamage *= questMod;
             }
 
+            rawDamage = Math.Floor(rawDamage);
+            rawDamage *= hitCount;
+            rawDamage = Math.Floor(rawDamage);
             totaldamage = rawDamage;
 
             string element = (string)paraAltType.SelectedItem;
+
+            if (paraSecPower.Text != "0")
+            {
+                elementalDamage *= 2; //Correct for Dual Elements
+            }
+
             if (isElement(element))
             {
-                elementalDamage = elementalDamage * eleZone * questMod;
+                elementalDamage *= eleZone * questMod;
+            }
+
+            elementalDamage = Math.Floor(elementalDamage);
+            if (paraSecPower.Text != "0")
+            {
+                elementalDamage /= 2;
+            }
+            elementalDamage *= hitCount;
+            elementalDamage = Math.Floor(elementalDamage);
+
+            if(isElement(element))
+            {
                 totaldamage += elementalDamage;
             }
 
+            DBElement *= 2;
             if (paraSecEle.Text != "(None)") //For DB's Second Element
             {
                 string altElement = (string)paraSecEle.SelectedItem;
                 if (isElement(altElement))
                 {
                     DBElement = DBElement * eleZone * questMod;
+                }
+                DBElement = Math.Floor(DBElement);
+                DBElement /= 2;
+                DBElement *= hitCount;
+                DBElement = Math.Floor(DBElement);
+
+                if(isElement(altElement))
+                {
                     totaldamage += DBElement;
                 }
             }
-            totaldamage = Math.Floor(totaldamage);
-            totaldamage *= double.Parse(paraHitCount.Text); //Accounts for slight overestimation of damage regarding multiple hits.
-            totaldamage = Math.Floor(totaldamage);
 
-            rawDamage = Math.Floor(rawDamage);
-            rawDamage *= double.Parse(paraHitCount.Text);
-            rawDamage = Math.Floor(rawDamage);
+            
+
+            KODamage = Math.Floor(KODamage);
+            KODamage *= hitCount;
+
+            ExhDamage = Math.Floor(ExhDamage);
+            ExhDamage *= hitCount;
+
 
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
@@ -4132,7 +4168,7 @@ namespace YADC_MHGen_
             paraBoost.Checked = weaponAndMods.criticalBoost;
             paraMinds.Checked = weaponAndMods.mindsEye;
             paraStatusCrit.Checked = weaponAndMods.statusCrit;
-            
+
 
             paraRawHitzone.Text = weaponAndMods.hitzone.ToString();
             paraEleHitzone.Text = weaponAndMods.eleHitzone.ToString();
@@ -4988,18 +5024,18 @@ namespace YADC_MHGen_
                 bowStatus = "Blast";
                 staType.SelectedIndex = 4;
             }
-            
-            if(BowCharge.SelectedIndex == 0)
+
+            if (BowCharge.SelectedIndex == 0)
             {
                 statMod = 0.5;
             }
-            else if(BowCharge.SelectedIndex == 1)
+            else if (BowCharge.SelectedIndex == 1)
             {
                 statMod = 1.0;
             }
-            else if(BowCharge.SelectedIndex == 2)
+            else if (BowCharge.SelectedIndex == 2)
             {
-                if(bowStatus == "Poison")
+                if (bowStatus == "Poison")
                 {
                     statMod = 1.5;
                 }
@@ -5008,7 +5044,7 @@ namespace YADC_MHGen_
                     statMod = 1.3;
                 }
             }
-            else if(BowCharge.SelectedIndex == 3)
+            else if (BowCharge.SelectedIndex == 3)
             {
                 if (bowStatus == "Poison")
                 {
@@ -5020,12 +5056,12 @@ namespace YADC_MHGen_
                 }
             }
 
-            if(BowShot.SelectedIndex == 0) //Rapid
+            if (BowShot.SelectedIndex == 0) //Rapid
             {
                 statDamage = 12;
                 hitCount = 1;
             }
-            else if(BowShot.SelectedIndex == 1)
+            else if (BowShot.SelectedIndex == 1)
             {
                 statDamage = 16;
                 hitCount = 2;
@@ -5111,7 +5147,7 @@ namespace YADC_MHGen_
                 hitCount = 1;
             }
 
-            if(bowStatus != "Exhaust")
+            if (bowStatus != "Exhaust")
             {
                 staPower.Text = statDamage.ToString();
                 staEleSharp.Text = statMod.ToString();
@@ -5128,7 +5164,7 @@ namespace YADC_MHGen_
 
         private void BowCoating_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(BowCoating.SelectedIndex == 0)
+            if (BowCoating.SelectedIndex == 0)
             {
                 BowConvert.Enabled = false;
             }
