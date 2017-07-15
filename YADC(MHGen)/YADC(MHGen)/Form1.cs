@@ -631,6 +631,8 @@ namespace YADC_MHGen_
             {
                 weapName.SelectedItem = finalNames2Names[weaponFinalName];
             }
+
+            weapLevel.SelectedIndex = weapLevel.Items.Count - 1;
         }
 
         /// <summary>
