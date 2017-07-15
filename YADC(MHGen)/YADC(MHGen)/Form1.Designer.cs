@@ -121,6 +121,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.paraHealth = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -262,6 +264,7 @@
             this.label79 = new System.Windows.Forms.Label();
             this.eleShotType = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label113 = new System.Windows.Forms.Label();
             this.healthText = new System.Windows.Forms.RichTextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
@@ -327,10 +330,11 @@
             this.label90 = new System.Windows.Forms.Label();
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
-            this.label112 = new System.Windows.Forms.Label();
-            this.paraHealth = new System.Windows.Forms.TextBox();
-            this.label113 = new System.Windows.Forms.Label();
             this.ProTip = new System.Windows.Forms.ToolTip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.specialThanksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -370,6 +374,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staParaBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ErrorPreventer
@@ -832,7 +837,6 @@
             this.weapOverride.TabIndex = 146;
             this.weapOverride.Text = "Override Base Element?";
             this.weapOverride.UseVisualStyleBackColor = true;
-            this.weapOverride.CheckedChanged += new System.EventHandler(this.weapOverride_CheckedChanged);
             // 
             // label75
             // 
@@ -1485,6 +1489,26 @@
             this.groupBox4.TabIndex = 129;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Monster Parameters:";
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(303, 133);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(41, 13);
+            this.label112.TabIndex = 178;
+            this.label112.Text = "Health:";
+            // 
+            // paraHealth
+            // 
+            this.paraHealth.Location = new System.Drawing.Point(306, 149);
+            this.paraHealth.MaxLength = 4;
+            this.paraHealth.Name = "paraHealth";
+            this.paraHealth.Size = new System.Drawing.Size(74, 20);
+            this.paraHealth.TabIndex = 177;
+            this.paraHealth.Text = "0";
+            this.paraHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraHealth, "The monster\'s health. Differs on a quest-to-quest basis.");
             // 
             // label12
             // 
@@ -3205,6 +3229,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Calculation";
             // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(7, 422);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(422, 13);
+            this.label113.TabIndex = 132;
+            this.label113.Text = "*Note: Monster health can vary between 0.8x the listed health and 1.2x the listed" +
+    " health.";
+            // 
             // healthText
             // 
             this.healthText.Location = new System.Drawing.Point(7, 364);
@@ -3900,35 +3934,36 @@
             this.label88.Size = new System.Drawing.Size(2, 180);
             this.label88.TabIndex = 138;
             // 
-            // label112
+            // menuStrip1
             // 
-            this.label112.AutoSize = true;
-            this.label112.Location = new System.Drawing.Point(303, 133);
-            this.label112.Name = "label112";
-            this.label112.Size = new System.Drawing.Size(41, 13);
-            this.label112.TabIndex = 178;
-            this.label112.Text = "Health:";
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(983, 24);
+            this.menuStrip1.TabIndex = 142;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // paraHealth
+            // helpToolStripMenuItem
             // 
-            this.paraHealth.Location = new System.Drawing.Point(306, 149);
-            this.paraHealth.MaxLength = 4;
-            this.paraHealth.Name = "paraHealth";
-            this.paraHealth.Size = new System.Drawing.Size(74, 20);
-            this.paraHealth.TabIndex = 177;
-            this.paraHealth.Text = "0";
-            this.paraHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.ProTip.SetToolTip(this.paraHealth, "The monster\'s health. Differs on a quest-to-quest basis.");
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.readmeToolStripMenuItem,
+            this.specialThanksToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
-            // label113
+            // readmeToolStripMenuItem
             // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(7, 422);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(422, 13);
-            this.label113.TabIndex = 132;
-            this.label113.Text = "*Note: Monster health can vary between 0.8x the listed health and 1.2x the listed" +
-    " health.";
+            this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
+            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.readmeToolStripMenuItem.Text = "Readme";
+            // 
+            // specialThanksToolStripMenuItem
+            // 
+            this.specialThanksToolStripMenuItem.Name = "specialThanksToolStripMenuItem";
+            this.specialThanksToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.specialThanksToolStripMenuItem.Text = "Special Thanks";
             // 
             // DmgCalculator
             // 
@@ -3937,6 +3972,8 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(983, 548);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "DmgCalculator";
             this.Text = "Awesomeosity\'s Damage Calculator -  Pre-Launch Survivability (Beta vers.)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
@@ -3993,7 +4030,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.staParaBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -4295,6 +4335,10 @@
         private System.Windows.Forms.TextBox paraHealth;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.ToolTip ProTip;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem readmeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem specialThanksToolStripMenuItem;
     }
 }
 
