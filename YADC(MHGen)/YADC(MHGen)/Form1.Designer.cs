@@ -385,6 +385,8 @@
             this.paraRaw.TabIndex = 108;
             this.paraRaw.Text = "0";
             this.paraRaw.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraRaw, "The attack damage after all raw modifiers have\r\nbeen applied. May not be your dis" +
+        "play raw.");
             this.paraRaw.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraRaw.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -397,6 +399,7 @@
             this.paraMV.TabIndex = 110;
             this.paraMV.Text = "0";
             this.paraMV.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraMV, "The average amount of MV dealt per hit in a combo.");
             this.paraMV.TextChanged += new System.EventHandler(this.MVField_TextChanged);
             this.paraMV.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraMV.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -422,6 +425,7 @@
             this.paraAffinity.TabIndex = 113;
             this.paraAffinity.Text = "0";
             this.paraAffinity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraAffinity, "The amount of Affinity that your weapon has, after\r\naffinity modifiers.");
             this.paraAffinity.Validating += new System.ComponentModel.CancelEventHandler(this.AffinityField_Validating);
             this.paraAffinity.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -446,6 +450,8 @@
             this.paraEle.TabIndex = 115;
             this.paraEle.Text = "0";
             this.paraEle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraEle, "The elemental attack power after all modifiers\r\nhave been applied. May not reflec" +
+        "t the listed amount.");
             this.paraEle.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraEle.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -458,6 +464,7 @@
             this.paraSecPower.TabIndex = 142;
             this.paraSecPower.Text = "0";
             this.paraSecPower.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraSecPower, "How powerful is the second element on the Dual Blades?");
             this.paraSecPower.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraSecPower.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -526,6 +533,7 @@
             this.paraAltType.Name = "paraAltType";
             this.paraAltType.Size = new System.Drawing.Size(97, 21);
             this.paraAltType.TabIndex = 119;
+            this.ProTip.SetToolTip(this.paraAltType, "Does your weapon also deal Element or Status Damage?\r\nIf so, which type?");
             this.paraAltType.SelectedIndexChanged += new System.EventHandler(this.AltDamageField_SelectedIndexChanged);
             // 
             // paraSecEle
@@ -549,6 +557,7 @@
             this.paraSecEle.Name = "paraSecEle";
             this.paraSecEle.Size = new System.Drawing.Size(96, 21);
             this.paraSecEle.TabIndex = 140;
+            this.ProTip.SetToolTip(this.paraSecEle, "Are you using Dual Blades, and if so, does your weapon\r\nhave two elements?");
             this.paraSecEle.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
             // 
             // weapSecType
@@ -622,6 +631,7 @@
             this.paraRawHitzone.TabIndex = 103;
             this.paraRawHitzone.Text = "0";
             this.paraRawHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraRawHitzone, "The monster\'s resistance to raw damage \r\non a particular hitzone.");
             this.paraRawHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraRawHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -634,6 +644,7 @@
             this.paraSecHitzone.TabIndex = 111;
             this.paraSecHitzone.Text = "0";
             this.paraSecHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraSecHitzone, "The monster\'s resistance to the 2nd Element on a DB\r\nthat has a 2nd element.");
             this.paraSecHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraSecHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -646,6 +657,7 @@
             this.paraEleHitzone.TabIndex = 105;
             this.paraEleHitzone.Text = "0";
             this.paraEleHitzone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraEleHitzone, "The monster\'s resistance to the particular element\r\non a given hitzone.");
             this.paraEleHitzone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraEleHitzone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -658,6 +670,7 @@
             this.paraQuest.TabIndex = 82;
             this.paraQuest.Text = "1.0";
             this.paraQuest.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraQuest, "The quest-specific modifier for all damage, including\r\nFixed-type damage.");
             this.paraQuest.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraQuest.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -670,6 +683,7 @@
             this.paraKO.TabIndex = 120;
             this.paraKO.Text = "0";
             this.paraKO.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraKO, "The amount of KO damage dealt per hit.");
             this.paraKO.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraKO.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -692,6 +706,7 @@
             this.paraExh.TabIndex = 122;
             this.paraExh.Text = "0";
             this.paraExh.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraExh, "The amount of Exhaust damage dealt per hit.");
             this.paraExh.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraExh.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -704,6 +719,7 @@
             this.paraHitCount.TabIndex = 143;
             this.paraHitCount.Text = "1";
             this.paraHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraHitCount, "The number of hits in the combo. \'1\' if the move is\r\nnot a combo.");
             this.paraHitCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             this.paraHitCount.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraHitCount.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -739,6 +755,7 @@
             this.paraKOZone.TabIndex = 107;
             this.paraKOZone.Text = "0";
             this.paraKOZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraKOZone, "The monster\'s resistance to KO damage on a given hitzone.");
             this.paraKOZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraKOZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -761,6 +778,7 @@
             this.paraExhZone.TabIndex = 109;
             this.paraExhZone.Text = "0";
             this.paraExhZone.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraExhZone, "The monster\'s resistance to Exhaust damage. Usually 100.");
             this.paraExhZone.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraExhZone.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -1178,6 +1196,7 @@
             this.paraStatusCrit.Size = new System.Drawing.Size(80, 17);
             this.paraStatusCrit.TabIndex = 151;
             this.paraStatusCrit.Text = "Status Crit?";
+            this.ProTip.SetToolTip(this.paraStatusCrit, "Do you have the armor skill Status Crit?");
             this.paraStatusCrit.UseVisualStyleBackColor = true;
             // 
             // paraMinds
@@ -1188,6 +1207,7 @@
             this.paraMinds.Size = new System.Drawing.Size(83, 17);
             this.paraMinds.TabIndex = 150;
             this.paraMinds.Text = "Mind\'s Eye?";
+            this.ProTip.SetToolTip(this.paraMinds, "Do you or an attack have Mind\'s Eye?");
             this.paraMinds.UseVisualStyleBackColor = true;
             // 
             // label58
@@ -1217,6 +1237,7 @@
             this.paraTotal.TabIndex = 138;
             this.paraTotal.Text = "0";
             this.paraTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraTotal, "The total amount of MV that a combo deals.");
             this.paraTotal.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
             this.paraTotal.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraTotal.Validated += new System.EventHandler(this.GenericField_Validated);
@@ -1247,6 +1268,8 @@
             this.paraFixed.Size = new System.Drawing.Size(100, 17);
             this.paraFixed.TabIndex = 134;
             this.paraFixed.Text = "Fixed Damage?";
+            this.ProTip.SetToolTip(this.paraFixed, "Does this attack deal Fixed Damage?\r\nBombs and kicks are examples of Fixed Damage" +
+        ".");
             this.paraFixed.UseVisualStyleBackColor = true;
             this.paraFixed.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
@@ -1285,6 +1308,7 @@
             this.paraEleCrit.Name = "paraEleCrit";
             this.paraEleCrit.Size = new System.Drawing.Size(96, 21);
             this.paraEleCrit.TabIndex = 131;
+            this.ProTip.SetToolTip(this.paraEleCrit, "Do you have Elemental Crit? If so, which type?");
             // 
             // paraBoost
             // 
@@ -1294,6 +1318,7 @@
             this.paraBoost.Size = new System.Drawing.Size(93, 17);
             this.paraBoost.TabIndex = 130;
             this.paraBoost.Text = "Critical Boost?";
+            this.ProTip.SetToolTip(this.paraBoost, "Do you have the armor skill Critical Boost?");
             this.paraBoost.UseVisualStyleBackColor = true;
             // 
             // RawLabel
@@ -1332,6 +1357,7 @@
             this.paraEleSharp.TabIndex = 129;
             this.paraEleSharp.Text = "1.0";
             this.paraEleSharp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraEleSharp, "The sharpness modifier applied to Element.");
             this.paraEleSharp.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraEleSharp.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -1362,6 +1388,8 @@
             this.paraRawSharp.TabIndex = 127;
             this.paraRawSharp.Text = "1.0";
             this.paraRawSharp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraRawSharp, "The Raw Sharpness modifier, determined from your\r\nSharpness and any moves that in" +
+        "crease Sharpness.");
             this.paraRawSharp.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraRawSharp.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -1392,6 +1420,7 @@
             this.paraSharpness.Name = "paraSharpness";
             this.paraSharpness.Size = new System.Drawing.Size(97, 21);
             this.paraSharpness.TabIndex = 125;
+            this.ProTip.SetToolTip(this.paraSharpness, "How sharp is your weapon?\r\nIf Gunner, select \'(No Sharpness)\'.");
             this.paraSharpness.SelectedIndexChanged += new System.EventHandler(this.sharpnessBox_SelectedIndexChanged);
             // 
             // label21
@@ -1492,6 +1521,7 @@
             this.paraExhMod.TabIndex = 176;
             this.paraExhMod.Text = "1.0";
             this.paraExhMod.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraExhMod, "The quest-specific modifier for Exhaust damage.");
             this.paraExhMod.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraExhMod.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -1529,6 +1559,7 @@
             this.paraMonStat.Name = "paraMonStat";
             this.paraMonStat.Size = new System.Drawing.Size(96, 21);
             this.paraMonStat.TabIndex = 89;
+            this.ProTip.SetToolTip(this.paraMonStat, "The monster\'s current status, such as sleeping or paralyzed.");
             // 
             // label14
             // 
@@ -1643,6 +1674,8 @@
             this.calcFinalSec.TabIndex = 143;
             this.calcFinalSec.Text = "0";
             this.calcFinalSec.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcFinalSec, "The elemental or status damage dealt by the 2nd\r\nblade in a dual-element Dual Bla" +
+        "de.");
             // 
             // label62
             // 
@@ -1767,6 +1800,7 @@
             this.calcEle.TabIndex = 131;
             this.calcEle.Text = "0";
             this.calcEle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcEle, "The total Elemental or Status damage dealt after\r\nall modifiers.");
             // 
             // calcExhBox
             // 
@@ -1787,6 +1821,8 @@
             this.calcExh.TabIndex = 129;
             this.calcExh.Text = "0";
             this.calcExh.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcExh, "The total Exhaust damage dealt to the monster, \r\ncontributing to the Exhaust stat" +
+        "us.");
             // 
             // calcKOBox
             // 
@@ -1807,6 +1843,8 @@
             this.calcKO.TabIndex = 127;
             this.calcKO.Text = "0";
             this.calcKO.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ProTip.SetToolTip(this.calcKO, "The KO damage dealt to the monster. Typically only\r\napplied when hitting the head" +
+        " with an attack\r\nthat causes Exhaust damage as well.");
             // 
             // label25
             // 
@@ -1862,6 +1900,7 @@
             this.NeutralSel.TabIndex = 121;
             this.NeutralSel.TabStop = true;
             this.NeutralSel.Text = "Neutral";
+            this.ProTip.SetToolTip(this.NeutralSel, "Select this to \'never-crit.\'");
             this.NeutralSel.UseVisualStyleBackColor = true;
             // 
             // NegativeSel
@@ -1873,6 +1912,7 @@
             this.NegativeSel.TabIndex = 120;
             this.NegativeSel.TabStop = true;
             this.NegativeSel.Text = "Negative Affinity";
+            this.ProTip.SetToolTip(this.NegativeSel, "Select this to \'always-feeble hit.\'");
             this.NegativeSel.UseVisualStyleBackColor = true;
             // 
             // PositiveSel
@@ -1884,6 +1924,7 @@
             this.PositiveSel.TabIndex = 119;
             this.PositiveSel.TabStop = true;
             this.PositiveSel.Text = "Positive Affinity";
+            this.ProTip.SetToolTip(this.PositiveSel, "Select this to \'always-crit.\'");
             this.PositiveSel.UseVisualStyleBackColor = true;
             // 
             // AverageSel
@@ -1895,6 +1936,7 @@
             this.AverageSel.TabIndex = 118;
             this.AverageSel.TabStop = true;
             this.AverageSel.Text = "Average";
+            this.ProTip.SetToolTip(this.AverageSel, "Select this for average damage calculation.");
             this.AverageSel.UseVisualStyleBackColor = true;
             // 
             // label20
@@ -3363,7 +3405,7 @@
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(410, 307);
             this.label59.Name = "label59";
-            this.label59.Size = new System.Drawing.Size(519, 52);
+            this.label59.Size = new System.Drawing.Size(519, 78);
             this.label59.TabIndex = 211;
             this.label59.Text = resources.GetString("label59.Text");
             // 
@@ -3876,6 +3918,7 @@
             this.paraHealth.TabIndex = 177;
             this.paraHealth.Text = "0";
             this.paraHealth.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.ProTip.SetToolTip(this.paraHealth, "The monster\'s health. Differs on a quest-to-quest basis.");
             // 
             // label113
             // 

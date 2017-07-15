@@ -130,6 +130,8 @@
     <value>*Note that statuses on Blademaster weapons and Bows with innate statuses, such as the Teo Bow, 
 have a 1/3rd chance of applying their status.
 Bowguns that use Status-inflicting shots or Bows that are using Status Coatings inflict them 100% of the time. 
-KO and Exhaust are exempt from this rule.</value>
+KO and Exhaust are exempt from this rule.
+Lastly, quests have hidden status modifiers that make the monster more tolerant of statuses. This value is
+currently unknown by many databases.</value>
   </data>
 </root>
