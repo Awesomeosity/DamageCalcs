@@ -134,7 +134,4 @@ KO and Exhaust are exempt from this rule.
 Lastly, quests have hidden status modifiers that make the monster more tolerant of statuses. This value is
 currently unknown by many databases.</value>
   </data>
-  <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>234, 17</value>
-  </metadata>
 </root>

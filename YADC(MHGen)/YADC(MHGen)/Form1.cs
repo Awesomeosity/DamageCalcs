@@ -2,7 +2,7 @@
  * This is a Damage Calculator that is built specifically for Monster Hunter Generations.
  * This is built in C# and uses the Visual Studio's Windows Form Designer.
  * Current Version Number: Release Vers. 1.0
- * Built by Kevin Le and maintained as of 7/14/17.
+ * Built by Kevin Le and maintained as of 7/15/17.
  */
 
 using System;
@@ -1761,11 +1761,11 @@ namespace YADC_MHGen_
                 return;
             }
 
-            double lowHealth = Math.Ceiling(health * 0.8);
-            double highHealth = Math.Ceiling(health * 1.2);
+            double lowHealth = Math.Ceiling(health * 0.875);
+            double highHealth = Math.Ceiling(health * 1.025);
 
             string minHits = Math.Ceiling(lowHealth / finalDamage).ToString();
-            string avgHits = (health / finalDamage).ToString();
+            string avgHits = Math.Ceiling(health / finalDamage).ToString();
             string maxHits = Math.Ceiling(highHealth / finalDamage).ToString();
 
             string[] formatArray = new string[] { finalDamage.ToString(), avgHits, health.ToString(), minHits, maxHits };
@@ -2559,27 +2559,27 @@ namespace YADC_MHGen_
 
             if (BowShot.SelectedIndex == 0) //Rapid
             {
-                statDamage = 12;
+                statDamage = 13;
                 hitCount = 1;
             }
             else if (BowShot.SelectedIndex == 1)
             {
-                statDamage = 16;
+                statDamage = 14;
                 hitCount = 2;
             }
             else if (BowShot.SelectedIndex == 2)
             {
-                statDamage = 19;
+                statDamage = 15;
                 hitCount = 3;
             }
             else if (BowShot.SelectedIndex == 3)
             {
-                statDamage = 21;
+                statDamage = 16;
                 hitCount = 4;
             }
             else if (BowShot.SelectedIndex == 4)
             {
-                statDamage = 22;
+                statDamage = 16;
                 hitCount = 4;
             }
             else if (BowShot.SelectedIndex == 5) //Pierce
@@ -2599,52 +2599,52 @@ namespace YADC_MHGen_
             }
             else if (BowShot.SelectedIndex == 10) //Spread
             {
-                statDamage = 13;
+                statDamage = 15;
                 hitCount = 3;
             }
             else if (BowShot.SelectedIndex == 11)
             {
-                statDamage = 16;
+                statDamage = 18;
                 hitCount = 3;
             }
             else if (BowShot.SelectedIndex == 12)
             {
-                statDamage = 23;
+                statDamage = 20;
                 hitCount = 5;
             }
             else if (BowShot.SelectedIndex == 13)
             {
-                statDamage = 24;
+                statDamage = 20;
                 hitCount = 5;
             }
             else if (BowShot.SelectedIndex == 14)
             {
-                statDamage = 26;
+                statDamage = 20;
                 hitCount = 5;
             }
             else if (BowShot.SelectedIndex == 15) //Heavy
             {
-                statDamage = 11;
+                statDamage = 14;
                 hitCount = 1;
             }
             else if (BowShot.SelectedIndex == 16)
             {
-                statDamage = 14;
+                statDamage = 15;
                 hitCount = 1;
             }
             else if (BowShot.SelectedIndex == 17)
             {
-                statDamage = 17;
+                statDamage = 16;
                 hitCount = 1;
             }
             else if (BowShot.SelectedIndex == 18)
             {
-                statDamage = 19;
+                statDamage = 17;
                 hitCount = 1;
             }
             else if (BowShot.SelectedIndex == 19)
             {
-                statDamage = 20;
+                statDamage = 18;
                 hitCount = 1;
             }
 
@@ -5497,7 +5497,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 9) //Charge Lvl. 3 (+Para/Sleep)
             {
-                weaponAndMods.rawMod *= 0.4;
+                weaponAndMods.rawMod *= 1.5;
                 weaponAndMods.staMod *= 0.7;
             }
             else if (skillVal == 10) //Charge Lvl. 4 (Non-Status)
