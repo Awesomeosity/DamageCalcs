@@ -1761,7 +1761,7 @@ namespace YADC_MHGen_
                 return;
             }
 
-            double lowHealth = Math.Ceiling(health * 0.875);
+            double lowHealth = Math.Ceiling(health * 0.975);
             double highHealth = Math.Ceiling(health * 1.025);
 
             string minHits = Math.Ceiling(lowHealth / finalDamage).ToString();
@@ -3575,7 +3575,7 @@ namespace YADC_MHGen_
             weaponAndMods.criticalBoost = false;
             weaponAndMods.mindsEye = moveMinds.Checked;
             weaponAndMods.damageType = moveDamType.Text;
-            weaponAndMods.eleCrit = "None";
+            weaponAndMods.eleCrit = "No";
             weaponAndMods.statusCrit = false;
 
             weaponAndMods.rawSharpMod *= double.Parse(moveSharp.Text);

@@ -3231,7 +3231,7 @@
             this.label113.Name = "label113";
             this.label113.Size = new System.Drawing.Size(446, 13);
             this.label113.TabIndex = 132;
-            this.label113.Text = "*Note: Monster health can vary between 0.875x the listed health and 1.125x the li" +
+            this.label113.Text = "*Note: Monster health can vary between 0.975x the listed health and 1.025x the li" +
     "sted health.";
             // 
             // healthText
