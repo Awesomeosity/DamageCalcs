@@ -1508,10 +1508,7 @@ namespace YADC_MHGen_
                 rawDamage *= questMod;
             }
 
-            rawDamage = Math.Floor(rawDamage);
-            rawDamage *= hitCount;
-            rawDamage = Math.Floor(rawDamage);
-            totaldamage = rawDamage;
+            totaldamage += rawDamage;
 
             string element = (string)paraAltType.SelectedItem;
 
@@ -1525,31 +1522,25 @@ namespace YADC_MHGen_
                 elementalDamage *= eleZone * questMod;
             }
 
-            elementalDamage = Math.Floor(elementalDamage);
             if (paraSecPower.Text != "0")
             {
                 elementalDamage /= 2;
             }
-            elementalDamage *= hitCount;
-            elementalDamage = Math.Floor(elementalDamage);
 
             if (isElement(element))
             {
                 totaldamage += elementalDamage;
             }
 
-            DBElement *= 2;
             if (paraSecEle.Text != "(None)") //For DB's Second Element
             {
+                DBElement *= 2;
                 string altElement = (string)paraSecEle.SelectedItem;
                 if (isElement(altElement))
                 {
                     DBElement = DBElement * eleZone * questMod;
                 }
-                DBElement = Math.Floor(DBElement);
                 DBElement /= 2;
-                DBElement *= hitCount;
-                DBElement = Math.Floor(DBElement);
 
                 if (isElement(altElement))
                 {
@@ -1557,14 +1548,15 @@ namespace YADC_MHGen_
                 }
             }
 
-
+            totaldamage = Math.Floor(totaldamage);
+            totaldamage *= hitCount;
+            totaldamage = Math.Floor(totaldamage);
 
             KODamage = Math.Floor(KODamage);
             KODamage *= hitCount;
 
             ExhDamage = Math.Floor(ExhDamage);
             ExhDamage *= hitCount;
-
 
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
@@ -4272,14 +4264,14 @@ namespace YADC_MHGen_
         /// <returns></returns>
         private bool Elemental(int skillVal)
         {
-            if(skillVal == 1) //Up
+            if (skillVal == 1) //Up
             {
                 if (isElement(weaponAndMods.altDamageType) || isElement(weaponAndMods.secElement))
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
                 }
             }
-            else if(skillVal == 2) //Down
+            else if (skillVal == 2) //Down
             {
                 if (isElement(weaponAndMods.altDamageType) || isElement(weaponAndMods.secElement))
                 {
@@ -5479,7 +5471,7 @@ namespace YADC_MHGen_
             {
                 weaponAndMods.rawMod *= 1.0;
                 weaponAndMods.staMod *= 1.0;
-            } 
+            }
             else if (skillVal == 6) //Charge Lvl. 2 (+Para/Sleep)
             {
                 weaponAndMods.rawMod *= 1.0;
