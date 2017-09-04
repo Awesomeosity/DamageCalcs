@@ -284,6 +284,8 @@ namespace YADC_MHGen_
             public double eleMod; //Stores the elemental multiplier. Has a cap of 1.2x, surpassed when used Demon Riot on an Element Phial SA.
             public double expMod; //Stores the explosive multiplier. Has a cap of 1.3x, 1.4x when considering Impact Phial CB.
             public double staMod; //Stores the status multiplier. Has a cap of 1.25x, surpassed when using Demon Riot on a Status Phial SA.
+
+            public bool GL; //Shows whether or not the explosive multiplier should be increased because GL is used.
             public bool CB; //Shows whether or not the explosive multiplier should be increased because Impact Phials are being used. 
             public bool DemonRiot; //Shows whether or not Demon Riot is being used.
 
@@ -1895,7 +1897,7 @@ namespace YADC_MHGen_
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.20).ToString();
             }
             else if ((index >= 11 && index <= 14) || (index >= 23 && index <= 26) ||
-                (index >= 33 && index <= 26) || (index >= 45 && index <= 48)) //All Level 2 Piercing Element Shots
+                (index >= 33 && index <= 36) || (index >= 45 && index <= 48)) //All Level 2 Piercing Element Shots
             {
                 weapAltPower.Text = (double.Parse(weapAttack.Text) * 0.23).ToString();
             }
@@ -3673,17 +3675,23 @@ namespace YADC_MHGen_
 
             if (weaponAndMods.damageType == "Fixed")
             {
-                if (weaponAndMods.expMod > 1.3 && !weaponAndMods.CB)
+                if (weaponAndMods.expMod > 1.3 && !weaponAndMods.CB && !weaponAndMods.GL)
                 {
                     weaponAndMods.expMod = 1.3;
                 }
+                else if (weaponAndMods.CB && weaponAndMods.expMod > 1.4)
+                {
+                    weaponAndMods.expMod = 1.4;
+                }
                 weaponAndMods.totalAttackPower = 100;
                 weaponAndMods.totalAttackPower *= weaponAndMods.expMod;
+                weaponAndMods.totalAttackPower = Math.Floor(weaponAndMods.totalAttackPower);
             }
             else
             {
                 weaponAndMods.totalAttackPower += weaponAndMods.addRaw;
                 weaponAndMods.totalAttackPower *= weaponAndMods.rawMod;
+                weaponAndMods.totalAttackPower = Math.Floor(weaponAndMods.totalAttackPower);
             }
 
             if (isElement(weaponAndMods.altDamageType))
@@ -3694,6 +3702,7 @@ namespace YADC_MHGen_
                 }
                 weaponAndMods.eleAttackPower *= weaponAndMods.eleMod;
                 weaponAndMods.eleAttackPower += weaponAndMods.addElement;
+                weaponAndMods.eleAttackPower = Math.Floor(weaponAndMods.eleAttackPower);
             }
             else if (isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
             {
@@ -3703,6 +3712,7 @@ namespace YADC_MHGen_
                 }
                 weaponAndMods.eleAttackPower *= weaponAndMods.staMod;
                 weaponAndMods.eleAttackPower += weaponAndMods.addElement;
+                weaponAndMods.eleAttackPower = Math.Floor(weaponAndMods.eleAttackPower);
             }
 
             if (weaponAndMods.affinity > 100)
@@ -5560,6 +5570,69 @@ namespace YADC_MHGen_
             }
             return true;
         }
+
+        /// <summary>
+        /// Resets all relevant fields in the section to default values.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void weapClearButt_Click(object sender, EventArgs e)
+        {
+            weapAttack.Text = "0";
+            weapAlt.SelectedIndex = 0;
+            weapAltPower.Text = "0";
+            weapAffinity.Text = "0";
+            weapSharpness.SelectedIndex = 0;
+            weapSecType.SelectedIndex = 0;
+            weapSecPower.Text = "0";
+            weapOverride.Checked = false;
+            weapOne.SelectedIndex = 0;
+        }
+
+        /// <summary>
+        /// Resets all relevant fields in the section to default values.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void monClearButt_Click(object sender, EventArgs e)
+        {
+            monCut.Text = "0";
+            monImpact.Text = "0";
+            monShot.Text = "0";
+            monKO.Text = "0";
+            monExh.Text = "0";
+            monFire.Text = "0";
+            monWater.Text = "0";
+            monThunder.Text = "0";
+            monIce.Text = "0";
+            monDragon.Text = "0";
+            monQuestMod.Text = "1.0";
+            monExhField.Text = "1.0";
+            monHealth.Text = "0";
+        }
+
+        /// <summary>
+        /// Resets all relevant fields in the section to default values.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void movClearButt_Click(object sender, EventArgs e)
+        {
+            moveTotal.Text = "0";
+            moveSharp.Text = "0";
+            moveKO.Text = "0";
+            moveExh.Text = "0";
+            moveAvg.Text = "0";
+            moveHitCount.Text = "0";
+            moveDamType.SelectedIndex = 0;
+            moveEleMod.Text = "0";
+            moveDraw.Checked = false;
+            moveAerial.Checked = false;
+            moveMinds.Checked = false;
+        }
+
+
+
 #endif
     }
 }

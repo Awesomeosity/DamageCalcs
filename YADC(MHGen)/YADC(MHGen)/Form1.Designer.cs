@@ -242,8 +242,6 @@
             this.monThunderBox = new System.Windows.Forms.PictureBox();
             this.monIceBox = new System.Windows.Forms.PictureBox();
             this.monDragonBox = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.label72 = new System.Windows.Forms.Label();
             this.monQuest = new System.Windows.Forms.ComboBox();
@@ -331,6 +329,9 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
             this.ProTip = new System.Windows.Forms.ToolTip(this.components);
+            this.weapClearButt = new System.Windows.Forms.Button();
+            this.monClearButt = new System.Windows.Forms.Button();
+            this.movClearButt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -499,8 +500,8 @@
             "(None)",
             "Fire",
             "Water",
-            "Ice",
             "Thunder",
+            "Ice",
             "Dragon",
             "Poison",
             "Para",
@@ -794,6 +795,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.weapClearButt);
             this.groupBox1.Controls.Add(this.weapOverride);
             this.groupBox1.Controls.Add(this.weapSecType);
             this.groupBox1.Controls.Add(this.label75);
@@ -2032,6 +2034,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.movClearButt);
             this.groupBox6.Controls.Add(this.label30);
             this.groupBox6.Controls.Add(this.moveEleMod);
             this.groupBox6.Controls.Add(this.moveMinds);
@@ -2521,11 +2524,10 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.monClearButt);
             this.groupBox9.Controls.Add(this.monHealth);
             this.groupBox9.Controls.Add(this.label102);
             this.groupBox9.Controls.Add(this.groupBox11);
-            this.groupBox9.Controls.Add(this.comboBox1);
-            this.groupBox9.Controls.Add(this.button1);
             this.groupBox9.Controls.Add(this.groupBox10);
             this.groupBox9.Controls.Add(this.monExhField);
             this.groupBox9.Controls.Add(this.monQuestMod);
@@ -2836,33 +2838,6 @@
             this.monDragonBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.monDragonBox.TabIndex = 149;
             this.monDragonBox.TabStop = false;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Enabled = false;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Hitzone 1",
-            "Hitzone 2",
-            "Hitzone 3",
-            "Hitzone 4",
-            "Hitzone 5"});
-            this.comboBox1.Location = new System.Drawing.Point(298, 254);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(101, 21);
-            this.comboBox1.TabIndex = 177;
-            this.comboBox1.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(298, 225);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 23);
-            this.button1.TabIndex = 176;
-            this.button1.Text = "Add Data to:";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
             // 
             // groupBox10
             // 
@@ -3929,6 +3904,36 @@
             this.label88.Size = new System.Drawing.Size(2, 180);
             this.label88.TabIndex = 138;
             // 
+            // weapClearButt
+            // 
+            this.weapClearButt.Location = new System.Drawing.Point(7, 147);
+            this.weapClearButt.Name = "weapClearButt";
+            this.weapClearButt.Size = new System.Drawing.Size(96, 23);
+            this.weapClearButt.TabIndex = 147;
+            this.weapClearButt.Text = "Clear Section";
+            this.weapClearButt.UseVisualStyleBackColor = true;
+            this.weapClearButt.Click += new System.EventHandler(this.weapClearButt_Click);
+            // 
+            // monClearButt
+            // 
+            this.monClearButt.Location = new System.Drawing.Point(299, 249);
+            this.monClearButt.Name = "monClearButt";
+            this.monClearButt.Size = new System.Drawing.Size(100, 23);
+            this.monClearButt.TabIndex = 184;
+            this.monClearButt.Text = "Clear Section";
+            this.monClearButt.UseVisualStyleBackColor = true;
+            this.monClearButt.Click += new System.EventHandler(this.monClearButt_Click);
+            // 
+            // movClearButt
+            // 
+            this.movClearButt.Location = new System.Drawing.Point(217, 142);
+            this.movClearButt.Name = "movClearButt";
+            this.movClearButt.Size = new System.Drawing.Size(85, 23);
+            this.movClearButt.TabIndex = 152;
+            this.movClearButt.Text = "Clear Section";
+            this.movClearButt.UseVisualStyleBackColor = true;
+            this.movClearButt.Click += new System.EventHandler(this.movClearButt_Click);
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4201,8 +4206,6 @@
         private System.Windows.Forms.TextBox paraKOZone;
         private System.Windows.Forms.Label label63;
         private System.Windows.Forms.TextBox paraEleHitzone;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
@@ -4295,6 +4298,9 @@
         private System.Windows.Forms.TextBox paraHealth;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.ToolTip ProTip;
+        private System.Windows.Forms.Button weapClearButt;
+        private System.Windows.Forms.Button monClearButt;
+        private System.Windows.Forms.Button movClearButt;
     }
 }
 
