@@ -2,7 +2,7 @@
  * This is a Damage Calculator that is built specifically for Monster Hunter Generations.
  * This is built in C# and uses the Visual Studio's Windows Form Designer.
  * Current Version Number: Release Vers. 1.0
- * Built by Kevin Le and maintained as of 7/15/17.
+ * Built by Kevin Le and maintained as of 9/8/17.
  */
 
 using System;
