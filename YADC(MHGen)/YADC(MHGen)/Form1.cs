@@ -1269,7 +1269,6 @@ namespace YADC_MHGen_
             monIceBox.Load(str2image["Ice"]);
             monDragonBox.Load(str2image["Dragon"]);
             paraBoost.Checked = false; //Force checkboxes to be unchecked on initialization.
-            moveMinds.Checked = false;
             paraFixed.Checked = false;
             paraMinds.Checked = false;
             paraSharpness.SelectedIndex = 0; //Force comboBoxes to be set to a certain position.
@@ -1320,6 +1319,7 @@ namespace YADC_MHGen_
 
             eleShotType.SelectedIndex = 0;
             GLAmmoBox.SelectedIndex = 0;
+            moveMinds.Checked = false;
         }
 
         /// <summary>
@@ -1481,11 +1481,14 @@ namespace YADC_MHGen_
             double ExhaustZone = double.Parse(paraExhZone.Text) * 0.01;
             double questMod = double.Parse(paraQuest.Text);
 
+            if (hitCount != 0)
+            {
+                rawDamage /= hitCount; //Correct these from multiple hit attacks
+                elementalDamage /= hitCount;
+                DBElement /= hitCount;
+            }
 
-            rawDamage /= hitCount; //Correct these from multiple hit attacks
             rawDamage *= monsterStatus[(string)paraMonStat.SelectedItem];
-            elementalDamage /= hitCount;
-            DBElement /= hitCount;
 
             double totaldamage = 0;
             double KODamage = KODam * KOZone;
@@ -1559,6 +1562,7 @@ namespace YADC_MHGen_
 
             ExhDamage = Math.Floor(ExhDamage);
             ExhDamage *= hitCount;
+
 
             return new Tuple<double, double, double, double, double, string, double>(totaldamage, rawDamage, elementalDamage, KODamage, ExhDamage, BounceBool, DBElement);
         }
@@ -5619,13 +5623,13 @@ namespace YADC_MHGen_
         private void movClearButt_Click(object sender, EventArgs e)
         {
             moveTotal.Text = "0";
-            moveSharp.Text = "0";
+            moveSharp.Text = "1.0";
             moveKO.Text = "0";
             moveExh.Text = "0";
             moveAvg.Text = "0";
-            moveHitCount.Text = "0";
+            moveHitCount.Text = "1";
             moveDamType.SelectedIndex = 0;
-            moveEleMod.Text = "0";
+            moveEleMod.Text = "1";
             moveDraw.Checked = false;
             moveAerial.Checked = false;
             moveMinds.Checked = false;
