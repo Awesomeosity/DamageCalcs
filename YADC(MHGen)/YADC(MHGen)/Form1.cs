@@ -1233,6 +1233,7 @@ namespace YADC_MHGen_
         {
             GLAmmoType();
             GLMoveType();
+            moveDamType.SelectedItem = "Fixed";
         }
 
         /// <summary>
@@ -1380,7 +1381,7 @@ namespace YADC_MHGen_
 
             if (paraFixed.Checked) //If fixed damage is in play
             {
-                return new Tuple<double, double, double, double>(motion / 0.01 * total, motion / 0.01 * total, element, DBElement); //The * Total is done for explosive mods.
+                return new Tuple<double, double, double, double>(motion * total, motion * total, element, DBElement); //The * Total is done for explosive mods.
             }
 
             else //If it is in play
