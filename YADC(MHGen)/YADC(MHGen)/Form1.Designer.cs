@@ -65,6 +65,7 @@
             this.paraExhZone = new System.Windows.Forms.TextBox();
             this.staExhaustZone = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.weapClearButt = new System.Windows.Forms.Button();
             this.weapOverride = new System.Windows.Forms.CheckBox();
             this.label75 = new System.Windows.Forms.Label();
             this.weapSecPower = new System.Windows.Forms.TextBox();
@@ -171,6 +172,7 @@
             this.calcRawOut = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.movClearButt = new System.Windows.Forms.Button();
             this.label30 = new System.Windows.Forms.Label();
             this.moveEleMod = new System.Windows.Forms.TextBox();
             this.moveMinds = new System.Windows.Forms.CheckBox();
@@ -214,6 +216,7 @@
             this.label34 = new System.Windows.Forms.Label();
             this.modArmor = new System.Windows.Forms.ComboBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.monClearButt = new System.Windows.Forms.Button();
             this.monHealth = new System.Windows.Forms.TextBox();
             this.label102 = new System.Windows.Forms.Label();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
@@ -329,9 +332,6 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
             this.ProTip = new System.Windows.Forms.ToolTip(this.components);
-            this.weapClearButt = new System.Windows.Forms.Button();
-            this.monClearButt = new System.Windows.Forms.Button();
-            this.movClearButt = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -824,6 +824,16 @@
             this.groupBox1.TabIndex = 126;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Weapon Base Stats:";
+            // 
+            // weapClearButt
+            // 
+            this.weapClearButt.Location = new System.Drawing.Point(7, 147);
+            this.weapClearButt.Name = "weapClearButt";
+            this.weapClearButt.Size = new System.Drawing.Size(96, 23);
+            this.weapClearButt.TabIndex = 147;
+            this.weapClearButt.Text = "Clear Section";
+            this.weapClearButt.UseVisualStyleBackColor = true;
+            this.weapClearButt.Click += new System.EventHandler(this.weapClearButt_Click);
             // 
             // weapOverride
             // 
@@ -2063,6 +2073,16 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Move Stats:";
             // 
+            // movClearButt
+            // 
+            this.movClearButt.Location = new System.Drawing.Point(217, 142);
+            this.movClearButt.Name = "movClearButt";
+            this.movClearButt.Size = new System.Drawing.Size(85, 23);
+            this.movClearButt.TabIndex = 152;
+            this.movClearButt.Text = "Clear Section";
+            this.movClearButt.UseVisualStyleBackColor = true;
+            this.movClearButt.Click += new System.EventHandler(this.movClearButt_Click);
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -2539,6 +2559,16 @@
             this.groupBox9.TabIndex = 134;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Monster Data:";
+            // 
+            // monClearButt
+            // 
+            this.monClearButt.Location = new System.Drawing.Point(299, 249);
+            this.monClearButt.Name = "monClearButt";
+            this.monClearButt.Size = new System.Drawing.Size(100, 23);
+            this.monClearButt.TabIndex = 184;
+            this.monClearButt.Text = "Clear Section";
+            this.monClearButt.UseVisualStyleBackColor = true;
+            this.monClearButt.Click += new System.EventHandler(this.monClearButt_Click);
             // 
             // monHealth
             // 
@@ -3904,36 +3934,6 @@
             this.label88.Size = new System.Drawing.Size(2, 180);
             this.label88.TabIndex = 138;
             // 
-            // weapClearButt
-            // 
-            this.weapClearButt.Location = new System.Drawing.Point(7, 147);
-            this.weapClearButt.Name = "weapClearButt";
-            this.weapClearButt.Size = new System.Drawing.Size(96, 23);
-            this.weapClearButt.TabIndex = 147;
-            this.weapClearButt.Text = "Clear Section";
-            this.weapClearButt.UseVisualStyleBackColor = true;
-            this.weapClearButt.Click += new System.EventHandler(this.weapClearButt_Click);
-            // 
-            // monClearButt
-            // 
-            this.monClearButt.Location = new System.Drawing.Point(299, 249);
-            this.monClearButt.Name = "monClearButt";
-            this.monClearButt.Size = new System.Drawing.Size(100, 23);
-            this.monClearButt.TabIndex = 184;
-            this.monClearButt.Text = "Clear Section";
-            this.monClearButt.UseVisualStyleBackColor = true;
-            this.monClearButt.Click += new System.EventHandler(this.monClearButt_Click);
-            // 
-            // movClearButt
-            // 
-            this.movClearButt.Location = new System.Drawing.Point(217, 142);
-            this.movClearButt.Name = "movClearButt";
-            this.movClearButt.Size = new System.Drawing.Size(85, 23);
-            this.movClearButt.TabIndex = 152;
-            this.movClearButt.Text = "Clear Section";
-            this.movClearButt.UseVisualStyleBackColor = true;
-            this.movClearButt.Click += new System.EventHandler(this.movClearButt_Click);
-            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3943,7 +3943,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "DmgCalculator";
             this.Text = "Awesomeosity\'s Damage Calculator - Post-Launch Stability (MHGen, Release vers. 1." +
-    "0)";
+    "02)";
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
