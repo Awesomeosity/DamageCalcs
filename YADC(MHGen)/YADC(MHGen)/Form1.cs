@@ -3869,6 +3869,7 @@ namespace YADC_MHGen_
         /// <returns></returns>
         private bool Artillery(int skillVal)
         {
+            if(weaponAndMods)
             if (skillVal == 1) //Art. Novice (Fixed Weapons)
             {
                 weaponAndMods.expMod = weaponAndMods.expMod * 1.1;
