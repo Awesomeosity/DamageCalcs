@@ -5636,9 +5636,6 @@ namespace YADC_MHGen_
             moveAerial.Checked = false;
             moveMinds.Checked = false;
         }
-
-
-
 #endif
     }
 }

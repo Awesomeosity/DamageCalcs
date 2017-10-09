@@ -582,7 +582,7 @@
             "SA - Poison Phial",
             "SA - Para Phial",
             "SA - Exhaust Phial"});
-            this.weapSecType.Location = new System.Drawing.Point(254, 37);
+            this.weapSecType.Location = new System.Drawing.Point(254, 19);
             this.weapSecType.Name = "weapSecType";
             this.weapSecType.Size = new System.Drawing.Size(111, 21);
             this.weapSecType.TabIndex = 145;
@@ -838,7 +838,7 @@
             // weapOverride
             // 
             this.weapOverride.AutoSize = true;
-            this.weapOverride.Location = new System.Drawing.Point(189, 91);
+            this.weapOverride.Location = new System.Drawing.Point(189, 72);
             this.weapOverride.Name = "weapOverride";
             this.weapOverride.Size = new System.Drawing.Size(140, 17);
             this.weapOverride.TabIndex = 146;
@@ -848,7 +848,7 @@
             // label75
             // 
             this.label75.AutoSize = true;
-            this.label75.Location = new System.Drawing.Point(186, 40);
+            this.label75.Location = new System.Drawing.Point(186, 22);
             this.label75.Name = "label75";
             this.label75.Size = new System.Drawing.Size(63, 13);
             this.label75.TabIndex = 144;
@@ -856,7 +856,7 @@
             // 
             // weapSecPower
             // 
-            this.weapSecPower.Location = new System.Drawing.Point(291, 65);
+            this.weapSecPower.Location = new System.Drawing.Point(291, 46);
             this.weapSecPower.Name = "weapSecPower";
             this.weapSecPower.Size = new System.Drawing.Size(51, 20);
             this.weapSecPower.TabIndex = 143;
@@ -867,7 +867,7 @@
             // 
             // weapSecBox
             // 
-            this.weapSecBox.Location = new System.Drawing.Point(344, 64);
+            this.weapSecBox.Location = new System.Drawing.Point(344, 45);
             this.weapSecBox.Name = "weapSecBox";
             this.weapSecBox.Size = new System.Drawing.Size(21, 21);
             this.weapSecBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -877,7 +877,7 @@
             // label76
             // 
             this.label76.AutoSize = true;
-            this.label76.Location = new System.Drawing.Point(186, 68);
+            this.label76.Location = new System.Drawing.Point(186, 49);
             this.label76.Name = "label76";
             this.label76.Size = new System.Drawing.Size(82, 13);
             this.label76.TabIndex = 141;
@@ -906,9 +906,9 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.weapTwo.Location = new System.Drawing.Point(284, 146);
+            this.weapTwo.Location = new System.Drawing.Point(264, 146);
             this.weapTwo.Name = "weapTwo";
-            this.weapTwo.Size = new System.Drawing.Size(74, 21);
+            this.weapTwo.Size = new System.Drawing.Size(101, 21);
             this.weapTwo.TabIndex = 138;
             // 
             // weapOne
@@ -925,9 +925,9 @@
             "Yellow",
             "Orange",
             "Red"});
-            this.weapOne.Location = new System.Drawing.Point(284, 118);
+            this.weapOne.Location = new System.Drawing.Point(264, 117);
             this.weapOne.Name = "weapOne";
-            this.weapOne.Size = new System.Drawing.Size(74, 21);
+            this.weapOne.Size = new System.Drawing.Size(101, 21);
             this.weapOne.TabIndex = 137;
             // 
             // weapSharpness
@@ -946,7 +946,7 @@
             "Red"});
             this.weapSharpness.Location = new System.Drawing.Point(104, 117);
             this.weapSharpness.Name = "weapSharpness";
-            this.weapSharpness.Size = new System.Drawing.Size(74, 21);
+            this.weapSharpness.Size = new System.Drawing.Size(78, 21);
             this.weapSharpness.TabIndex = 136;
             // 
             // weapAffinity
@@ -985,20 +985,20 @@
             // label50
             // 
             this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(186, 149);
+            this.label50.Location = new System.Drawing.Point(186, 150);
             this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(88, 13);
+            this.label50.Size = new System.Drawing.Size(72, 13);
             this.label50.TabIndex = 132;
-            this.label50.Text = "W/Sharpness+2:";
+            this.label50.Text = "Sharpness+2:";
             // 
             // label46
             // 
             this.label46.AutoSize = true;
             this.label46.Location = new System.Drawing.Point(186, 120);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(88, 13);
+            this.label46.Size = new System.Drawing.Size(72, 13);
             this.label46.TabIndex = 131;
-            this.label46.Text = "W/Sharpness+1:";
+            this.label46.Text = "Sharpness+1:";
             // 
             // label43
             // 
@@ -1023,9 +1023,9 @@
             this.label38.AutoSize = true;
             this.label38.Location = new System.Drawing.Point(6, 114);
             this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(97, 26);
+            this.label38.Size = new System.Drawing.Size(72, 26);
             this.label38.TabIndex = 128;
-            this.label38.Text = "Max /\r\nCurrent Sharpness:";
+            this.label38.Text = "Max / Current\r\nSharpness:";
             // 
             // label37
             // 
@@ -1076,10 +1076,11 @@
             this.weapFinal.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.weapFinal.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapFinal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weapFinal.FormattingEnabled = true;
             this.weapFinal.Location = new System.Drawing.Point(7, 110);
             this.weapFinal.Name = "weapFinal";
-            this.weapFinal.Size = new System.Drawing.Size(121, 21);
+            this.weapFinal.Size = new System.Drawing.Size(121, 20);
             this.weapFinal.TabIndex = 95;
             this.weapFinal.SelectedIndexChanged += new System.EventHandler(this.WeaponFinalField_SelectedIndexChanged);
             // 
@@ -1118,10 +1119,11 @@
             this.weapName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.weapName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.weapName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.weapName.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weapName.FormattingEnabled = true;
             this.weapName.Location = new System.Drawing.Point(7, 70);
             this.weapName.Name = "weapName";
-            this.weapName.Size = new System.Drawing.Size(121, 21);
+            this.weapName.Size = new System.Drawing.Size(121, 20);
             this.weapName.TabIndex = 91;
             this.weapName.SelectedIndexChanged += new System.EventHandler(this.WeaponField_SelectedIndexChanged);
             // 
@@ -2303,6 +2305,7 @@
             this.ComboSort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ComboSort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ComboSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboSort.FormattingEnabled = true;
             this.ComboSort.Location = new System.Drawing.Point(65, 72);
             this.ComboSort.Name = "ComboSort";
@@ -2324,6 +2327,7 @@
             this.MotionSort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.MotionSort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.MotionSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.MotionSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MotionSort.FormattingEnabled = true;
             this.MotionSort.Location = new System.Drawing.Point(65, 45);
             this.MotionSort.Name = "MotionSort";
@@ -2345,6 +2349,7 @@
             this.NameSort.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.NameSort.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.NameSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.NameSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameSort.FormattingEnabled = true;
             this.NameSort.Location = new System.Drawing.Point(65, 17);
             this.NameSort.Name = "NameSort";
