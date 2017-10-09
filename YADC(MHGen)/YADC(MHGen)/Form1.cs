@@ -1321,6 +1321,7 @@ namespace YADC_MHGen_
             eleShotType.SelectedIndex = 0;
             GLAmmoBox.SelectedIndex = 0;
             moveMinds.Checked = false;
+            moveDamType.SelectedItem = "Cut";
         }
 
         /// <summary>
@@ -5155,7 +5156,7 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1) //Affinity Oil
             {
-                weaponAndMods.affinity += 1.3;
+                weaponAndMods.affinity += 30;
             }
             else if (skillVal == 2) //Stamina Oil
             {
