@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Armor Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Item/Bistro Skills:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup7 = new System.Windows.Forms.ListViewGroup("Weapon Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup8 = new System.Windows.Forms.ListViewGroup("Other Modifiers:", System.Windows.Forms.HorizontalAlignment.Left);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DmgCalculator));
             this.ErrorPreventer = new System.Windows.Forms.ErrorProvider(this.components);
             this.paraRaw = new System.Windows.Forms.TextBox();
@@ -332,6 +332,7 @@
             this.label89 = new System.Windows.Forms.Label();
             this.label88 = new System.Windows.Forms.Label();
             this.ProTip = new System.Windows.Forms.ToolTip(this.components);
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             ((System.ComponentModel.ISupportInitialize)(this.ErrorPreventer)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weapSecBox)).BeginInit();
@@ -2286,7 +2287,7 @@
             this.groupBox7.Controls.Add(this.NameSort);
             this.groupBox7.Location = new System.Drawing.Point(6, 364);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(312, 104);
+            this.groupBox7.Size = new System.Drawing.Size(312, 117);
             this.groupBox7.TabIndex = 132;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Move Search";
@@ -2294,7 +2295,7 @@
             // label33
             // 
             this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(6, 75);
+            this.label33.Location = new System.Drawing.Point(6, 85);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(58, 13);
             this.label33.TabIndex = 134;
@@ -2307,7 +2308,7 @@
             this.ComboSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComboSort.FormattingEnabled = true;
-            this.ComboSort.Location = new System.Drawing.Point(65, 72);
+            this.ComboSort.Location = new System.Drawing.Point(65, 82);
             this.ComboSort.Name = "ComboSort";
             this.ComboSort.Size = new System.Drawing.Size(237, 21);
             this.ComboSort.TabIndex = 133;
@@ -2316,7 +2317,7 @@
             // label32
             // 
             this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(6, 48);
+            this.label32.Location = new System.Drawing.Point(6, 53);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(41, 13);
             this.label32.TabIndex = 3;
@@ -2329,7 +2330,7 @@
             this.MotionSort.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.MotionSort.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MotionSort.FormattingEnabled = true;
-            this.MotionSort.Location = new System.Drawing.Point(65, 45);
+            this.MotionSort.Location = new System.Drawing.Point(65, 50);
             this.MotionSort.Name = "MotionSort";
             this.MotionSort.Size = new System.Drawing.Size(237, 21);
             this.MotionSort.TabIndex = 2;
@@ -2376,16 +2377,16 @@
             this.groupBox8.Controls.Add(this.modArmor);
             this.groupBox8.Location = new System.Drawing.Point(324, 300);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(606, 168);
+            this.groupBox8.Size = new System.Drawing.Size(606, 181);
             this.groupBox8.TabIndex = 133;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Active Modifiers:";
             // 
             // RemoveAllButt
             // 
-            this.RemoveAllButt.Location = new System.Drawing.Point(29, 129);
+            this.RemoveAllButt.Location = new System.Drawing.Point(105, 125);
             this.RemoveAllButt.Name = "RemoveAllButt";
-            this.RemoveAllButt.Size = new System.Drawing.Size(135, 23);
+            this.RemoveAllButt.Size = new System.Drawing.Size(127, 23);
             this.RemoveAllButt.TabIndex = 15;
             this.RemoveAllButt.Text = "Remove All Mods";
             this.RemoveAllButt.UseVisualStyleBackColor = true;
@@ -2424,22 +2425,22 @@
             // 
             // modList
             // 
-            listViewGroup1.Header = "Armor Skills:";
-            listViewGroup1.Name = "armorGroup";
-            listViewGroup2.Header = "Item/Bistro Skills:";
-            listViewGroup2.Name = "bistroGroup";
-            listViewGroup3.Header = "Weapon Modifiers:";
-            listViewGroup3.Name = "weaponGroup";
-            listViewGroup4.Header = "Other Modifiers:";
-            listViewGroup4.Name = "otherGroup";
+            listViewGroup5.Header = "Armor Skills:";
+            listViewGroup5.Name = "armorGroup";
+            listViewGroup6.Header = "Item/Bistro Skills:";
+            listViewGroup6.Name = "bistroGroup";
+            listViewGroup7.Header = "Weapon Modifiers:";
+            listViewGroup7.Name = "weaponGroup";
+            listViewGroup8.Header = "Other Modifiers:";
+            listViewGroup8.Name = "otherGroup";
             this.modList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup5,
+            listViewGroup6,
+            listViewGroup7,
+            listViewGroup8});
             this.modList.Location = new System.Drawing.Point(342, 12);
             this.modList.Name = "modList";
-            this.modList.Size = new System.Drawing.Size(258, 150);
+            this.modList.Size = new System.Drawing.Size(258, 163);
             this.modList.TabIndex = 136;
             this.modList.UseCompatibleStateImageBehavior = false;
             this.modList.View = System.Windows.Forms.View.List;
@@ -2466,11 +2467,11 @@
             // 
             // RemoveButt
             // 
-            this.RemoveButt.Location = new System.Drawing.Point(178, 129);
+            this.RemoveButt.Location = new System.Drawing.Point(105, 152);
             this.RemoveButt.Name = "RemoveButt";
-            this.RemoveButt.Size = new System.Drawing.Size(135, 23);
+            this.RemoveButt.Size = new System.Drawing.Size(127, 23);
             this.RemoveButt.TabIndex = 10;
-            this.RemoveButt.Text = "Remove Selected Mod(s)";
+            this.RemoveButt.Text = "Remove Selected";
             this.RemoveButt.UseVisualStyleBackColor = true;
             this.RemoveButt.Click += new System.EventHandler(this.RemoveButt_Click);
             // 
@@ -2998,10 +2999,10 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(12, 26);
+            this.tabControl1.Location = new System.Drawing.Point(12, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(944, 501);
+            this.tabControl1.Size = new System.Drawing.Size(944, 510);
             this.tabControl1.TabIndex = 141;
             // 
             // tabPage1
@@ -3017,7 +3018,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(936, 475);
+            this.tabPage1.Size = new System.Drawing.Size(936, 484);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Database";
             // 
@@ -3230,7 +3231,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(936, 475);
+            this.tabPage2.Size = new System.Drawing.Size(936, 484);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Calculation";
             // 
@@ -3324,7 +3325,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(936, 475);
+            this.tabPage3.Size = new System.Drawing.Size(936, 484);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Status";
             // 
@@ -3939,13 +3940,22 @@
             this.label88.Size = new System.Drawing.Size(2, 180);
             this.label88.TabIndex = 138;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(959, 24);
+            this.menuStrip1.TabIndex = 142;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
             // DmgCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(983, 548);
+            this.ClientSize = new System.Drawing.Size(959, 550);
             this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.menuStrip1);
             this.Name = "DmgCalculator";
             this.Text = "Awesomeosity\'s Damage Calculator - Post-Launch Stability (MHGen, Release vers. 1." +
     "02)";
@@ -4004,6 +4014,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.staKOBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.staExhBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -4306,6 +4317,7 @@
         private System.Windows.Forms.Button weapClearButt;
         private System.Windows.Forms.Button monClearButt;
         private System.Windows.Forms.Button movClearButt;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }
 

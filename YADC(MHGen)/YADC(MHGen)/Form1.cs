@@ -249,7 +249,7 @@ namespace YADC_MHGen_
         /// import to the calculator portion.
         /// No ctor. Will be filled in when the UpdateButt is clicked.
         /// </summary>
-        public struct importedStats
+        public class importedStats
         {
             public string sharpness; //Current Sharpness
             public string altDamageType;
@@ -293,6 +293,26 @@ namespace YADC_MHGen_
             public int addElement; //Stores the additive portion of element after Atk +1 or +2
 
             public double health; //Stores the monster's health.
+
+            public Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>();
+
+            public importedStats()
+            {
+                sharpnessValues.Add("(No Sharpness)", new Tuple<double, double>(1.00, 1.00));
+                sharpnessValues.Add("White", new Tuple<double, double>(1.32, 1.12));
+                sharpnessValues.Add("Blue", new Tuple<double, double>(1.20, 1.06));
+                sharpnessValues.Add("Green", new Tuple<double, double>(1.05, 1.0));
+                sharpnessValues.Add("Yellow", new Tuple<double, double>(1.00, 0.75));
+                sharpnessValues.Add("Orange", new Tuple<double, double>(0.75, 0.50));
+                sharpnessValues.Add("Red", new Tuple<double, double>(0.50, 0.25));
+            }
+            
+
+            public void updateSharpness(string newSharpness)
+            {
+                rawSharpMod = sharpnessValues[newSharpness].Item1;
+                eleSharpMod = sharpnessValues[newSharpness].Item2;
+            }
         }
 
         Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>(); //Stores translation of sharpness to sharpness modifiers
@@ -3885,7 +3905,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 4) //Art. Novice (GL)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
+                weaponAndMods.rawMod = weaponAndMods.rawMod * 1.1;
             }
             else if (skillVal == 5) //Art. Expert (Fixed Weapons)
             {
@@ -3902,7 +3922,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 8) //Art. Expert (GL)
             {
-                weaponAndMods.eleMod = weaponAndMods.eleMod * 1.2;
+                weaponAndMods.rawMod = weaponAndMods.rawMod * 1.2;
             }
             else
             {
@@ -4427,11 +4447,11 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1) //+1
             {
-                weaponAndMods.sharpness = (string)weapOne.SelectedItem;
+                weaponAndMods.updateSharpness((string)weapOne.SelectedItem);
             }
             else if (skillVal == 2) //+2
             {
-                weaponAndMods.sharpness = (string)weapTwo.SelectedItem;
+                weaponAndMods.updateSharpness((string)weapTwo.SelectedItem);
             }
             else
             {
