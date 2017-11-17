@@ -1019,7 +1019,7 @@ namespace YADC_MHGen_
             {
                 if (modArmor.Text == listItem.Text)
                 {
-                    break;
+                    return;
                 }
             }
             ListViewItem item = new ListViewItem(modArmor.Text);
@@ -1038,7 +1038,7 @@ namespace YADC_MHGen_
             {
                 if (modKitchen.Text == listItem.Text)
                 {
-                    break;
+                    return;
                 }
             }
 
@@ -1058,7 +1058,7 @@ namespace YADC_MHGen_
             {
                 if (modWeapon.Text == listItem.Text)
                 {
-                    break;
+                    return;
                 }
             }
             ListViewItem item = new ListViewItem(modWeapon.Text);
@@ -1077,7 +1077,7 @@ namespace YADC_MHGen_
             {
                 if (modOther.Text == listItem.Text)
                 {
-                    break;
+                    return;
                 }
             }
             ListViewItem item = new ListViewItem(modOther.Text);
