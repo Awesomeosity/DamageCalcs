@@ -560,7 +560,7 @@
             this.paraSecEle.Size = new System.Drawing.Size(96, 21);
             this.paraSecEle.TabIndex = 140;
             this.ProTip.SetToolTip(this.paraSecEle, "Are you using Dual Blades, and if so, does your weapon\r\nhave two elements?");
-            this.paraSecEle.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.paraSecEle.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
             // 
             // weapSecType
             // 
@@ -587,7 +587,7 @@
             this.weapSecType.Name = "weapSecType";
             this.weapSecType.Size = new System.Drawing.Size(111, 21);
             this.weapSecType.TabIndex = 145;
-            this.weapSecType.SelectedIndexChanged += new System.EventHandler(this.weapSecType_SelectedIndexChanged);
+            this.weapSecType.SelectedIndexChanged += new System.EventHandler(this.WeapSecType_SelectedIndexChanged);
             // 
             // staSecEle
             // 
@@ -605,7 +605,7 @@
             this.staSecEle.Name = "staSecEle";
             this.staSecEle.Size = new System.Drawing.Size(97, 21);
             this.staSecEle.TabIndex = 197;
-            this.staSecEle.SelectedIndexChanged += new System.EventHandler(this.staSecEle_SelectedIndexChanged);
+            this.staSecEle.SelectedIndexChanged += new System.EventHandler(this.StaSecEle_SelectedIndexChanged);
             // 
             // staType
             // 
@@ -722,7 +722,7 @@
             this.paraHitCount.Text = "1";
             this.paraHitCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ProTip.SetToolTip(this.paraHitCount, "The number of hits in the combo. \'1\' if the move is\r\nnot a combo.");
-            this.paraHitCount.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+            this.paraHitCount.TextChanged += new System.EventHandler(this.TextBox6_TextChanged);
             this.paraHitCount.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraHitCount.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -834,7 +834,7 @@
             this.weapClearButt.TabIndex = 147;
             this.weapClearButt.Text = "Clear Section";
             this.weapClearButt.UseVisualStyleBackColor = true;
-            this.weapClearButt.Click += new System.EventHandler(this.weapClearButt_Click);
+            this.weapClearButt.Click += new System.EventHandler(this.WeapClearButt_Click);
             // 
             // weapOverride
             // 
@@ -1252,7 +1252,7 @@
             this.paraTotal.Text = "0";
             this.paraTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.ProTip.SetToolTip(this.paraTotal, "The total amount of MV that a combo deals.");
-            this.paraTotal.TextChanged += new System.EventHandler(this.textBox4_TextChanged);
+            this.paraTotal.TextChanged += new System.EventHandler(this.TextBox4_TextChanged);
             this.paraTotal.Validating += new System.ComponentModel.CancelEventHandler(this.GenericField_Validating);
             this.paraTotal.Validated += new System.EventHandler(this.GenericField_Validated);
             // 
@@ -1285,7 +1285,7 @@
             this.ProTip.SetToolTip(this.paraFixed, "Does this attack deal Fixed Damage?\r\nBombs and kicks are examples of Fixed Damage" +
         ".");
             this.paraFixed.UseVisualStyleBackColor = true;
-            this.paraFixed.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.paraFixed.CheckedChanged += new System.EventHandler(this.CheckBox3_CheckedChanged);
             // 
             // paraUpdate
             // 
@@ -1295,7 +1295,7 @@
             this.paraUpdate.TabIndex = 0;
             this.paraUpdate.Text = "Update Parameters";
             this.paraUpdate.UseVisualStyleBackColor = true;
-            this.paraUpdate.Click += new System.EventHandler(this.paraUpdate_Click);
+            this.paraUpdate.Click += new System.EventHandler(this.ParaUpdate_Click);
             // 
             // label53
             // 
@@ -1435,7 +1435,7 @@
             this.paraSharpness.Size = new System.Drawing.Size(97, 21);
             this.paraSharpness.TabIndex = 125;
             this.ProTip.SetToolTip(this.paraSharpness, "How sharp is your weapon?\r\nIf Gunner, select \'(No Sharpness)\'.");
-            this.paraSharpness.SelectedIndexChanged += new System.EventHandler(this.sharpnessBox_SelectedIndexChanged);
+            this.paraSharpness.SelectedIndexChanged += new System.EventHandler(this.SharpnessBox_SelectedIndexChanged);
             // 
             // label21
             // 
@@ -2084,7 +2084,7 @@
             this.movClearButt.TabIndex = 152;
             this.movClearButt.Text = "Clear Section";
             this.movClearButt.UseVisualStyleBackColor = true;
-            this.movClearButt.Click += new System.EventHandler(this.movClearButt_Click);
+            this.movClearButt.Click += new System.EventHandler(this.MovClearButt_Click);
             // 
             // label30
             // 
@@ -2574,7 +2574,7 @@
             this.monClearButt.TabIndex = 184;
             this.monClearButt.Text = "Clear Section";
             this.monClearButt.UseVisualStyleBackColor = true;
-            this.monClearButt.Click += new System.EventHandler(this.monClearButt_Click);
+            this.monClearButt.Click += new System.EventHandler(this.MonClearButt_Click);
             // 
             // monHealth
             // 
@@ -2910,7 +2910,7 @@
             this.monQuest.Name = "monQuest";
             this.monQuest.Size = new System.Drawing.Size(192, 20);
             this.monQuest.TabIndex = 133;
-            this.monQuest.SelectedIndexChanged += new System.EventHandler(this.monQuest_SelectedIndexChanged);
+            this.monQuest.SelectedIndexChanged += new System.EventHandler(this.MonQuest_SelectedIndexChanged);
             // 
             // label77
             // 
@@ -2931,7 +2931,7 @@
             this.monHitzone.Name = "monHitzone";
             this.monHitzone.Size = new System.Drawing.Size(129, 21);
             this.monHitzone.TabIndex = 2;
-            this.monHitzone.SelectedIndexChanged += new System.EventHandler(this.monHitzone_SelectedIndexChanged);
+            this.monHitzone.SelectedIndexChanged += new System.EventHandler(this.MonHitzone_SelectedIndexChanged);
             // 
             // label78
             // 
@@ -2952,7 +2952,7 @@
             this.monName.Name = "monName";
             this.monName.Size = new System.Drawing.Size(129, 21);
             this.monName.TabIndex = 0;
-            this.monName.SelectedIndexChanged += new System.EventHandler(this.monName_SelectedIndexChanged);
+            this.monName.SelectedIndexChanged += new System.EventHandler(this.MonName_SelectedIndexChanged);
             // 
             // monExhField
             // 
@@ -3218,7 +3218,7 @@
             this.eleShotType.Name = "eleShotType";
             this.eleShotType.Size = new System.Drawing.Size(121, 21);
             this.eleShotType.TabIndex = 0;
-            this.eleShotType.SelectedIndexChanged += new System.EventHandler(this.eleShotType_SelectedIndexChanged);
+            this.eleShotType.SelectedIndexChanged += new System.EventHandler(this.EleShotType_SelectedIndexChanged);
             // 
             // tabPage2
             // 
@@ -3353,7 +3353,7 @@
             this.BowConvert.TabIndex = 6;
             this.BowConvert.Text = "Convert!";
             this.BowConvert.UseVisualStyleBackColor = true;
-            this.BowConvert.Click += new System.EventHandler(this.button2_Click);
+            this.BowConvert.Click += new System.EventHandler(this.Button2_Click);
             // 
             // label101
             // 
@@ -3457,7 +3457,7 @@
             this.staCalcButt.TabIndex = 210;
             this.staCalcButt.Text = "Calculate Statuses:";
             this.staCalcButt.UseVisualStyleBackColor = true;
-            this.staCalcButt.Click += new System.EventHandler(this.button3_Click);
+            this.staCalcButt.Click += new System.EventHandler(this.Button3_Click);
             // 
             // staText
             // 
@@ -3606,7 +3606,7 @@
             this.staCritCheck.TabIndex = 183;
             this.staCritCheck.Text = "Status Crit?";
             this.staCritCheck.UseVisualStyleBackColor = true;
-            this.staCritCheck.CheckedChanged += new System.EventHandler(this.staCritCheck_CheckedChanged);
+            this.staCritCheck.CheckedChanged += new System.EventHandler(this.StaCritCheck_CheckedChanged);
             // 
             // staImport
             // 
@@ -3616,7 +3616,7 @@
             this.staImport.TabIndex = 182;
             this.staImport.Text = "Import Parameters:";
             this.staImport.UseVisualStyleBackColor = true;
-            this.staImport.Click += new System.EventHandler(this.staImport_Click);
+            this.staImport.Click += new System.EventHandler(this.StaImport_Click);
             // 
             // staBlastBox
             // 

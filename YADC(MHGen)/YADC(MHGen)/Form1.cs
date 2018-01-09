@@ -23,7 +23,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Stores the stats of a single level of a single weapon.
         /// </summary>
-        public struct stats
+        public struct Stats
         {
             public int level;
             public double attack;
@@ -49,7 +49,7 @@ namespace YADC_MHGen_
             /// <param name="_secDamage">The amount of elemental damage done.</param>
             /// <param name="_sharpness1">The maximum level of sharpness with Sharpness +1</param>
             /// <param name="_sharpness2">The maximum level of sharpness with Sharpness +2</param>
-            public stats(int _level, double _attack, string _secType, string _sharpness, double _affinity, string _elementalType, double _elementalDamage, double _secDamage, string _sharpness1, string _sharpness2)
+            public Stats(int _level, double _attack, string _secType, string _sharpness, double _affinity, string _elementalType, double _elementalDamage, double _secDamage, string _sharpness1, string _sharpness2)
             {
                 level = _level;
                 attack = _attack;
@@ -67,7 +67,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Stores the stats of a move of a weapon type.
         /// </summary>
-        public struct moveStat
+        public struct MoveStat
         {
             public string name;
             public int id;
@@ -100,7 +100,7 @@ namespace YADC_MHGen_
             /// <param name="_mindsEye">Whether this move has natural Mind's Eye or not.</param>
             /// <param name="_draw">Is this move a draw attack?</param>
             /// <param name="_aerial">Is this move an aerial attack?</param>
-            public moveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _eleMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
+            public MoveStat(string _name, int _id, string _damageType, double _motionValue, double _perHitValue, int _hitCount, double _sharpnessMod, double _eleMod, double _KODamage, double _ExhDamage, bool _mindsEye, bool _draw, bool _aerial)
             {
                 name = _name;
                 id = _id;
@@ -121,7 +121,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Stores a hitzone's stats.
         /// </summary>
-        public struct hitzoneStats
+        public struct HitzoneStats
         {
             public string name;
             public double cutZone;
@@ -149,7 +149,7 @@ namespace YADC_MHGen_
             /// <param name="_dragonZone">Dragon zone value.</param>
             /// <param name="_KOZone">KO zone value.</param>
             /// <param name="_exhaustZone">Exhaust zone value.</param>
-            public hitzoneStats(string _name, double _cutZone, double _impactZone, double _shotZone, double _fireZone, double _waterZone, double _thunderZone, double _iceZone, double _dragonZone, double _KOZone, double _exhaustZone)
+            public HitzoneStats(string _name, double _cutZone, double _impactZone, double _shotZone, double _fireZone, double _waterZone, double _thunderZone, double _iceZone, double _dragonZone, double _KOZone, double _exhaustZone)
             {
                 name = _name;
                 cutZone = _cutZone;
@@ -168,7 +168,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Stores quest statistics.
         /// </summary>
-        public struct questStat
+        public struct QuestStat
         {
             public string name;
             public double questMod;
@@ -182,7 +182,7 @@ namespace YADC_MHGen_
             /// <param name="_questMod">Quest modifier (Defense modifier)</param>
             /// <param name="_exhaustMod">Exhaust modifier</param>
             /// <param name="_health">The average health of the monster on this quest.</param>
-            public questStat(string _name, double _questMod, double _exhaustMod, double _health)
+            public QuestStat(string _name, double _questMod, double _exhaustMod, double _health)
             {
                 name = _name;
                 questMod = _questMod;
@@ -194,7 +194,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Stores a monster's status thresholds.
         /// </summary>
-        public struct monsterStatusThresholds
+        public struct MonsterStatusThresholds
         {
             public double poisonInit;
             public double poisonInc;
@@ -223,24 +223,24 @@ namespace YADC_MHGen_
         /// <summary>
         /// Stores the stats of a monster,  such as their name, hitzones, quests that they appear in, and status.
         /// </summary>
-        public class monsterStat
+        public class MonsterStat
         {
             public string name;
-            public List<hitzoneStats> hitzones;
-            public List<questStat> quests;
-            public monsterStatusThresholds status;
+            public List<HitzoneStats> hitzones;
+            public List<QuestStat> quests;
+            public MonsterStatusThresholds status;
 
             /// <summary>
             /// Basically creates a monster without any data but a name.
             /// This is filled in during the XML reading process.
             /// </summary>
             /// <param name="_name"></param>
-            public monsterStat(string _name)
+            public MonsterStat(string _name)
             {
                 name = _name;
-                hitzones = new List<hitzoneStats>();
-                quests = new List<questStat>();
-                status = new monsterStatusThresholds();
+                hitzones = new List<HitzoneStats>();
+                quests = new List<QuestStat>();
+                status = new MonsterStatusThresholds();
             }
         }
 
@@ -249,7 +249,7 @@ namespace YADC_MHGen_
         /// import to the calculator portion.
         /// No ctor. Will be filled in when the UpdateButt is clicked.
         /// </summary>
-        public class importedStats
+        public class ImportedStats
         {
             public string sharpness; //Current Sharpness
             public string altDamageType;
@@ -296,7 +296,7 @@ namespace YADC_MHGen_
 
             public Dictionary<string, Tuple<double, double>> sharpnessValues = new Dictionary<string, Tuple<double, double>>();
 
-            public importedStats()
+            public ImportedStats()
             {
                 sharpnessValues.Add("(No Sharpness)", new Tuple<double, double>(1.00, 1.00));
                 sharpnessValues.Add("White", new Tuple<double, double>(1.32, 1.12));
@@ -308,7 +308,7 @@ namespace YADC_MHGen_
             }
 
 
-            public void updateSharpness(string newSharpness)
+            public void UpdateSharpness(string newSharpness)
             {
                 rawSharpMod = sharpnessValues[newSharpness].Item1;
                 eleSharpMod = sharpnessValues[newSharpness].Item2;
@@ -319,17 +319,17 @@ namespace YADC_MHGen_
         Dictionary<string, string> str2image = new Dictionary<string, string>(); //Stores the paths to the image files.
         Dictionary<string, double> monsterStatus = new Dictionary<string, double>(); //Stores conversion of string to multipliers, used for the monster's status.
         Dictionary<string, List<string>> type2Weapons = new Dictionary<string, List<string>>(); //Stores weapons under weapon types.
-        Dictionary<string, List<moveStat>> type2Moves = new Dictionary<string, List<moveStat>>(); //Stores conversion of weapon types to moves.
+        Dictionary<string, List<MoveStat>> type2Moves = new Dictionary<string, List<MoveStat>>(); //Stores conversion of weapon types to moves.
         Dictionary<string, string> names2FinalNames = new Dictionary<string, string>(); //Stores mapping of names to final names.
         Dictionary<string, string> finalNames2Names = new Dictionary<string, string>(); //Stores mapping of final names to names.
-        Dictionary<string, List<stats>> names2Stats = new Dictionary<string, List<stats>>(); //This will store a mapping of names to a list of stats by levels.
+        Dictionary<string, List<Stats>> names2Stats = new Dictionary<string, List<Stats>>(); //This will store a mapping of names to a list of stats by levels.
         Dictionary<string, Func<int, bool>> armorModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to modifiers.
         Dictionary<string, Func<int, bool>> kitchenItemModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to kitchen modifiers.
         Dictionary<string, Func<int, bool>> weaponModifiers = new Dictionary<string, Func<int, bool>>(); //Stores conversion of strings to weapon-specific modifiers.
         Dictionary<string, Func<int, bool>> otherModifiers = new Dictionary<string, Func<int, bool>>(); //Will store other things.
-        Dictionary<string, monsterStat> monsterStats = new Dictionary<string, monsterStat>(); //Stores monsters' stats.
+        Dictionary<string, MonsterStat> monsterStats = new Dictionary<string, MonsterStat>(); //Stores monsters' stats.
 
-        importedStats weaponAndMods = new importedStats(); //Will be used later. Required to be global for the modifier methods. Probably a better way to do this.
+        ImportedStats weaponAndMods = new ImportedStats(); //Will be used later. Required to be global for the modifier methods. Probably a better way to do this.
 
         string secondType; //Stores the second type of the weapon.
 
@@ -341,8 +341,8 @@ namespace YADC_MHGen_
             InitializeComponent(); //Required.
             Application.EnableVisualStyles();
             FillOut(); //Fills out dictionaries.
-            readFiles(); //Read the xml files and fills out the database.
-            prep(); //Prepares the forms.
+            ReadFiles(); //Read the xml files and fills out the database.
+            Prep(); //Prepares the forms.
         }
 
         //EVENT FUNCTIONS
@@ -355,8 +355,7 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void GenericField_Validating(object sender, CancelEventArgs e)
         {
-            string errorMsg;
-            if (!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
+            if (!CalcFieldValidation(((TextBox)sender).Text, out string errorMsg))
             {
                 e.Cancel = true;
                 ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
@@ -383,8 +382,7 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void AffinityField_Validating(object sender, CancelEventArgs e)
         {
-            string errorMsg;
-            if (!calcFieldValidation(((TextBox)sender).Text, out errorMsg))
+            if (!CalcFieldValidation(((TextBox)sender).Text, out string errorMsg))
             {
                 e.Cancel = true;
                 ((TextBox)sender).Select(0, ((TextBox)sender).Text.Length);
@@ -410,17 +408,17 @@ namespace YADC_MHGen_
         private void CalcButt_Click(object sender, System.EventArgs e)
         {
             healthText.ResetText();
-            Tuple<double, double, double, double> rawEleOut = calculateDamage(); //Helper function.
+            Tuple<double, double, double, double> rawEleOut = CalculateDamage(); //Helper function.
 
             calcRawWeap.Text = rawEleOut.Item1.ToString();
             calcRawOut.Text = rawEleOut.Item2.ToString(); //Used the Tuple output from the function to fill in the labels.
             calcEleOut.Text = rawEleOut.Item3.ToString();
             calcSecOut.Text = rawEleOut.Item4.ToString();
 
-            effectiveRawCalc(rawEleOut);
+            EffectiveRawCalc(rawEleOut);
         }
 
-        private void effectiveRawCalc(Tuple<double, double, double, double> rawEleOut)
+        private void EffectiveRawCalc(Tuple<double, double, double, double> rawEleOut)
         {
             if(rawEleOut.Item3 == 0)
             {
@@ -450,15 +448,15 @@ namespace YADC_MHGen_
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
             healthText.ResetText();
-            Tuple<double, double, double, double> rawEleTuple = calculateDamage(); //Use helper function.
-            Tuple<double, double, double, double, double, string, double> finalTuple = calculateMoreDamage(rawEleTuple.Item2, rawEleTuple.Item3, rawEleTuple.Item4); //Another one.
+            Tuple<double, double, double, double> rawEleTuple = CalculateDamage(); //Use helper function.
+            Tuple<double, double, double, double, double, string, double> finalTuple = CalculateMoreDamage(rawEleTuple.Item2, rawEleTuple.Item3, rawEleTuple.Item4); //Another one.
 
             calcRawWeap.Text = rawEleTuple.Item1.ToString();
             calcRawOut.Text = rawEleTuple.Item2.ToString(); //Do as the CalcButt function does
             calcEleOut.Text = rawEleTuple.Item3.ToString();
             calcSecOut.Text = rawEleTuple.Item4.ToString();
 
-            effectiveRawCalc(rawEleTuple);
+            EffectiveRawCalc(rawEleTuple);
 
             calcFinalRaw.Text = finalTuple.Item2.ToString(); //But with use of the outputted tuple from the moreDamage function.
             calcEle.Text = finalTuple.Item3.ToString();
@@ -472,7 +470,7 @@ namespace YADC_MHGen_
 
             calcBounce.Text = finalTuple.Item6;
 
-            healthCalc(); //Estimate how many hits it would take to kill the monster.
+            HealthCalc(); //Estimate how many hits it would take to kill the monster.
         }
 
         /// <summary>
@@ -481,13 +479,13 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button3_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
             if (staSecEle.SelectedIndex == 0)
             {
                 string status = "";
 
-                Tuple<int, int, int> statusTuple = calculateSta(false);
+                Tuple<int, int, int> statusTuple = CalculateSta(false);
                 if (statusTuple.Item1 != 0 && statusTuple.Item2 != 0 && statusTuple.Item3 != 0)
                 {
                     string[] formatArray = new string[] { statusTuple.Item1.ToString(), staType.Text, statusTuple.Item2.ToString(), statusTuple.Item3.ToString() };
@@ -496,12 +494,12 @@ namespace YADC_MHGen_
 
                 if (staSecEle.SelectedIndex != 0)
                 {
-                    Tuple<int, int, int> DBTuple = calculateSta(true);
+                    Tuple<int, int, int> DBTuple = CalculateSta(true);
                     string[] formatDB = new string[] { DBTuple.Item1.ToString(), staSecEle.Text, DBTuple.Item2.ToString(), DBTuple.Item3.ToString() };
                     status += String.Format("It will take {0} hits to inflict {1} status on this monster at the initial threshold, {2} more hits per tolerance level, and {3} hits at maximum tolerance. \n", formatDB);
                 }
 
-                Tuple<int, int, int, int, int, int> KOTuple = calculateKO();
+                Tuple<int, int, int, int, int, int> KOTuple = CalculateKO();
                 if (KOTuple.Item1 != 0 && KOTuple.Item2 != 0 && KOTuple.Item3 != 0)
                 {
                     string[] formatKO = new string[] { KOTuple.Item1.ToString(), KOTuple.Item2.ToString(), KOTuple.Item3.ToString() };
@@ -574,7 +572,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             string element = (string)((ComboBox)sender).SelectedItem;
             if (element != "(None)") //If there is an element
@@ -629,7 +627,7 @@ namespace YADC_MHGen_
                 weapFinal.Items.Add(names2FinalNames[names]); //Fill in weapon names at final forms.
             }
 
-            fillMoves((string)((ComboBox)sender).SelectedItem);
+            FillMoves((string)((ComboBox)sender).SelectedItem);
 
             if (((ComboBox)sender).Text == "Light Bowgun" || ((ComboBox)sender).Text == "Heavy Bowgun")
             {
@@ -666,7 +664,7 @@ namespace YADC_MHGen_
             }
 
             weapLevel.Items.Clear();
-            foreach (stats levels in names2Stats[weaponName])
+            foreach (Stats levels in names2Stats[weaponName])
             {
                 weapLevel.Items.Add(levels.level);
             }
@@ -695,7 +693,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender">sharpnessBox Only.</param>
         /// <param name="e"></param>
-        private void sharpnessBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void SharpnessBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             string sharpness = (string)((ComboBox)sender).SelectedItem;
             paraRawSharp.Text = sharpnessValues[sharpness].Item1.ToString();
@@ -710,7 +708,7 @@ namespace YADC_MHGen_
         private void LevelField_SelectedIndexChanged(object sender, EventArgs e)
         {
             int weaponLevel = (int)((ComboBox)sender).SelectedItem;
-            foreach (stats statistics in names2Stats[weapName.Text])
+            foreach (Stats statistics in names2Stats[weapName.Text])
             {
                 if (statistics.level == weaponLevel)
                 {
@@ -752,7 +750,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        private void CheckBox3_CheckedChanged(object sender, EventArgs e)
         {
             if (paraFixed.Checked)
             {
@@ -802,7 +800,7 @@ namespace YADC_MHGen_
                 ComboSort.SelectedItem = name;
             }
 
-            foreach (moveStat move in type2Moves[(string)weapType.SelectedItem])
+            foreach (MoveStat move in type2Moves[(string)weapType.SelectedItem])
             {
                 if (move.name == name)
                 {
@@ -880,7 +878,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        private void TextBox4_TextChanged(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text != "")
             {
@@ -897,7 +895,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void textBox6_TextChanged(object sender, EventArgs e)
+        private void TextBox6_TextChanged(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text != "")
             {
@@ -910,7 +908,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void moveAvg_TextChanged(object sender, EventArgs e)
+        private void MoveAvg_TextChanged(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text != "")
             {
@@ -927,7 +925,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void moveTotal_TextChanged(object sender, EventArgs e)
+        private void MoveTotal_TextChanged(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text != "")
             {
@@ -944,7 +942,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void moveHitCount_TextChanged(object sender, EventArgs e)
+        private void MoveHitCount_TextChanged(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text != "")
             {
@@ -957,7 +955,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void weapSecType_SelectedIndexChanged(object sender, EventArgs e)
+        private void WeapSecType_SelectedIndexChanged(object sender, EventArgs e)
         {
             int index = ((ComboBox)sender).SelectedIndex;
             if (index == 0) //No Element
@@ -1049,8 +1047,10 @@ namespace YADC_MHGen_
                     return;
                 }
             }
-            ListViewItem item = new ListViewItem(modArmor.Text);
-            item.Group = modList.Groups[0];
+            ListViewItem item = new ListViewItem(modArmor.Text)
+            {
+                Group = modList.Groups[0]
+            };
             modList.Items.Add(item);
         }
 
@@ -1069,8 +1069,10 @@ namespace YADC_MHGen_
                 }
             }
 
-            ListViewItem item = new ListViewItem(modKitchen.Text);
-            item.Group = modList.Groups[1];
+            ListViewItem item = new ListViewItem(modKitchen.Text)
+            {
+                Group = modList.Groups[1]
+            };
             modList.Items.Add(item);
         }
 
@@ -1088,8 +1090,10 @@ namespace YADC_MHGen_
                     return;
                 }
             }
-            ListViewItem item = new ListViewItem(modWeapon.Text);
-            item.Group = modList.Groups[2];
+            ListViewItem item = new ListViewItem(modWeapon.Text)
+            {
+                Group = modList.Groups[2]
+            };
             modList.Items.Add(item);
         }
 
@@ -1107,8 +1111,10 @@ namespace YADC_MHGen_
                     return;
                 }
             }
-            ListViewItem item = new ListViewItem(modOther.Text);
-            item.Group = modList.Groups[3];
+            ListViewItem item = new ListViewItem(modOther.Text)
+            {
+                Group = modList.Groups[3]
+            };
             modList.Items.Add(item);
         }
 
@@ -1149,11 +1155,11 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void paraUpdate_Click(object sender, EventArgs e)
+        private void ParaUpdate_Click(object sender, EventArgs e)
         {
-            importSetUp();
-            importModifiers();
-            export();
+            ImportSetUp();
+            ImportModifiers();
+            Export();
         }
 
         /// <summary>
@@ -1161,11 +1167,11 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void staImport_Click(object sender, EventArgs e)
+        private void StaImport_Click(object sender, EventArgs e)
         {
-            importSetUp();
-            importModifiers();
-            statusExport();
+            ImportSetUp();
+            ImportModifiers();
+            StatusExport();
         }
 
         /// <summary>
@@ -1173,18 +1179,18 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void monName_SelectedIndexChanged(object sender, EventArgs e)
+        private void MonName_SelectedIndexChanged(object sender, EventArgs e)
         {
             monHitzone.Items.Clear();
 
-            foreach (hitzoneStats zones in monsterStats[(string)(((ComboBox)sender).SelectedItem)].hitzones)
+            foreach (HitzoneStats zones in monsterStats[(string)(((ComboBox)sender).SelectedItem)].hitzones)
             {
                 monHitzone.Items.Add(zones.name);
             }
 
             monQuest.Items.Clear();
 
-            foreach (questStat quests in monsterStats[(string)(((ComboBox)sender).SelectedItem)].quests)
+            foreach (QuestStat quests in monsterStats[(string)(((ComboBox)sender).SelectedItem)].quests)
             {
                 monQuest.Items.Add(quests.name);
             }
@@ -1195,10 +1201,10 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void monHitzone_SelectedIndexChanged(object sender, EventArgs e)
+        private void MonHitzone_SelectedIndexChanged(object sender, EventArgs e)
         {
             string zoneName = (string)((ComboBox)sender).SelectedItem;
-            foreach (hitzoneStats hitzone in monsterStats[(string)monName.SelectedItem].hitzones)
+            foreach (HitzoneStats hitzone in monsterStats[(string)monName.SelectedItem].hitzones)
             {
                 if (hitzone.name == zoneName)
                 {
@@ -1221,10 +1227,10 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void monQuest_SelectedIndexChanged(object sender, EventArgs e)
+        private void MonQuest_SelectedIndexChanged(object sender, EventArgs e)
         {
             string questName = (string)((ComboBox)sender).SelectedItem;
-            foreach (questStat quest in monsterStats[(string)monName.SelectedItem].quests)
+            foreach (QuestStat quest in monsterStats[(string)monName.SelectedItem].quests)
             {
                 if (quest.name == questName)
                 {
@@ -1240,7 +1246,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void staSecEle_SelectedIndexChanged(object sender, EventArgs e)
+        private void StaSecEle_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (staSecEle.SelectedIndex != 0)
             {
@@ -1258,7 +1264,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void staCritCheck_CheckedChanged(object sender, EventArgs e)
+        private void StaCritCheck_CheckedChanged(object sender, EventArgs e)
         {
             if (staCritCheck.Checked == true)
             {
@@ -1288,9 +1294,9 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
-            bowStatusConvert();
+            BowStatusConvert();
         }
 
         /// <summary>
@@ -1298,18 +1304,18 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void eleShotType_SelectedIndexChanged(object sender, EventArgs e)
+        private void EleShotType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            setElementShot(); //Sets the Selected Index of the alt type of the weapon.
-            findPower(); //Sets the elemental power of the weapon.
-            findRFMod(); //Sets the element, raw, hit count, and element/raw mods.
+            SetElementShot(); //Sets the Selected Index of the alt type of the weapon.
+            FindPower(); //Sets the elemental power of the weapon.
+            FindRFMod(); //Sets the element, raw, hit count, and element/raw mods.
         }
 
         /*Functions*/
         /// <summary>
         /// Help function which sets up the form appropriately.
         /// </summary>
-        private void prep()
+        private void Prep()
         {
             monFireBox.Load(str2image["Fire"]);
             monWaterBox.Load(str2image["Water"]);
@@ -1377,10 +1383,9 @@ namespace YADC_MHGen_
         /// <param name="input"></param>
         /// <param name="ErrorMessage"></param>
         /// <returns></returns>
-        public bool calcFieldValidation(string input, out string ErrorMessage)
+        public bool CalcFieldValidation(string input, out string ErrorMessage)
         {
-            double result;
-            if (!double.TryParse(input, out result))
+            if (!double.TryParse(input, out double result))
             {
                 ErrorMessage = "Enter in a valid number.";
                 return false;
@@ -1396,7 +1401,7 @@ namespace YADC_MHGen_
         /// This function calculates damage before considering the monster parameters.
         /// </summary>
         /// <returns>A Tuple storing the Raw and Elemental damage outputs.</returns>
-        private Tuple<double, double, double, double> calculateDamage()
+        private Tuple<double, double, double, double> CalculateDamage()
         {
             double total = double.Parse(paraRaw.Text);
             double hitCount = double.Parse(paraHitCount.Text);
@@ -1482,11 +1487,11 @@ namespace YADC_MHGen_
 
                 string ele = (string)paraAltType.SelectedItem;
                 string secEle = (string)paraSecEle.SelectedItem;
-                if (isElement(ele))
+                if (IsElement(ele))
                 {
                     eleTotal = element * eleSharp * (1 + subAffinity * eleCrit);
                 }
-                else if (isStatus(ele))
+                else if (IsStatus(ele))
                 {
                     eleTotal = element * eleSharp * (1 + subAffinity * statusCrit);
                 }
@@ -1495,11 +1500,11 @@ namespace YADC_MHGen_
                     eleTotal = element * eleSharp;
                 }
 
-                if (isElement(secEle))
+                if (IsElement(secEle))
                 {
                     DBTotal = DBElement * eleSharp * (1 + subAffinity * eleCrit);
                 }
-                else if (isStatus(secEle))
+                else if (IsStatus(secEle))
                 {
                     DBTotal = DBElement * eleSharp * (1 + subAffinity * statusCrit);
                 }
@@ -1519,7 +1524,7 @@ namespace YADC_MHGen_
         /// <param name="rawDamage">Raw damage.</param>
         /// <param name="elementalDamage">Elemental damage.</param>
         /// <returns>A Tuple storing the total, raw, element, DB's second element, KO, exhaust, and bounce status of the attack after calculations.</returns>
-        private Tuple<double, double, double, double, double, string, double> calculateMoreDamage(double rawDamage, double elementalDamage, double DBElement)
+        private Tuple<double, double, double, double, double, string, double> CalculateMoreDamage(double rawDamage, double elementalDamage, double DBElement)
         {
             double rawZone = double.Parse(paraRawHitzone.Text) * 0.01;
             double eleZone = double.Parse(paraEleHitzone.Text) * 0.01;
@@ -1571,7 +1576,7 @@ namespace YADC_MHGen_
                 elementalDamage *= 2; //Correct for Dual Elements
             }
 
-            if (isElement(element))
+            if (IsElement(element))
             {
                 elementalDamage *= eleZone * questMod;
             }
@@ -1581,7 +1586,7 @@ namespace YADC_MHGen_
                 elementalDamage /= 2;
             }
 
-            if (isElement(element))
+            if (IsElement(element))
             {
                 totaldamage += elementalDamage;
             }
@@ -1590,13 +1595,13 @@ namespace YADC_MHGen_
             {
                 DBElement *= 2;
                 string altElement = (string)paraSecEle.SelectedItem;
-                if (isElement(altElement))
+                if (IsElement(altElement))
                 {
                     DBElement = DBElement * eleZone * questMod;
                 }
                 DBElement /= 2;
 
-                if (isElement(altElement))
+                if (IsElement(altElement))
                 {
                     totaldamage += DBElement;
                 }
@@ -1621,7 +1626,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="usingDB"></param>
         /// <returns></returns>
-        private Tuple<int, int, int> calculateSta(bool usingDB)
+        private Tuple<int, int, int> CalculateSta(bool usingDB)
         {
             double power = 0;
             double init = 0;
@@ -1713,7 +1718,7 @@ namespace YADC_MHGen_
         /// either one of those statuses.
         /// </summary>
         /// <returns></returns>
-        private Tuple<int, int, int, int, int, int> calculateKO()
+        private Tuple<int, int, int, int, int, int> CalculateKO()
         {
             double KO = double.Parse(staKOPow.Text);
             double Exhaust = double.Parse(staExhaust.Text);
@@ -1758,31 +1763,31 @@ namespace YADC_MHGen_
         /// Fill out the movelist 
         /// </summary>
         /// <param name="selectedItem"></param>
-        private void fillMoves(string selectedItem)
+        private void FillMoves(string selectedItem)
         {
             NameSort.Items.Clear();
             MotionSort.Items.Clear();
             ComboSort.Items.Clear();
 
-            List<moveStat> tempListMotion = new List<moveStat>();
-            List<moveStat> tempListCombo = new List<moveStat>();
+            List<MoveStat> tempListMotion = new List<MoveStat>();
+            List<MoveStat> tempListCombo = new List<MoveStat>();
 
-            foreach (moveStat moves in type2Moves[selectedItem]) //Fills out the moves for the move search box.
+            foreach (MoveStat moves in type2Moves[selectedItem]) //Fills out the moves for the move search box.
             {
                 NameSort.Items.Add(moves.name);
                 tempListMotion.Add(moves);
                 tempListCombo.Add(moves);
             }
 
-            insertSort1(tempListMotion); //Usage of insertSort.
-            insertSort2(tempListCombo);
+            InsertSort1(tempListMotion); //Usage of insertSort.
+            InsertSort2(tempListCombo);
 
-            foreach (moveStat moves in tempListMotion)
+            foreach (MoveStat moves in tempListMotion)
             {
                 MotionSort.Items.Add(moves.name);
             }
 
-            foreach (moveStat moves in tempListCombo)
+            foreach (MoveStat moves in tempListCombo)
             {
                 ComboSort.Items.Add(moves.name);
             }
@@ -1792,7 +1797,7 @@ namespace YADC_MHGen_
         /// Calculates the amount of health that the monster can have, and applies the variance.
         /// Furthermore, lists how many hits it would take to slay the monster.
         /// </summary>
-        private void healthCalc()
+        private void HealthCalc()
         {
             double finalDamage = double.Parse(calcFinal.Text);
             if (finalDamage == 0)
@@ -1825,51 +1830,51 @@ namespace YADC_MHGen_
         /// <summary>
         /// Sets various stats based on the Elemental shot selected.
         /// </summary>
-        private void setElementShot()
+        private void SetElementShot()
         {
             moveDamType.SelectedIndex = 2;
 
-            if (findElement() == "Fire")
+            if (FindElement() == "Fire")
             {
                 weapAlt.SelectedIndex = 1;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Water")
+            else if (FindElement() == "Water")
             {
                 weapAlt.SelectedIndex = 2;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Thunder")
+            else if (FindElement() == "Thunder")
             {
                 weapAlt.SelectedIndex = 3;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Ice")
+            else if (FindElement() == "Ice")
             {
                 weapAlt.SelectedIndex = 4;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Dragon")
+            else if (FindElement() == "Dragon")
             {
                 weapAlt.SelectedIndex = 5;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Poison")
+            else if (FindElement() == "Poison")
             {
                 weapAlt.SelectedIndex = 6;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Para")
+            else if (FindElement() == "Para")
             {
                 weapAlt.SelectedIndex = 7;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Sleep")
+            else if (FindElement() == "Sleep")
             {
                 weapAlt.SelectedIndex = 8;
                 moveMinds.Checked = true;
             }
-            else if (findElement() == "Blast")
+            else if (FindElement() == "Blast")
             {
                 weapAlt.SelectedIndex = 9;
                 moveMinds.Checked = true;
@@ -1881,7 +1886,7 @@ namespace YADC_MHGen_
             }
         }
 
-        private string findElement()
+        private string FindElement()
         {
             int index = eleShotType.SelectedIndex;
             if ((index >= 1 && index <= 14) || (index >= 65 && index <= 83))
@@ -1933,7 +1938,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Finds the damage dealt by the elemental bullet.
         /// </summary>
-        private void findPower()
+        private void FindPower()
         {
             int index = eleShotType.SelectedIndex;
             if ((index >= 1 && index <= 5) ||
@@ -2014,7 +2019,7 @@ namespace YADC_MHGen_
         /// Fills out the move stats, based on the Rapid Fire Modifier.
         /// For elemental shots, and fixed-damage shots.
         /// </summary>
-        private void findRFMod()
+        private void FindRFMod()
         {
             moveDraw.Checked = false;
             moveAerial.Checked = false;
@@ -2537,7 +2542,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Converts whatever's in the field to appropriate values for the status calculations.
         /// </summary>
-        private void bowStatusConvert()
+        private void BowStatusConvert()
         {
             string bowStatus = "";
             double statMod = 1.0;
@@ -2735,7 +2740,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        private bool isElement(string element)
+        private bool IsElement(string element)
         {
             if (element == "Fire" || element == "Water" || element == "Thunder" || element == "Ice" || element == "Dragon")
             {
@@ -2749,7 +2754,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        private bool isStatus(string element)
+        private bool IsStatus(string element)
         {
             if (element == "Poison" || element == "Para" || element == "Sleep")
             {
@@ -3055,22 +3060,22 @@ namespace YADC_MHGen_
         /// <summary>
         /// Reads the files from the appropriate folders.
         /// </summary>
-        private void readFiles()
+        private void ReadFiles()
         {
             //Read weapon database
-            readWeapons();
+            ReadWeapons();
 
             //Read motion value database
-            readMotion();
+            ReadMotion();
 
             //Read monster database
-            readMonsters();
+            ReadMonsters();
         }
 
         /// <summary>
         /// Reads from the MotionValues folder and retrives motion values and other stats for each move of each type of weapon.
         /// </summary>
-        private void readMotion()
+        private void ReadMotion()
         {
             string[] files = System.IO.Directory.GetFiles("./MotionValues/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
@@ -3082,12 +3087,14 @@ namespace YADC_MHGen_
                     type = type.Replace('_', ' ');
                 }
 
-                List<moveStat> moves = new List<moveStat>();
+                List<MoveStat> moves = new List<MoveStat>();
                 type2Moves.Add(type, moves);
 
-                XmlReaderSettings settings = new XmlReaderSettings(); //Setup XML Reader.
-                settings.IgnoreComments = true;
-                settings.IgnoreWhitespace = true;
+                XmlReaderSettings settings = new XmlReaderSettings
+                {
+                    IgnoreComments = true,
+                    IgnoreWhitespace = true
+                }; //Setup XML Reader.
                 using (XmlReader reader = XmlReader.Create(file, settings))
                 {
                     reader.MoveToContent();
@@ -3169,7 +3176,7 @@ namespace YADC_MHGen_
                             {
                                 aerialAttack = true;
                             }
-                            moves.Add(new moveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, eleMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
+                            moves.Add(new MoveStat(name, id, damageType, motionValue, perHit, hitCount, sharpnessMod, eleMod, KODamage, exhaustDamage, mindsEye, drawAttack, aerialAttack));
 
                         }
                     }
@@ -3181,7 +3188,7 @@ namespace YADC_MHGen_
         /// Reads the files included in the Weapons folder and generates weapon type names.
         /// Additionally, also reads inside the files and creates stats based on the weapons within.
         /// </summary>
-        private void readWeapons()
+        private void ReadWeapons()
         {
             string[] files = System.IO.Directory.GetFiles("./Weapons/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
@@ -3200,9 +3207,11 @@ namespace YADC_MHGen_
 
 
                 //Now we read the files
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.IgnoreComments = true;
-                settings.IgnoreWhitespace = true;
+                XmlReaderSettings settings = new XmlReaderSettings
+                {
+                    IgnoreComments = true,
+                    IgnoreWhitespace = true
+                };
                 using (XmlReader reader = XmlReader.Create(file, settings))
                 {
                     reader.MoveToContent();
@@ -3214,7 +3223,7 @@ namespace YADC_MHGen_
                             reader.Read(); //Name string
                             string name = reader.Value;
                             weapons.Add(name);
-                            List<stats> statistics = new List<stats>();
+                            List<Stats> statistics = new List<Stats>();
                             names2Stats.Add(name, statistics);
 
                             reader.Read(); //end Name
@@ -3279,7 +3288,7 @@ namespace YADC_MHGen_
                                 reader.Read(); //end level
                                 reader.Read(); //new level
 
-                                statistics.Add(new stats(level, attack, secType, sharpness, aff, eleType, eleDamage, secDamage, sharpness1, sharpness2));
+                                statistics.Add(new Stats(level, attack, secType, sharpness, aff, eleType, eleDamage, secDamage, sharpness1, sharpness2));
                             }
                         }
                     }
@@ -3290,7 +3299,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Reads from the files, and creates statistics to be stored.
         /// </summary>
-        private void readMonsters()
+        private void ReadMonsters()
         {
             string[] files = System.IO.Directory.GetFiles("./Monsters/", "*.xml", System.IO.SearchOption.TopDirectoryOnly);
             foreach (string file in files)
@@ -3304,12 +3313,14 @@ namespace YADC_MHGen_
 
                 monName.Items.Add(monsterFile);
 
-                monsterStat thisStat = new monsterStat(monsterFile);
+                MonsterStat thisStat = new MonsterStat(monsterFile);
                 monsterStats.Add(monsterFile, thisStat);
 
-                XmlReaderSettings settings = new XmlReaderSettings();
-                settings.IgnoreComments = true;
-                settings.IgnoreWhitespace = true;
+                XmlReaderSettings settings = new XmlReaderSettings
+                {
+                    IgnoreComments = true,
+                    IgnoreWhitespace = true
+                };
                 using (XmlReader reader = XmlReader.Create(file, settings))
                 {
                     reader.MoveToContent();
@@ -3370,7 +3381,7 @@ namespace YADC_MHGen_
                             reader.Read(); //end dragon
                             reader.Read(); //end hitzone
 
-                            hitzoneStats hitzone = new hitzoneStats(name, cut, impact, shot, fire, water, thunder, ice, dragon, KO, exhaust);
+                            HitzoneStats hitzone = new HitzoneStats(name, cut, impact, shot, fire, water, thunder, ice, dragon, KO, exhaust);
                             thisStat.hitzones.Add(hitzone);
                         }
 
@@ -3398,18 +3409,20 @@ namespace YADC_MHGen_
                             reader.Read(); //end health
                             reader.Read(); //end quest
 
-                            questStat status = new questStat();
-                            status.name = name;
-                            status.questMod = questMod;
-                            status.exhaustMod = exhaustMod;
-                            status.health = health;
+                            QuestStat status = new QuestStat
+                            {
+                                name = name,
+                                questMod = questMod,
+                                exhaustMod = exhaustMod,
+                                health = health
+                            };
 
                             thisStat.quests.Add(status);
                         }
 
                         else if (reader.Name == "status" && reader.NodeType != XmlNodeType.EndElement)
                         {
-                            monsterStatusThresholds thresh = new monsterStatusThresholds();
+                            MonsterStatusThresholds thresh = new MonsterStatusThresholds();
 
                             reader.Read(); //poison tag
                             reader.Read(); //init
@@ -3549,12 +3562,12 @@ namespace YADC_MHGen_
         /// Adapted from the pseudocode on Wikipedia.
         /// </summary>
         /// <param name="statList"></param>
-        private void insertSort1(List<moveStat> statList)
+        private void InsertSort1(List<MoveStat> statList)
         {
             for (int i = 1; i != statList.Count; i++)
             {
                 double x = statList[i].totalValue;
-                moveStat x1 = statList[i];
+                MoveStat x1 = statList[i];
 
                 int j = i - 1;
                 while (j >= 0 && statList[j].totalValue < x)
@@ -3572,12 +3585,12 @@ namespace YADC_MHGen_
         /// Adapted from the pseudocode on Wikipedia.
         /// </summary>
         /// <param name="statList"></param>
-        private void insertSort2(List<moveStat> statList)
+        private void InsertSort2(List<MoveStat> statList)
         {
             for (int i = 1; i != statList.Count; i++)
             {
                 int x = statList[i].id;
-                moveStat x1 = statList[i];
+                MoveStat x1 = statList[i];
 
                 int j = i - 1;
                 while (j >= 0 && statList[j].id > x)
@@ -3593,12 +3606,14 @@ namespace YADC_MHGen_
         /// <summary>
         /// Prepares and sets up the imported Stats struct to accept all database entries.
         /// </summary>
-        private void importSetUp()
+        private void ImportSetUp()
         {
-            weaponAndMods = new importedStats();
-            weaponAndMods.sharpness = (string)weapSharpness.SelectedItem;
-            weaponAndMods.totalAttackPower = double.Parse(weapAttack.Text);
-            weaponAndMods.affinity = double.Parse(weapAffinity.Text);
+            weaponAndMods = new ImportedStats
+            {
+                sharpness = (string)weapSharpness.SelectedItem,
+                totalAttackPower = double.Parse(weapAttack.Text),
+                affinity = double.Parse(weapAffinity.Text)
+            };
             weaponAndMods.rawSharpMod = sharpnessValues[weaponAndMods.sharpness].Item1;
             weaponAndMods.eleSharpMod = sharpnessValues[weaponAndMods.sharpness].Item2;
 
@@ -3710,7 +3725,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Imports all modifiers and applies them them to the importedStats struct. Also normalizes stats.
         /// </summary>
-        private void importModifiers()
+        private void ImportModifiers()
         {
             foreach (ListViewItem item in modList.Groups[0].Items)
             {
@@ -3750,7 +3765,7 @@ namespace YADC_MHGen_
                 weaponAndMods.totalAttackPower = Math.Floor(weaponAndMods.totalAttackPower);
             }
 
-            if (isElement(weaponAndMods.altDamageType))
+            if (IsElement(weaponAndMods.altDamageType))
             {
                 if (weaponAndMods.eleMod > 1.2 && !weaponAndMods.DemonRiot)
                 {
@@ -3760,7 +3775,7 @@ namespace YADC_MHGen_
                 weaponAndMods.eleAttackPower += weaponAndMods.addElement;
                 weaponAndMods.eleAttackPower = Math.Floor(weaponAndMods.eleAttackPower);
             }
-            else if (isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
+            else if (IsStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
             {
                 if (weaponAndMods.staMod > 1.25 && !weaponAndMods.DemonRiot)
                 {
@@ -3785,7 +3800,7 @@ namespace YADC_MHGen_
         /// <summary>
         /// Exports all relevant information into the calculation entry.
         /// </summary>
-        private void export()
+        private void Export()
         {
             paraSharpness.SelectedItem = weaponAndMods.sharpness;
             paraRaw.Text = weaponAndMods.totalAttackPower.ToString();
@@ -3821,9 +3836,9 @@ namespace YADC_MHGen_
         /// <summary>
         /// Different variant of export. For Status.
         /// </summary>
-        private void statusExport()
+        private void StatusExport()
         {
-            if (isStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
+            if (IsStatus(weaponAndMods.altDamageType) || weaponAndMods.altDamageType == "Blast")
             {
                 staType.SelectedItem = weaponAndMods.altDamageType;
                 staPower.Text = weaponAndMods.eleAttackPower.ToString();
@@ -3834,7 +3849,7 @@ namespace YADC_MHGen_
                 staPower.Text = 0.ToString();
             }
 
-            if (isStatus(weaponAndMods.secElement) || weaponAndMods.secElement == "Blast")
+            if (IsStatus(weaponAndMods.secElement) || weaponAndMods.secElement == "Blast")
             {
                 staSecEle.SelectedItem = weaponAndMods.secElement;
                 staSecPower.Text = weaponAndMods.secPower.ToString();
@@ -3866,7 +3881,7 @@ namespace YADC_MHGen_
 
             if (monName.Text != "")
             {
-                monsterStatusThresholds thresholds = monsterStats[monName.Text].status;
+                MonsterStatusThresholds thresholds = monsterStats[monName.Text].status;
                 staPoiInit.Text = thresholds.poisonInit.ToString();
                 staPoiInc.Text = thresholds.poisonInc.ToString();
                 staPoiMax.Text = thresholds.poisonMax.ToString();
@@ -4305,7 +4320,7 @@ namespace YADC_MHGen_
         /// <returns></returns>
         private bool Dreadqueen()
         {
-            if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+            if (IsStatus(weaponAndMods.altDamageType) || IsStatus(weaponAndMods.secElement))
             {
                 weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
                 weaponAndMods.addElement += 1;
@@ -4332,14 +4347,14 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1) //Up
             {
-                if (isElement(weaponAndMods.altDamageType) || isElement(weaponAndMods.secElement))
+                if (IsElement(weaponAndMods.altDamageType) || IsElement(weaponAndMods.secElement))
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 1.1;
                 }
             }
             else if (skillVal == 2) //Down
             {
-                if (isElement(weaponAndMods.altDamageType) || isElement(weaponAndMods.secElement))
+                if (IsElement(weaponAndMods.altDamageType) || IsElement(weaponAndMods.secElement))
                 {
                     weaponAndMods.eleMod = weaponAndMods.eleMod * 0.9;
                 }
@@ -4477,11 +4492,11 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1) //+1
             {
-                weaponAndMods.updateSharpness((string)weapOne.SelectedItem);
+                weaponAndMods.UpdateSharpness((string)weapOne.SelectedItem);
             }
             else if (skillVal == 2) //+2
             {
-                weaponAndMods.updateSharpness((string)weapTwo.SelectedItem);
+                weaponAndMods.UpdateSharpness((string)weapTwo.SelectedItem);
             }
             else
             {
@@ -4751,7 +4766,7 @@ namespace YADC_MHGen_
         {
             if (skillVal == 1) //+1
             {
-                if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+                if (IsStatus(weaponAndMods.altDamageType) || IsStatus(weaponAndMods.secElement))
                 {
                     weaponAndMods.staMod = weaponAndMods.staMod * 1.1;
                     weaponAndMods.addElement += 1;
@@ -4759,7 +4774,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 2) //+2
             {
-                if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+                if (IsStatus(weaponAndMods.altDamageType) || IsStatus(weaponAndMods.secElement))
                 {
                     weaponAndMods.staMod = weaponAndMods.staMod * 1.2;
                     weaponAndMods.addElement += 1;
@@ -4767,7 +4782,7 @@ namespace YADC_MHGen_
             }
             else if (skillVal == 3) //Down
             {
-                if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+                if (IsStatus(weaponAndMods.altDamageType) || IsStatus(weaponAndMods.secElement))
                 {
                     weaponAndMods.staMod = weaponAndMods.staMod * 0.9;
                 }
@@ -5001,7 +5016,7 @@ namespace YADC_MHGen_
 
         private bool FSpecialist()
         {
-            if (isStatus(weaponAndMods.altDamageType) || isStatus(weaponAndMods.secElement))
+            if (IsStatus(weaponAndMods.altDamageType) || IsStatus(weaponAndMods.secElement))
             {
                 weaponAndMods.staMod *= 1.125;
             }
@@ -5640,7 +5655,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void weapClearButt_Click(object sender, EventArgs e)
+        private void WeapClearButt_Click(object sender, EventArgs e)
         {
             weapAttack.Text = "0";
             weapAlt.SelectedIndex = 0;
@@ -5658,7 +5673,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void monClearButt_Click(object sender, EventArgs e)
+        private void MonClearButt_Click(object sender, EventArgs e)
         {
             monCut.Text = "0";
             monImpact.Text = "0";
@@ -5680,7 +5695,7 @@ namespace YADC_MHGen_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void movClearButt_Click(object sender, EventArgs e)
+        private void MovClearButt_Click(object sender, EventArgs e)
         {
             moveTotal.Text = "0";
             moveSharp.Text = "1.0";
