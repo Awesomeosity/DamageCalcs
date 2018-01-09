@@ -2,7 +2,7 @@
  * This is a Damage Calculator that is built specifically for Monster Hunter Generations.
  * This is built in C# and uses the Visual Studio's Windows Form Designer.
  * Current Version Number: Release Vers. 1.03
- * Built by Kevin Le and maintained as of 11/15/17.
+ * Built by Kevin Le and maintained as of 1/8/18.
  */
 
 using System;
@@ -306,7 +306,7 @@ namespace YADC_MHGen_
                 sharpnessValues.Add("Orange", new Tuple<double, double>(0.75, 0.50));
                 sharpnessValues.Add("Red", new Tuple<double, double>(0.50, 0.25));
             }
-            
+
 
             public void updateSharpness(string newSharpness)
             {
@@ -409,12 +409,36 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void CalcButt_Click(object sender, System.EventArgs e)
         {
+            healthText.ResetText();
             Tuple<double, double, double, double> rawEleOut = calculateDamage(); //Helper function.
 
             calcRawWeap.Text = rawEleOut.Item1.ToString();
             calcRawOut.Text = rawEleOut.Item2.ToString(); //Used the Tuple output from the function to fill in the labels.
             calcEleOut.Text = rawEleOut.Item3.ToString();
             calcSecOut.Text = rawEleOut.Item4.ToString();
+
+            effectiveRawCalc(rawEleOut);
+        }
+
+        private void effectiveRawCalc(Tuple<double, double, double, double> rawEleOut)
+        {
+            if(rawEleOut.Item3 == 0)
+            {
+                string[] formatArray = new string[] { rawEleOut.Item1.ToString(), rawEleOut.Item2.ToString() };
+                healthText.Text = String.Format("This weapon deals {0} damage. After MV, this weapon deals {1} damage.", formatArray);
+            }
+
+            else if(rawEleOut.Item4 == 0)
+            {
+                string[] formatArray = new string[] { rawEleOut.Item1.ToString(), rawEleOut.Item3.ToString(), (string)paraAltType.SelectedItem, rawEleOut.Item2.ToString() };
+                healthText.Text = String.Format("This weapon deals {0}/{1} {2} damage. After MV, this weapon deals {3} damage.", formatArray);
+            }
+
+            else
+            {
+                string[] formatArray = new string[] { rawEleOut.Item1.ToString(), rawEleOut.Item3.ToString(), (string)paraAltType.SelectedItem, rawEleOut.Item4.ToString(), (string)paraSecEle.SelectedItem, rawEleOut.Item2.ToString() };
+                healthText.Text = String.Format("This weapon deals {0}/{1} {2} damage and an additional {3} {4} damage. After MV, this weapon deals {5} damage.", formatArray);
+            }
         }
 
         /*CalcAll Functions*/
@@ -425,6 +449,7 @@ namespace YADC_MHGen_
         /// <param name="e"></param>
         private void CalcAll_Click(object sender, System.EventArgs e)
         {
+            healthText.ResetText();
             Tuple<double, double, double, double> rawEleTuple = calculateDamage(); //Use helper function.
             Tuple<double, double, double, double, double, string, double> finalTuple = calculateMoreDamage(rawEleTuple.Item2, rawEleTuple.Item3, rawEleTuple.Item4); //Another one.
 
@@ -432,6 +457,8 @@ namespace YADC_MHGen_
             calcRawOut.Text = rawEleTuple.Item2.ToString(); //Do as the CalcButt function does
             calcEleOut.Text = rawEleTuple.Item3.ToString();
             calcSecOut.Text = rawEleTuple.Item4.ToString();
+
+            effectiveRawCalc(rawEleTuple);
 
             calcFinalRaw.Text = finalTuple.Item2.ToString(); //But with use of the outputted tuple from the moreDamage function.
             calcEle.Text = finalTuple.Item3.ToString();
@@ -1770,14 +1797,16 @@ namespace YADC_MHGen_
             double finalDamage = double.Parse(calcFinal.Text);
             if (finalDamage == 0)
             {
-                healthText.Text = "No damage was dealt in this situation.";
+                healthText.AppendText("\nNo damage was dealt in this situation.");
+                //healthText.Text = "No damage was dealt in this situation.";
                 return;
             }
 
             double health = double.Parse(paraHealth.Text);
             if (health == 0)
             {
-                healthText.Text = "It is impossible to determine how many hits the monster can take before dying, as the health listed is 0.";
+                healthText.AppendText("\nIt is impossible to determine how many hits the monster can take before dying, as the health listed is 0.");
+                //healthText.Text = "It is impossible to determine how many hits the monster can take before dying, as the health listed is 0.";
                 return;
             }
 
@@ -1789,7 +1818,8 @@ namespace YADC_MHGen_
             string maxHits = Math.Ceiling(highHealth / finalDamage).ToString();
 
             string[] formatArray = new string[] { finalDamage.ToString(), avgHits, health.ToString(), minHits, maxHits };
-            healthText.Text = String.Format("With a hit that deals {0} damage, it will, on average, take {1} hit(s) to kill a monster with {2} health. At minimum health, it will take {3} hits, and at maximum health, it will take {4} hits.", formatArray);
+            string formatString = String.Format("\nWith a hit that deals {0} damage, it will, on average, take {1} hit(s) to kill a monster with {2} health. At minimum health, it will take {3} hits, and at maximum health, it will take {4} hits.", formatArray);
+            healthText.AppendText(formatString);
         }
 
         /// <summary>
@@ -2973,7 +3003,7 @@ namespace YADC_MHGen_
             weaponModifiers.Add("IG - White (Balanced)", x => IG(2));
             weaponModifiers.Add("IG - Red/White", x => IG(3));
             weaponModifiers.Add("IG - Triple Up", x => IG(4));
-            weaponModifiers.Add("IG - White (Speed)", x => IG(4));
+            weaponModifiers.Add("IG - White (Speed)", x => IG(5));
             weaponModifiers.Add("Gunner - Normal Distance (1x)", x => Gunner(1));
             weaponModifiers.Add("Gunner - Critical Distance (1.5x)", x => Gunner(2));
             weaponModifiers.Add("Gunner - Long Range (0.8x)", x => Gunner(3));
@@ -5369,12 +5399,20 @@ namespace YADC_MHGen_
             if (skillVal == 1) //Red Shield (Other Styles)
             {
                 weaponAndMods.rawMod *= 1.15;
+                if (weaponAndMods.damageType == "Fixed")
+                {
+                    weaponAndMods.rawMod *= 1.35;
+                }
                 weaponAndMods.KOPower *= 1.35;
                 weaponAndMods.exhaustPower *= 1.35;
             }
             else if (skillVal == 2) //Red Shield (Striker)
             {
                 weaponAndMods.rawMod *= 1.2;
+                if (weaponAndMods.damageType == "Fixed")
+                {
+                    weaponAndMods.rawMod *= 1.35;
+                }
                 weaponAndMods.KOPower *= 1.35;
                 weaponAndMods.exhaustPower *= 1.35;
             }

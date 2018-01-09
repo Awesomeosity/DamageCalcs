@@ -1903,18 +1903,18 @@
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(488, 60);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(103, 13);
+            this.label23.Size = new System.Drawing.Size(127, 13);
             this.label23.TabIndex = 124;
-            this.label23.Text = "Ele/Status Damage:";
+            this.label23.Text = "Ele/Status Damage / Hit:";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(488, 19);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(75, 13);
+            this.label22.Size = new System.Drawing.Size(99, 13);
             this.label22.TabIndex = 123;
-            this.label22.Text = "Raw Damage:";
+            this.label22.Text = "Raw Damage / Hit:";
             // 
             // calcEleBox
             // 
